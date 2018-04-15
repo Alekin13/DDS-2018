@@ -1,4 +1,4 @@
-package main.java.ar.com.utn.dds.sge.models;
+package main.java.sge.models;
 
 import java.io.Serializable;
 

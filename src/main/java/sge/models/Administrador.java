@@ -1,4 +1,4 @@
-package main.java.ar.com.utn.dds.sge.models;
+package main.java.sge.models;
 
 /**
  * CLase que modella a un administrador teniendo en cuenta los atributos que

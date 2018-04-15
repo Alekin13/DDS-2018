@@ -1,4 +1,4 @@
-package main.java.ar.com.utn.dds.sge.models;
+package main.java.sge.models;
 
 /**
  * Clase que modela a un usuario teniendo en cuenta los atributos que hereda de
