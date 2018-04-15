@@ -1,7 +1,6 @@
 package main.java.sge.models;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
