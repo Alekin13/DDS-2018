@@ -133,6 +133,5 @@ public class Usuario {
 	public void setFecAlta(Calendar fecAlta) {
 		this.fecAlta = fecAlta;
 	}
-
 	
 }
