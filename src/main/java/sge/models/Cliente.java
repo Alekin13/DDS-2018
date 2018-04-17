@@ -48,6 +48,30 @@ public class Cliente extends Usuario {
 
 	}
 
+	//Cantidad de Dispositivos Encendidos
+	public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
+		int dispositivosEncendidos = 0;
+		for (Dispositivo unDispositivo : dispositivos) {
+			if (unDispositivo.getEstado() == true) {
+				dispositivosEncendidos = dispositivosEncendidos + 1;
+			}
+		}
+		return dispositivosEncendidos;
+	}
+	
+	//Cantidad Total de Dispositivos
+	public int cantidadTotalDispositivos(List<Dispositivo> dispositivos) {
+		int cantDispositivos = dispositivos.size();
+		return cantDispositivos;
+	}
+	
+	//Cantidad Dispositivos Apagados
+	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
+		int dispositivosApagados = 0;
+		dispositivosApagados = cantidadTotalDispositivos(dispositivos) - cantidadDispositivosEncencidos(dispositivos);
+		return dispositivosApagados;
+	}
+
 	/**
 	 * @return the tipoDoc
 	 */
