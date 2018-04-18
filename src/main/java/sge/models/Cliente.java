@@ -78,6 +78,14 @@ public class Cliente extends Usuario {
 		return dispositivosApagados;
 	}
 
+	//Existen dispositivos Encendidos
+	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
+		if(dispositivos.size() > 0){
+			return true;
+		};
+		return false;
+	}
+	
 	/**
 	 * @return the tipoDoc
 	 */
