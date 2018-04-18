@@ -11,10 +11,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * @author Alejandro Mattioli
  *
  */
+//Esto hace que ignoren los campos que sean null en una serializacion
 @JsonInclude(JsonInclude.Include.NON_NULL)
+//Define el orden de las properties que vienen el registro 
 @JsonPropertyOrder({ "tipoDoc", "nroDoc", "telefono", "categoria", "dispositivos"})
 
 public class Cliente extends Usuario {
+
+	public enum tipoDoc { DNI, CI, LE, LI }
 
 	@JsonProperty("tipoDoc")
 	private String tipoDoc;
@@ -27,7 +31,9 @@ public class Cliente extends Usuario {
 
 	@JsonProperty("categoria")
 	private Categoria categoria;
-
+	//Tengo duda en que si se da de alta empieza en R1 o ya viene con la categoria
+	//private Categoria categoria = new Categoria("R1");
+	
 	@JsonProperty("dispositivos")
 	private List<Dispositivo> dispositivos;
 

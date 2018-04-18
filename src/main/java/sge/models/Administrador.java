@@ -1,6 +1,8 @@
 package main.java.sge.models;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -26,7 +28,21 @@ public class Administrador extends Usuario {
 		super(valorUsuario, valorPassword, valorNombre, valorApellido, valorDomicilio, valorFechaAlta);
 		this.idAdmin = valorId;
 	}
-
+	
+	
+	//Cantidad de Meses del Admin: Dadas dos fechas devuelve la diferencia de meses
+	//https://es.stackoverflow.com/questions/106342/c%C3%B3mo-obtener-los-meses-de-diferencia-entre-2-fechas-en-java
+	public int cantidadMesesAdmin(Calendar fechaAlta) {
+		Calendar fechaHoy = new GregorianCalendar();
+		int diferenciaAnio = fechaHoy.get(Calendar.YEAR) - fechaAlta.get(Calendar.YEAR);
+		int diferenciaMeses = diferenciaAnio * 12 + fechaHoy.get(Calendar.MONTH) - fechaAlta.get(Calendar.MONTH);
+		//System.out.println(diferenciaMeses);
+		
+		return diferenciaMeses;
+	}
+	
+	
+	
 	/**
 	 * @return the idAdmin
 	 */
