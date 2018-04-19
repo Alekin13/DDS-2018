@@ -11,11 +11,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "estado", "tipo"})
-public class Dispositivo {
+
+public abstract class Dispositivo {
 
 	@JsonProperty("nombreDispositivo")
 	private String nombreDispositivo;
-
 	
 	@JsonProperty("consumoKwh")
 	private Float consumoKwh;
@@ -26,12 +26,13 @@ public class Dispositivo {
 	@JsonProperty("tipo")
 	private String tipo;
 
-	public Dispositivo() {
-
-	}
-	
+//	public Dispositivo() {
+//
+//	}
+//	
 
 	public Dispositivo(String valorNombreDispositivo, Float valorConsumo, Boolean valorEstado, String valorTipo) {
+		
 		super();
 		this.nombreDispositivo = valorNombreDispositivo;
 		this.consumoKwh = valorConsumo;

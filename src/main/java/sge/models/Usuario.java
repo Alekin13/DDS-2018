@@ -15,7 +15,7 @@ import java.util.Calendar;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "usuario", "password", "nombre", "apellido", "domicilio", "fechaAlta"})
 
-public class Usuario {
+public abstract class Usuario {
 	
 	@JsonProperty("usuario")
 	private String usuario;

@@ -2,6 +2,8 @@ package main.java.sge.models;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -36,6 +38,10 @@ public class Cliente extends Usuario {
 	
 	@JsonProperty("dispositivos")
 	private List<Dispositivo> dispositivos;
+	
+	// agrego consumo
+	@JsonProperty("consumo")
+	private Float consumo;
 
 	public Cliente() {
 		super();
@@ -51,18 +57,24 @@ public class Cliente extends Usuario {
 		this.telefono = valorTelefono;
 		this.categoria = valorCategoria;
 		this.dispositivos = valorDispositivos;
+		this.consumo = valorConsumoMensual;
 
 	}
 
 	//Cantidad de Dispositivos Encendidos
 	public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
-		int dispositivosEncendidos = 0;
-		for (Dispositivo unDispositivo : dispositivos) {
-			if (unDispositivo.getEstado() == true) {
-				dispositivosEncendidos = dispositivosEncendidos + 1;
-			}
-		}
-		return dispositivosEncendidos;
+
+		return this.dispositivos.stream().filter(d -> d.getEstado()).collect(Collectors.toList()).size();
+			
+// habría que ver si esto que hice realmente funciona, metí un poco de funcional
+		
+//		int dispositivosEncendidos = 0;
+//		for (Dispositivo unDispositivo : dispositivos) {
+//			if (unDispositivo.getEstado() == true) {
+//				dispositivosEncendidos = dispositivosEncendidos + 1;
+//			}
+//		}
+//		return dispositivosEncendidos;
 	}
 	
 	//Cantidad Total de Dispositivos
@@ -80,10 +92,12 @@ public class Cliente extends Usuario {
 
 	//Existen dispositivos Encendidos
 	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
-		if(dispositivos.size() > 0){
-			return true;
-		};
-		return false;
+		return dispositivos.stream().anyMatch(d -> d.getEstado());
+		
+//		if(dispositivos.size() > 0){
+//			return true;
+//		};
+//		return false;
 	}
 	
 	/**
@@ -155,6 +169,14 @@ public class Cliente extends Usuario {
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
 	}
-
+	
+//	public void categoria( String categoria, double cargoFijo, double cargoVariable  ) {
+//		this.categoria = new Categoria();
+//		this.categoria.setearCategoria( categoria, cargoFijo, cargoVariable);
+//	}
+	
+	public Float consumoCliente() {
+		return this.dispositivos.stream().map(d -> d.getConsumoKwh()).reduce(0f,Float::sum);
+	}
 	
 }
