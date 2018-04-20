@@ -78,8 +78,7 @@ public class Categoria {
 	//Deberia calcular el total de la cuenta por mes
 	public double calcularTarifa( Cliente unCliente ) {
 		this.definirCategoriaCliente( unCliente );
-		double tarifa = this.getCargoVariable() * unCliente.consumoCliente() + this.getCargoFijo();
-		return tarifa;
+		return this.getCargoVariable() * unCliente.consumoCliente() + this.getCargoFijo();
 	}
 	
 	/**

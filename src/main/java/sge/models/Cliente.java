@@ -78,16 +78,24 @@ public class Cliente extends Usuario {
 	}
 	
 	//Cantidad Total de Dispositivos
-	public int cantidadTotalDispositivos(List<Dispositivo> dispositivos) {
-		int cantDispositivos = dispositivos.size();
-		return cantDispositivos;
+//	public int cantidadTotalDispositivos(List<Dispositivo> dispositivos) {
+//		int cantDispositivos = dispositivos.size();
+//		return cantDispositivos;
+//	}
+	
+	public int cantidadTotalDispositivos() {
+		return this.dispositivos.size();
 	}
 	
-	//Cantidad Dispositivos Apagados
-	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
-		int dispositivosApagados = 0;
-		dispositivosApagados = cantidadTotalDispositivos(dispositivos) - cantidadDispositivosEncencidos(dispositivos);
-		return dispositivosApagados;
+//Cantidad Dispositivos Apagados
+//	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
+//		int dispositivosApagados = 0;
+//		dispositivosApagados = cantidadTotalDispositivos(dispositivos) - cantidadDispositivosEncencidos(dispositivos);
+//		return dispositivosApagados;
+//	}
+	
+	public int cantidadDispositivosApagados() {
+		return dispositivos.stream().filter(d -> !d.getEstado()).collect(Collectors.toList()).size();
 	}
 
 	//Existen dispositivos Encendidos
