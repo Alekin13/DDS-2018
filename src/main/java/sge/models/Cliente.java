@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class Cliente extends Usuario {
 
-	public enum tipoDoc { DNI, CI, LE, LI }
+	public enum tipoDoc { DNI, CI, LE, LC }
 
 	@JsonProperty("tipoDoc")
 	private String tipoDoc;
