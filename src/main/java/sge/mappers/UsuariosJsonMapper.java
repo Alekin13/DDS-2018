@@ -8,7 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.java.sge.models.Cliente;
+import main.java.sge.modelos.Cliente;
 
 /**
  * 
