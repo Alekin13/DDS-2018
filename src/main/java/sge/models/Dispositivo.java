@@ -103,6 +103,11 @@ public abstract class Dispositivo {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public Boolean estaEncendido() {
+		if (this.getEstado()) {return true;}
+		else {return false;}
+	}
 
 	
 }
