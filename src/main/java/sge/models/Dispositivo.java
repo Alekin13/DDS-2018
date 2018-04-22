@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "estado", "tipo"})
 
-public abstract class Dispositivo {
+public class Dispositivo {
 
 	@JsonProperty("nombreDispositivo")
 	private String nombreDispositivo;
@@ -26,10 +26,9 @@ public abstract class Dispositivo {
 	@JsonProperty("tipo")
 	private String tipo;
 
-//	public Dispositivo() {
-//
-//	}
-//	
+	public Dispositivo() {
+
+	}
 
 	public Dispositivo(String valorNombreDispositivo, Float valorConsumo, Boolean valorEstado, String valorTipo) {
 		
