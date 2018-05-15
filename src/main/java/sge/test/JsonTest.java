@@ -1,4 +1,4 @@
-package main.java.test;
+package sge.test;
 
 import static org.junit.Assert.*;
 
@@ -11,10 +11,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.java.sge.mappers.UsuariosJsonMapper;
-import main.java.sge.modelos.Categoria;
-import main.java.sge.modelos.Cliente;
-import main.java.sge.modelos.Dispositivo;
+import sge.mappers.UsuariosJsonMapper;
+import sge.modelos.Categoria;
+import sge.modelos.Cliente;
+import sge.modelos.Dispositivo;
 
 public class JsonTest {
 	

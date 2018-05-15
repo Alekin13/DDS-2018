@@ -1,0 +1,28 @@
+[	
+	{
+		"usuario": "001_AlejandroMattioli",
+		"password": "123456",
+		"nombre": "Alejandro",
+		"apellido": "Mattioli",
+		"domicilio": "Av. Rivadavia 5000",
+		"fechaAlta": "22/04/2018",
+		"tipoDoc": "DNI",
+		"nroDoc": "38993333",
+		"telefono": "1551515555",
+		"categoria": {"categoria": "R1", "cargoFijo": 18.76, "cargoVariable": 0.644},
+		"dispositivos": [{ "nombreDispositivo": "PS4 Sony Pro", "consumoKwh": "200.00", "estado": true, "tipo": "Consola"}]
+	},
+	{
+		"usuario": "002_CamilaSerra",
+		"password": "123456",
+		"nombre": "Camila",
+		"apellido": "Serra",
+		"domicilio": "Olleros 1500",
+		"fechaAlta": "22/04/2018",
+		"tipoDoc": "DNI",
+		"nroDoc": "38993332",
+		"telefono": "1545352313",
+		"categoria": {"categoria": "R2", "cargoFijo": 35.32, "cargoVariable": 0.644},
+		"dispositivos": [{ "nombreDispositivo": "Planchita Gama CP9", "consumoKwh": "40.00", "estado": true, "tipo": "Plancha Pelo"}]
+	}
+]

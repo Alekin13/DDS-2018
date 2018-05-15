@@ -1,10 +1,11 @@
-package main.java.sge;
+package sge;
+
+import sge.view.Presentacion;
 
 public class SGE {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		/**Hace una demostracion por consola de los Datos que posee*/
+		Presentacion.mostrarConsola();
 	}
-
 }

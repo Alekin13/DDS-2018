@@ -1,4 +1,4 @@
-package main.java.sge.modelos;
+package sge.modelos;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
