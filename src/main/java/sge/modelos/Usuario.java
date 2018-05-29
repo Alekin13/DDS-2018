@@ -1,4 +1,4 @@
-package sge.modelos;
+package main.java.sge.modelos;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

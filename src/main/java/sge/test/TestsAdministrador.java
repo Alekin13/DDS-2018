@@ -1,4 +1,4 @@
-package sge.test;
+package main.java.sge.test;
 
 import static org.junit.Assert.*;
 

@@ -1,4 +1,4 @@
-package sge.modelos;
+package main.java.sge.modelos;
 
 import java.util.Calendar;
 import java.util.List;

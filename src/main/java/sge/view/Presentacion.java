@@ -1,11 +1,9 @@
-package sge.view;
+package main.java.sge.view;
 
 import java.util.Calendar;
 import java.util.List;
-import sge.mappers.UsuariosJsonMapper;
-import sge.modelos.Administrador;
-import sge.modelos.Categoria;
-import sge.modelos.Cliente;
+import main.java.sge.modelos.Cliente;
+import main.java.sge.mappers.UsuariosJsonMapper;
 
 /**
  * Clase creada solo para mostrar un ejemplo de funcionamiento por consola.
@@ -16,8 +14,8 @@ import sge.modelos.Cliente;
 public class Presentacion {
 	
 	private static final String PATH_JSON_CLIENTES = "/src/main/java/sge/data/Clientes.json";
-	private static final String PATH_JSON_ADMINISTRADORES = "src/main/java/json/Administradores.json";
-	private static final String PATH_JSON_CATEGORIAS = "src/main/java/json/Categorias.json";
+	//private static final String PATH_JSON_ADMINISTRADORES = "src/main/java/json/Administradores.json";
+	//private static final String PATH_JSON_CATEGORIAS = "src/main/java/json/Categorias.json";
 	
 	public static void mostrarConsola() {
 	
