@@ -1,4 +1,4 @@
-package main.java.sge.mappers;
+package sge.mappers;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,9 +8,9 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import main.java.sge.modelos.Administrador;
-import main.java.sge.modelos.Categoria;
-import main.java.sge.modelos.Cliente;
+import sge.modelos.Administrador;
+import sge.modelos.Categoria;
+import sge.modelos.Cliente;
 
 /**
  * 

@@ -1,6 +1,6 @@
-package main.java.sge;
 
-import main.java.sge.view.Presentacion;
+
+import sge.view.Presentacion;
 
 public class SGE {
 

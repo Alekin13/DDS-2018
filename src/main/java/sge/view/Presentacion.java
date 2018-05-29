@@ -1,9 +1,9 @@
-package main.java.sge.view;
+package sge.view;
 
 import java.util.Calendar;
 import java.util.List;
-import main.java.sge.modelos.Cliente;
-import main.java.sge.mappers.UsuariosJsonMapper;
+import sge.modelos.Cliente;
+import sge.mappers.UsuariosJsonMapper;
 
 /**
  * Clase creada solo para mostrar un ejemplo de funcionamiento por consola.
