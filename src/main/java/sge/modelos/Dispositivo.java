@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "estado", "tipo"})
+@JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "estado", "tipo", "fabricante"})
 
 public class Dispositivo {
 
@@ -20,12 +20,20 @@ public class Dispositivo {
 	@JsonProperty("consumoKwh")
 	private Float consumoKwh;
 	
+	//Esto seguramente cambiemos
 	@JsonProperty("estado")
 	private Boolean estado;
 
 	@JsonProperty("tipo")
 	private String tipo;
 
+	//Esto seguramente lo tranformemos en clase Fabricante
+	@JsonProperty("fabricante")
+	private String fabricante;
+
+	//Por ahora sabemos que algun adaptador puede tener si es Estandar, sera una clase tambien posiblemente
+	private String adaptador;
+	
 	public Dispositivo() {
 
 	}
@@ -106,6 +114,34 @@ public class Dispositivo {
 	public Boolean estaEncendido() {
 		if (this.getEstado()) {return true;}
 		else {return false;}
+	}
+
+    /**
+	 * @return the fabricante
+	 */
+	public String getFabricante() {
+		return fabricante;
+	}
+
+	/**
+	 * @param fabricante the fabricante to set
+	 */
+	public void setFabricante(String fabricante) {
+		this.fabricante = fabricante;
+	}
+
+	/**
+	 * @return the adaptador
+	 */
+	public String getAdaptador() {
+		return adaptador;
+	}
+
+	/**
+	 * @param adaptador the adaptador to set
+	 */
+	public void setAdaptador(String adaptador) {
+		this.adaptador = adaptador;
 	}
 
 	
