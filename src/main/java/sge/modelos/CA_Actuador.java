@@ -1,5 +1,9 @@
 package sge.modelos;
 
-public class CA_Actuador {
+public abstract class CA_Actuador implements I_command {
+	
+		public void execute() {
+		System.out.println("Ejecutar accion");
 
+		}
 }
