@@ -1,37 +1,16 @@
 package sge.modelos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SensorPresencia extends Sensor {
 
 	
-	public Float valor;
+
+	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 	
-	public void agregarDispositivo(Dispositivo dispositivo) {
-		super.agregarDispositivo(dispositivo);
-		
-	}
+	public SensorPresencia() {}//Falta constructor
 	
-	public void  agregarObserver(Regla regla) {
-		
-		super.agregarObserver(regla);
-	}
-
-	public void eliminarObserver(Regla regla) {
-		super.eliminarObserver(regla);
-		
-	}
-
-
-	public void notificarObserver(Dispositivo dispositivo) {
-		
-		super.notificarObserver(dispositivo);
-
-	}
 	
-	public float getValor(){
-		return super.valor = valor;
-		
-	}
-	public float medirPresencia(Dispositivo dispositivo) {}
-	
-
+	//public Integer tomarMedicion(Dispositivo dispositivo) {} Cada un intervalo de tiempo
 }
