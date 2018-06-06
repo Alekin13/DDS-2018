@@ -12,7 +12,7 @@ public List<Observador> observadores;
 		observadores.add(unObservador);
 		
 	}
-	public void eliminarObservador(Observador unObservador)
+	public void quitarObservador(Observador unObservador)
 	{
 		observadores.remove(unObservador);
 	}
