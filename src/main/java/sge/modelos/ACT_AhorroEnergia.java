@@ -1,15 +1,16 @@
 package sge.modelos;
 
-public class ACT_AhorroEnergia extends CA_Actuador {
+public class ACT_AhorroEnergia implements CommandActuadores {
 	
 	private DispositivoInteligente dispositivo;
 
 	public ACT_AhorroEnergia(DispositivoInteligente dispositivo) {
-		super(dispositivo);
+		this.dispositivo = dispositivo;
 		// TODO Auto-generated constructor stub
 	}
 
-	public void execute() {		
+	public void ejecutar() {
+		
 		dispositivo.activaAhorroEnergia();
 	}	
 }

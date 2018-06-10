@@ -12,14 +12,14 @@ public List<Observador> observadores;
 		observadores.add(unObservador);
 		
 	}
-	public void quitarObservador(Observador unObservador)
+	public void eliminarObservador(Observador unObservador)
 	{
 		observadores.remove(unObservador);
 	}
-	public void notificarObservadores()
+	public void notificarObservadores(Integer valor)
 	{
 		for(Observador unObservador : observadores){
-			unObservador.observadoActualizado();
+			unObservador.observadoActualizado(valor);
 			
 		}
 	

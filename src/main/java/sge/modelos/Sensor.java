@@ -30,17 +30,11 @@ public class Sensor extends Observado{
 	}
 	
 	@Override 
-	public void notificarObservadores() {
-	super.notificarObservadores();
-	for(Observador unObservador : super.observadores){
-		unObservador.setSensor(this);
+	public void notificarObservadores(Integer ultimaMedicion) {
+	super.notificarObservadores(ultimaMedicion);
+
 	
 	}
 	
-	
-
-
-
-}
 }
 

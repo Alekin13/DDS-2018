@@ -1,17 +1,16 @@
 package sge.modelos;
 
-public class ACT_Apagate extends CA_Actuador {
+public class ACT_Apagate implements CommandActuadores {
 	
-	private DispositivoInteligente dispositivo;
-
+private DispositivoInteligente dispositivo;
+	
 	public ACT_Apagate(DispositivoInteligente dispositivo) {
-		super(dispositivo);
-		// TODO Auto-generated constructor stub
+		this.dispositivo = dispositivo;
 	}
 
-	public void execute() {
-		
+	@Override
+	public void ejecutar() {
 		dispositivo.apagar();
-	}	
+	}
 
 }

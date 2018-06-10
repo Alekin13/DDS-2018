@@ -1,15 +1,15 @@
 package sge.modelos;
 
-public class ACT_Prendete extends CA_Actuador{
+public class ACT_Prendete implements CommandActuadores{
 	
 	private DispositivoInteligente dispositivo;
 
 	public ACT_Prendete(DispositivoInteligente dispositivo) {
-		super(dispositivo);
-		// TODO Auto-generated constructor stub
+		this.dispositivo = dispositivo;
+		
 	}
 
-	public void execute() {
+	public void ejecutar() {
 		
 		dispositivo.encender();
 	}	

@@ -14,7 +14,7 @@ public class CondicionExcluyente implements Condicion {
 	}
 
 	@Override
-	public Boolean cumple() {
-		return primera.cumple() || segunda.cumple();
+	public Boolean cumple(Integer medicion) {
+		return primera.cumple(medicion) || segunda.cumple(medicion);
 	}
 }

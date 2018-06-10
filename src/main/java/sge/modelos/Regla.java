@@ -4,7 +4,7 @@ package sge.modelos;
 import java.util.ArrayList;
 
 import sge.modelos.Regla;
-import sge.modelos.Acciones;
+import sge.modelos.CommandActuadores;
 import java.util.List;
 
 
@@ -12,37 +12,31 @@ import java.util.List;
 public class Regla implements Observador {
 	
 	private Condicion condicion;
-	private List<Acciones> acciones = new ArrayList<Acciones>();;
-	public Sensor sensor = null;
+	private List<CommandActuadores> actuadores = new ArrayList<CommandActuadores>();;
 	
-	public Regla(Condicion condicion, List<Acciones> accionesLista) {
-		this.acciones = accionesLista;
+	public Regla(Condicion condicion, List<CommandActuadores> actuadoresLista) {
+		this.actuadores = actuadoresLista;
 		this.condicion = condicion;
 		
 	}
 	
-	public void ejecutar() {
-		if (condicion.cumple()) {
-			acciones.forEach(accion -> accion.ejecutar());
+	public void ejecutar(Integer valor) {
+		if (condicion.cumple(valor)) {
+			actuadores.forEach(actuador -> actuador.ejecutar());
 		}
 	}
 	
-	public Regla agregarAccion(Acciones accion) {
-		acciones.add(accion);
+	public Regla agregarAccion(CommandActuadores actuador) {
+		actuadores.add(actuador);
 		return this;
 	}
 	
 	@Override
-	public void observadoActualizado() {
-		this.ejecutar();
+	public void observadoActualizado(Integer valor) {
+		this.ejecutar(valor);
 	
 	}
 	
-	public void setSensor(Sensor s) {
-		this.sensor = s;
-	}
-	
-
 	
 	
 	 
