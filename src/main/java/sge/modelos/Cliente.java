@@ -39,6 +39,9 @@ public class Cliente extends Usuario {
 	@JsonProperty("dispositivos")
 	private List<Dispositivo> dispositivos;
 	
+	@JsonProperty("puntaje")
+	private int puntaje;
+	
 	// agrego consumo
 	@JsonProperty("consumo")
 	private Float consumo;
@@ -171,12 +174,21 @@ public class Cliente extends Usuario {
 		return dispositivos;
 	}
 
+	public int getPuntaje() {
+		return puntaje;
+	}
+
+	public void setPuntaje(int puntaje) {
+		this.puntaje = puntaje;
+	}
+
 	/**
 	 * @param dispositivos the dispositivos to set
 	 */
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
-	}
+	}	
+	
 	
 //	public void categoria( String categoria, double cargoFijo, double cargoVariable  ) {
 //		this.categoria = new Categoria();
@@ -185,6 +197,20 @@ public class Cliente extends Usuario {
 	
 	public Float consumoCliente() {
 		return this.dispositivos.stream().map(d -> d.getConsumoKwh()).reduce(0f,Float::sum);
+	}
+	
+	public void agregarDispositivo(Dispositivo unDispositivo) {
+		if (unDispositivo.isEsInteligente()) { puntuarUsuario(15); }
+		dispositivos.add(unDispositivo);
+	}
+	
+	public void puntuarUsuario(int unaPuntuacion) {
+		this.puntaje = this.puntaje + unaPuntuacion;
+	}
+	
+	public void transformarDispositivoAInteligente(Dispositivo unDispositivo) {
+		puntuarUsuario(10);
+		unDispositivo.convertirseEnInteligente();
 	}
 	
 }

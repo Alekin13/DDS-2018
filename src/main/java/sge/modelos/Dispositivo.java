@@ -30,6 +30,14 @@ public class Dispositivo {
 	//Esto seguramente lo tranformemos en clase Fabricante
 	@JsonProperty("fabricante")
 	private String fabricante;
+	
+	//Esto seguramente lo tranformemos en clase Fabricante
+	@JsonProperty("esInteligente")
+	private boolean esInteligente;
+	
+	//Esto seguramente lo tranformemos en clase Fabricante
+	@JsonProperty("fueAdaptado")
+	private boolean fueAdaptado;
 
 	//Por ahora sabemos que algun adaptador puede tener si es Estandar, sera una clase tambien posiblemente
 	private String adaptador;
@@ -143,6 +151,26 @@ public class Dispositivo {
 	public void setAdaptador(String adaptador) {
 		this.adaptador = adaptador;
 	}
+	
 
+	public boolean isEsInteligente() {
+		return esInteligente;
+	}
+
+	public void setEsInteligente(boolean esInteligente) {
+		this.esInteligente = esInteligente;
+	}
+
+	public boolean isFueAdaptado() {
+		return fueAdaptado;
+	}
+
+	public void setFueAdaptado(boolean fueAdaptado) {
+		this.fueAdaptado = fueAdaptado;
+	}
+
+	public void convertirseEnInteligente() {
+		this.setFueAdaptado(true);		
+	}
 	
 }
