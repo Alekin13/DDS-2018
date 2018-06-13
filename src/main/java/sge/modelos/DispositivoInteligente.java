@@ -52,4 +52,9 @@ public class DispositivoInteligente extends Dispositivo {
 		return !encendido;
 	}
 
+	public void cambiarTemperatura(Integer valor) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
