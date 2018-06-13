@@ -1,4 +1,4 @@
-package sge.modelos;
+package sge.modelos.dispositivos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

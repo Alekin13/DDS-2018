@@ -1,10 +1,23 @@
-package sge.modelos;
+package sge.modelos.dispositivos;
+
+import java.util.List;
+
+import sge.modelos.estados.Apagado;
+import sge.modelos.estados.Estado;
+import sge.modelos.sensor.Sensor;
 
 public class DispositivoInteligente extends Dispositivo {
 
+	private String nombreDeDispositivo;
+	private double kwPorHora;
+	private Estado estado = new Apagado();
+	private List<Sensor> sensores;
+	private long   tiempoEncenido;
+	public boolean registrado = false;	
+	
+	//Temporal Hasta Implementar Estados 
 	public boolean encendido = false;
 	public boolean modoAhorroEnergia = false;
-	public boolean registrado = false;
 
 	public DispositivoInteligente() {
 
@@ -15,17 +28,24 @@ public class DispositivoInteligente extends Dispositivo {
 		this.modoAhorroEnergia = modoAhorroEnergia;
 		this.registrado = registrado;
 	}
-
-	public boolean isEncendido() {
-		return encendido;
-	}
-
+	
+	
+	
+	//	tiempoEncenido = System.currentTimeMillis();
+	
+	
+	
+	// Temporalmente Hasta Implementar Estados
 	public void encender() {
 		this.encendido = true;
 	}
 
 	public void apagar() {
 		this.encendido = false;
+	}
+
+	public boolean isEncendido() {
+		return encendido;
 	}
 
 	public boolean isModoAhorroEnergia() {
@@ -40,7 +60,7 @@ public class DispositivoInteligente extends Dispositivo {
 		this.modoAhorroEnergia = false;
 	}
 
-	public boolean isRegistrado() {
+	public boolean estaRegistrado() {
 		return registrado;
 	}
 
@@ -48,12 +68,11 @@ public class DispositivoInteligente extends Dispositivo {
 		this.registrado = registrado;
 	}
 
-	public boolean isApagado() {
+	public boolean estaApagado() {
 		return !encendido;
 	}
 
 	public void cambiarTemperatura(Integer valor) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -1,8 +1,9 @@
-package sge.modelos;
+package sge.modelos.sensor;
 
 import java.util.ArrayList;
 import java.util.List;
 import sge.modelos.Observado;
+import sge.modelos.dispositivos.Dispositivo;
 
 public class Sensor extends Observado{
 

@@ -1,7 +1,9 @@
-package sge.modelos;
+package sge.modelos.sensor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import sge.modelos.dispositivos.Dispositivo;
 
 public class SensorLuminosidad extends Sensor {
 

@@ -1,4 +1,4 @@
-import sge.modelos.DispositivoEstandar;
+import sge.modelos.dispositivos.DispositivoEstandar;
 import sge.view.Presentacion;
 
 public class SGE {

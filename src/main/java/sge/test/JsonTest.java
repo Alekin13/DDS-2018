@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import sge.modelos.Categoria;
 import sge.modelos.Cliente;
-import sge.modelos.Dispositivo;
+import sge.modelos.dispositivos.Dispositivo;
 import sge.mappers.UsuariosJsonMapper;
 
 public class JsonTest {

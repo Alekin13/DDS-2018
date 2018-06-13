@@ -1,5 +1,7 @@
 package sge.modelos;
 
+import sge.modelos.dispositivos.DispositivoInteligente;
+
 public class ACT_Apagate implements CommandActuadores {
 	
 private DispositivoInteligente dispositivo;

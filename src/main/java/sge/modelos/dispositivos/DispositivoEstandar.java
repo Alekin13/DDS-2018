@@ -1,4 +1,4 @@
-package sge.modelos;
+package sge.modelos.dispositivos;
 
 public class DispositivoEstandar extends Dispositivo {
 

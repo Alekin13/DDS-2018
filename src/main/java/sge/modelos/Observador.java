@@ -1,5 +1,5 @@
 package sge.modelos;
-import sge.modelos.Sensor;
+import sge.modelos.sensor.Sensor;
 
 public interface Observador {
 	

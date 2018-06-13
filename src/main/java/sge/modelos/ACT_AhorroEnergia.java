@@ -1,5 +1,7 @@
 package sge.modelos;
 
+import sge.modelos.dispositivos.DispositivoInteligente;
+
 public class ACT_AhorroEnergia implements CommandActuadores {
 	
 	private DispositivoInteligente dispositivo;
