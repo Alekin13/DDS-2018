@@ -4,20 +4,17 @@ public class Encendido implements Estado {
 
 	@Override
 	public boolean estaEncendido() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean estaApagado() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public double calcularConsumo() {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean estaEnModoAhorro() {
+		return false;
 	}
 
 }

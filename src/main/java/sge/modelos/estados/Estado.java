@@ -4,6 +4,6 @@ public interface Estado {
 
 	public boolean estaEncendido();
 	public boolean estaApagado();
-	public double  calcularConsumo();
+	public boolean estaEnModoAhorro();
 	
 }

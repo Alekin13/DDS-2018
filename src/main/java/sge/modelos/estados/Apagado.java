@@ -13,8 +13,8 @@ public class Apagado implements Estado {
 	}
 
 	@Override
-	public double calcularConsumo() {
-		return 0;
+	public boolean estaEnModoAhorro() {
+		return false;
 	}
 
 }
