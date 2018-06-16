@@ -1,8 +1,14 @@
 package sge.modelos.dispositivos;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import sge.modelos.estados.Apagado;
+import sge.modelos.estados.Estado;
+import sge.modelos.sensor.Sensor;
 
 /**
  * Clase que modela la entidad dispositivo
@@ -12,17 +18,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "estado", "tipo", "fabricante"})
 
-public class Dispositivo {
+public abstract class Dispositivo {
 
 	@JsonProperty("nombreDispositivo")
 	private String nombreDispositivo;
 	
 	@JsonProperty("consumoKwh")
-	private Float consumoKwh;
+	private double consumoKwh;
 	
 	//Esto seguramente cambiemos
 	@JsonProperty("estado")
-	private Boolean estado;
+	private Estado estado;
 
 	@JsonProperty("tipo")
 	private String tipo;
@@ -46,7 +52,7 @@ public class Dispositivo {
 
 	}
 
-	public Dispositivo(String valorNombreDispositivo, Float valorConsumo, Boolean valorEstado, String valorTipo) {
+	public Dispositivo(String valorNombreDispositivo, double valorConsumo, Estado valorEstado, String valorTipo) {
 		
 		super();
 		this.nombreDispositivo = valorNombreDispositivo;
@@ -75,7 +81,7 @@ public class Dispositivo {
 	/**
 	 * @return the consumoKwh
 	 */
-	public Float getConsumoKwh() {
+	public double getConsumoKwh() {
 		return consumoKwh;
 	}
 
@@ -119,9 +125,8 @@ public class Dispositivo {
 		this.tipo = tipo;
 	}
 	
-	public Boolean estaEncendido() {
-		if (this.getEstado()) {return true;}
-		else {return false;}
+	public boolean estaEncendido() {
+		return this.estado;
 	}
 
     /**
