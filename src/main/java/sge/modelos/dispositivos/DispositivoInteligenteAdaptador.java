@@ -7,7 +7,6 @@ public class DispositivoInteligenteAdaptador extends DispositivoInteligente {
 	public void DispositivoInteligenteAdapter(DispositivoEstandar dispositivo, String sAdaptador ) {
 		this.setDispositivoAConvertir(dispositivo);
 		this.setAdaptador(sAdaptador);
-		this.modoAhorroEnergia = false;
 		this.setRegistrado(true);
 	}
 	

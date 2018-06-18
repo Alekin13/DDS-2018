@@ -67,9 +67,9 @@ public class Cliente extends Usuario {
 	}
 
 	//Cantidad de Dispositivos Encendidos
-	public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
+	//public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
 
-		return this.dispositivos.stream().filter(d -> d.getEstado()).collect(Collectors.toList()).size();
+		//return this.dispositivos.stream().filter(d -> d.getEstado()).collect(Collectors.toList()).size();
 			
 // habría que ver si esto que hice realmente funciona, metí un poco de funcional
 		
@@ -80,7 +80,7 @@ public class Cliente extends Usuario {
 //			}
 //		}
 //		return dispositivosEncendidos;
-	}
+	//}
 	
 	//Cantidad Total de Dispositivos
 //	public int cantidadTotalDispositivos(List<Dispositivo> dispositivos) {
@@ -99,19 +99,19 @@ public class Cliente extends Usuario {
 //		return dispositivosApagados;
 //	}
 	
-	public int cantidadDispositivosApagados() {
-		return dispositivos.stream().filter(d -> !d.getEstado()).collect(Collectors.toList()).size();
-	}
+	//public int cantidadDispositivosApagados() {
+	//	return dispositivos.stream().filter(d -> !d.getEstado()).collect(Collectors.toList()).size();
+	//}
 
 	//Existen dispositivos Encendidos
-	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
-		return dispositivos.stream().anyMatch(d -> d.getEstado());
+	//public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
+	//	return dispositivos.stream().anyMatch(d -> d.getEstado());
 		
 //		if(dispositivos.size() > 0){
 //			return true;
 //		};
 //		return false;
-	}
+	//}
 	
 	/**
 	 * @return the tipoDoc
@@ -197,8 +197,8 @@ public class Cliente extends Usuario {
 //		this.categoria.setearCategoria( categoria, cargoFijo, cargoVariable);
 //	}
 	
-	public Float consumoCliente() {
-		return this.dispositivos.stream().map(d -> d.getConsumoKwh()).reduce(0f,Float::sum);
+	public double consumoCliente() {
+		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwh()).sum();
 	}
 	
 	public void agregarDispositivo(Dispositivo unDispositivo) {

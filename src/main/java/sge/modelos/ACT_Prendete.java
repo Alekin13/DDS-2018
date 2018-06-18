@@ -13,6 +13,6 @@ public class ACT_Prendete implements CommandActuadores{
 
 	public void ejecutar() {
 		
-		dispositivo.encender();
+		dispositivo.encenderDispositivo();
 	}	
 }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import sge.modelos.estados.Apagado;
+import sge.modelos.estados.Encendido;
 import sge.modelos.estados.Estado;
 import sge.modelos.sensor.Sensor;
 
@@ -95,22 +96,6 @@ public abstract class Dispositivo {
 
 
 	/**
-	 * @return the estado
-	 */
-	public Boolean getEstado() {
-		return estado;
-	}
-
-
-	/**
-	 * @param estado the estado to set
-	 */
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-
-	/**
 	 * @return the tipo
 	 */
 	public String getTipo() {
@@ -126,7 +111,7 @@ public abstract class Dispositivo {
 	}
 	
 	public boolean estaEncendido() {
-		return this.estado;
+		return true;
 	}
 
     /**
@@ -176,6 +161,11 @@ public abstract class Dispositivo {
 
 	public void convertirseEnInteligente() {
 		this.setFueAdaptado(true);		
+	}
+
+	public Object getEstado() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

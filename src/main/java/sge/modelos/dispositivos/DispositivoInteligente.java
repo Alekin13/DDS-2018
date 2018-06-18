@@ -83,4 +83,10 @@ public class DispositivoInteligente extends Dispositivo {
 		this.registrado = registrado;
 	}
 
+	public void cambiarTemperatura(Integer valor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

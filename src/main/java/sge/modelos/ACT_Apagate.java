@@ -12,7 +12,7 @@ private DispositivoInteligente dispositivo;
 
 	@Override
 	public void ejecutar() {
-		dispositivo.apagar();
+		dispositivo.apagarDispositivo();
 	}
 
 }
