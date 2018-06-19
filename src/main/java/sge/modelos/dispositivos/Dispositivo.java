@@ -135,11 +135,14 @@ public abstract class Dispositivo {
 	}
 
 	public void convertirseEnInteligente() {
+		this.tipo = "I";
 		
 	}
 
-		// TODO Auto-generated method stub
-		return null;
+	public boolean esInteligente() {
+		return (this.tipo=="I");
 	}
+
+	
 	
 }
