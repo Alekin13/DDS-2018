@@ -17,7 +17,7 @@ import sge.modelos.sensor.Sensor;
  *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "estado", "tipo", "fabricante"})
+@JsonPropertyOrder({ "nombreDispositivo", "consumoKwh", "tipo", "fabricante"})
 
 public abstract class Dispositivo {
 
@@ -27,26 +27,14 @@ public abstract class Dispositivo {
 	@JsonProperty("consumoKwh")
 	private double consumoKwh;
 	
-	//Esto seguramente cambiemos
-	@JsonProperty("estado")
-	private Estado estado;
-
 	@JsonProperty("tipo")
 	private String tipo;
 
-	//Esto seguramente lo tranformemos en clase Fabricante
 	@JsonProperty("fabricante")
 	private String fabricante;
 	
-	//Esto seguramente lo tranformemos en clase Fabricante
-	@JsonProperty("esInteligente")
-	private boolean esInteligente;
-	
-	//Esto seguramente lo tranformemos en clase Fabricante
-	@JsonProperty("fueAdaptado")
-	private boolean fueAdaptado;
+	private Estado estado;
 
-	//Por ahora sabemos que algun adaptador puede tener si es Estandar, sera una clase tambien posiblemente
 	private String adaptador;
 	
 	public Dispositivo() {
@@ -62,14 +50,12 @@ public abstract class Dispositivo {
 		this.tipo = valorTipo;
 	}
 
-
 	/**
 	 * @return the nombreDispositivo
 	 */
 	public String getNombreDispositivo() {
 		return nombreDispositivo;
 	}
-
 
 	/**
 	 * @param nombreDispositivo the nombreDispositivo to set
@@ -78,7 +64,6 @@ public abstract class Dispositivo {
 		this.nombreDispositivo = nombreDispositivo;
 	}
 
-
 	/**
 	 * @return the consumoKwh
 	 */
@@ -86,14 +71,12 @@ public abstract class Dispositivo {
 		return consumoKwh;
 	}
 
-
 	/**
 	 * @param consumoKwh the consumoKwh to set
 	 */
-	public void setConsumoKwh(Float consumoKwh) {
+	public void setConsumoKwh(double consumoKwh) {
 		this.consumoKwh = consumoKwh;
 	}
-
 
 	/**
 	 * @return the tipo
@@ -102,19 +85,14 @@ public abstract class Dispositivo {
 		return tipo;
 	}
 
-
 	/**
 	 * @param tipo the tipo to set
 	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	public boolean estaEncendido() {
-		return true;
-	}
 
-    /**
+	/**
 	 * @return the fabricante
 	 */
 	public String getFabricante() {
@@ -126,6 +104,20 @@ public abstract class Dispositivo {
 	 */
 	public void setFabricante(String fabricante) {
 		this.fabricante = fabricante;
+	}
+
+	/**
+	 * @return the estado
+	 */
+	public Estado getEstado() {
+		return estado;
+	}
+
+	/**
+	 * @param estado the estado to set
+	 */
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	/**
@@ -141,29 +133,11 @@ public abstract class Dispositivo {
 	public void setAdaptador(String adaptador) {
 		this.adaptador = adaptador;
 	}
-	
-
-	public boolean isEsInteligente() {
-		return esInteligente;
-	}
-
-	public void setEsInteligente(boolean esInteligente) {
-		this.esInteligente = esInteligente;
-	}
-
-	public boolean isFueAdaptado() {
-		return fueAdaptado;
-	}
-
-	public void setFueAdaptado(boolean fueAdaptado) {
-		this.fueAdaptado = fueAdaptado;
-	}
 
 	public void convertirseEnInteligente() {
-		this.setFueAdaptado(true);		
+		
 	}
 
-	public Object getEstado() {
 		// TODO Auto-generated method stub
 		return null;
 	}

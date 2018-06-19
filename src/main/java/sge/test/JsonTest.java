@@ -67,10 +67,10 @@ public class JsonTest {
 		// Se obtiene lista de clientes mapeados desde archivo json
 		List<Cliente> clientesJson  = mapper.extraerClientesJson("src/main/java/sge/data/Clientes.json");
 		
-		crearDatosDePrueba();
+//		crearDatosDePrueba();
 		
 		// Verifica que la lista de clientes no sea nula
-		assertNotNull(clientesJson);
+		//assertNotNull(clientesJson);
 		System.out.println(cliente2.getDispositivos());
 		
 		// Verifica que se hayan mapeado bien las entidades obtenidas desde el archivo json

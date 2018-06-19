@@ -13,14 +13,10 @@ import sge.modelos.sensor.Sensor;
 
 public class DispositivoInteligente extends Dispositivo {
 
-	private String nombreDispositivo;
-	private double consumoKwh;
-	private Estado estado = new Apagado();
 	private List<Sensor> sensores;
-	private long   tiempoEncendido;
+	private long tiempoEncendido;
 	public boolean registrado = false;
 	public double KwhConsumido;
-	private String tipo;
 	private String fabricante;
 	
 	
@@ -40,17 +36,17 @@ public class DispositivoInteligente extends Dispositivo {
 	}
 
 	public void encenderDispositivo() {
-		this.estado = new Encendido();
+		super.setEstado(new Encendido());
 		tiempoEncendido = System.currentTimeMillis();
 	}
 	
 	public void apagarDispositivo() {
-		this.estado = new Apagado();
+		super.setEstado(new Apagado());
 		KwhConsumido = KwhConsumido + this.calcularConsumo(this,tiempoEncendido);
 	}
 	
 	public void activaAhorroEnergia() {
-		this.estado = new ModoAhorroEnergia();
+		super.setEstado(new ModoAhorroEnergia());
 	}
 
 	public void apagarAhorroEnergia() {
@@ -59,11 +55,11 @@ public class DispositivoInteligente extends Dispositivo {
 	
 	public String estadoDelDispositivo() {
 		
-		if(estado.estaEncendido())
+		if(super.getEstado().estaEncendido())
 		{
 			return "El dispositivo se encuentra encendido";
 		}
-		else if(estado.estaApagado()){
+		else if(super.getEstado().estaApagado()){
 			return "El dispositivo se encuentra apagado";
 		}
 		else{
@@ -72,7 +68,7 @@ public class DispositivoInteligente extends Dispositivo {
 	}
 	
 	private double calcularConsumo(DispositivoInteligente dispositivoInteligente, long tiempoQueEstuvoEncendido) {
-		return tiempoQueEstuvoEncendido * dispositivoInteligente.consumoKwh;
+		return tiempoQueEstuvoEncendido * dispositivoInteligente.getConsumoKwh();
 	}
 	
 	public boolean estaRegistrado() {

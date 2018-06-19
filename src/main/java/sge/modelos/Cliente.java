@@ -202,7 +202,7 @@ public class Cliente extends Usuario {
 	}
 	
 	public void agregarDispositivo(Dispositivo unDispositivo) {
-		if (unDispositivo.isEsInteligente()) { puntuarUsuario(15); }
+		if (unDispositivo.esInteligente()) { puntuarUsuario(15); }
 		dispositivos.add(unDispositivo);
 	}
 	
