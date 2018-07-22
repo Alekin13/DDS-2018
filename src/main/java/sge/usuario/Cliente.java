@@ -215,5 +215,10 @@ public class Cliente extends Usuario {
 		puntuarUsuario(10);
 		unDispositivo.convertirseEnInteligente();
 	}
+
+	public Object consumoMensual() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import sge.modelos.Categoria;
+import sge.categoria.Categoria;
 import sge.usuario.Administrador;
 import sge.usuario.Cliente;
 
