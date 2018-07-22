@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sge.modelos.dispositivos.DispositivoInteligente;
+import sge.dispositivo.DispositivoInteligente;
 import sge.modelos.estados.Encendido;
 import sge.modelos.estados.Estado;
 import sge.modelos.sensor.Sensor;

@@ -1,4 +1,4 @@
-package sge.modelos.dispositivos;
+package sge.dispositivo;
 
 import java.util.List;
 

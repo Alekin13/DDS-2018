@@ -1,4 +1,4 @@
-package sge.modelos;
+package sge.actuador;
 
 public abstract class AdapterActuadores {
 

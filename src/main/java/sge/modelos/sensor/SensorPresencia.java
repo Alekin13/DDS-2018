@@ -3,7 +3,7 @@ package sge.modelos.sensor;
 import java.util.ArrayList;
 import java.util.List;
 
-import sge.modelos.dispositivos.Dispositivo;
+import sge.dispositivo.Dispositivo;
 
 public class SensorPresencia extends Sensor {
 

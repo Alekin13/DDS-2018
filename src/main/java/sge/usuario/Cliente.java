@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import sge.modelos.Categoria;
-import sge.modelos.dispositivos.Dispositivo;
+import sge.categoria.Categoria;
+import sge.dispositivo.Dispositivo;
 
 /**
  * Clase Cliente Extends Usuario

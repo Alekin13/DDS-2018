@@ -1,6 +1,7 @@
-package sge.modelos;
+package sge.actuador;
 
-import sge.modelos.dispositivos.DispositivoInteligente;
+import sge.dispositivo.DispositivoInteligente;
+import sge.modelos.CommandActuadores;
 
 public class ACT_Prendete implements CommandActuadores{
 	

@@ -5,7 +5,8 @@ import java.util.List;
 import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
-import sge.modelos.dispositivos.*;
+
+import sge.dispositivo.*;
 import sge.simplexSolver.SimplexFacade;
 
 public class SimplexHelper {
