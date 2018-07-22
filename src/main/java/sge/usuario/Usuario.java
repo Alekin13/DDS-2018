@@ -1,4 +1,4 @@
-package sge.modelos;
+package sge.usuario;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

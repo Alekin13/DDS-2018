@@ -12,9 +12,9 @@ import java.util.List;
 import org.junit.Test;
 
 import sge.modelos.Categoria;
-import sge.modelos.Cliente;
 import sge.modelos.dispositivos.Dispositivo;
 import sge.modelos.dispositivos.DispositivoInteligente;
+import sge.usuario.Cliente;
 import sge.mappers.UsuariosJsonMapper;
 
 public class JsonTest {
