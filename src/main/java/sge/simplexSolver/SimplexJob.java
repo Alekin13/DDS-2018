@@ -8,7 +8,7 @@ public class SimplexJob implements Job{
 
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
-		//Acá se ejecutaria el simplex
+		//Aca se ejecutaria el simplex
 		
 		System.out.println("ejecuto Simplex");
 		

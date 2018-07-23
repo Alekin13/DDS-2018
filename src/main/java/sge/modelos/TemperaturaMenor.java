@@ -2,7 +2,7 @@ package sge.modelos;
 
 
 
-import sge.modelos.sensor.Sensor;
+import sge.sensor.Sensor;
 
 public class TemperaturaMenor implements Condicion {
 	

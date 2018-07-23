@@ -1,24 +1,15 @@
 package sge.categoria;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import sge.usuario.Cliente;
 
-/**
- * Clase Categoría
- * 
- * @author Alejandro
- *
- */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "categoria", "cargoFijo", "cargoVariable" })
 
 public class Categoria {
 
-	/**
-	 * 
-	 */
 	@JsonProperty("categoria")
 	private String categoria;
 
@@ -32,7 +23,6 @@ public class Categoria {
 
 	}
 
-	
 	public Categoria(String valorCategoria, double valorCargoFijo, double valorCargoVariable) {
 		this.categoria = valorCategoria;
 		this.cargoFijo = valorCargoFijo;
@@ -46,17 +36,17 @@ public class Categoria {
 	}
 	
 	//Setea la categoria que le corresponde y sus cargos
-//	public void definirCategoriaCliente(double consumo, Categoria categoria) {
-//		if(consumo <= 150){ categoria.setearCategoria("R1", 18.76,  0.644);}
-//		else if(consumo <= 325 )	{categoria.setearCategoria("R2", 35.32,  0.644);}
-//		else if(consumo <= 400 )	{categoria.setearCategoria("R3", 60.71,  0.681);}
-//		else if(consumo <= 450 )	{categoria.setearCategoria("R4", 71.74,  0.738);}
-//		else if(consumo <= 500 )	{categoria.setearCategoria("R5", 110.38, 0.794);}
-//		else if(consumo <= 600 )	{categoria.setearCategoria("R6", 220.75, 0.832);}
-//		else if(consumo <= 700 )	{categoria.setearCategoria("R7", 443.59, 0.851);}
-//		else if(consumo <= 1400 )	{categoria.setearCategoria("R8", 545.96, 0.851);}
-//		else 						{categoria.setearCategoria("R9", 887.19, 0.851);}
-//	}
+	//	public void definirCategoriaCliente(double consumo, Categoria categoria) {
+	//		if(consumo <= 150){ categoria.setearCategoria("R1", 18.76,  0.644);}
+	//		else if(consumo <= 325 )	{categoria.setearCategoria("R2", 35.32,  0.644);}
+	//		else if(consumo <= 400 )	{categoria.setearCategoria("R3", 60.71,  0.681);}
+	//		else if(consumo <= 450 )	{categoria.setearCategoria("R4", 71.74,  0.738);}
+	//		else if(consumo <= 500 )	{categoria.setearCategoria("R5", 110.38, 0.794);}
+	//		else if(consumo <= 600 )	{categoria.setearCategoria("R6", 220.75, 0.832);}
+	//		else if(consumo <= 700 )	{categoria.setearCategoria("R7", 443.59, 0.851);}
+	//		else if(consumo <= 1400 )	{categoria.setearCategoria("R8", 545.96, 0.851);}
+	//		else 						{categoria.setearCategoria("R9", 887.19, 0.851);}
+	//	}
 
 	public void definirCategoriaCliente(Cliente unCliente) {
 		if(unCliente.consumoCliente() <= 150){ unCliente.setCategoria(new Categoria("R1", 18.76,  0.644));}
@@ -71,59 +61,42 @@ public class Categoria {
 	}
 	
 	//Deberia calcular el total de la cuenta por mes
-//	public double calcularTarifa(Categoria categoria, double consumo) {
-//		categoria.definirCategoriaCliente(consumo, categoria);
-//		double tarifa = categoria.getCargoVariable()*consumo + categoria.getCargoFijo();
-//		return tarifa;
-//	}
-//	
+	//	public double calcularTarifa(Categoria categoria, double consumo) {
+	//		categoria.definirCategoriaCliente(consumo, categoria);
+	//		double tarifa = categoria.getCargoVariable()*consumo + categoria.getCargoFijo();
+	//		return tarifa;
+	//	}
+	//	
+
 	//Deberia calcular el total de la cuenta por mes
 	public double calcularTarifa( Cliente unCliente ) {
 		this.definirCategoriaCliente( unCliente );
 		return this.getCargoVariable() * unCliente.consumoCliente() + this.getCargoFijo();
 	}
 	
-	/**
-	 * @return the categoria
-	 */
 	public String getCategoria() {
 		return categoria;
 	}
 
-	/**
-	 * @param categoria the categoria to set
-	 */
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 
-	/**
-	 * @return the cargoFijo
-	 */
 	public double getCargoFijo() {
 		return cargoFijo;
 	}
 
-	/**
-	 * @param cargoFijo the cargoFijo to set
-	 */
 	public void setCargoFijo(Float cargoFijo) {
 		this.cargoFijo = cargoFijo;
 	}
 
-	/**
-	 * @return the cargoVariable
-	 */
 	public double getCargoVariable() {
 		return cargoVariable;
 	}
 
-	/**
-	 * @param cargoVariable the cargoVariable to set
-	 */
 	public void setCargoVariable(Float cargoVariable) {
 		this.cargoVariable = cargoVariable;
 	}
 
 	
-}	
+}

@@ -55,10 +55,5 @@ public class SimplexHelper {
 	return dispositivosSobrepasados;
 	}
 	
-	/*public List<Dispositivo> comparacionVariables(PointValuePair variables, List<Dispositivo> dispositivos){
-		
-	}*/
-	
-	
 }
 

@@ -1,4 +1,4 @@
-package sge.modelos.sensor;
+package sge.sensor;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -9,7 +9,7 @@ import sge.modelos.estados.Apagado;
 import sge.modelos.estados.Encendido;
 import sge.modelos.estados.Estado;
 import sge.modelos.estados.ModoAhorroEnergia;
-import sge.modelos.sensor.Sensor;
+import sge.sensor.Sensor;
 
 public class DispositivoInteligente extends Dispositivo {
 

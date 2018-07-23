@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import sge.modelos.estados.Apagado;
 import sge.modelos.estados.Encendido;
 import sge.modelos.estados.Estado;
-import sge.modelos.sensor.Sensor;
+import sge.sensor.Sensor;
 
 /**
  * Clase que modela la entidad dispositivo

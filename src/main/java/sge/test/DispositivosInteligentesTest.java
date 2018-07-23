@@ -9,7 +9,7 @@ import org.junit.Test;
 import sge.dispositivo.DispositivoInteligente;
 import sge.modelos.estados.Encendido;
 import sge.modelos.estados.Estado;
-import sge.modelos.sensor.Sensor;
+import sge.sensor.Sensor;
 
 public class DispositivosInteligentesTest {
 	

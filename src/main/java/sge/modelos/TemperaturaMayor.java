@@ -1,7 +1,7 @@
 package sge.modelos;
 
 import sge.modelos.Condicion;
-import sge.modelos.sensor.Sensor;
+import sge.sensor.Sensor;
 
 
 

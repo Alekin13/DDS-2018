@@ -4,12 +4,13 @@ package sge.modelos;
 import java.util.ArrayList;
 
 import sge.modelos.Regla;
+import sge.observer.ObserverSensor;
 import sge.modelos.CommandActuadores;
 import java.util.List;
 
 
 
-public class Regla implements Observador {
+public class Regla implements ObserverSensor {
 	
 	private Condicion condicion;
 	private List<CommandActuadores> actuadores = new ArrayList<CommandActuadores>();;
