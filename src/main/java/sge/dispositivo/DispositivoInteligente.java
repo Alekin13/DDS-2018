@@ -5,10 +5,10 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import sge.modelos.estados.Apagado;
-import sge.modelos.estados.Encendido;
-import sge.modelos.estados.Estado;
-import sge.modelos.estados.ModoAhorroEnergia;
+import sge.estados.Apagado;
+import sge.estados.Encendido;
+import sge.estados.Estado;
+import sge.estados.ModoAhorroEnergia;
 import sge.sensor.Sensor;
 
 public class DispositivoInteligente extends Dispositivo {

@@ -1,7 +1,7 @@
-package sge.modelos;
+package sge.regla;
 
 
-import sge.modelos.Condicion;
+import sge.regla.Condicion;
 
 public class CondicionExcluyente implements Condicion {
 

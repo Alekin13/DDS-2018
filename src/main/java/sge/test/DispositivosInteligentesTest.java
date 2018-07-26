@@ -7,8 +7,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import sge.dispositivo.DispositivoInteligente;
-import sge.modelos.estados.Encendido;
-import sge.modelos.estados.Estado;
+import sge.estados.Encendido;
+import sge.estados.Estado;
 import sge.sensor.Sensor;
 
 public class DispositivosInteligentesTest {

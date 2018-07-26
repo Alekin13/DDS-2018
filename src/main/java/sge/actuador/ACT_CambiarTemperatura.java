@@ -1,7 +1,7 @@
 package sge.actuador;
 
 import sge.dispositivo.DispositivoInteligente;
-import sge.modelos.CommandActuadores;
+import sge.regla.CommandActuadores;
 
 public class ACT_CambiarTemperatura implements CommandActuadores {
 	

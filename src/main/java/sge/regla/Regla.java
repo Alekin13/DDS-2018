@@ -1,16 +1,17 @@
-package sge.modelos;
+package sge.regla;
 
 
 import java.util.ArrayList;
 
-import sge.modelos.Regla;
 import sge.observer.ObserverSensor;
-import sge.modelos.CommandActuadores;
+import sge.regla.CommandActuadores;
+import sge.regla.Regla;
+
 import java.util.List;
 
 
 
-public class Regla implements ObserverSensor {
+public class Regla  {
 	
 	private Condicion condicion;
 	private List<CommandActuadores> actuadores = new ArrayList<CommandActuadores>();;
@@ -32,7 +33,6 @@ public class Regla implements ObserverSensor {
 		return this;
 	}
 	
-	@Override
 	public void observadoActualizado(Integer valor) {
 		this.ejecutar(valor);
 	

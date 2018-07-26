@@ -6,9 +6,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import sge.modelos.estados.Apagado;
-import sge.modelos.estados.Encendido;
-import sge.modelos.estados.Estado;
+import sge.estados.Apagado;
+import sge.estados.Encendido;
+import sge.estados.Estado;
 import sge.sensor.Sensor;
 
 /**

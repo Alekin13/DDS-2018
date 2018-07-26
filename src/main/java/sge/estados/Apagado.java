@@ -1,20 +1,20 @@
-package sge.modelos.estados;
+package sge.estados;
 
-public class ModoAhorroEnergia implements Estado{
+public class Apagado implements Estado {
 
 	@Override
 	public boolean estaEncendido() {
-		return false;
+			return false;
 	}
 
 	@Override
 	public boolean estaApagado() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean estaEnModoAhorro() {
-		return true;
+		return false;
 	}
 
 }

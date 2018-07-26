@@ -1,4 +1,4 @@
-package sge.modelos.estados;
+package sge.estados;
 
 public class Encendido implements Estado {
 

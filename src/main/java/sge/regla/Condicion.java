@@ -1,4 +1,4 @@
-package sge.modelos;
+package sge.regla;
 
 
 public interface Condicion {

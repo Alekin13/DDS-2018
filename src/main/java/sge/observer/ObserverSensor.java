@@ -2,7 +2,7 @@ package sge.observer;
 
 import java.util.List;
 import sge.observer.ObserverSensor;
-import sge.modelos.Regla;
+import sge.regla.Regla;
 import sge.sensor.Sensor;
 
 public class ObserverSensor {
