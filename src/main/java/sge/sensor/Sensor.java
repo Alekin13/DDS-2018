@@ -1,7 +1,5 @@
 package sge.sensor;
 
-import java.util.ArrayList;
-import java.util.List;
 import sge.dispositivo.DispositivoInteligente;
 import sge.observer.ObserverSensor;
 
