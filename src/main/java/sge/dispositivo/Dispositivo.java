@@ -1,15 +1,11 @@
 package sge.dispositivo;
 
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import sge.estados.Apagado;
-import sge.estados.Encendido;
 import sge.estados.Estado;
-import sge.sensor.Sensor;
 
 /**
  * Clase que modela la entidad dispositivo
@@ -134,7 +130,7 @@ public abstract class Dispositivo {
 		this.adaptador = adaptador;
 	}
 
-	public void convertirseEnInteligente() {
+	public void convertirseAInteligente() {
 		this.tipo = "I";
 		
 	}

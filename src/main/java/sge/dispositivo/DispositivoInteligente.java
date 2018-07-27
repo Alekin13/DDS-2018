@@ -2,9 +2,6 @@ package sge.dispositivo;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import sge.estados.Apagado;
 import sge.estados.Encendido;
 import sge.estados.Estado;
@@ -13,12 +10,9 @@ import sge.sensor.Sensor;
 
 public class DispositivoInteligente extends Dispositivo {
 
-	private List<Sensor> sensores;
 	private long tiempoEncendido;
 	public boolean registrado = false;
 	public double KwhConsumido;
-	private String fabricante;
-	
 	
 	public DispositivoInteligente() {
 
@@ -28,11 +22,9 @@ public class DispositivoInteligente extends Dispositivo {
 			List<Sensor> valorSensores, long valorTiempoEncendido, boolean valorRegistrado, 
 			double valorKwhConsumido, String valorTipo, String valorFabricante) {
 		super(valorNombreDispositivo, valorConsumoKwh, valorEstado, valorTipo);
-		this.sensores = valorSensores;
 		this.tiempoEncendido = valorTiempoEncendido;
 		this.registrado = valorRegistrado;
 		this.KwhConsumido = valorKwhConsumido;
-		this.fabricante = valorFabricante;
 	}
 
 	public void encenderDispositivo() {
@@ -53,6 +45,15 @@ public class DispositivoInteligente extends Dispositivo {
 		this.encenderDispositivo();
 	}
 	
+	
+	public long getTiempoEncendido() {
+		return tiempoEncendido;
+	}
+
+	public void setTiempoEncendido(long tiempoEncendido) {
+		this.tiempoEncendido = tiempoEncendido;
+	}
+
 	public String estadoDelDispositivo() {
 		
 		if(super.getEstado().estaEncendido())
