@@ -2,8 +2,6 @@ package sge.regla;
 
 
 import java.util.ArrayList;
-
-import sge.observer.ObserverSensor;
 import sge.regla.CommandActuadores;
 import sge.regla.Regla;
 

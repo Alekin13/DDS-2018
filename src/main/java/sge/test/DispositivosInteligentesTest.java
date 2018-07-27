@@ -1,15 +1,10 @@
 package sge.test;
 import static org.junit.Assert.*;
 
-import java.util.List;
-
-import org.junit.Assert;
 import org.junit.Test;
 
 import sge.dispositivo.DispositivoInteligente;
 import sge.estados.Encendido;
-import sge.estados.Estado;
-import sge.sensor.Sensor;
 
 public class DispositivosInteligentesTest {
 	

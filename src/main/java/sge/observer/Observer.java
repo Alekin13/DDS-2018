@@ -1,15 +1,9 @@
 package sge.observer;
 
-import sge.sensor.Sensor;
+public interface Observer{
 
-public class Observer{
-	
-	public void observadoActualizado(Sensor sensor) {
-	}
-
-	public void notificarObservadores(double ultimaMedicion) {
-		// TODO Auto-generated method stub
-		
-	}
+	// Cada clase que quiera observar el cambio del estado del sensor 
+	//debé implementar la siguiente interface y darle lógica al método update
+	public void observerActualizar();
 
 }

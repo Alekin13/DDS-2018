@@ -1,14 +1,12 @@
 package sge.observer;
 
 import java.util.List;
-import sge.observer.ObserverSensor;
-import sge.regla.Regla;
 import sge.sensor.Sensor;
 
-public class ObserverSensor {
+public class ObserverSensor implements Observer {
 	
 	private int estadoObserver;
-	private List<Observer> subscriptores;
+	private List<Sensor> sensoresObservados;
 	
 	public int getEstadoObserver() {
 		return estadoObserver;
@@ -18,25 +16,27 @@ public class ObserverSensor {
 		this.estadoObserver = estadoObserver;
 	}
 
-	public List<Observer> getSubscriptores() {
-		return subscriptores;
+	public List<Sensor> getSensoresObservados() {
+		return sensoresObservados;
 	}
 
-	public void setSubscriptores(List<Observer> subscriptores) {
-		this.subscriptores = subscriptores;
+	public void setSensoresObservado(List<Sensor> sensoresObservados) {
+		this.sensoresObservados = sensoresObservados;
 	}
 
-	public void agregarSubscriptor(Observer subscriptor){
-		this.subscriptores.add(subscriptor);
+	public void agregarSensoresObservados(Sensor sensoresObservados){
+		this.sensoresObservados.add(sensoresObservados);
 	}
 
-	public void eliminarSubscriptor(Observer unObservador){
-		subscriptores.remove(unObservador);
+	public void eliminarSensoresObservados(Sensor unSensor){
+		sensoresObservados.remove(unSensor);
 	}
 
-	public void notificarObservadores(Sensor sensor){
-		for(Observer unObservador : this.getSubscriptores()){
-			unObservador.observadoActualizado(sensor);
+	@Override
+	public void observerActualizar() {
+		for(Sensor unSensor : this.getSensoresObservados()){
+			unSensor.getDispositivo().apagarDispositivo();
+			System.out.println("Se apagara el siguiente dispositivo: " + unSensor.getDispositivo().getNombreDispositivo());
 		}
 	
 	}

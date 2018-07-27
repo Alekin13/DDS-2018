@@ -2,7 +2,7 @@ package sge.actuador;
 
 public abstract class AdapterActuadores {
 
-private String idFabrica;
+//private String idFabrica;
 	
 	
 	public abstract void apagar();

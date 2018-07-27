@@ -2,6 +2,7 @@ package sge.dispositivo;
 
 import java.util.List;
 
+import sge.actuador.Actuador;
 import sge.estados.Apagado;
 import sge.estados.Encendido;
 import sge.estados.Estado;
@@ -13,6 +14,7 @@ public class DispositivoInteligente extends Dispositivo {
 	private long tiempoEncendido;
 	public boolean registrado = false;
 	public double KwhConsumido;
+	public Actuador actuador;
 	
 	public DispositivoInteligente() {
 

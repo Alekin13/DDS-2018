@@ -2,7 +2,6 @@ package sge.usuario;
 
 import java.util.Calendar;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

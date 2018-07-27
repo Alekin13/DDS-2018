@@ -52,13 +52,9 @@ public abstract class Sensor{
 	}	
 	
 	public void	notificarObservadores(){
-		this.getObserver().notificarObservadores(this);
+		this.getObserver().observerActualizar();
 	}	
 	
-	public void	notificar(){
-		this.getObserver().notificarObservadores(this);
-	}
-
 	public double tomarMedicionDispositivo(DispositivoInteligente unDispositivo){
 		double medicion = (unDispositivo.getTiempoEncendido() / 3600) * unDispositivo.getConsumoKwh();
 		return medicion;
@@ -67,7 +63,7 @@ public abstract class Sensor{
 	public void medirMagnitud(){
 		double unaMagnitud = tomarMedicionDispositivo(this.dispositivo);
 		this.setValor(unaMagnitud);
-		this.notificar();
+		this.notificarObservadores();
 	}
 	
 }
