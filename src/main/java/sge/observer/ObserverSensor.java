@@ -34,9 +34,9 @@ public class ObserverSensor {
 		subscriptores.remove(unObservador);
 	}
 
-	public void notificarObservadores(int valor){
+	public void notificarObservadores(Sensor sensor){
 		for(Observer unObservador : this.getSubscriptores()){
-			unObservador.observadoActualizado(valor);
+			unObservador.observadoActualizado(sensor);
 		}
 	
 	}

@@ -1,11 +1,13 @@
 package sge.observer;
 
+import sge.sensor.Sensor;
+
 public class Observer{
 	
-	public void observadoActualizado(int valor) {
+	public void observadoActualizado(Sensor sensor) {
 	}
 
-	public void notificarObservadores(Integer ultimaMedicion) {
+	public void notificarObservadores(double ultimaMedicion) {
 		// TODO Auto-generated method stub
 		
 	}

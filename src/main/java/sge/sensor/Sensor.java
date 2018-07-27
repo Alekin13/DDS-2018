@@ -2,51 +2,26 @@ package sge.sensor;
 
 import java.util.ArrayList;
 import java.util.List;
-import sge.dispositivo.Dispositivo;
-import sge.observer.Observer;
+import sge.dispositivo.DispositivoInteligente;
 import sge.observer.ObserverSensor;
 
-public abstract class Sensor extends Observer{
+public abstract class Sensor{
 
-	private ObserverSensor observer;
-	private int ultimaMedicion;
+	private double valor;
 	private String magnitud;
-	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+	private ObserverSensor observer;
+	private DispositivoInteligente dispositivo;
 	
 	public Sensor() {
-	//Falta el constructor
-	} 
-
-	//public Integer tomarMedicion(Dispositivo dispositivo) {} Cada un intervalo de tiempo
-
-	public void subscribir(ObserverSensor observer){
-		setObserver(observer);
-	}
-	/*
-	public void	notificar(){
-		this.getObserver().actualizar(this);
+	
 	}
 	
-	public int medirMagnitud(){
-		//realizar medicion...
-		this.notificar();
-		return this.getUltimaMedicion();
+	public double getValor() {
+		return valor;
 	}
 	
-	/*pubic Observado getObserver() {
-		return observer;
-	}
-	*/
-	public void setObserver(ObserverSensor observer) {
-		this.observer = observer;
-	}
-	
-	public int getUltimaMedicion() {
-		return ultimaMedicion;
-	}
-	
-	public void setUltimaMedicion(int ultimaMedicion) {
-		this.ultimaMedicion = ultimaMedicion;
+	public void setValor(double valor) {
+		this.valor = valor;
 	}
 	
 	public String getMagnitud() {
@@ -56,19 +31,45 @@ public abstract class Sensor extends Observer{
 	public void setMagnitud(String magnitud) {
 		this.magnitud = magnitud;
 	}
-
 	
-	public void agregarDispositivo(Dispositivo dispositivo) {
-		dispositivos.add(dispositivo);
-	}
-		
-	public void notificarObservadores(Integer ultimaMedicion) {
-		super.notificarObservadores(ultimaMedicion);
+	public ObserverSensor getObserver() {
+		return observer;
 	}
 
-	public int getValor() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void setObserver(ObserverSensor observer) {
+		this.observer = observer;
+	}
+
+	public DispositivoInteligente getDispositivo() {
+		return dispositivo;
+	}
+
+	public void setDispositivo(DispositivoInteligente dispositivo) {
+		this.dispositivo = dispositivo;
+	}
+	
+	
+	public void subscribir(ObserverSensor observer){
+		setObserver(observer);
+	}	
+	
+	public void	notificarObservadores(){
+		this.getObserver().notificarObservadores(this);
+	}	
+	
+	public void	notificar(){
+		this.getObserver().notificarObservadores(this);
+	}
+
+	public double tomarMedicionDispositivo(DispositivoInteligente unDispositivo){
+		double medicion = (unDispositivo.getTiempoEncendido() / 3600) * unDispositivo.getConsumoKwh();
+		return medicion;
+	} 
+	
+	public void medirMagnitud(){
+		double unaMagnitud = tomarMedicionDispositivo(this.dispositivo);
+		this.setValor(unaMagnitud);
+		this.notificar();
 	}
 	
 }

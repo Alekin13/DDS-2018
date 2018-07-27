@@ -213,7 +213,7 @@ public class Cliente extends Usuario {
 	
 	public void transformarDispositivoAInteligente(Dispositivo unDispositivo) {
 		puntuarUsuario(10);
-		unDispositivo.convertirseEnInteligente();
+		unDispositivo.convertirseAInteligente();
 	}
 
 	public Object consumoMensual() {
