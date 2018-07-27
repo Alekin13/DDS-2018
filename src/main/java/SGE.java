@@ -6,6 +6,10 @@ import sge.actuador.Actuador;
 
 public class SGE {
 
+	public static void main(String[] args){
+	
+	}
+	
 	private static SGE sge;
 	private List<Cliente> clientes; 
 	private List<Administrador> administradores; 
