@@ -7,7 +7,7 @@ import sge.estados.Apagado;
 import sge.estados.Encendido;
 import sge.estados.Estado;
 import sge.estados.ModoAhorroEnergia;
-import sge.sensor.Sensor;
+import sge.sensor.*;
 
 public class DispositivoInteligente extends Dispositivo {
 
@@ -16,7 +16,7 @@ public class DispositivoInteligente extends Dispositivo {
 	private double KwhConsumido;
 	private CommandActuadores actuador;
 	private Sensor sensor;
-	private int valorInherenteDispositivo;
+	private double valorInherenteDispositivo;
 	
 	public DispositivoInteligente() {
 
@@ -113,12 +113,13 @@ public class DispositivoInteligente extends Dispositivo {
 		this.sensor = sensor;
 	}
 
-	public int getValorInherenteDispositivo() {
+	public double getValorInherenteDispositivo() {
 		return valorInherenteDispositivo;
 	}
 
-	public void setValorInherenteDispositivo(int valorInherenteDispositivo) {
+	public void setValorInherenteDispositivo(double valorInherenteDispositivo) {
 		this.valorInherenteDispositivo = valorInherenteDispositivo;
+		sensor.setValor(valorInherenteDispositivo);
 	}
 
 	

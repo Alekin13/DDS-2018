@@ -71,7 +71,7 @@ public class Cliente extends Usuario {
 
 		//return this.dispositivos.stream().filter(d -> d.getEstado()).collect(Collectors.toList()).size();
 			
-// habría que ver si esto que hice realmente funciona, metí un poco de funcional
+// habrï¿½a que ver si esto que hice realmente funciona, metï¿½ un poco de funcional
 		
 //		int dispositivosEncendidos = 0;
 //		for (Dispositivo unDispositivo : dispositivos) {

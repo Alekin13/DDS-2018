@@ -3,6 +3,7 @@ package sge.sensor;
 import sge.dispositivo.DispositivoInteligente;
 import sge.observer.ObserverSensor;
 
+
 public abstract class Sensor{
 
 	private double valor;
