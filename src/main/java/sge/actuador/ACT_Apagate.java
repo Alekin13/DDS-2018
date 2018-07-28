@@ -1,7 +1,6 @@
 package sge.actuador;
 
 import sge.dispositivo.DispositivoInteligente;
-import sge.regla.CommandActuadores;
 
 public class ACT_Apagate implements CommandActuadores {
 	
@@ -14,6 +13,12 @@ private DispositivoInteligente dispositivo;
 	@Override
 	public void ejecutar() {
 		dispositivo.apagarDispositivo();
+	}
+
+	@Override
+	public void ejecutarAccion(DispositivoInteligente dispositivo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

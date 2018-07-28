@@ -1,7 +1,6 @@
 package sge.actuador;
 
 import sge.dispositivo.DispositivoInteligente;
-import sge.regla.CommandActuadores;
 
 public class ACT_AhorroEnergia implements CommandActuadores {
 	
@@ -15,6 +14,12 @@ public class ACT_AhorroEnergia implements CommandActuadores {
 	public void ejecutar() {
 		
 		dispositivo.activaAhorroEnergia();
+	}
+
+	@Override
+	public void ejecutarAccion(DispositivoInteligente dispositivo) {
+		// TODO Auto-generated method stub
+		
 	}	
 }
 

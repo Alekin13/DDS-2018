@@ -1,7 +1,6 @@
 package sge.actuador;
 
 import sge.dispositivo.DispositivoInteligente;
-import sge.regla.CommandActuadores;
 
 public class ACT_Prendete implements CommandActuadores{
 	
@@ -15,5 +14,11 @@ public class ACT_Prendete implements CommandActuadores{
 	public void ejecutar() {
 		
 		dispositivo.encenderDispositivo();
+	}
+
+	@Override
+	public void ejecutarAccion(DispositivoInteligente dispositivo) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

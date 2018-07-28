@@ -1,7 +1,6 @@
 package sge.actuador;
 
 import sge.dispositivo.DispositivoInteligente;
-import sge.regla.CommandActuadores;
 
 public class ACT_CambiarTemperatura implements CommandActuadores {
 	
@@ -16,6 +15,12 @@ public class ACT_CambiarTemperatura implements CommandActuadores {
 	@Override
 	public void ejecutar() {
 		dispositivo.cambiarTemperatura(valor);
+	}
+
+	@Override
+	public void ejecutarAccion(DispositivoInteligente dispositivo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

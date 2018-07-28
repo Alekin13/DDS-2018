@@ -1,7 +1,8 @@
 package sge.regla;
 
+import sge.dispositivo.DispositivoInteligente;
 
-public interface Condicion {
-	public Boolean cumple(Integer valor);
+public interface Condicion{
+	public boolean cumpleCondicion(DispositivoInteligente dispositivoInteligente);
 
 }

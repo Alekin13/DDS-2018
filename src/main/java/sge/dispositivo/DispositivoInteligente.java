@@ -15,6 +15,7 @@ public class DispositivoInteligente extends Dispositivo {
 	public boolean registrado = false;
 	public double KwhConsumido;
 	public Actuador actuador;
+	private Sensor sensor;
 	
 	public DispositivoInteligente() {
 
@@ -87,5 +88,29 @@ public class DispositivoInteligente extends Dispositivo {
 		
 	}
 
+	public double getKwhConsumido() {
+		return KwhConsumido;
+	}
 
+	public void setKwhConsumido(double kwhConsumido) {
+		KwhConsumido = kwhConsumido;
+	}
+
+	public Actuador getActuador() {
+		return actuador;
+	}
+
+	public void setActuador(Actuador actuador) {
+		this.actuador = actuador;
+	}
+
+	public Sensor getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(Sensor sensor) {
+		this.sensor = sensor;
+	}
+
+	
 }
