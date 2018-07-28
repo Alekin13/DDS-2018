@@ -2,7 +2,7 @@ package sge.dispositivo;
 
 import java.util.List;
 
-import sge.actuador.Actuador;
+import sge.actuador.CommandActuadores;
 import sge.estados.Apagado;
 import sge.estados.Encendido;
 import sge.estados.Estado;
@@ -12,10 +12,11 @@ import sge.sensor.Sensor;
 public class DispositivoInteligente extends Dispositivo {
 
 	private long tiempoEncendido;
-	public boolean registrado = false;
-	public double KwhConsumido;
-	public Actuador actuador;
+	private boolean registrado = false;
+	private double KwhConsumido;
+	private CommandActuadores actuador;
 	private Sensor sensor;
+	private int valorInherenteDispositivo;
 	
 	public DispositivoInteligente() {
 
@@ -96,11 +97,11 @@ public class DispositivoInteligente extends Dispositivo {
 		KwhConsumido = kwhConsumido;
 	}
 
-	public Actuador getActuador() {
+	public CommandActuadores getActuador() {
 		return actuador;
 	}
 
-	public void setActuador(Actuador actuador) {
+	public void setActuador(CommandActuadores actuador) {
 		this.actuador = actuador;
 	}
 
@@ -110,6 +111,14 @@ public class DispositivoInteligente extends Dispositivo {
 
 	public void setSensor(Sensor sensor) {
 		this.sensor = sensor;
+	}
+
+	public int getValorInherenteDispositivo() {
+		return valorInherenteDispositivo;
+	}
+
+	public void setValorInherenteDispositivo(int valorInherenteDispositivo) {
+		this.valorInherenteDispositivo = valorInherenteDispositivo;
 	}
 
 	

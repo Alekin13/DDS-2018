@@ -2,7 +2,7 @@ import java.util.List;
 import sge.categoria.Categoria;
 import sge.usuario.Administrador;
 import sge.usuario.Cliente;
-import sge.actuador.Actuador;
+import sge.actuador.CommandActuadores;
 
 public class SGE {
 
@@ -14,7 +14,7 @@ public class SGE {
 	private List<Cliente> clientes; 
 	private List<Administrador> administradores; 
 	private List<Categoria> categorias;
-	private List<Actuador> actuadores;
+	private List<CommandActuadores> actuadores;
 
 	// El constructor es privado para que no puedan crear instancias fuera de esta clase
 	private SGE() {
@@ -44,11 +44,11 @@ public class SGE {
 		this.categorias = categorias;
 	}
 
-	public List<Actuador> getActuadores() {
+	public List<CommandActuadores> getActuadores() {
 		return actuadores;
 	}
 
-	public void setActuadores(List<Actuador> actuadores) {
+	public void setActuadores(List<CommandActuadores> actuadores) {
 		this.actuadores = actuadores;
 	}
 
@@ -64,7 +64,7 @@ public class SGE {
     	sge.categorias.add(unaCategoria);
     }
 
-	public void agregarActuador(Actuador actuador){
+	public void agregarActuador(CommandActuadores actuador){
 		sge.actuadores.add(actuador);
 	}
 
