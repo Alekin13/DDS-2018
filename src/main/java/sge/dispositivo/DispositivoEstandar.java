@@ -23,6 +23,18 @@ public class DispositivoEstandar implements Dispositivo {
 
 	private double idAdaptador;
 
+	public DispositivoEstandar() {
+	}
+	
+	public DispositivoEstandar(int idDispositivo, String nombreDispositivo, double consumoKwH, String tipoDispositivo, double idFabricante, double idAdaptador){
+		this.idDispositivo = idDispositivo;
+		this.nombreDispositivo = nombreDispositivo;
+		this.consumoKwH = consumoKwH;
+		this.tipoDispositivo = "E";
+		this.idFabricante = idFabricante;
+		this.idAdaptador = idAdaptador;
+	}
+
 	@Override
 	public void convertirseAInteligente() {
 		this.setIdAdaptador(this.idDispositivo);

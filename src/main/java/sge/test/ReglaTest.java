@@ -26,7 +26,7 @@ public class ReglaTest {
  		ACT_CambiarTemperatura unCambioDeTemp = new ACT_CambiarTemperatura();
  		List<CommandActuadores> acciones = new ArrayList<CommandActuadores>();
  		
- 		unDispositivo.setValorInherenteDispositivo(40);
+ 		unDispositivo.setValorInherente(40);
  		
  		
  		condiciones.add(unaCondicionTempAlta);
