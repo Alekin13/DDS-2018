@@ -47,9 +47,9 @@ public class Presentacion {
 
 				for (j = 0; j < clientesJson.get(i).getDispositivos().size(); j++) {
 					System.out.println("   Dispositivo " + (j + 1));
-					System.out.println("   Tipo: " + clientesJson.get(i).getDispositivos().get(j).getTipo());
+					System.out.println("   Tipo: " + clientesJson.get(i).getDispositivos().get(j).getTipoDispositivo());
 					System.out.println("   Nombre: " + clientesJson.get(i).getDispositivos().get(j).getNombreDispositivo());
-					System.out.println("   Consumo: " + clientesJson.get(i).getDispositivos().get(j).getConsumoKwh());
+					System.out.println("   Consumo: " + clientesJson.get(i).getDispositivos().get(j).getConsumoKwH());
 					System.out.println("------------------------------");
 				}
 			

@@ -7,7 +7,7 @@ public class ACT_Luces implements CommandActuadores {
 	@Override
 	public void ejecutarAccion(DispositivoInteligente dispositivo) {
 		int estadoLuces = 0;
-		dispositivo.setValorInherenteDispositivo(estadoLuces);
+		dispositivo.setValorInherente(estadoLuces);
 		
 	}
 }

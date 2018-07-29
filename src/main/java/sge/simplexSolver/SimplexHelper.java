@@ -44,9 +44,9 @@ public class SimplexHelper {
 	
 	for (Dispositivo dispositivo : dispositivos){
 		if (inicio < cantidad){
-			if (variables.getPoint()[inicio] <= dispositivo.getConsumoKwh()){ /* consumo */
+			if (variables.getPoint()[inicio] <= dispositivo.getConsumoKwH()){ /* consumo */
 				System.out.println(variables.getPoint()[inicio]);
-				System.out.println(dispositivo.getConsumoKwh()); /* consumo */
+				System.out.println(dispositivo.getConsumoKwH()); /* consumo */
 				dispositivosSobrepasados.add(dispositivo);
 			}
 			inicio=inicio+1;

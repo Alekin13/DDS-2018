@@ -198,7 +198,7 @@ public class Cliente extends Usuario {
 //	}
 	
 	public double consumoCliente() {
-		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwh()).sum();
+		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum();
 	}
 	
 	public void agregarDispositivo(Dispositivo unDispositivo) {

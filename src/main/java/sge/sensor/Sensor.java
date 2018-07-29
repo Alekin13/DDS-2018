@@ -57,7 +57,7 @@ public abstract class Sensor{
 	}	
 	
 	public double tomarMedicionDispositivo(DispositivoInteligente unDispositivo){
-		double medicion = (unDispositivo.getTiempoEncendido() / 3600) * unDispositivo.getConsumoKwh();
+		double medicion = (unDispositivo.getTiempoEncendido() / 3600) * unDispositivo.getConsumoKwH();
 		return medicion;
 	} 
 	
