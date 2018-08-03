@@ -31,6 +31,7 @@ public class SimplexFacade {
 		this.funcionEconomica = new LinearObjectiveFunction(coeficientes, 0);
 	}
 	
+	//double[]
 	public void agregarRestriccion(Relationship unComparador, double valorAcomprar, double ... coeficientes) {
 		this.restricciones.add(new LinearConstraint(coeficientes,unComparador, valorAcomprar));
 	}
