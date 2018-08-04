@@ -1,15 +1,22 @@
 package sge.dispositivo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import Properties.ManejoProperties;
 import sge.actuador.CommandActuadores;
 import sge.estados.Apagado;
 import sge.estados.Encendido;
 import sge.estados.Estado;
 import sge.estados.ModoAhorroEnergia;
 import sge.sensor.*;
+
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "idDispositivo","nombreDispositivo", "consumoKwH", "tipoDispositivo", "idFabricante"})
@@ -54,12 +61,18 @@ public class DispositivoInteligente implements Dispositivo {
 	//Sensor asociado al dispositivo
 	private Sensor sensor;
 	
+	private double coeficiente;
+	
+	private String propiedad;
+	
+	private ManejoProperties accesoAProperties= new ManejoProperties();
+	
 	public DispositivoInteligente() {
 
 	}
 
 	public DispositivoInteligente(int idDispositivo, String nombreDispositivo, double consumoKwH, String tipoDispositivo, double idFabricante,
-			double idAdaptador, Estado estado, double valorInherente, CommandActuadores actuador, Sensor sensor){
+			double idAdaptador, Estado estado, double valorInherente, CommandActuadores actuador, Sensor sensor ){
 		
 		super();
 		this.idDispositivo = idDispositivo;
@@ -72,7 +85,24 @@ public class DispositivoInteligente implements Dispositivo {
 		this.dispositivoHabilitado = true;
 		this.valorInherente = valorInherente;
 		this.consumidoKwH = 0;
+
 		
+	}
+
+	public double getCoeficiente() {
+		return coeficiente;
+	}
+
+	public void setCoeficiente(double coeficiente) {
+		this.coeficiente = coeficiente;
+	}
+
+	public String getPropiedad() {
+		return propiedad;
+	}
+
+	public void setPropiedad(String propiedad) {
+		this.propiedad = propiedad;
 	}
 
 	public void encenderDispositivo() {
@@ -253,4 +283,28 @@ public class DispositivoInteligente implements Dispositivo {
 		this.idAdaptador = idAdaptador;
 	}
 
+	public double obtenerCoeficiente() throws FileNotFoundException, IOException{
+		return accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

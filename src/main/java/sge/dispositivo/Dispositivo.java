@@ -1,5 +1,8 @@
 package sge.dispositivo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import sge.estados.Estado;
 
 public interface Dispositivo {
@@ -19,5 +22,7 @@ public interface Dispositivo {
 	public Estado getEstado();
 	public void setEstado(Estado estado);
 	public double getIdAdaptador();
-	public void setIdAdaptador(double idAdaptador);		
+	public void setIdAdaptador(double idAdaptador);	
+	public double obtenerCoeficiente();
+	public String getPropiedad();
 }

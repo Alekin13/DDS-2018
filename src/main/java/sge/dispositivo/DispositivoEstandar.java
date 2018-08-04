@@ -1,5 +1,8 @@
 package sge.dispositivo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import sge.estados.Estado;
@@ -114,6 +117,18 @@ public class DispositivoEstandar implements Dispositivo {
 	@Override
 	public void setIdAdaptador(double idAdaptador) {
 		this.idAdaptador = idAdaptador;
+	}
+
+	@Override
+	public double obtenerCoeficiente() throws FileNotFoundException, IOException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getPropiedad() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
