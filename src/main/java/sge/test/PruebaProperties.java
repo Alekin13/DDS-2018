@@ -5,9 +5,16 @@ import static org.junit.Assert.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.junit.Test;
+
+import sge.dispositivo.Dispositivo;
+import sge.dispositivo.DispositivoInteligente;
+import sge.procEjecSimplex.ProcesoEjecucionSimplex;
+import sge.usuario.Cliente;
 
 public class PruebaProperties {
 
@@ -25,6 +32,34 @@ public class PruebaProperties {
 		doble = Double.parseDouble(archivoPropiedades.getProperty( "tvtubo21p"+".coeficiente"));
 		
 		System.out.println(doble);
+		
+		DispositivoInteligente d = new DispositivoInteligente();
+		
+		d.setPropiedad("lamparaH100w");
+				
+		System.out.println(d.obtenerCoeficiente());
+		
+		Cliente unCliente = new Cliente();
+		
+		List<Dispositivo> listaDispositivos = new ArrayList<Dispositivo>();
+		
+		DispositivoInteligente tv = new DispositivoInteligente();
+		tv.setPropiedad("tvLCD40p");
+		
+		DispositivoInteligente lavarropa = new DispositivoInteligente();
+		tv.setPropiedad("lavarropasCalentamientoAgua");
+		
+		listaDispositivos.add(tv);
+		listaDispositivos.add(lavarropa);
+		
+		
+		unCliente.setDispositivos(listaDispositivos);
+		
+		ProcesoEjecucionSimplex ejecucionDelSimplexInstance = new ProcesoEjecucionSimplex(5, unCliente);
+		
+		ejecucionDelSimplexInstance.ejecutarPeticion();
+		
+		
 		
 	}
 

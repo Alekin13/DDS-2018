@@ -2,8 +2,15 @@ package sge.procEjecSimplex;
 
 import static java.util.stream.Collectors.toList;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.apache.commons.math3.optim.PointValuePair;
@@ -13,16 +20,18 @@ import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import com.mchange.v1.util.ArrayUtils;
 
 import sge.dispositivo.Dispositivo;
+import sge.dispositivo.DispositivoInteligente;
 import sge.simplexSolver.SimplexFacade;
 import sge.usuario.*;
 
 public class ProcesoEjecucionSimplex {
 	private long rangoEjecucionSegs = 0;
 	private Cliente unUsuario;
+	private Object listaCoeficientes;
 	
-	public ProcesoEjecucionSimplex(long unRangoDeEjecucion, Usuario unUsuario) {
-		rangoEjecucionSegs = unRangoDeEjecucion;
-		unUsuario = unUsuario;
+	public ProcesoEjecucionSimplex(long unRangoDeEjecucion, Cliente unUsuario) {
+		this.rangoEjecucionSegs = unRangoDeEjecucion;
+		this.unUsuario = unUsuario;
 	}
 
 	public long getRangoEjecucionSegs() {
@@ -33,19 +42,30 @@ public class ProcesoEjecucionSimplex {
 		this.rangoEjecucionSegs = rangoEjecucionSegs;
 	}
 	
-	public List<Dispositivo> ejecutarPeticion() {
-		List<Double> listaCoeficientes;
+	public List<Dispositivo> ejecutarPeticion() throws FileNotFoundException, IOException {
+		List<Double> listaCoeficientes = new ArrayList<Double>();
 		double[] listaSimplex;
 		double z;
 		PointValuePair variables;
 		int inicio = 0;
-		int cantidad = unUsuario.getDispositivos().size();
+		int cantidad = this.unUsuario.getDispositivos().size();
 		List<Dispositivo> dispositivosSobrepasados = new ArrayList<Dispositivo>();
 		
 		SimplexFacade simplexFacade = new SimplexFacade(GoalType.MAXIMIZE, true);
 		simplexFacade.crearFuncionEconomica(1,1,1,1,1,1,1,1);
 		
-		listaCoeficientes = unUsuario.getDispositivos().stream().map(d -> d.obtenerCoeficiente()).collect(Collectors.toList());
+		
+		try {
+			for(int i = 0; i <= cantidad; ++i) {
+				Dispositivo d = unUsuario.getDispositivos().get(i);
+				listaCoeficientes.add(d.obtenerCoeficiente());
+				
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		listaSimplex = listaCoeficientes.stream().mapToDouble(d -> d).toArray(); 
 		
@@ -67,8 +87,25 @@ public class ProcesoEjecucionSimplex {
 			}
 		}
 		return dispositivosSobrepasados;
-		}
-		
-		
+	}
 	
+	
+	public void ejecutarPorTiempo(){
+        
+		new Timer().schedule(new TimerTask() {
+		    @Override
+		    public void run() {
+		        try {
+					ejecutarPeticion();
+					System.out.println("Ejecutado");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		}, 5, 5);
+		
+    }
 }
+
+	

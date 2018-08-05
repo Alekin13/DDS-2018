@@ -23,6 +23,6 @@ public interface Dispositivo {
 	public void setEstado(Estado estado);
 	public double getIdAdaptador();
 	public void setIdAdaptador(double idAdaptador);	
-	public double obtenerCoeficiente();
+	public double obtenerCoeficiente() throws FileNotFoundException, IOException;
 	public String getPropiedad();
 }
