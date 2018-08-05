@@ -6,18 +6,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
-import com.mchange.v1.util.ArrayUtils;
+
 
 import sge.dispositivo.Dispositivo;
 import sge.dispositivo.DispositivoInteligente;
@@ -28,6 +22,7 @@ public class ProcesoEjecucionSimplex {
 	private long rangoEjecucionSegs = 0;
 	private Cliente unUsuario;
 	private Object listaCoeficientes;
+	private boolean ejecucion = false;
 	
 	public ProcesoEjecucionSimplex(long unRangoDeEjecucion, Cliente unUsuario) {
 		this.rangoEjecucionSegs = unRangoDeEjecucion;
@@ -64,7 +59,7 @@ public class ProcesoEjecucionSimplex {
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 		
 		listaSimplex = listaCoeficientes.stream().mapToDouble(d -> d).toArray(); 
@@ -89,21 +84,24 @@ public class ProcesoEjecucionSimplex {
 		return dispositivosSobrepasados;
 	}
 	
+	public void setTerminarEjecucion(boolean dato) {
+		ejecucion = dato;
+	}
 	
-	public void ejecutarPorTiempo(){
-        
-		new Timer().schedule(new TimerTask() {
-		    @Override
-		    public void run() {
-		        try {
-					ejecutarPeticion();
-					System.out.println("Ejecutado");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		    }
-		}, 5, 5);
+	public boolean terminarEjecucion() {
+		return ejecucion;
+	}
+	
+	public void ejecutarPorTiempo() throws IOException{
+//		long tiempoTranscurrido = 0;
+//		long tiempo = rangoEjecucionSegs*1000;
+//		tiempoTranscurrido = System.currentTimeMillis();
+//		while ( tiempo != tiempoTranscurrido) {
+//			tiempoTranscurrido = System.currentTimeMillis() - tiempoTranscurrido;
+//		}
+//		tiempoTranscurrido = 0;
+//		this.ejecutarPeticion();
+		
 		
     }
 }

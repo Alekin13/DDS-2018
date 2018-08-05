@@ -47,7 +47,10 @@ public class PruebaProperties {
 		tv.setPropiedad("tvLCD40p");
 		
 		DispositivoInteligente lavarropa = new DispositivoInteligente();
-		tv.setPropiedad("lavarropasCalentamientoAgua");
+		lavarropa.setPropiedad("lavarropasCalentamientoAgua");
+		
+		tv.setConsumoKwH(50000000);
+		lavarropa.setConsumoKwH(800000000);
 		
 		listaDispositivos.add(tv);
 		listaDispositivos.add(lavarropa);
@@ -57,6 +60,8 @@ public class PruebaProperties {
 		
 		ProcesoEjecucionSimplex ejecucionDelSimplexInstance = new ProcesoEjecucionSimplex(5, unCliente);
 		
+		
+		ejecucionDelSimplexInstance.ejecutarPorTiempo();
 		ejecucionDelSimplexInstance.ejecutarPeticion();
 		
 		
