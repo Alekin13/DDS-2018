@@ -1,4 +1,4 @@
-package Properties;
+package sge.properties;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;

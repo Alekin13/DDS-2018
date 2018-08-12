@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import Properties.ManejoProperties;
+import sge.properties.ManejoProperties;
 import sge.actuador.CommandActuadores;
 import sge.estados.Apagado;
 import sge.estados.Encendido;
