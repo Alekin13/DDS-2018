@@ -91,6 +91,8 @@ public class Zona {
 		double ZonaCoordenadaY = this.latitud;
 		
 		for (Cliente unCliente : clientes) {
+			
+			//si la distancia del cliente al centro de la Zona es MAYOR al radio de la zona, el cliente no pertence a la misma
 			if (Math.sqrt( Math.pow(ZonaCoordenadaX - unCliente.getLongitud(), 2) + Math.pow(ZonaCoordenadaY - unCliente.getLatitud() , 2)) > ZonaRadio){
 				clientes.remove(unCliente);
 				System.out.println ("El Cliente " + unCliente.getApellido() + " no pertenece a la Zona");
