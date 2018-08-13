@@ -1,12 +1,28 @@
 package sge.transformador;
 
+import java.util.List;
+import sge.usuario.Cliente;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({ "id", "idZona", "latitud", "longitud"})
 public class Transformador {
 
+	@JsonProperty("id")
 	private int id;
-	private int zona;
-	private Double latitud;
-	private Double longitud;
-	private Double consumo;
+	
+	@JsonProperty("idZona")
+	private int idZona; 
+	
+	@JsonProperty("latitud")
+	private double latitud;
+	
+	@JsonProperty("longitud")
+	private double longitud;
+	
+	private double consumo;
 	
 	public int getId() {
 		return id;
@@ -16,36 +32,43 @@ public class Transformador {
 		this.id = id;
 	}
 	
-	public int getZona() {
-		return zona;
+	public int getIdZona() {
+		return idZona;
 	}
 	
-	public void setZona(int zona) {
-		this.zona = zona;
+	public void setIdZona(int idZona) {
+		this.idZona = idZona;
 	}
 
-	public Double getLatitud() {
+	public double getLatitud() {
 		return latitud;
 	}
 
-	public void setLatitud(Double latitud) {
+	public void setLatitud(double latitud) {
 		this.latitud = latitud;
 	}
 
-	public Double getLongitud() {
+	public double getLongitud() {
 		return longitud;
 	}
 
-	public void setLongitud(Double longitud) {
+	public void setLongitud(double longitud) {
 		this.longitud = longitud;
 	}
-
-	public Double getConsumo() {
+	
+	public double getConsumo() {
 		return consumo;
 	}
 
-	public void setConsumo(Double consumo) {
+	public void setConsumo(double consumo) {
 		this.consumo = consumo;
 	}
-	
+
+	public double cantidadDeEnergiaSuministrada(List<Cliente> clientes){
+		double consumoTotal = 0;
+		for (Cliente unCliente : clientes) {
+			consumoTotal += unCliente.consumoCliente();
+		}
+		return consumoTotal;
+	}
 }

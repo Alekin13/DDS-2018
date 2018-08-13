@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import sge.transformador.Transformador;
+import sge.usuario.Cliente;
 import sge.zona.Zona;
 
 
@@ -12,6 +13,7 @@ public class TestZona {
 
 	@Test
 	public void mostrarListaDeTransformadores() {
+		List<Cliente> clientes = new ArrayList<Cliente>();
 		List<Transformador> transformadores = new ArrayList<Transformador>();
 		Transformador transformadorA = new Transformador();
 		Transformador transformadorB = new Transformador();
@@ -29,7 +31,7 @@ public class TestZona {
 		
 		unaZona.setTransformadores(transformadores);
 		
-		resultadoObtenido = unaZona.getConsumo();
+		resultadoObtenido = unaZona.getConsumoTotalDeLaZona(clientes);
 		
 		assertEquals(15000.0, resultadoObtenido, 0.1);
 		

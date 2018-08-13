@@ -14,8 +14,7 @@ import org.junit.Test;
 import sge.usuario.Cliente;
 import sge.categoria.Categoria;
 import sge.dispositivo.Dispositivo;
-import sge.dispositivo.DispositivoInteligente;
-import sge.mappers.UsuariosJsonMapper;
+import sge.mappers.JsonMapper;
 
 public class JsonTest {
 	
@@ -60,7 +59,7 @@ public class JsonTest {
 	@Test
 	public void test01CargaObjetosJson() throws Exception {
 		
-		UsuariosJsonMapper mapper = new UsuariosJsonMapper();
+		JsonMapper mapper = new JsonMapper();
 		//TODO: Realizar test donde se obtengan los objetos del archivo json
 		//y se los compare con los objetos que ya estan creados 
 		

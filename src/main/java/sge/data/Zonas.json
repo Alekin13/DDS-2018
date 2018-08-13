@@ -1,0 +1,16 @@
+[
+{
+"id": 1,
+"nombre": "Almagro-Boedo",
+"radio": 300
+"latitud": -34.618680,
+"longitud": -58.415423,
+},
+{
+"id": 2,
+"nombre": "Flores",
+"radio": 280
+"latitud": -30.618680,
+"longitud": -74.415423,
+}
+]

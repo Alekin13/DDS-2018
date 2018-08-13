@@ -3,7 +3,7 @@ package sge.view;
 import java.util.Calendar;
 import java.util.List;
 
-import sge.mappers.UsuariosJsonMapper;
+import sge.mappers.JsonMapper;
 import sge.usuario.Cliente;
 
 /**
@@ -21,7 +21,7 @@ public class Presentacion {
 	public static void mostrarConsola() {
 	
 		int i, j;
-		UsuariosJsonMapper mapper = new UsuariosJsonMapper();
+		JsonMapper mapper = new JsonMapper();
 		
 		//Clientes
 		List<Cliente> clientesJson;

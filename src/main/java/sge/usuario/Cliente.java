@@ -48,6 +48,12 @@ public class Cliente extends Usuario {
 	@JsonProperty("consumo")
 	private Float consumo;
 
+	@JsonProperty("consumo")
+	private double latitud;
+	
+	@JsonProperty("consumo")
+	private double longitud;
+	
 	public Cliente() {
 		super();
 	}
@@ -184,9 +190,6 @@ public class Cliente extends Usuario {
 		this.puntaje = puntaje;
 	}
 
-	/**
-	 * @param dispositivos the dispositivos to set
-	 */
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
 	}	
@@ -197,6 +200,30 @@ public class Cliente extends Usuario {
 //		this.categoria.setearCategoria( categoria, cargoFijo, cargoVariable);
 //	}
 	
+	public Float getConsumo() {
+		return consumo;
+	}
+
+	public void setConsumo(Float consumo) {
+		this.consumo = consumo;
+	}
+
+	public double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
+	}
+
+	public double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
+	}
+
 	public double consumoCliente() {
 		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum();
 	}
