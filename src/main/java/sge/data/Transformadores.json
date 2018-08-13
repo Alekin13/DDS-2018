@@ -1,14 +1,14 @@
 [
 {
 "id": 1,
-"idZona": 1
+"idZona": 1,
 "latitud": -34.618680,
-"longitud": -58.415423,
+"longitud": -58.415423
 },
 {
 "id": 2,
-"idZona": 2
+"idZona": 2,
 "latitud": -12.618680,
-"longitud": -44.415423,
+"longitud": -44.415423
 }
 ]
