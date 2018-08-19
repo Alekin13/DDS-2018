@@ -20,7 +20,7 @@ public class ManejoProperties {
 	
 	public double obtenerElCoeficienteFormatoDouble(Dispositivo d) throws FileNotFoundException, IOException {
 		
-		archivoPropiedades.load(new FileReader("src/main/java/restricciones.properties"));
+		archivoPropiedades.load(new FileReader("src/main/java/sge/properties/restricciones.properties"));
 		double transformado = Double.parseDouble(archivoPropiedades.getProperty( d.getPropiedad() +".coeficiente" ));
 		return transformado;
 	}

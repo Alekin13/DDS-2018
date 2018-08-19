@@ -22,7 +22,7 @@ public class PruebaProperties {
 	public void test() throws FileNotFoundException, IOException {
 		
 		Properties archivoPropiedades = new Properties();
-		archivoPropiedades.load(new FileReader("src/main/java/restricciones.properties"));
+		archivoPropiedades.load(new FileReader("src/main/java/sge/properties/restricciones.properties"));
 		System.out.println(archivoPropiedades.getProperty("aireacondicionado3500.coeficiente"));
 		double doble = Double.parseDouble(archivoPropiedades.getProperty( "aireacondicionado3500"+".coeficiente"));
 		
@@ -61,7 +61,7 @@ public class PruebaProperties {
 		ProcesoEjecucionSimplex ejecucionDelSimplexInstance = new ProcesoEjecucionSimplex(5, unCliente);
 		
 		
-		ejecucionDelSimplexInstance.ejecutarPorTiempo();
+		ejecucionDelSimplexInstance.ejecutarPorTiempo(10);
 		ejecucionDelSimplexInstance.ejecutarPeticion();
 		
 		

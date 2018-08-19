@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import sge.estados.Estado;
+import sge.properties.ManejoProperties;
 
 public class DispositivoEstandar implements Dispositivo {
 
@@ -29,7 +30,9 @@ public class DispositivoEstandar implements Dispositivo {
 	public DispositivoEstandar() {
 	}
 	
-	public DispositivoEstandar(int idDispositivo, String nombreDispositivo, double consumoKwH, String tipoDispositivo, double idFabricante, double idAdaptador){
+	private ManejoProperties accesoAProperties= new ManejoProperties();
+	
+	public DispositivoEstandar(int idDispositivo, String nombreDispositivo, double consumoKwH, double idFabricante, double idAdaptador){
 		this.idDispositivo = idDispositivo;
 		this.nombreDispositivo = nombreDispositivo;
 		this.consumoKwH = consumoKwH;
@@ -121,8 +124,7 @@ public class DispositivoEstandar implements Dispositivo {
 
 	@Override
 	public double obtenerCoeficiente() throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
 	}
 
 	@Override

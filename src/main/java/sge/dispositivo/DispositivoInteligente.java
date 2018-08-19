@@ -71,21 +71,20 @@ public class DispositivoInteligente implements Dispositivo {
 
 	}
 
-	public DispositivoInteligente(int idDispositivo, String nombreDispositivo, double consumoKwH, String tipoDispositivo, double idFabricante,
+	public DispositivoInteligente(int idDispositivo, String nombreDispositivo, double consumoKwH, double idFabricante,
 			double idAdaptador, Estado estado, double valorInherente, CommandActuadores actuador, Sensor sensor ){
 		
 		super();
 		this.idDispositivo = idDispositivo;
 		this.nombreDispositivo = nombreDispositivo;
 		this.consumoKwH = consumoKwH;
-		this.tipoDispositivo = tipoDispositivo;
+		this.tipoDispositivo = "I";
 		this.idFabricante = idFabricante;
 		this.idAdaptador = idAdaptador;
 		this.estado = estado;
 		this.dispositivoHabilitado = true;
 		this.valorInherente = valorInherente;
 		this.consumidoKwH = 0;
-
 		
 	}
 
@@ -203,12 +202,6 @@ public class DispositivoInteligente implements Dispositivo {
 	}
 
 	@Override
-	public void convertirseAInteligente() {
-		this.tipoDispositivo = "I";
-		
-	}
-
-	@Override
 	public boolean esInteligente() {
 		return (this.tipoDispositivo == "I");
 	}
@@ -284,7 +277,13 @@ public class DispositivoInteligente implements Dispositivo {
 	}
 
 	public double obtenerCoeficiente() throws FileNotFoundException, IOException{
-		return accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
+		return this.accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
+	}
+
+	@Override
+	public void convertirseAInteligente() {
+		System.out.println("Este dispositivo ya es inteligente. No se realizarán cambios.");
+		
 	}
 }
 
