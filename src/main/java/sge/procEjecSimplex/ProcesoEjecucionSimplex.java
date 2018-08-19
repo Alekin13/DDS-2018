@@ -115,8 +115,8 @@ public class ProcesoEjecucionSimplex extends TimerTask {
 				}
 				auxiliarParaRestrDouble = auxiliarParaRestr.stream().mapToDouble(f -> f).toArray();
 				
-				simplexFacade.agregarRestriccion(Relationship.LEQ, d.obtenerUsoMensualMinHS(), auxiliarParaRestrDouble);
-				simplexFacade.agregarRestriccion(Relationship.GEQ, d.obtenerUsoMensualMaxHS(), auxiliarParaRestrDouble);
+				simplexFacade.agregarRestriccion(Relationship.GEQ, d.obtenerUsoMensualMinHS(), auxiliarParaRestrDouble);
+				simplexFacade.agregarRestriccion(Relationship.LEQ, d.obtenerUsoMensualMaxHS(), auxiliarParaRestrDouble);
 			}
 		} catch (Exception e) {
 			System.out.println("Error en la obtención de restricciones de uso, intente más tarde.");
