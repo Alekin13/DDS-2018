@@ -49,8 +49,8 @@ public class PruebaProperties {
 		DispositivoInteligente lavarropa = new DispositivoInteligente();
 		lavarropa.setPropiedad("lavarropasCalentamientoAgua");
 		
-		tv.setConsumoKwH(50000000);
-		lavarropa.setConsumoKwH(800000000);
+		tv.setConsumoKwH(500);
+		lavarropa.setConsumoKwH(800);
 		
 		listaDispositivos.add(tv);
 		listaDispositivos.add(lavarropa);

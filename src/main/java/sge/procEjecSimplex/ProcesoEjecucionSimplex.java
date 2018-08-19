@@ -1,7 +1,5 @@
 package sge.procEjecSimplex;
 
-import static java.util.stream.Collectors.toList;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,18 +11,14 @@ import org.apache.commons.math3.optim.PointValuePair;
 import org.apache.commons.math3.optim.linear.Relationship;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 
-
-
 import sge.dispositivo.Dispositivo;
-import sge.dispositivo.DispositivoInteligente;
 import sge.simplexSolver.SimplexFacade;
 import sge.usuario.*;
 
-public class ProcesoEjecucionSimplex extends TimerTask {
+public class ProcesoEjecucionSimplex {
 	private long rangoEjecucionSegs = 0;
 	private Cliente unUsuario;
-	private Object listaCoeficientes;
-	private boolean ejecucion = false;
+	private boolean enEjecucion = false;
 	
 
 	public ProcesoEjecucionSimplex(Cliente unUsuario) {
@@ -52,14 +46,16 @@ public class ProcesoEjecucionSimplex extends TimerTask {
 		List<Double> listaCoeficientes = new ArrayList<Double>();
 		List<Double> auxiliarParaRestr = new ArrayList<Double>();
 		List<Double> funcionEconomica = new ArrayList<Double>();
+		
+		// usamos list<Double> porque no tiene límites, luego lo trasformamos a lo que necesitan las funciones
+		
 		double[] listaCoeficientesDouble;
 		double[] auxiliarParaRestrDouble;
 		double[] funcionEconomicaDouble = null;
-		double z;
-		PointValuePair variables;
 		int inicio = 0;
 		List<Dispositivo> dispositivosSobrepasados = new ArrayList<Dispositivo>();
 		
+		enEjecucion = true;
 		SimplexFacade simplexFacade = new SimplexFacade(GoalType.MAXIMIZE, true);
 		
 		/* Para tener ya generada la lista con ceros,
@@ -125,14 +121,12 @@ public class ProcesoEjecucionSimplex extends TimerTask {
 		
 		PointValuePair solucion = simplexFacade.resolver();
 		
-		z = solucion.getValue();
-		variables = solucion;
-		
 		for (Dispositivo dispositivo : unUsuario.getDispositivos()){
 			if (inicio < this.unUsuario.getDispositivos().size()){
-				if (variables.getPoint()[inicio] <= dispositivo.getConsumoKwH()){ /* consumo */
-					System.out.println(variables.getPoint()[inicio]);
-					System.out.println(dispositivo.getConsumoKwH()); /* consumo */
+				if (solucion.getPoint()[inicio] <= dispositivo.getConsumoKwH()){ /* consumo */
+					
+					System.out.println("Debería consumir: " + solucion.getPoint()[inicio] + "kWh," 
+						+ " pero está consumiendo: " + dispositivo.getConsumoKwH() + "kWh.");
 					dispositivosSobrepasados.add(dispositivo);
 				}
 				inicio=inicio+1;
@@ -143,12 +137,12 @@ public class ProcesoEjecucionSimplex extends TimerTask {
 	
 	
 	public void setTerminarEjecucion(boolean dato) {
-		ejecucion = dato;
+		enEjecucion = false;
 	}
 	
 	
-	public boolean terminarEjecucion() {
-		return ejecucion;
+	public boolean devolverEstado() {
+		return enEjecucion;
 	}
 	
 	
@@ -156,15 +150,8 @@ public class ProcesoEjecucionSimplex extends TimerTask {
 		Timer t = new Timer();
 		long milisegundos = segundos*1000;
 		t.scheduleAtFixedRate((TimerTask) this.ejecutarPeticion(), 0, milisegundos);
-	
-		
-    }
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
 	}
+
 }
 
 	
