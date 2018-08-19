@@ -34,6 +34,10 @@ public interface Dispositivo {
 	
 	public double obtenerCoeficiente() throws FileNotFoundException, IOException;
 	
+	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException;
+	
+	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException;	
+	
 	public String getPropiedad();
 }
 

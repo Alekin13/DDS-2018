@@ -50,34 +50,78 @@ public class ProcesoEjecucionSimplex extends TimerTask {
 	
 	public List<Dispositivo> ejecutarPeticion() throws FileNotFoundException, IOException {
 		List<Double> listaCoeficientes = new ArrayList<Double>();
-		double[] listaSimplex;
+		List<Double> auxiliarParaRestr = new ArrayList<Double>();
+		List<Double> funcionEconomica = new ArrayList<Double>();
+		double[] listaCoeficientesDouble;
+		double[] auxiliarParaRestrDouble;
+		double[] funcionEconomicaDouble = null;
 		double z;
 		PointValuePair variables;
 		int inicio = 0;
-		//int cantidad = this.unUsuario.getDispositivos().size();
 		List<Dispositivo> dispositivosSobrepasados = new ArrayList<Dispositivo>();
 		
 		SimplexFacade simplexFacade = new SimplexFacade(GoalType.MAXIMIZE, true);
-		simplexFacade.crearFuncionEconomica(1,1,1,1,1,1,1,1);
 		
-		// Conseguimos todos los coheficientes.
+		/* Para tener ya generada la lista con ceros,
+		 * me refiero a lo que viene luego del 90 
+		 * simplexFacade.agregarRestriccion(Relationship.GEQ, 90, 0, 0, 0, 0, 0, 0, 0, 1);
+		 * generemos una lista por la cantidad de dispositivos, lista con todos ceros
+		 * y luego vamos seteando el 1 segun posición de nuestro dispositivo*/
 		try {
-			for(int i = 0; i <= this.unUsuario.getDispositivos().size(); ++i) {
+			for(int i = 0; i < this.unUsuario.getDispositivos().size(); ++i) {
+				auxiliarParaRestr.add((double) 0);
+			}
+		} catch (Exception e) {
+			System.out.println("Error al inicializar variables función económica.");
+		}
+				
+		// Seteo de variables Xn para funcion economica
+		// sería esta parte en el test: simplexFacade.crearFuncionEconomica(1,1,1,1,1,1,1,1);
+		try {
+			for(int i = 0; i < this.unUsuario.getDispositivos().size(); ++i) {
+				funcionEconomica.add((double) 1);
+			}
+		} catch (Exception e) {
+			System.out.println("Error al inicializar variables función económica.");
+		}
+		
+		funcionEconomicaDouble = funcionEconomica.stream().mapToDouble(f -> f).toArray();
+		simplexFacade.crearFuncionEconomica(funcionEconomicaDouble);
+		
+		// Conseguimos todos los coeficientes.
+		// serían todos los números que vienen luego de 440640
+		// simplexFacade.agregarRestriccion(Relationship.LEQ, 440640, 0.06, 0.75, 0.64, 0.1275, 0.4, 0.08, .011, 1.013);
+		try {
+			for(int i = 0; i < this.unUsuario.getDispositivos().size(); ++i) {
 				Dispositivo d = unUsuario.getDispositivos().get(i);
 				listaCoeficientes.add(d.obtenerCoeficiente());
 			}
 		} catch (Exception e) {
-			System.out.println("Error en la obtención de coheficientes, intente más tarde.");
+			System.out.println("Error en la obtención de coeficientes, intente más tarde.");
 		}
 		
-		// Armamos la lista de coheficientes que encesita el Simplex 
-		listaSimplex = listaCoeficientes.stream().mapToDouble(d -> d).toArray(); 
-		
-		
+
+		listaCoeficientesDouble = listaCoeficientes.stream().mapToDouble(d -> d).toArray(); 
 		// Primer restricción: no consumir más que 440640 kWh por mes
-		simplexFacade.agregarRestriccion(Relationship.LEQ, 440640, listaSimplex);
+		simplexFacade.agregarRestriccion(Relationship.LEQ, 440640, listaCoeficientesDouble);
 		
 		//Pero para las siguientes restricciones, hay que ir generandolas
+		try {
+			for(int i = 0; i < this.unUsuario.getDispositivos().size(); ++i) {
+				Dispositivo d = unUsuario.getDispositivos().get(i);
+				auxiliarParaRestr.set(i, (double)1);
+				if(i !=0) {
+					auxiliarParaRestr.set((i-1), (double)0);
+				}
+				auxiliarParaRestrDouble = auxiliarParaRestr.stream().mapToDouble(f -> f).toArray();
+				
+				simplexFacade.agregarRestriccion(Relationship.LEQ, d.obtenerUsoMensualMinHS(), auxiliarParaRestrDouble);
+				simplexFacade.agregarRestriccion(Relationship.GEQ, d.obtenerUsoMensualMaxHS(), auxiliarParaRestrDouble);
+			}
+		} catch (Exception e) {
+			System.out.println("Error en la obtención de restricciones de uso, intente más tarde.");
+		}
+		
 		
 		PointValuePair solucion = simplexFacade.resolver();
 		

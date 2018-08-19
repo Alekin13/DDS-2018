@@ -279,6 +279,14 @@ public class DispositivoInteligente implements Dispositivo {
 	public double obtenerCoeficiente() throws FileNotFoundException, IOException{
 		return this.accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
 	}
+	
+	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerElUsoMensualMinHsFormatoDouble(this);
+	}
+	
+	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerElUsoMensualMaxHsFormatoDouble(this);
+	}
 
 	@Override
 	public void convertirseAInteligente() {

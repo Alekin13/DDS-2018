@@ -133,4 +133,12 @@ public class DispositivoEstandar implements Dispositivo {
 		return null;
 	}
 	
+	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerElUsoMensualMinHsFormatoDouble(this);
+	}
+	
+	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerElUsoMensualMaxHsFormatoDouble(this);
+	}
+	
 }
