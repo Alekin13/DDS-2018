@@ -44,14 +44,13 @@ public class Cliente extends Usuario {
 	@JsonProperty("puntaje")
 	private int puntaje;
 	
-	// agrego consumo
 	@JsonProperty("consumo")
 	private Float consumo;
 
-	@JsonProperty("consumo")
+	@JsonProperty("latitud")
 	private double latitud;
 	
-	@JsonProperty("consumo")
+	@JsonProperty("longitud")
 	private double longitud;
 	
 	public Cliente() {
@@ -60,7 +59,7 @@ public class Cliente extends Usuario {
 
 	public Cliente(String valorUsuario, String valorPassword, String valorNombre, String valorApellido, String valorDomicilio,
 			Calendar valorFechaAlta, String valorTipoDoc, Integer valorNroDoc, Integer valorTelefono, Categoria valorCategoria,
-			List<Dispositivo> valorDispositivos, Float valorConsumoMensual) {
+			List<Dispositivo> valorDispositivos, int valorPuntaje ,Float valorConsumoMensual, double valorLatitud, double valorLongitud) {
 
 		super(valorUsuario, valorPassword, valorNombre, valorApellido, valorDomicilio, valorFechaAlta);
 		this.tipoDoc = valorTipoDoc;
@@ -68,7 +67,10 @@ public class Cliente extends Usuario {
 		this.telefono = valorTelefono;
 		this.categoria = valorCategoria;
 		this.dispositivos = valorDispositivos;
+		this.puntaje = valorPuntaje;
 		this.consumo = valorConsumoMensual;
+		this.latitud = valorLatitud;
+		this.longitud = valorLongitud;
 
 	}
 

@@ -11,7 +11,12 @@
 		"telefono": "1551515555",
 		"categoria": {"categoria": "R1", "cargoFijo": 18.76, "cargoVariable": 0.644},
 		"dispositivos": [{ "nombreDispositivo": "PS4 Sony Pro", "consumoKwh": "200.00", "estado": true, "tipo": "Consola"}]
+		"puntaje": "0",
+		"consumo": "0",
+		"latitud": "-34.547896",
+		"longitud": "-58.459875",
 	},
+	
 	{
 		"usuario": "002_CamilaSerra",
 		"password": "123456",
@@ -24,5 +29,9 @@
 		"telefono": "1545352313",
 		"categoria": {"categoria": "R2", "cargoFijo": 35.32, "cargoVariable": 0.644},
 		"dispositivos": [{ "nombreDispositivo": "Planchita Gama CP9", "consumoKwh": "40.00", "estado": true, "tipo": "Plancha Pelo"}]
+		"puntaje": "0",
+		"consumo": "0",
+		"latitud": "-34.548632",
+		"longitud": "-58.589645",		
 	}
 ]
