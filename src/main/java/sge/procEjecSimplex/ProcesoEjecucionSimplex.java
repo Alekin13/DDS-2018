@@ -42,7 +42,7 @@ public class ProcesoEjecucionSimplex {
 	}
 	
 	
-	public List<Dispositivo> ejecutarPeticion() throws FileNotFoundException, IOException {
+	public PointValuePair ejecutarPeticion() throws FileNotFoundException, IOException {
 		List<Double> listaCoeficientes = new ArrayList<Double>();
 		List<Double> auxiliarParaRestr = new ArrayList<Double>();
 		List<Double> funcionEconomica = new ArrayList<Double>();
@@ -133,7 +133,19 @@ public class ProcesoEjecucionSimplex {
 				inicio=inicio+1;
 			}
 		}
-		return dispositivosSobrepasados;
+		
+		System.out.println("El valor óptimo en horas que el usuario estará consumiendo: " + solucion.getValue());
+		
+		inicio = 0;
+		for (Dispositivo dispositivo : unUsuario.getDispositivos()){
+			if (inicio < this.unUsuario.getDispositivos().size()){
+					System.out.println("Las horas de uso de " + dispositivo.getPropiedad() + " deberían ser: "
+							+ solucion.getPoint()[inicio]);
+				inicio=inicio+1;
+			}
+		}
+		
+		return solucion;
 	}
 	
 	
@@ -150,7 +162,7 @@ public class ProcesoEjecucionSimplex {
 	public void ejecutarPorTiempo(long segundos) throws IOException {
 		Timer t = new Timer();
 		long milisegundos = segundos*1000;
-		t.scheduleAtFixedRate((TimerTask) this.ejecutarPeticion(), 0, milisegundos);
+		//t.scheduleAtFixedRate((TimerTask) this.ejecutarPeticion(), 0, milisegundos);
 	}
 
 }

@@ -27,28 +27,27 @@ public class SimplexUsandoDatosProporcionados {
 		Cliente unCliente = new Cliente();
 		
 		//List<Dispositivo> dispositivosSobrepasados = new ArrayList<Dispositivo>();
+
+		DispositivoInteligente aireAcondicionado2200 = new DispositivoInteligente();
+		aireAcondicionado2200.setPropiedad("aireacondicionado2200");
+		dispositivos.add(aireAcondicionado2200);		
+
+		DispositivoInteligente lamparaAlogena11w = new DispositivoInteligente();
+		lamparaAlogena11w.setPropiedad("lampara11w");
+		dispositivos.add(lamparaAlogena11w);
 		
 		DispositivoInteligente tvLed40 = new DispositivoInteligente();
 		tvLed40.setPropiedad("tvLED40p");
 		dispositivos.add(tvLed40);
 				
-		DispositivoInteligente lamparaAlogena11w = new DispositivoInteligente();
-		lamparaAlogena11w.setPropiedad("lampara11w");
-		dispositivos.add(lamparaAlogena11w);		
-		
+		DispositivoEstandar pcDeEscritorio = new DispositivoEstandar();
+		pcDeEscritorio.setPropiedad("pcEscr");
+		dispositivos.add(pcDeEscritorio);
+				
 		DispositivoEstandar lavarropasSemiAutomatico5kg = new DispositivoEstandar();
 		lavarropasSemiAutomatico5kg.setPropiedad("lavarropasSemiAutomatico");
 		dispositivos.add(lavarropasSemiAutomatico5kg);
 		
-		
-		DispositivoEstandar pcDeEscritorio = new DispositivoEstandar();
-		pcDeEscritorio.setPropiedad("pcEscr");
-		dispositivos.add(pcDeEscritorio);
-		
-		DispositivoInteligente aireAcondicionado2200 = new DispositivoInteligente();
-		aireAcondicionado2200.setPropiedad("aireacondicionado2200");
-		dispositivos.add(aireAcondicionado2200);
-				
 		DispositivoEstandar microondas = new DispositivoEstandar();
 		microondas.setPropiedad("microondas");
 		dispositivos.add(microondas);
@@ -67,7 +66,18 @@ public class SimplexUsandoDatosProporcionados {
 		unCliente.setDispositivos(dispositivos);
 		
 		ProcesoEjecucionSimplex ejecucionDelSimplexInstance = new ProcesoEjecucionSimplex(unCliente);
-		ejecucionDelSimplexInstance.ejecutarPeticion();
+		
+		PointValuePair solucion = ejecucionDelSimplexInstance.ejecutarPeticion();
+		
+		Assert.assertEquals(1875, solucion.getValue(), 0.01); 		
+		Assert.assertEquals(360, solucion.getPoint()[0], 0.01); 	
+		Assert.assertEquals(360, solucion.getPoint()[1], 0.01); 		
+		Assert.assertEquals(360, solucion.getPoint()[2], 0.01); 		
+		Assert.assertEquals(360, solucion.getPoint()[3], 0.01); 		
+		Assert.assertEquals(30, solucion.getPoint()[4], 0.01);		
+		Assert.assertEquals(15, solucion.getPoint()[5], 0.01); 	
+		Assert.assertEquals(30, solucion.getPoint()[6], 0.01); 	
+		Assert.assertEquals(360, solucion.getPoint()[7], 0.01); 		
 
 	}
 
