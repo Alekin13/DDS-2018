@@ -122,6 +122,7 @@ public class ProcesoEjecucionSimplex {
 		PointValuePair solucion = simplexFacade.resolver();
 		
 		for (Dispositivo dispositivo : unUsuario.getDispositivos()){
+			System.out.println(solucion.getPoint()[inicio]);
 			if (inicio < this.unUsuario.getDispositivos().size()){
 				if (solucion.getPoint()[inicio] <= dispositivo.getConsumoKwH()){ /* consumo */
 					

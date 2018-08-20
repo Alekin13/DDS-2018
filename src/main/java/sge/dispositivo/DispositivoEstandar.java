@@ -31,6 +31,8 @@ public class DispositivoEstandar implements Dispositivo {
 	}
 	
 	private ManejoProperties accesoAProperties= new ManejoProperties();
+
+	private String propiedad;
 	
 	public DispositivoEstandar(int idDispositivo, String nombreDispositivo, double consumoKwH, double idFabricante, double idAdaptador){
 		this.idDispositivo = idDispositivo;
@@ -129,8 +131,7 @@ public class DispositivoEstandar implements Dispositivo {
 
 	@Override
 	public String getPropiedad() {
-		// TODO Auto-generated method stub
-		return null;
+		return propiedad;
 	}
 	
 	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException{
@@ -140,5 +141,10 @@ public class DispositivoEstandar implements Dispositivo {
 	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException{
 		return this.accesoAProperties.obtenerElUsoMensualMaxHsFormatoDouble(this);
 	}
+
+	public void setPropiedad(String propiedad) {
+		this.propiedad = propiedad;
+	}
+
 	
 }
