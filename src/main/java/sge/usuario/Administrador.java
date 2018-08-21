@@ -32,6 +32,12 @@ public class Administrador extends Usuario {
 	
 	//Cantidad de Meses del Admin: Dadas dos fechas devuelve la diferencia de meses
 	//https://es.stackoverflow.com/questions/106342/c%C3%B3mo-obtener-los-meses-de-diferencia-entre-2-fechas-en-java
+	
+	//Gonzalo Guini.
+	//Chicos me parece que es mas complicado, implementado asi funciona para ej inicio: 04/12/2017 fin: 02/02/2018 ??
+	//Paso link para ver:
+	//http://danielmauricioporrasveloz.blogspot.com/2015/05/como-calcular-la-diferencia-en-meses.html
+	
 	public int antiguedadEnMeses(Calendar fechaAlta) {
 		Calendar fechaHoy = new GregorianCalendar();
 		int diferenciaAnio = fechaHoy.get(Calendar.YEAR) - fechaAlta.get(Calendar.YEAR);
