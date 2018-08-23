@@ -53,6 +53,8 @@ public class Cliente extends Usuario {
 	@JsonProperty("longitud")
 	private double longitud;
 	
+	private int transformadorId;
+	
 	public Cliente() {
 		super();
 	}
@@ -248,5 +250,15 @@ public class Cliente extends Usuario {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int getTransformadorId() {
+		return transformadorId;
+	}
+
+	public void setTransformadorId(int transformadorId) {
+		this.transformadorId = transformadorId;
+	}
+
+
 	
 }

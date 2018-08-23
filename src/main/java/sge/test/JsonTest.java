@@ -40,12 +40,12 @@ public class JsonTest {
 		fechaCliente1.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos1.add(new DispositivoInteligente("PS4 Sony Pro", 200.00f, null, null, 0, true, 0, "Consola", null));
 		cliente1 = new Cliente("001_AlejandroMattioli", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", fechaCliente1, 
-				"DNI", new Integer(38993333), new Integer(1551515555), categoria1, dispositivos1, 200.00f);
+				"DNI", new Integer(38993333), new Integer(1551515555), categoria1, dispositivos1, 0, 200.00f, 0, 0);
 		
 		fechaCliente2.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos2.add(new DispositivoInteligente("Planchita Gama CP9", 40.00f, null, null, 0, true, 0, "Plancha Pelo", null));
 		cliente2 = new Cliente("002_CamilaSerra", "123456", "Camila", "Serra", "Olleros 1500", fechaCliente2, 
-				"DNI", new Integer(38993332), new Integer(1545352313), categoria2, dispositivos2, 40.00f);
+				"DNI", new Integer(38993332), new Integer(1545352313), categoria2, dispositivos2, 0, 40.00f, 0, 0);
 	
 	}
 
