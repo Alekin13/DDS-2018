@@ -84,7 +84,10 @@ public class SGEHelperClass {
 		listaAuxiliar.addAll(unUsuario.getDispositivos()); 
 			
 		for(Dispositivo d : unUsuario.getDispositivos()) {
-			if (d.obtenerNombreDispositivo() == "heladera") {
+		
+			String aux = d.obtenerNombreDispositivo();
+			
+			if (aux.equals(new String("heladera"))) {
 				listaAuxiliar.remove(d);
 			}
 		}		

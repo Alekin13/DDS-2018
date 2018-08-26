@@ -63,8 +63,8 @@ public class ProcesoEjecucionSimplex {
 		
 		PointValuePair solucion = simplexFacade.resolver();
 		
-		for (Dispositivo dispositivo : unUsuario.getDispositivos()){
-			if (inicio < this.unUsuario.getDispositivos().size()){
+		for (Dispositivo dispositivo : dispositivosSeleccionados){
+			if (inicio < dispositivosSeleccionados.size()){
 				if (solucion.getPoint()[inicio] <= dispositivo.getConsumoKwH()){ /* consumo */
 					
 					System.out.println("Debería consumir: " + solucion.getPoint()[inicio] + "kWh," 
@@ -78,8 +78,8 @@ public class ProcesoEjecucionSimplex {
 		System.out.println("El valor óptimo en horas que el usuario estará consumiendo: " + solucion.getValue());
 		
 		inicio = 0;
-		for (Dispositivo dispositivo : unUsuario.getDispositivos()){
-			if (inicio < this.unUsuario.getDispositivos().size()){
+		for (Dispositivo dispositivo : dispositivosSeleccionados){
+			if (inicio < dispositivosSeleccionados.size()){
 					System.out.println("Las horas de uso de " + dispositivo.getPropiedad() + " deberían ser: "
 							+ solucion.getPoint()[inicio]);
 				inicio=inicio+1;

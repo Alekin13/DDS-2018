@@ -17,7 +17,6 @@ public class ManejoProperties {
 	
 	
 	public String obtenerElCoeficiente(Dispositivo d) throws FileNotFoundException, IOException {
-		
 		archivoPropiedades.load(new FileReader("src/main/java/sge/restricciones.properties"));
 		return archivoPropiedades.getProperty( d.getPropiedad() +".coeficiente" );
 		

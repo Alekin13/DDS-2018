@@ -27,6 +27,7 @@ public class SimplexUsandoDatosProporcionados {
 		
 		//List<Dispositivo> dispositivosSobrepasados = new ArrayList<Dispositivo>();
 
+	
 		DispositivoInteligente aireAcondicionado2200 = new DispositivoInteligente();
 		aireAcondicionado2200.setPropiedad("aireacondicionado2200");
 		dispositivos.add(aireAcondicionado2200);		
@@ -60,6 +61,9 @@ public class SimplexUsandoDatosProporcionados {
 		ventiladorDeTecho.setPropiedad("ventiladorDeTecho");
 		dispositivos.add(ventiladorDeTecho);
 		
+		DispositivoEstandar heladera = new DispositivoEstandar();
+		heladera.setPropiedad("heladeraFreezer");
+		dispositivos.add(heladera);
 			
 		unCliente.setDispositivos(dispositivos);
 		
