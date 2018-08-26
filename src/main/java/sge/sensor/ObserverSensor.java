@@ -1,7 +1,6 @@
-package sge.observer;
+package sge.sensor;
 
 import java.util.List;
-import sge.sensor.Sensor;
 
 public class ObserverSensor implements Observer {
 	

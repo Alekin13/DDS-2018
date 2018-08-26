@@ -1,9 +1,9 @@
-package sge.observer;
+package sge.sensor;
 
 public interface Observer{
 
 	// Cada clase que quiera observar el cambio del estado del sensor 
-	//debé implementar la siguiente interface y darle lógica al método update
+	//debï¿½ implementar la siguiente interface y darle lï¿½gica al mï¿½todo update
 	public void observerActualizar();
 
 }
