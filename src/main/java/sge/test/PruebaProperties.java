@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import sge.dispositivo.Dispositivo;
 import sge.dispositivo.DispositivoInteligente;
-import sge.procEjecSimplex.ProcesoEjecucionSimplex;
+import sge.simplexSolver.ProcesoEjecucionSimplex;
 import sge.usuario.Cliente;
 
 public class PruebaProperties {
@@ -59,9 +59,7 @@ public class PruebaProperties {
 		unCliente.setDispositivos(listaDispositivos);
 		
 		ProcesoEjecucionSimplex ejecucionDelSimplexInstance = new ProcesoEjecucionSimplex(5, unCliente);
-		
-		
-		ejecucionDelSimplexInstance.ejecutarPorTiempo(10);
+
 		ejecucionDelSimplexInstance.ejecutarPeticion();
 		
 		

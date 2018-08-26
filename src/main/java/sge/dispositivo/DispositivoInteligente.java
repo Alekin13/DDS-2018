@@ -288,6 +288,10 @@ public class DispositivoInteligente implements Dispositivo {
 		return this.accesoAProperties.obtenerElUsoMensualMaxHsFormatoDouble(this);
 	}
 
+	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerNombre(this);
+	}
+	
 	@Override
 	public void convertirseAInteligente() {
 		System.out.println("Este dispositivo ya es inteligente. No se realizarán cambios.");

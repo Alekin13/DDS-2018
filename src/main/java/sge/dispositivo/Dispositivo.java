@@ -38,6 +38,8 @@ public interface Dispositivo {
 	
 	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException;	
 	
+	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException;
+	
 	public String getPropiedad();
 }
 

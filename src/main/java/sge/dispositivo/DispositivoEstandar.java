@@ -146,5 +146,7 @@ public class DispositivoEstandar implements Dispositivo {
 		this.propiedad = propiedad;
 	}
 
-	
+	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerNombre(this);
+	}	
 }

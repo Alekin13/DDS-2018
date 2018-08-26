@@ -1,3 +1,4 @@
+package main;
 import java.util.List;
 import sge.categoria.Categoria;
 import sge.usuario.Administrador;

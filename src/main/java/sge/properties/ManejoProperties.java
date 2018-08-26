@@ -10,13 +10,19 @@ public class ManejoProperties {
 	
 	Properties archivoPropiedades = new Properties();
 	
+	public String obtenerNombre(Dispositivo d) throws FileNotFoundException, IOException {
+		archivoPropiedades.load(new FileReader("src/main/java/sge/properties/restricciones.properties"));
+		return archivoPropiedades.getProperty( d.getPropiedad() +".dispositivo" );
+	}
+	
+	
 	public String obtenerElCoeficiente(Dispositivo d) throws FileNotFoundException, IOException {
 		
-		archivoPropiedades.load(new FileReader("src/main/java/restricciones.properties"));
+		archivoPropiedades.load(new FileReader("src/main/java/sge/restricciones.properties"));
 		return archivoPropiedades.getProperty( d.getPropiedad() +".coeficiente" );
 		
 	}
-	
+		
 	
 	public double obtenerElCoeficienteFormatoDouble(Dispositivo d) throws FileNotFoundException, IOException {
 		archivoPropiedades.load(new FileReader("src/main/java/sge/properties/restricciones.properties"));
@@ -26,7 +32,7 @@ public class ManejoProperties {
 	
 	
 	public String obtenerElUsoMensualMinHs(Dispositivo d) throws FileNotFoundException, IOException {
-		archivoPropiedades.load(new FileReader("src/main/java/restricciones.properties"));
+		archivoPropiedades.load(new FileReader("src/main/java/sge/restricciones.properties"));
 		return archivoPropiedades.getProperty( d.getPropiedad() +".usomensualminhs" );
 	}
 	
@@ -39,7 +45,7 @@ public class ManejoProperties {
 	
 	
 	public String obtenerElUsoMensualMaxHs(Dispositivo d) throws FileNotFoundException, IOException {
-		archivoPropiedades.load(new FileReader("src/main/java/restricciones.properties"));
+		archivoPropiedades.load(new FileReader("src/main/java/sge/restricciones.properties"));
 		return archivoPropiedades.getProperty( d.getPropiedad() +".usomensualmaxhs" );
 	}
 	
@@ -47,6 +53,13 @@ public class ManejoProperties {
 	public double obtenerElUsoMensualMaxHsFormatoDouble(Dispositivo d) throws FileNotFoundException, IOException {
 		archivoPropiedades.load(new FileReader("src/main/java/sge/properties/restricciones.properties"));
 		double transformado = Double.parseDouble(archivoPropiedades.getProperty( d.getPropiedad() +".usomensualmaxhs" ));
+		return transformado;
+	}
+	
+	
+	public double obtenerLimiteConsumoMensual() throws FileNotFoundException, IOException {
+		archivoPropiedades.load(new FileReader("src/main/java/sge/properties/restricciones.properties"));
+		double transformado = Double.parseDouble(archivoPropiedades.getProperty( "dispotivo.consumoLimiteMensual" ));
 		return transformado;
 	}
 }

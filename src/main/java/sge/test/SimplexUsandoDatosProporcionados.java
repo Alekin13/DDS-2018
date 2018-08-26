@@ -14,8 +14,7 @@ import org.junit.Test;
 import sge.dispositivo.Dispositivo;
 import sge.dispositivo.DispositivoEstandar;
 import sge.dispositivo.DispositivoInteligente;
-import sge.procEjecSimplex.ProcesoEjecucionSimplex;
-import sge.simplexSolver.SimplexFacade;
+import sge.simplexSolver.ProcesoEjecucionSimplex;
 import sge.usuario.Cliente;
 
 public class SimplexUsandoDatosProporcionados {
@@ -61,8 +60,7 @@ public class SimplexUsandoDatosProporcionados {
 		ventiladorDeTecho.setPropiedad("ventiladorDeTecho");
 		dispositivos.add(ventiladorDeTecho);
 		
-		
-		
+			
 		unCliente.setDispositivos(dispositivos);
 		
 		ProcesoEjecucionSimplex ejecucionDelSimplexInstance = new ProcesoEjecucionSimplex(unCliente);
