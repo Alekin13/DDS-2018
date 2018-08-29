@@ -28,6 +28,7 @@ import sge.sensor.SensorLuminosidad;
 import sge.sensor.SensorMovimiento;
 import sge.sensor.SensorTemperatura;
 import sge.categoria.Categoria;
+import sge.usuario.Administrador;
 import sge.usuario.Cliente;
 import sge.transformador.Transformador;
 import sge.zona.Zona;
@@ -156,6 +157,39 @@ public class JsonHelper {
 		return clientes;
 	}
 
+	public static List<Administrador> extraerAdministradorJson(String path) throws IOException, ParseException{
+		
+		String jsonAdministradores = JsonHelper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Administrador> administradores = new ArrayList<Administrador>();
+		JsonArray gsonObj1 = parser.parse(jsonAdministradores).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        Administrador administrador = new Administrador();
+	        administrador.setUsuario(gsonObj.get("usuario").getAsString());
+	        administrador.setPassword(gsonObj.get("password").getAsString());
+	        administrador.setNombre(gsonObj.get("nombre").getAsString());
+	        administrador.setApellido(gsonObj.get("apellido").getAsString());
+	        administrador.setIdAdmin(gsonObj.get("idAdmin").getAsInt());
+	        
+	        /* Extraigo la fecha */
+	        String unaFecha = gsonObj.get("fechaAlta").getAsString();
+	        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	        Date date = sdf.parse(unaFecha);
+	        Calendar unaFechaC = Calendar.getInstance();
+	        unaFechaC.setTime(date);
+	        administrador.setFecAlta(unaFechaC);	        
+	        
+	        administradores.add(administrador);
+
+	   	}
+	   	
+	   	return administradores;
+	}
+
 	/*	private static Estado seleccionarEstado(String estado) {
 		if(estado.equals("Encendido")){
 			return Encendido.class .getInstance();
@@ -256,6 +290,10 @@ public class JsonHelper {
 	   	}
 	   	
 	   	return zonas;
+	}
+
+	public List<Administrador> extraerAdministradoresJson(String pathJsonAdministradores) {
+		return null;
 	}
 
 }

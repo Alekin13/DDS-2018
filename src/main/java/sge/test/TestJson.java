@@ -15,14 +15,19 @@ import org.junit.Test;
 import sge.categoria.Categoria;
 import sge.dispositivo.Dispositivo;
 import sge.mappers.JsonHelper;
+import sge.usuario.Administrador;
 import sge.usuario.Cliente;
 
 public class TestJson {
 	
+	private static final String PATH_JSON_CLIENTES = "src/main/java/sge/data/Clientes.json";
+	private static final String PATH_JSON_ADMINISTRADORES = "src/main/java/sge/data/Administradores.json";
+	private static final String PATH_JSON_CATEGORIAS = "src/main/java/sge/data/Categorias.json";
+	
     @Test
     public void debeDevolverJSONEnUnObjeto() throws IOException, ParseException {
     	List<Cliente> clientes = new ArrayList<Cliente>();
-    	clientes = JsonHelper.extraerClientesJson("src/main/java/sge/data/Clientes.json");
+    	clientes = JsonHelper.extraerClientesJson(PATH_JSON_CLIENTES);
         assertEquals("Lista de clientes",2, clientes.size());
     }
     
@@ -66,7 +71,7 @@ public class TestJson {
 		JsonHelper mapper = new JsonHelper();
 				
 		// Se obtiene lista de clientes mapeados desde archivo json
-		List<Cliente> clientesJson  = mapper.extraerClientesJson("src/main/java/sge/data/Clientes.json");
+		List<Cliente> clientesJson  = mapper.extraerClientesJson(PATH_JSON_CLIENTES);
 		
 		//Crea los casos de prueba a comparar
 		crearDatosDePrueba();
@@ -94,4 +99,96 @@ public class TestJson {
 
 	}
 	
+	public static void TestImprimirCarga() {
+		
+		int i, j;
+		JsonHelper mapper = new JsonHelper();
+		
+		//Clientes
+		List<Cliente> clientesJson;
+
+		try {
+			clientesJson = mapper.extraerClientesJson(PATH_JSON_CLIENTES);
+			
+			for (i = 0; i < clientesJson.size(); i++) {
+				System.out.println("Cliente " + (i + 1));
+				System.out.println("Usuario: " + clientesJson.get(i).getUsuario());
+				System.out.println("Password: " + clientesJson.get(i).getPassword());
+				System.out.println("Nombre: " + clientesJson.get(i).getNombre());
+				System.out.println("Apellido: " + clientesJson.get(i).getApellido());
+				System.out.println("Domicilio: " + clientesJson.get(i).getDomicilio());
+				System.out.println("Fecha de Alta: " + clientesJson.get(i).getFecAlta().get(Calendar.DAY_OF_MONTH)
+						+ "/" + clientesJson.get(i).getFecAlta().get(Calendar.MONTH) + "/"
+						+ clientesJson.get(i).getFecAlta().get(Calendar.YEAR));
+				System.out.println(
+						"Documento: " + clientesJson.get(i).getTipoDoc() + " " + clientesJson.get(i).getNroDoc());
+				System.out.println("Telefono: " + clientesJson.get(i).getTelefono());
+				System.out.println("Categoria: " + clientesJson.get(i).getCategoria().getCategoria());
+				System.out.println("Dispositivos:");
+
+				for (j = 0; j < clientesJson.get(i).getDispositivos().size(); j++) {
+					System.out.println("   Dispositivo " + (j + 1));
+					System.out.println("   Tipo: " + clientesJson.get(i).getDispositivos().get(j).getTipoDispositivo());
+					System.out.println("   Nombre: " + clientesJson.get(i).getDispositivos().get(j).getNombreDispositivo());
+					System.out.println("   Consumo: " + clientesJson.get(i).getDispositivos().get(j).getConsumoKwH());
+					System.out.println("------------------------------");
+				}
+			
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+	//Administradores
+	List<Administrador> administradoresJson;
+
+	try {
+		administradoresJson = mapper.extraerAdministradoresJson(PATH_JSON_ADMINISTRADORES);
+
+		System.out.println("Administradores:");
+		System.out.println("");
+		for (i = 0; i < administradoresJson.size(); i++) {
+			System.out.println("ID: " + administradoresJson.get(i).getIdAdmin());
+			System.out.println("Usuario: " + administradoresJson.get(i).getUsuario());
+			System.out.println("Password: " + administradoresJson.get(i).getPassword());
+			System.out.println("Nombre: " + administradoresJson.get(i).getNombre());
+			System.out.println("Apellido: " + administradoresJson.get(i).getApellido());
+			System.out.println("Domicilio: " + administradoresJson.get(i).getDomicilio());
+			System.out.println(
+					"Fecha de Alta: " + administradoresJson.get(i).getFecAlta().get(Calendar.DAY_OF_MONTH) + "/"
+							+ administradoresJson.get(i).getFecAlta().get(Calendar.MONTH) + "/"
+							+ administradoresJson.get(i).getFecAlta().get(Calendar.YEAR));
+			System.out.println("");
+		}
+		System.out.println("");
+
+	} catch (Exception e1) {
+		System.out.println(e1.getMessage());
+	}
+
+	//Categorias
+	List<Categoria> categoriasJson;
+
+	try {
+		categoriasJson = mapper.extraerCategoriasJson(PATH_JSON_CATEGORIAS);
+		System.out.println("Categorias:");
+		System.out.println("");
+		for (i = 0; i < categoriasJson.size(); i++) {
+			System.out.println("Categoria: " + categoriasJson.get(i).getCategoria());
+			System.out.println("Cargo fijo: " + categoriasJson.get(i).getCargoFijo());
+			System.out.println("Cargo variable: " + categoriasJson.get(i).getCargoVariable());
+			System.out.println("");
+		}
+	} catch (Exception e2) {
+		System.out.println(e2.getMessage());
+	}
+
+	}
+
+    @Test
+    public void Impresion() throws IOException, ParseException {
+    	
+    	this.TestImprimirCarga();
+    }
+
 }

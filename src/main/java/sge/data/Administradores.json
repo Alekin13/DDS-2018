@@ -1,0 +1,24 @@
+{"administradores":
+	[	
+	{
+		"usuario": "001_AlejandroMattioli",
+		"password": "asd123",
+		"nombre": "Alejandro",
+		"apellido": "Mattioli",
+		"domicilio": "Av. Rivadavia 5000",
+		"fechaAlta": "22/04/2018",
+		"idAdmin": 1
+	},
+	
+	{
+		"usuario": "002_CamilaSerra",
+		"password": "123456",
+		"nombre": "Camila",
+		"apellido": "Serra",
+		"domicilio": "Olleros 1500",
+		"fechaAlta": "22/04/2018",
+		"idAdmin": 2
+		
+	}
+]
+}
