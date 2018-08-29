@@ -61,9 +61,8 @@ public class JsonHelper {
 	   	JsonObject gsonObj1 = parser.parse(jsonClientes).getAsJsonObject();
 	   	// Obtengo el array clientes
 	   	JsonArray gsonArr = gsonObj1.get("clientes").getAsJsonArray();
-		
-	
-	    // Itero el array de clientes
+
+	   	// Itero el array de clientes
 	    for (JsonElement obj : gsonArr) {
 	
 	        // Obtengo el objeto Cliente
@@ -171,6 +170,29 @@ public class JsonHelper {
 		}
 	}
 */	
+	public static List<Categoria> extraerCategoriasJson(String path) throws IOException{
+		
+		String jsonCategorias = JsonHelper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Categoria> categorias = new ArrayList<Categoria>();
+	   	JsonArray gsonObj1 = parser.parse(jsonCategorias).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        Categoria categoria = new Categoria();
+	        categoria.setCategoria(gsonObj.get("categoria").getAsString());
+	        categoria.setCargoFijo(gsonObj.get("cargoFijo").getAsDouble());
+	        categoria.setCargoVariable(gsonObj.get("cargoVariable").getAsDouble());
+
+	        categorias.add(categoria);
+
+	   	}
+	   	
+	   	return categorias;
+	}
+
 	private static Sensor generarSensor(int valor, String magnitud){
 		Sensor sensor = null;
 		switch (magnitud){
@@ -191,22 +213,18 @@ public class JsonHelper {
 		String jsonTransformadores = JsonHelper.readFile(path);
 		JsonParser parser = new JsonParser();
 		List<Transformador> transformadores = new ArrayList<Transformador>();
-		// Obtengo el primer ObjetoJason
-	   	JsonArray gsonObj1 = parser.parse(jsonTransformadores).getAsJsonArray();
+		JsonArray gsonObj1 = parser.parse(jsonTransformadores).getAsJsonArray();
 
 	   	for (JsonElement obj : gsonObj1) {
 	   		
-	        // Obtengo el objeto Cliente
 	        JsonObject gsonObj = obj.getAsJsonObject();
 	
-	        // Obtengo las primitivas del cliente
 	        Transformador transformador = new Transformador();
 	        transformador.setId(gsonObj.get("id").getAsInt());
 	        transformador.setIdZona(gsonObj.get("idZona").getAsInt());
 	        transformador.setLatitud(gsonObj.get("latitud").getAsDouble());
 	        transformador.setLongitud(gsonObj.get("longitud").getAsDouble());
-	        
-	        
+	    
 	        transformadores.add(transformador);
 
 	   	}
@@ -219,15 +237,12 @@ public class JsonHelper {
 		String jsonZonas = JsonHelper.readFile(path);
 		JsonParser parser = new JsonParser();
 		List<Zona> zonas = new ArrayList<Zona>();
-		// Obtengo el primer ObjetoJason
-	   	JsonArray gsonObj1 = parser.parse(jsonZonas).getAsJsonArray();
+		JsonArray gsonObj1 = parser.parse(jsonZonas).getAsJsonArray();
 
 	   	for (JsonElement obj : gsonObj1) {
 	   		
-	        // Obtengo el objeto Cliente
 	        JsonObject gsonObj = obj.getAsJsonObject();
 	
-	        // Obtengo las primitivas del cliente
 	        Zona zona = new Zona();
 	        zona.setId(gsonObj.get("id").getAsInt());
 	        zona.setNombre(gsonObj.get("nombre").getAsString());

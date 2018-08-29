@@ -1,22 +1,11 @@
 package sge.categoria;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import sge.usuario.Cliente;
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "categoria", "cargoFijo", "cargoVariable" })
 
 public class Categoria {
 
-	@JsonProperty("categoria")
 	private String categoria;
-
-	@JsonProperty("cargoFijo")
 	private double cargoFijo;
-
-	@JsonProperty("cargoVariable")
 	private double cargoVariable;
 
 	public Categoria() {
@@ -47,7 +36,7 @@ public class Categoria {
 		else {unCliente.setCategoria(new Categoria("R9", 887.19, 0.851));}
 	}
 	
-	public double calcularTarifa( Cliente unCliente ) {
+	public double calcularTarifa(Cliente unCliente ) {
 		this.definirCategoriaCliente( unCliente );
 		return this.getCargoVariable() * unCliente.consumoCliente() + this.getCargoFijo();
 	}
@@ -64,7 +53,7 @@ public class Categoria {
 		return cargoFijo;
 	}
 
-	public void setCargoFijo(Float cargoFijo) {
+	public void setCargoFijo(double cargoFijo) {
 		this.cargoFijo = cargoFijo;
 	}
 
@@ -72,7 +61,7 @@ public class Categoria {
 		return cargoVariable;
 	}
 
-	public void setCargoVariable(Float cargoVariable) {
+	public void setCargoVariable(double cargoVariable) {
 		this.cargoVariable = cargoVariable;
 	}
 
