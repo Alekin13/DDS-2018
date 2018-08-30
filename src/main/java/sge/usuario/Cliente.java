@@ -19,6 +19,9 @@ public class Cliente extends Usuario {
 	private List<Dispositivo> dispositivos;
 	private double consumo;
 	private int puntos;
+	private double latitud; //Por ahora estan, despues ver si se calcula con una Api (Entrega Web)
+	private double longitud; //Por ahora estan, despues ver si se calcula con una Api (Entrega Web)
+	private int transformadorId;
 	
 	public Cliente() {
 		super();
@@ -91,6 +94,30 @@ public class Cliente extends Usuario {
 		this.puntos = puntos;
 	}
 
+	public double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
+	}
+
+	public double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
+	}
+
+	public int getTransformadorId() {
+		return transformadorId;
+	}
+
+	public void setTransformadorId(int transformadorId) {
+		this.transformadorId = transformadorId;
+	}
+
 	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
 		if(this.cantidadDispositivosEncencidos(this.dispositivos) > 0)
 			return true;
@@ -103,7 +130,6 @@ public class Cliente extends Usuario {
 		
 		dispositivosEncendidos = this.dispositivos.stream().filter(d -> d.getEstado().equals(new Encendido())).collect(Collectors.toList());
 		return dispositivosEncendidos.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
-
 	}
 
 	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
@@ -118,6 +144,9 @@ public class Cliente extends Usuario {
 	}
 
 	public void agregarDispositivo(Dispositivo unDispositivo) {
+		//Aca hay que decodificar el nnuevo dispositivos
+		// con FactoryDispositivos dispositivo = new FactoryDispositivos();
+		// y crear el que corresponda 
 		if (unDispositivo.esInteligente())
 			this.sumarPuntosCliente(15);
 		dispositivos.add(unDispositivo);
@@ -136,101 +165,4 @@ public class Cliente extends Usuario {
 		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum();
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	//no chequeado
-	
-	
-	private double latitud;
-	private double longitud;
-	private int transformadorId;
-	//Tengo duda en que si se da de alta empieza en R1 o ya viene con la categoria
-		
-		
-
-
-	public Cliente(String valorUsuario, String valorPassword, String valorNombre, String valorApellido, String valorDomicilio,
-			Calendar valorFechaAlta, String valorTipoDoc, int valorNroDoc, int valorTelefono, Categoria valorCategoria,
-			List<Dispositivo> valorDispositivos, int valorPuntaje ,Float valorConsumoMensual, double valorLatitud, double valorLongitud) {
-
-		super(valorUsuario, valorPassword, valorNombre, valorApellido, valorDomicilio, valorFechaAlta);
-		this.tipoDoc = valorTipoDoc;
-		this.nroDoc = valorNroDoc;
-		this.telefono = valorTelefono;
-		this.categoria = valorCategoria;
-		this.dispositivos = valorDispositivos;
-		this.puntos = valorPuntaje;
-		this.consumo = valorConsumoMensual;
-		this.latitud = valorLatitud;
-		this.longitud = valorLongitud;
-
-	}
-
-	
-		
-	
-	
-
-
-
-
-
-	
-	
-//	public void categoria( String categoria, double cargoFijo, double cargoVariable  ) {
-//		this.categoria = new Categoria();
-//		this.categoria.setearCategoria( categoria, cargoFijo, cargoVariable);
-//	}
-	
-
-	public double getLatitud() {
-		return latitud;
-	}
-
-	public void setLatitud(double latitud) {
-		this.latitud = latitud;
-	}
-
-	public double getLongitud() {
-		return longitud;
-	}
-
-	public void setLongitud(double longitud) {
-		this.longitud = longitud;
-	}
-
-	/*
-
-	public Object consumoMensual() {
-	
-		return null;
-	}
-
-	public int getTransformadorId() {
-		return transformadorId;
-	}
-
-	public void setTransformadorId(int transformadorId) {
-		this.transformadorId = transformadorId;
-	}
-	*/
 }
