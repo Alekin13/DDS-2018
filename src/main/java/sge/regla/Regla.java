@@ -39,7 +39,7 @@ public class Regla implements Observer {
 		this.dispositivo = dispositivo;
 	}
 
-	public boolean cumpleCondiciones(){
+	public boolean cumpleCondicion(){
 		boolean cumpleCondicion = true;
 			if(!this.condicion.cumpleCondicion(this.dispositivo))
 				cumpleCondicion = false;
@@ -48,12 +48,12 @@ public class Regla implements Observer {
 	}
 	
 	public void ejecutarAcciones(){
-		if(!this.cumpleCondiciones())
+		if(!this.cumpleCondicion())
 			this.accion.ejecutarAccion(this.getDispositivo());
 	}
 	
 	public boolean evaluarDispositivo(){
-		boolean cumpleCondicion = this.cumpleCondiciones();
+		boolean cumpleCondicion = this.cumpleCondicion();
 		if(!cumpleCondicion){
 			this.ejecutarAcciones();
 		}
