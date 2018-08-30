@@ -51,12 +51,12 @@ public class TestJson {
 		fechaCliente1.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos1.add(new DispositivoInteligente("PS4 Sony Pro", 200.00f, null, null, 0, true, 0, "Consola", null));
 		cliente1 = new Cliente("001_AlejandroMattioli", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", fechaCliente1, 
-				"DNI", new Integer(38993333), new Integer(1551515555), categoria1, dispositivos1, 0, 200.00f, 0, 0);
+				"DNI", new Integer(38993333), new Integer(1551515555), categoria1);
 		
 		fechaCliente2.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos2.add(new DispositivoInteligente("Planchita Gama CP9", 40.00f, null, null, 0, true, 0, "Plancha Pelo", null));
 		cliente2 = new Cliente("002_CamilaSerra", "123456", "Camila", "Serra", "Olleros 1500", fechaCliente2, 
-				"DNI", new Integer(38993332), new Integer(1545352313), categoria2, dispositivos2, 0, 40.00f, 0, 0);
+				"DNI", new Integer(38993332), new Integer(1545352313), categoria2);
 	
 	}
 
@@ -67,11 +67,9 @@ public class TestJson {
 	
 	@Test
 	public void test01CargaObjetosJson() throws Exception {
-		
-		JsonHelper mapper = new JsonHelper();
-				
+			
 		// Se obtiene lista de clientes mapeados desde archivo json
-		List<Cliente> clientesJson  = mapper.extraerClientesJson(PATH_JSON_CLIENTES);
+		List<Cliente> clientesJson  = JsonHelper.extraerClientesJson(PATH_JSON_CLIENTES);
 		
 		//Crea los casos de prueba a comparar
 		crearDatosDePrueba();
@@ -108,7 +106,7 @@ public class TestJson {
 		List<Cliente> clientesJson;
 
 		try {
-			clientesJson = mapper.extraerClientesJson(PATH_JSON_CLIENTES);
+			clientesJson = JsonHelper.extraerClientesJson(PATH_JSON_CLIENTES);
 			
 			for (i = 0; i < clientesJson.size(); i++) {
 				System.out.println("Cliente " + (i + 1));
@@ -170,7 +168,7 @@ public class TestJson {
 	List<Categoria> categoriasJson;
 
 	try {
-		categoriasJson = mapper.extraerCategoriasJson(PATH_JSON_CATEGORIAS);
+		categoriasJson = JsonHelper.extraerCategoriasJson(PATH_JSON_CATEGORIAS);
 		System.out.println("Categorias:");
 		System.out.println("");
 		for (i = 0; i < categoriasJson.size(); i++) {
@@ -188,7 +186,7 @@ public class TestJson {
     @Test
     public void Impresion() throws IOException, ParseException {
     	
-    	this.TestImprimirCarga();
+    	TestJson.TestImprimirCarga();
     }
 
 }

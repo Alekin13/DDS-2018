@@ -20,11 +20,11 @@ public class TestTransformador {
 	@Before
 	public void transformadorEnZona(){
 		int i;
-		JsonHelper mapper = new JsonHelper();
+		new JsonHelper();
 		
 		try {
 		
-			transformadoresJson = mapper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
+			transformadoresJson = JsonHelper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
 		
 			for (i = 0; i < transformadoresJson.size(); i++) {
 				System.out.println("Registro: " + (i + 1));
@@ -35,7 +35,7 @@ public class TestTransformador {
 				System.out.println(" ------------------------");
 			}
 
-			zonasJson = mapper.extraerZonasJson(PATH_JSON_ZONA);
+			zonasJson = JsonHelper.extraerZonasJson(PATH_JSON_ZONA);
 			
 			for (i = 0; i < zonasJson.size(); i++) {
 				System.out.println("Registro: " + (i + 1));
@@ -58,8 +58,8 @@ public class TestTransformador {
 	
 	@Test
     public void TestDevolverIdTransformador() throws IOException {    
-		JsonHelper mapper = new JsonHelper();
-		transformadoresJson = mapper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
+		new JsonHelper();
+		transformadoresJson = JsonHelper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
 		assertEquals(2,transformadoresJson.get(1).getId());
 		System.out.println(" ------------------------");
 		System.out.println(" Id Transformador: " + transformadoresJson.get(1).getId());
@@ -68,9 +68,9 @@ public class TestTransformador {
 	
 	@Test
     public void TestCargarZonasYAgregarTransformadores() throws IOException{  
-		JsonHelper mapper = new JsonHelper();
-		zonasJson = mapper.extraerZonasJson(PATH_JSON_ZONA);
-		transformadoresJson = mapper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
+		new JsonHelper();
+		zonasJson = JsonHelper.extraerZonasJson(PATH_JSON_ZONA);
+		transformadoresJson = JsonHelper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
 		
 		for (Zona zona : zonasJson) {
 			System.out.println(" ZONA LEIDA ");

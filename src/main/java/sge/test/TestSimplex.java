@@ -15,7 +15,7 @@ import sge.dispositivo.DispositivoEstandar;
 import sge.dispositivo.DispositivoInteligente;
 import sge.simplexSolver.SimplexFacade;
 import sge.simplexSolver.SimplexHelper;
-import sge.test.FactoryDispositivos;
+import sge.dispositivo.FactoryDispositivos;
 public class TestSimplex {
 
 	SimplexHelper simplexHelper = new  SimplexHelper();

@@ -2,26 +2,13 @@ package sge.transformador;
 
 import java.util.List;
 import sge.usuario.Cliente;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "id", "idZona", "latitud", "longitud"})
 public class Transformador {
 
-	@JsonProperty("id")
 	private int id;
-	
-	@JsonProperty("idZona")
 	private int idZona; 
-	
-	@JsonProperty("latitud")
 	private double latitud;
-	
-	@JsonProperty("longitud")
 	private double longitud;
-	
 	private double consumo;
 	
 	public int getId() {

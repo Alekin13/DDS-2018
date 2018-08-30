@@ -1,7 +1,5 @@
 package sge.test;
 
-import static org.junit.Assert.*;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,7 +19,6 @@ public class SimplexUsandoDatosProporcionados {
 
 	@Test
 	public void test() throws FileNotFoundException, IOException {
-		FactoryDispositivos factory = new FactoryDispositivos();
 		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 		Cliente unCliente = new Cliente();
 		

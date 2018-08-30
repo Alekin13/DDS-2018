@@ -11,6 +11,8 @@ public class DispositivoEstandar extends Dispositivo {
 	private double consumoKwH;
 	private String tipoDispositivo;
 	private double cantidadHsUsoEstimada;
+	private ManejoProperties accesoAProperties= new ManejoProperties();
+	private String propiedad;
 	
 	public DispositivoEstandar() {
 	
@@ -22,6 +24,14 @@ public class DispositivoEstandar extends Dispositivo {
 		this.nombreDispositivo = nombreDispositivo;
 		this.consumoKwH = consumoKwH;
 		this.tipoDispositivo = "E";
+	}
+
+	public String getPropiedad() {
+		return propiedad;
+	}
+
+	public void setPropiedad(String propiedad) {
+		this.propiedad = propiedad;
 	}
 
 	public int getIdDispositivo() {
@@ -64,149 +74,29 @@ public class DispositivoEstandar extends Dispositivo {
 		this.cantidadHsUsoEstimada = cantidadHsUsoEstimada;
 	}	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	@JsonProperty("idDispositivo")
-	@JsonProperty("nombreDispositivo")
-	@JsonProperty("consumoKwH")
-	@JsonProperty("tipoDispositivo")
-	@JsonProperty("idFabricante")
-*/
-	
-	private double idFabricante;
+	@Override
+	public double obtenerCoeficiente() throws FileNotFoundException, IOException {
+		return this.accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
+	}
 
+	@Override
+	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerElUsoMensualMinHsFormatoDouble(this);
+	}
+	
+	@Override
+	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerElUsoMensualMaxHsFormatoDouble(this);
+	}
 
-	
-	
-	private ManejoProperties accesoAProperties= new ManejoProperties();
-
-	private String propiedad;
-	
-	public DispositivoEstandar(int idDispositivo, String nombreDispositivo, double consumoKwH, double idFabricante){
-		this.idDispositivo = idDispositivo;
-		this.nombreDispositivo = nombreDispositivo;
-		this.consumoKwH = consumoKwH;
-		this.tipoDispositivo = "E";
-		this.idFabricante = idFabricante;
+	@Override
+	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException{
+		return this.accesoAProperties.obtenerNombre(this);
 	}
 	
 	public void convertirseAInteligente() {
 		EstandarToInteligenteAdapter dispositivoAAdaptar = new EstandarToInteligenteAdapter(this.idDispositivo, this.nombreDispositivo, this.consumoKwH, this.tipoDispositivo);
 		System.out.println("Se ha Adaptado el siguiente dispositivo: " + dispositivoAAdaptar.getNombreDispositivo());
 	}
-
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public double getIdFabricante() {
-		return this.idFabricante;
-	}
-
-	
-	public void setIdFabricante(double idFabricante) {
-		this.idFabricante = idFabricante;
-	}
-
-
-	
-
-	
-	public double obtenerCoeficiente() throws FileNotFoundException, IOException {
-		return this.accesoAProperties.obtenerElCoeficienteFormatoDouble(this);
-	}
-
-	
-	public String getPropiedad() {
-		return propiedad;
-	}
-	
-	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException{
-		return this.accesoAProperties.obtenerElUsoMensualMinHsFormatoDouble(this);
-	}
-	
-	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException{
-		return this.accesoAProperties.obtenerElUsoMensualMaxHsFormatoDouble(this);
-	}
-
-	public void setPropiedad(String propiedad) {
-		this.propiedad = propiedad;
-	}
-
-	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException{
-		return this.accesoAProperties.obtenerNombre(this);
-	}	
 }

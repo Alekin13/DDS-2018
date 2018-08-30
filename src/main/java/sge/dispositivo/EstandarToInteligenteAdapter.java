@@ -9,37 +9,10 @@ public class EstandarToInteligenteAdapter extends DispositivoInteligente {
 		this.setNombreDispositivo(nombreDispositivo);
 		this.setConsumoKwH(consumoKwH);
 		this.setTipoDispositivo("A");
-		this.setIdAdaptador(idDispositivo);
+		
+		this.encenderDispositivo();
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public EstandarToInteligenteAdapter(int idDispositivo, String nombreDispositivo, double consumoKwH,
-			String tipoDispositivo, double idFabricante, double idAdaptador) {
-		
-		this.setIdDispositivo(idDispositivo);
-		this.setNombreDispositivo(nombreDispositivo);
-		this.setConsumoKwH(consumoKwH);
-		this.setTipoDispositivo("A");
-		this.setIdFabricante(idFabricante);
-		this.setIdAdaptador(idAdaptador);
-		
-	}
-	
-	
-	
-	
 
 }
 

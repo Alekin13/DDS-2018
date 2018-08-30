@@ -3,31 +3,15 @@ package sge.zona;
 import java.util.List;
 import sge.transformador.Transformador;
 import sge.usuario.Cliente;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "id", "nombre", "radio", "latitud", "longitud"})
 public class Zona {
 	
-	@JsonProperty("id")
 	private int id;
-
-	@JsonProperty("nombre")
 	private String nombre;
-	
-	@JsonProperty("radio")
 	private double radio;
-	
-	@JsonProperty("latitud")
 	private double latitud;
-	
-	@JsonProperty("longitud")
 	private double longitud;
-	
 	private List<Transformador> transformadores;
-	
 	private List<Cliente> clientes;
 
 	public Zona(int id, String nombre, double radio, double latitud, double longitud){

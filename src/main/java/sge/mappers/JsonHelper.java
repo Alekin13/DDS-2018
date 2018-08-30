@@ -130,7 +130,7 @@ public class JsonHelper {
 	            
 	        */
 	        //Instancio el cliente
-	        clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, unaFechaC, unTipoDoc,unNumDoc,unTelefono, null, null, unTelefono, null, unTelefono, unTelefono));
+	        clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, unaFechaC, unTipoDoc,unNumDoc,unTelefono, null));
 	     
 
 	    }

@@ -1,5 +1,8 @@
 package sge.dispositivo;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import sge.estados.Estado;
 
 /* Los tipos de dispositivo son por el momento:
@@ -14,6 +17,8 @@ public abstract class Dispositivo {
 	private Estado estado;
 	private double consumoKwH;
 	private String nombreDispositivo;
+	private String propiedad;
+	private int idDispositivo;
 	
 	public Estado getEstado() {
 		return this.estado;
@@ -49,37 +54,33 @@ public abstract class Dispositivo {
 		this.nombreDispositivo = nombreDispositivo;
 	}
 	
+	public String getPropiedad() {
+		return this.propiedad;
+	}
 	
-	/*
-	public int getIdDispositivo();
-	public void setIdDispositivo(int idDispositivo);
+	public int getIdDispositivo() {
+		return this.idDispositivo;
+	}
 	
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
+	}
+
+	public double obtenerCoeficiente() throws FileNotFoundException, IOException {
+		return 0;
+	}
 	
+	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException {
+		return 0;
+	}
+	
+	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException {
+		return 0;
+	}	
+	
+	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException {
+		return null;
+	}
 	
 
-	
-	public double getIdFabricante();
-	public void setIdFabricante(double idFabricante);
-	
-	
-	
-	
-
-	public void convertirseAInteligente();
-	
-	public double getIdAdaptador();
-	public void setIdAdaptador(double idAdaptador);	
-	
-	public double obtenerCoeficiente() throws FileNotFoundException, IOException;
-	
-	public double obtenerUsoMensualMinHS() throws FileNotFoundException, IOException;
-	
-	public double obtenerUsoMensualMaxHS() throws FileNotFoundException, IOException;	
-	
-	public String obtenerNombreDispositivo() throws FileNotFoundException, IOException;
-	
-	public String getPropiedad();
-}
-
-*/
 }
