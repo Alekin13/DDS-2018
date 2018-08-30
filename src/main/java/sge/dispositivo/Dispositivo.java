@@ -1,32 +1,70 @@
 package sge.dispositivo;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import sge.estados.Estado;
 
-public interface Dispositivo {
+/* Los tipos de dispositivo son por el momento:
+ * I = Inteligente
+ * A = Adaptado
+ * E = Estandar
+ */
 
+public abstract class Dispositivo {
+
+	private String tipoDispositivo;
+	private Estado estado;
+	private double consumoKwH;
+	private String nombreDispositivo;
+	
+	public Estado getEstado() {
+		return this.estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	
+	public String getTipoDispositivo() {
+		return this.tipoDispositivo;
+	}
+	
+	public void setTipoDispositivo(String tipoDispositivo) {
+		this.tipoDispositivo = tipoDispositivo;
+	}
+	
+	public boolean esInteligente() {
+		return (this.tipoDispositivo == "I");
+	}
+	
+	public double getConsumoKwH() {
+		return this.consumoKwH;
+	}
+	public void setConsumoKwH(double consumoKwH) {
+		this.consumoKwH = consumoKwH;
+	}
+
+	public String getNombreDispositivo() {
+		return this.nombreDispositivo;
+	}
+	
+	public void setNombreDispositivo(String nombreDispositivo) {
+		this.nombreDispositivo = nombreDispositivo;
+	}
+	
+	
+	/*
 	public int getIdDispositivo();
 	public void setIdDispositivo(int idDispositivo);
 	
-	public String getNombreDispositivo();
-	public void setNombreDispositivo(String nombreDispositivo);
 	
-	public double getConsumoKwH();
-	public void setConsumoKwH(double consumoKwH);
 	
-	public String getTipoDispositivo();
-	public void setTipoDispositivo(String tipoDispositivo);
+
 	
 	public double getIdFabricante();
 	public void setIdFabricante(double idFabricante);
 	
-	public Estado getEstado();
-	public void setEstado(Estado estado);
 	
 	
-	public boolean esInteligente();
+	
+
 	public void convertirseAInteligente();
 	
 	public double getIdAdaptador();
@@ -43,9 +81,5 @@ public interface Dispositivo {
 	public String getPropiedad();
 }
 
-/* Los tipos de dispositivo son por el momento:
- * I = Inteligente
- * A = Adaptado
- * E = Estandar
- * */
- 
+*/
+}

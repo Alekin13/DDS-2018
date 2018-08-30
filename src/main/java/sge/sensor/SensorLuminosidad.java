@@ -7,9 +7,4 @@ public class SensorLuminosidad extends Sensor {
 		this.setMagnitud(unaMagnitud);
 	}
 
-	public void SensorIntensidadLuminica(int unValor,String unaMagnitud){
-		this.setValor(unValor);
-		this.setMagnitud(unaMagnitud);
-	}
-
 }

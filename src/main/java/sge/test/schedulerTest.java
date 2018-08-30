@@ -1,7 +1,5 @@
 package sge.test;
 
-import org.junit.Test;
-import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;

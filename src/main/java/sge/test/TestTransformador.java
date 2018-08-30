@@ -2,12 +2,11 @@ package sge.test;
 
 import static org.junit.Assert.assertEquals;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import sge.mappers.JsonMapper;
+import sge.mappers.JsonHelper;
 import sge.transformador.Transformador;
 import sge.zona.Zona;
 
@@ -21,7 +20,7 @@ public class TestTransformador {
 	@Before
 	public void transformadorEnZona(){
 		int i;
-		JsonMapper mapper = new JsonMapper();
+		JsonHelper mapper = new JsonHelper();
 		
 		try {
 		
@@ -59,7 +58,7 @@ public class TestTransformador {
 	
 	@Test
     public void TestDevolverIdTransformador() throws IOException {    
-		JsonMapper mapper = new JsonMapper();
+		JsonHelper mapper = new JsonHelper();
 		transformadoresJson = mapper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
 		assertEquals(2,transformadoresJson.get(1).getId());
 		System.out.println(" ------------------------");
@@ -69,7 +68,7 @@ public class TestTransformador {
 	
 	@Test
     public void TestCargarZonasYAgregarTransformadores() throws IOException{  
-		JsonMapper mapper = new JsonMapper();
+		JsonHelper mapper = new JsonHelper();
 		zonasJson = mapper.extraerZonasJson(PATH_JSON_ZONA);
 		transformadoresJson = mapper.extraerTransformadorJson(PATH_JSON_TRANSFORMADOR);
 		

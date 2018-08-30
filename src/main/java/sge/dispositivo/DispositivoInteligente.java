@@ -3,11 +3,6 @@ package sge.dispositivo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import sge.properties.ManejoProperties;
 import sge.actuador.CommandActuadores;
 import sge.estados.Apagado;
@@ -16,32 +11,149 @@ import sge.estados.Estado;
 import sge.estados.ModoAhorroEnergia;
 import sge.sensor.*;
 
+public class DispositivoInteligente extends Dispositivo {
 
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "idDispositivo","nombreDispositivo", "consumoKwH", "tipoDispositivo", "idFabricante"})
-public class DispositivoInteligente implements Dispositivo {
-
-	@JsonProperty("idDispositivo")
 	private int idDispositivo;
-
-	@JsonProperty("nombreDispositivo")
 	private String nombreDispositivo;
-
-	@JsonProperty("consumoKwH")
 	private double consumoKwH;
-
-	@JsonProperty("tipoDispositivo")
 	private String tipoDispositivo;
-
-	@JsonProperty("idFabricante")
-	private double idFabricante;
-
-	//ID del Adaptador
-	private double idAdaptador;
-
-	//Estado del Dispositivo.
 	private Estado estado;
+	private double consumidoKwH; //KWxH Consumido -> Aca se guarda lo consumido cuando cambia de estado
+	private long tiempoEncendido;
+	
+	public DispositivoInteligente() {
+
+	}
+
+	public DispositivoInteligente(int idDispositivo, String nombreDispositivo, double consumoKwH, Estado estado){
+		super();
+		this.idDispositivo = idDispositivo;
+		this.nombreDispositivo = nombreDispositivo;
+		this.consumoKwH = consumoKwH;
+		this.tipoDispositivo = "I";
+		this.estado = estado;
+	}
+	
+	public int getIdDispositivo() {
+		return idDispositivo;
+	}
+	
+	public void setIdDispositivo(int idDispositivo) {
+		this.idDispositivo = idDispositivo;
+	}
+	
+	public String getNombreDispositivo() {
+		return nombreDispositivo;
+	}
+
+	public void setNombreDispositivo(String nombreDispositivo) {
+		this.nombreDispositivo = nombreDispositivo;
+	}
+
+	public double getConsumoKwH() {
+		return consumoKwH;
+	}
+	
+	public void setConsumoKwH(double consumoKwH) {
+		this.consumoKwH = consumoKwH;
+	}
+	
+	public String getTipoDispositivo() {
+		return tipoDispositivo;
+	}
+	
+	public void setTipoDispositivo(String tipoDispositivo) {
+		this.tipoDispositivo = tipoDispositivo;
+	}
+	
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	
+	public String estadoDelDispositivo() {
+		if(this.getEstado().estaEncendido())
+			return "ENCENDIDO";
+		else if(this.getEstado().estaApagado())
+			return "APAGADO";
+		else
+			return "MODOAHORRO";
+	}
+	
+	public boolean estaEncendido(Dispositivo unDispositivo) {
+		return (this.estadoDelDispositivo()=="ENCENDIDO");
+	}
+	
+	public boolean estaApagado(Dispositivo unDispositivo) {
+		return (this.estadoDelDispositivo()=="APAGADO");
+	}
+	
+	private double calcularConsumo(double consumoKwHDispositivo, long tiempoQueEstuvoEncendido) {
+		double consumoDelDispositivo = tiempoQueEstuvoEncendido * consumoKwHDispositivo;
+		this.tiempoEncendido = 0;
+		return consumoDelDispositivo;
+		//Cambiar cuando llegue la persistencia, 
+		//1. Preguntar cuanto consumieron en n horas -> se va a guardar en una tabla los rangos
+		//2. Preguntar el consumo de un periodo -> idem
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private double idFabricante;
+	private double idAdaptador;
+	
 	
 	//Deshabilitado = Dispositivo no disponible -> esto seria cuando el estandar pasa a inteligente
 	private boolean dispositivoHabilitado;
@@ -49,11 +161,6 @@ public class DispositivoInteligente implements Dispositivo {
 	//Valor Inherente del Dispositivo: Seria el atributo que hace al dispositivo(Temperatura,Encendido,Apagado,etc.)
 	private double valorInherente;
 	
-	//KWxH Consumido -> Aca se guarda lo consumido cuando cambia de estado 
-	private double consumidoKwH;
-	
-	//Esta variable va indicar cuanto tiempo estuvo encendido el dispositivo
-	private long tiempoEncendido;
 
 	//Actuador asociado al dispositivo
 	private CommandActuadores actuador;
@@ -67,10 +174,6 @@ public class DispositivoInteligente implements Dispositivo {
 	
 	private ManejoProperties accesoAProperties= new ManejoProperties();
 	
-	public DispositivoInteligente() {
-
-	}
-
 	public DispositivoInteligente(int idDispositivo, String nombreDispositivo, double consumoKwH, double idFabricante,
 			double idAdaptador, Estado estado, double valorInherente, CommandActuadores actuador, Sensor sensor ){
 		
@@ -105,45 +208,46 @@ public class DispositivoInteligente implements Dispositivo {
 	}
 
 	public void encenderDispositivo() {
-		this.setEstado(new Encendido());
-		tiempoEncendido = System.currentTimeMillis();
+		if(!this.estaEncendido(this)){
+			this.setEstado(new Encendido());
+			tiempoEncendido = System.currentTimeMillis();
+		}
 	}
 	
 	public void apagarDispositivo() {
-		this.setEstado(new Apagado());
-		consumidoKwH = consumidoKwH + this.calcularConsumo(this.getConsumoKwH(),this.tiempoEncendido);
+		if(!this.estaApagado(this)){
+			this.setEstado(new Apagado());
+			consumidoKwH = consumidoKwH + this.calcularConsumo(this.getConsumoKwH(),this.tiempoEncendido);
+		}		
 	}
 	
-	private double calcularConsumo(double consumoKwHDispositivo, long tiempoQueEstuvoEncendido) {
-		double consumoDelDispositivo = tiempoQueEstuvoEncendido * consumoKwHDispositivo;
-		this.tiempoEncendido = 0;
-		return consumoDelDispositivo;
-	}
-	
-	public void activaAhorroEnergia() {
-		if(this.getEstado().equals(new Apagado())){
+	public void activaAhorroEnergia(){
+		if(this.getEstado().equals(new Encendido())){
 			this.tiempoEncendido = System.currentTimeMillis();
+			this.setEstado(new ModoAhorroEnergia());
 		}
-		this.setEstado(new ModoAhorroEnergia());
 	}
 
 	public void apagarAhorroEnergia() {
-		this.encenderDispositivo();
+		if(this.getEstado().equals(new ModoAhorroEnergia())){
+			this.tiempoEncendido = System.currentTimeMillis();
+			this.encenderDispositivo();
+		}
 	}
 	
-	public String estadoDelDispositivo() {
-		
-		if(this.getEstado().estaEncendido())
-		{
-			return "El dispositivo se encuentra encendido";
-		}
-		else if(this.getEstado().estaApagado()){
-			return "El dispositivo se encuentra apagado";
-		}
-		else{
-			return "El dispositivo se encuentra en Modo de Ahorro";
-		}
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void cambiarTemperatura(Integer valor) {
 		//Pone el aire a 24
@@ -201,77 +305,28 @@ public class DispositivoInteligente implements Dispositivo {
 		this.sensor = sensor;
 	}
 
-	@Override
+	
 	public boolean esInteligente() {
 		return (this.tipoDispositivo == "I");
 	}
 
-	@Override
-	public int getIdDispositivo() {
-		return idDispositivo;
-	}
 
-	@Override
-	public void setIdDispositivo(int idDispositivo) {
-		this.idDispositivo = idDispositivo;
-	}
-
-	@Override
-	public String getNombreDispositivo() {
-		return nombreDispositivo;
-	}
-
-	@Override
-	public void setNombreDispositivo(String nombreDispositivo) {
-		this.nombreDispositivo = nombreDispositivo;
-	}
-
-	@Override
-	public double getConsumoKwH() {
-		return consumoKwH;
-	}
-
-	@Override
-	public void setConsumoKwH(double consumoKwH) {
-		this.consumoKwH = consumoKwH;
-	}
-
-	@Override
-	public String getTipoDispositivo() {
-		return tipoDispositivo;
-	}
-
-	@Override
-	public void setTipoDispositivo(String tipoDispositivo) {
-		this.tipoDispositivo = tipoDispositivo;
-	}
-
-	@Override
+	
 	public double getIdFabricante() {
 		return idFabricante;
 	}
 
-	@Override
+	
 	public void setIdFabricante(double idFabricante) {
 		this.idFabricante = idFabricante;
 	}
 
-	@Override
-	public Estado getEstado() {
-		return estado;
-	}
-
-	@Override
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	@Override
+	
 	public double getIdAdaptador() {
 		return idAdaptador;
 	}
 
-	@Override
+	
 	public void setIdAdaptador(double idAdaptador) {
 		this.idAdaptador = idAdaptador;
 	}
@@ -292,30 +347,11 @@ public class DispositivoInteligente implements Dispositivo {
 		return this.accesoAProperties.obtenerNombre(this);
 	}
 	
-	@Override
+	
 	public void convertirseAInteligente() {
 		System.out.println("Este dispositivo ya es inteligente. No se realizarán cambios.");
 		
 	}
+	
+	//@JsonPropertyOrder({ "idDispositivo","nombreDispositivo", "consumoKwH", "tipoDispositivo", "idFabricante"})
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

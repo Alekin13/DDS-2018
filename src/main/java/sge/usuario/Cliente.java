@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import sge.categoria.Categoria;
 import sge.dispositivo.Dispositivo;
+import sge.dispositivo.DispositivoEstandar;
+import sge.estados.Apagado;
 import sge.estados.Encendido;
 
 public class Cliente extends Usuario {
@@ -15,8 +17,9 @@ public class Cliente extends Usuario {
 	private int telefono;
 	private Categoria categoria;
 	private List<Dispositivo> dispositivos;
-	private Float consumo;
-
+	private double consumo;
+	private int puntos;
+	
 	public Cliente() {
 		super();
 	}
@@ -72,12 +75,20 @@ public class Cliente extends Usuario {
 		this.dispositivos = dispositivos;
 	}	
 
-	public Float getConsumo() {
+	public double getConsumo() {
 		return consumo;
 	}
 
-	public void setConsumo(Float consumo) {
+	public void setConsumo(double consumo) {
 		this.consumo = consumo;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
 	}
 
 	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
@@ -88,23 +99,55 @@ public class Cliente extends Usuario {
 	}
 
 	public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
-		return this.dispositivos.stream().filter(unDispositivo -> unDispositivo.getClass().equals(new Encendido())).collect(Collectors.toList()).size();
+		List<Dispositivo> dispositivosEncendidos;
+		
+		dispositivosEncendidos = this.dispositivos.stream().filter(d -> d.getEstado().equals(new Encendido())).collect(Collectors.toList());
+		return dispositivosEncendidos.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
+
 	}
 
 	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
-		int dispositivosApagados = 0;
-		dispositivosApagados = this.cantidadTotalDispositivos() - cantidadDispositivosEncencidos(dispositivos);
-		return dispositivosApagados;
+		List<Dispositivo> dispositivosApagados;
+		
+		dispositivosApagados = this.dispositivos.stream().filter(d -> d.getEstado().equals(new Apagado())).collect(Collectors.toList());
+		return dispositivosApagados.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
 	}
 
 	public int cantidadTotalDispositivos() {
 		return this.dispositivos.size();
 	}
 
-
+	public void agregarDispositivo(Dispositivo unDispositivo) {
+		if (unDispositivo.esInteligente())
+			this.sumarPuntosCliente(15);
+		dispositivos.add(unDispositivo);
+	}
+	
+	public void sumarPuntosCliente(int unaPuntuacion) {
+		this.puntos += unaPuntuacion;
+	}
+	
+	public void transformarDispositivoAInteligente(DispositivoEstandar unDispositivo) {
+		this.sumarPuntosCliente(10);
+		unDispositivo.convertirseAInteligente();
+	}
+	
+	public double consumoCliente() {
+		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum();
+	}
 	
 	
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -116,7 +159,7 @@ public class Cliente extends Usuario {
 	
 	//no chequeado
 	
-	private int puntaje;
+	
 	private double latitud;
 	private double longitud;
 	private int transformadorId;
@@ -135,7 +178,7 @@ public class Cliente extends Usuario {
 		this.telefono = valorTelefono;
 		this.categoria = valorCategoria;
 		this.dispositivos = valorDispositivos;
-		this.puntaje = valorPuntaje;
+		this.puntos = valorPuntaje;
 		this.consumo = valorConsumoMensual;
 		this.latitud = valorLatitud;
 		this.longitud = valorLongitud;
@@ -146,15 +189,7 @@ public class Cliente extends Usuario {
 		
 	
 	
-	
-	
-	public int getPuntaje() {
-		return puntaje;
-	}
 
-	public void setPuntaje(int puntaje) {
-		this.puntaje = puntaje;
-	}
 
 
 
@@ -183,23 +218,7 @@ public class Cliente extends Usuario {
 		this.longitud = longitud;
 	}
 
-	public double consumoCliente() {
-		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum();
-	}
-	
-	public void agregarDispositivo(Dispositivo unDispositivo) {
-		if (unDispositivo.esInteligente()) { puntuarUsuario(15); }
-		dispositivos.add(unDispositivo);
-	}
-	
-	public void puntuarUsuario(int unaPuntuacion) {
-		this.puntaje = this.puntaje + unaPuntuacion;
-	}
-	
-	public void transformarDispositivoAInteligente(Dispositivo unDispositivo) {
-		puntuarUsuario(10);
-		unDispositivo.convertirseAInteligente();
-	}
+	/*
 
 	public Object consumoMensual() {
 	
@@ -213,5 +232,5 @@ public class Cliente extends Usuario {
 	public void setTransformadorId(int transformadorId) {
 		this.transformadorId = transformadorId;
 	}
-	
+	*/
 }

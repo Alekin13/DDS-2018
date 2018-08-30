@@ -9,24 +9,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import sge.estados.ModoAhorroEnergia;
-import sge.estados.Apagado;
-import sge.estados.Encendido;
-import sge.estados.Estado;
-import sge.dispositivo.Dispositivo;
-import sge.dispositivo.DispositivoEstandar;
-import sge.dispositivo.DispositivoInteligente;
-import sge.sensor.Sensor;
-import sge.sensor.SensorHumedad;
-import sge.sensor.SensorLuminosidad;
-import sge.sensor.SensorMovimiento;
-import sge.sensor.SensorTemperatura;
 import sge.categoria.Categoria;
 import sge.usuario.Administrador;
 import sge.usuario.Cliente;
@@ -142,10 +128,6 @@ public class JsonHelper {
 	            	listaDePeriodos.add(periodo);
 	            }
 	            
-	            //Actuador objActuador = seleccionarActuador(actuador);
-	            DispositivoInteligente dispositivo = new DispositivoInteligente(nombre_generico,consumoKWHora,objEstado,listaDeSensores,listaDePeriodos); 
-	        	listDispositivo.add(dispositivo);
-	        }
 	        */
 	        //Instancio el cliente
 	        clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, unaFechaC, unTipoDoc,unNumDoc,unTelefono, null, null, unTelefono, null, unTelefono, unTelefono));
@@ -226,21 +208,6 @@ public class JsonHelper {
 	   	
 	   	return categorias;
 	}
-
-	private static Sensor generarSensor(int valor, String magnitud){
-		Sensor sensor = null;
-		switch (magnitud){
-		case "°C": sensor = new SensorTemperatura(valor,magnitud);
-			break;
-		case "%": sensor = new SensorHumedad(valor, magnitud);
-			break;
-		case "Lumenes": sensor = new SensorLuminosidad(valor,magnitud);
-			break;
-		case "Movimiento": sensor = new SensorMovimiento(valor,magnitud);
-			break;
-		}
-		return sensor;
-	} 
 
 	public static List<Transformador> extraerTransformadorJson(String path) throws IOException{
 		

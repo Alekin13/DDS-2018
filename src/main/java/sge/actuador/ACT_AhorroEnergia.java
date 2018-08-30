@@ -7,7 +7,6 @@ public class ACT_AhorroEnergia implements CommandActuadores {
 	@Override
 	public void ejecutarAccion(DispositivoInteligente dispositivo) {
 		dispositivo.activaAhorroEnergia();
-		
 	}	
 }
 
