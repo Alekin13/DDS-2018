@@ -7,7 +7,7 @@ import sge.dispositivo.DispositivoEstandar;
 import sge.dispositivo.EstandarToInteligenteAdapter;
 import sge.dispositivo.FactoryDispositivos;
 
-public class DispositivosInteligentesTest {
+public class TestDispositivoAdaptado {
 	
 	@Test
 	public void test01DispositivoEncendido(){

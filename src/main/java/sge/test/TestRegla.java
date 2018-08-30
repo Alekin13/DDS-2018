@@ -13,10 +13,10 @@ import sge.dispositivo.DispositivoInteligente;
 import sge.regla.*;
 
 
-public class ReglaTest {
+public class TestRegla {
 
 	@Test
-	public void pruebaConstruccionRegla() {
+	public void TestConstruccionRegla() {
 		
 		DispositivoInteligente unDispositivo = new DispositivoInteligente();
 		

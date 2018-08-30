@@ -11,7 +11,7 @@ import org.quartz.impl.StdSchedulerFactory;
 
 import sge.simplexSolver.SimplexJob;
 
-public class schedulerTest {
+public class TestScheduler {
 	 
 	 public static void main(String[] args) {
 		

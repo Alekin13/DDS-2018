@@ -15,7 +15,7 @@ import sge.dispositivo.DispositivoInteligente;
 import sge.simplexSolver.ProcesoEjecucionSimplex;
 import sge.usuario.Cliente;
 
-public class SimplexUsandoDatosProporcionados {
+public class TestSimplexUsandoDatosProporcionados {
 
 	@Test
 	public void test() throws FileNotFoundException, IOException {

@@ -14,7 +14,7 @@ import sge.dispositivo.DispositivoInteligente;
 import sge.simplexSolver.ProcesoEjecucionSimplex;
 import sge.usuario.Cliente;
 
-public class PruebaProperties {
+public class TestPruebaProperties {
 
 	@Test
 	public void test() throws FileNotFoundException, IOException {
