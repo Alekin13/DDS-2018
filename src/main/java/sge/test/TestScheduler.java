@@ -26,7 +26,7 @@ public class TestScheduler {
 						.withIdentity("SimplexJobTrigger")
 						.withSchedule(
 						    SimpleScheduleBuilder.simpleSchedule()
-							.withIntervalInSeconds(20).repeatForever())
+							.withIntervalInSeconds(5).repeatForever())
 						.build();
 				
 				scheduler.scheduleJob(jobDetalle,trigger);
