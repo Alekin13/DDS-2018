@@ -15,7 +15,7 @@ public class TestScheduler {
 	 
 	 public static void main(String[] args) {
 		
-		 try {
+/*		 try {
 	        	Scheduler scheduler = new StdSchedulerFactory().getScheduler();
 				scheduler.start();
 				
@@ -35,6 +35,6 @@ public class TestScheduler {
 			} catch (SchedulerException e) {
 				e.printStackTrace();
 			}
-	        
+	*/        
 	}
 }

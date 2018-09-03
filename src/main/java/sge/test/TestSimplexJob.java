@@ -2,6 +2,8 @@ package sge.test;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,7 @@ import sge.usuario.Cliente;
 public class TestSimplexJob {
 
 	@Test
-	public void test() throws JobExecutionException {
+	public void test() throws JobExecutionException, FileNotFoundException, IOException {
 		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
 		Cliente unCliente = new Cliente();
 		
@@ -63,9 +65,10 @@ public class TestSimplexJob {
 			
 		unCliente.setDispositivos(dispositivos);
 		
-		SimplexJob unJobSimplex = new SimplexJob(unCliente, 5);
+		SimplexJob unJobSimplex = new SimplexJob(5,unCliente);
 		
-		unJobSimplex.execute();
+		unJobSimplex.ejecutarPeticion();
+
 		
 	}
 
