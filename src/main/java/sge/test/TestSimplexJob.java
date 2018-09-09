@@ -65,7 +65,7 @@ public class TestSimplexJob {
 			
 		unCliente.setDispositivos(dispositivos);
 		
-		SimplexJob unJobSimplex = new SimplexJob(5,unCliente);
+		SimplexJob unJobSimplex = new SimplexJob(1,unCliente);
 		
 		unJobSimplex.ejecutarPeticion();
 
