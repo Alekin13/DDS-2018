@@ -1,12 +1,12 @@
-/*package sge.test;
+package sge.test;
 
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import sge.categoria.Categoria;
-import java.util.Calendar;
 import sge.usuario.Cliente;
+import java.util.Calendar;
 
 
 public class TestClientePersistence {
@@ -18,18 +18,20 @@ public class TestClientePersistence {
 		
         transaction.begin();
         
-       Cliente cliente = new Cliente("01_Gonzalo_Guini", "123456", "Gonzalo", "Guini", "Av. Rivadavia 5000", 22/04/2018, "DNI", 38993333, 1551515555, new Categoria());
-
-       //Cliente(String usuario, String password, String nombre, String apellido, String domicilio, Calendar fechaAlta, String tipoDoc, int nroDoc, int telefono, Categoria categoria)
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(Calendar.YEAR, 2018);
+        fecha.set(Calendar.MONTH, 9);
+        fecha.set(Calendar.DAY_OF_MONTH, 16);
+        Categoria r2 = new Categoria("R2", 35.32,  0.644);
+                            //Cliente(String usu, String pass, String nom, String ape, String calle, Calendar fAlta, String TDoc, int NDoc, int tel, Categoria cat)
+        Cliente cliente = new Cliente("01_Gonzalo_Guini", "123456", "Gonzalo", "Guini", "Av. Rivadavia 5000", fecha, "DNI", 38993333, 1551515555, r2);
         
         entityManager.persist(cliente);
-
         transaction.commit();
 	}
 
 }
 
-*/
 
 // EJEMPLO
 //Vehiculo nuevoVehiculo = new Vehiculo("Deconocida","Jue123");
