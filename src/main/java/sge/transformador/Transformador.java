@@ -2,10 +2,28 @@ package sge.transformador;
 
 import java.util.List;
 import sge.usuario.Cliente;
+import sge.zona.Zona;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Transformador")
 public class Transformador {
-
+	
+	@Id
+	@GeneratedValue
 	private int id;
+	
+	@OneToMany(mappedBy="Cliente")
+	private List<Cliente> clientes;
+	
+	@ManyToOne
+	private Zona zona;
+	
 	private int idZona; 
 	private double latitud;
 	private double longitud;

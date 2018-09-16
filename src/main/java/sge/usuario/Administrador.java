@@ -3,7 +3,6 @@ package sge.usuario;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
@@ -17,7 +16,7 @@ public class Administrador extends Usuario {
 	@GeneratedValue
 	private int idAdmin;
 	
-	@OneToMany(mappedBy="Administrador")
+	@OneToMany(mappedBy="Administrador") //revisar si es necesario
 	private List<Cliente> clientes;
 
 	public Administrador() {
