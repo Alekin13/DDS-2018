@@ -3,20 +3,34 @@ package sge.usuario;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import sge.categoria.Categoria;
 import sge.dispositivo.Dispositivo;
 import sge.dispositivo.DispositivoEstandar;
 import sge.estados.Apagado;
 import sge.estados.Encendido;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name="Cliente")
 public class Cliente extends Usuario {
 
+	@Id
+	private int nroDoc; //El documento es unico y es numerico, clave candidata.
+	
 	private String tipoDoc;
-	private int nroDoc;
 	private int telefono;
+	
+	@ManyToOne
 	private Categoria categoria;
+	
+	@OneToMany(mappedBy="Cliente")
 	private List<Dispositivo> dispositivos;
+	
 	private double consumo;
 	private int puntos;
 	private double latitud; //Por ahora estan, despues ver si se calcula con una Api (Entrega Web)

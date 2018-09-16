@@ -1,9 +1,18 @@
 package sge.categoria;
 
 import sge.usuario.Cliente;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+
+@Entity
 public class Categoria {
 
+	@Id
+	@GeneratedValue	
+	private int id;
+	
 	private String categoria;
 	private double cargoFijo;
 	private double cargoVariable;
