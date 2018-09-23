@@ -1,32 +1,31 @@
 package sge.categoria;
 
 import sge.usuario.Cliente;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-
-@Entity
 public class Categoria {
 
-	@Id
-	@GeneratedValue	
-	private int id;
-	
+	private Long id;
 	private String categoria;
 	private double cargoFijo;
 	private double cargoVariable;
-
-	public Categoria() {
-
-	}
 
 	public Categoria(String valorCategoria, double valorCargoFijo, double valorCargoVariable) {
 		this.categoria = valorCategoria;
 		this.cargoFijo = valorCargoFijo;
 		this.cargoVariable = valorCargoVariable;
 	}
+
+	public Categoria(Long id, String valorCategoria, double valorCargoFijo, double valorCargoVariable) {
+		this.id = id;
+		this.categoria = valorCategoria;
+		this.cargoFijo = valorCargoFijo;
+		this.cargoVariable = valorCargoVariable;
+	}
 	
+	public Categoria() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void setearCategoria(String valorCategoria, double valorCargoFijo, double valorCargoVariable) {
 		this.categoria = valorCategoria;
 		this.cargoFijo = valorCargoFijo;
@@ -45,6 +44,15 @@ public class Categoria {
 		else {unCliente.setCategoria(new Categoria("R9", 887.19, 0.851));}
 	}
 	
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public double calcularTarifa(Cliente unCliente ) {
 		this.definirCategoriaCliente( unCliente );
 		return this.getCargoVariable() * unCliente.consumoCliente() + this.getCargoFijo();

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -50,12 +51,12 @@ public class TestJson {
 		
 		fechaCliente1.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos1.add(new DispositivoInteligente("PS4 Sony Pro", 200.00f, null, null, 0, true, 0, "Consola", null));
-		cliente1 = new Cliente("001_AlejandroMattioli", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", fechaCliente1, 
+		cliente1 = new Cliente("001_AlejandroMattioli", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", LocalDateTime.now(), 
 				"DNI", new Integer(38993333), new Integer(1551515555), categoria1);
 		
 		fechaCliente2.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos2.add(new DispositivoInteligente("Planchita Gama CP9", 40.00f, null, null, 0, true, 0, "Plancha Pelo", null));
-		cliente2 = new Cliente("002_CamilaSerra", "123456", "Camila", "Serra", "Olleros 1500", fechaCliente2, 
+		cliente2 = new Cliente("002_CamilaSerra", "123456", "Camila", "Serra", "Olleros 1500", LocalDateTime.now(), 
 				"DNI", new Integer(38993332), new Integer(1545352313), categoria2);
 	
 	}
@@ -115,9 +116,10 @@ public class TestJson {
 				System.out.println("Nombre: " + clientesJson.get(i).getNombre());
 				System.out.println("Apellido: " + clientesJson.get(i).getApellido());
 				System.out.println("Domicilio: " + clientesJson.get(i).getDomicilio());
-				System.out.println("Fecha de Alta: " + clientesJson.get(i).getFecAlta().get(Calendar.DAY_OF_MONTH)
-						+ "/" + clientesJson.get(i).getFecAlta().get(Calendar.MONTH) + "/"
-						+ clientesJson.get(i).getFecAlta().get(Calendar.YEAR));
+				System.out.println("Fecha de Alta: " + clientesJson.get(i).getFecAlta()); //.get(Calendar.DAY_OF_MONTH)
+						//+ "/" + clientesJson.get(i).getFecAlta().get(Calendar.MONTH) + "/"
+						// + clientesJson.get(i).getFecAlta().get(Calendar.YEAR));
+						
 				System.out.println(
 						"Documento: " + clientesJson.get(i).getTipoDoc() + " " + clientesJson.get(i).getNroDoc());
 				System.out.println("Telefono: " + clientesJson.get(i).getTelefono());
@@ -153,9 +155,9 @@ public class TestJson {
 			System.out.println("Apellido: " + administradoresJson.get(i).getApellido());
 			System.out.println("Domicilio: " + administradoresJson.get(i).getDomicilio());
 			System.out.println(
-					"Fecha de Alta: " + administradoresJson.get(i).getFecAlta().get(Calendar.DAY_OF_MONTH) + "/"
-							+ administradoresJson.get(i).getFecAlta().get(Calendar.MONTH) + "/"
-							+ administradoresJson.get(i).getFecAlta().get(Calendar.YEAR));
+					"Fecha de Alta: " + administradoresJson.get(i).getFecAlta());//.get(Calendar.DAY_OF_MONTH) + "/"
+							//+ administradoresJson.get(i).getFecAlta().get(Calendar.MONTH) + "/"
+							//+ administradoresJson.get(i).getFecAlta().get(Calendar.YEAR));
 			System.out.println("");
 		}
 		System.out.println("");

@@ -1,20 +1,22 @@
 package sge.usuario;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 
 public abstract class Usuario {
 	
+	private Long id;
 	private String usuario;
 	private String password;
 	private String nombre;
 	private String apellido;
 	private String domicilio;
-	private Calendar fecAlta;
+	private LocalDateTime fecAlta;
 
 	public Usuario() {
 	}
 	
-	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, Calendar fechaAlta) {
+	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fechaAlta) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
@@ -22,6 +24,15 @@ public abstract class Usuario {
 		this.apellido = apellido;
 		this.domicilio = domicilio;
 		this.fecAlta = fechaAlta;
+	}
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getUsuario() {
@@ -64,11 +75,11 @@ public abstract class Usuario {
 		this.domicilio = domicilio;
 	}
 
-	public Calendar getFecAlta() {
+	public LocalDateTime getFecAlta() {
 		return fecAlta;
 	}
 
-	public void setFecAlta(Calendar fecAlta) {
+	public void setFecAlta(LocalDateTime fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 	
