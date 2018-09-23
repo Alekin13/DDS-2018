@@ -13,7 +13,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import sge.categoria.Categoria;
+import sge.Entidades.Categoria;
 import sge.dispositivo.Dispositivo;
 import sge.mappers.JsonHelper;
 import sge.usuario.Administrador;

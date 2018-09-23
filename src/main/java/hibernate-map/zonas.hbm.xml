@@ -5,11 +5,12 @@
 
 <hibernate-mapping>
 	
-	<class name="sge.Entidades.Categoria" table= "CATEGORIAS">
+	<class name="sge.Entidades.Zona" table= "ZONAS">
 		<id name="id" column="ID"><generator class="native"></generator></id>
-		<property name="categoria" 		column="CATEGORIA"></property>
-		<property name="cargoFijo" 		column="CARGO_FIJO"></property>
-		<property name="cargoVariable" 	column="CRAGO_VARIABLE"></property>
+		<property name="nombre" 		column="NOMBRE"></property>
+		<property name="radio" 			column="RADIO"></property>
+		<property name="latitud" 		column="LATITUD"></property>
+		<property name="longitud" 		column="LONGITUD"></property>
 
 	</class>
 	
