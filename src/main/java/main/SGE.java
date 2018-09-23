@@ -1,6 +1,6 @@
 package main;
 import java.util.List;
-import sge.Entidades.Categoria;
+import sge.categoria.Categoria;
 import sge.usuario.Administrador;
 import sge.usuario.Cliente;
 import sge.actuador.CommandActuadores;

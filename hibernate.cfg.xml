@@ -34,7 +34,6 @@
 
 		<mapping resource="hibernate-map/clientes.hbm.xml"/>
 		<mapping resource="hibernate-map/categorias.hbm.xml"/>
-		<mapping resource="hibernate-map/zonas.hbm.xml"/>
 		       
     </session-factory>
 

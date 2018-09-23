@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
-import sge.Entidades.Categoria;
+import sge.categoria.Categoria;
 import sge.dispositivo.Dispositivo;
 import sge.dispositivo.DispositivoEstandar;
 import sge.estados.Apagado;

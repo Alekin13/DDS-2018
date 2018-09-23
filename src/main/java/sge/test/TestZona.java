@@ -4,9 +4,9 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import org.junit.Test;
 
-import sge.Entidades.Transformador;
+import sge.transformador.Transformador;
 import sge.usuario.Cliente;
-import sge.Entidades.Zona;
+import sge.zona.Zona;
 
 
 public class TestZona {

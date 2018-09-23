@@ -7,7 +7,7 @@ import java.util.List;
 import org.hibernate.Session;
 import sge.persistencia.HibernateUtils;
 import sge.usuario.Cliente;
-import sge.Entidades.Categoria;
+import sge.categoria.Categoria;
 import sge.mappers.JsonHelper;
 
 public class CapaPersistencia {

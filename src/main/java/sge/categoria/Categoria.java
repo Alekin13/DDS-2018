@@ -1,4 +1,4 @@
-package sge.Entidades;
+package sge.categoria;
 
 import sge.usuario.Cliente;
 
@@ -8,10 +8,6 @@ public class Categoria {
 	private String categoria;
 	private double cargoFijo;
 	private double cargoVariable;
-
-	public Categoria() {
-	
-	}
 
 	public Categoria(String valorCategoria, double valorCargoFijo, double valorCargoVariable) {
 		this.categoria = valorCategoria;
@@ -26,6 +22,9 @@ public class Categoria {
 		this.cargoVariable = valorCargoVariable;
 	}
 	
+	public Categoria() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public void setearCategoria(String valorCategoria, double valorCargoFijo, double valorCargoVariable) {
 		this.categoria = valorCategoria;
@@ -44,6 +43,7 @@ public class Categoria {
 		else if( unCliente.consumoCliente() <= 1400 )	{unCliente.setCategoria(new Categoria("R8", 545.96, 0.851));}
 		else {unCliente.setCategoria(new Categoria("R9", 887.19, 0.851));}
 	}
+	
 	
 	public Long getId() {
 		return id;
@@ -82,4 +82,5 @@ public class Categoria {
 		this.cargoVariable = cargoVariable;
 	}
 
+	
 }

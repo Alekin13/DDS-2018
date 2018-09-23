@@ -1,7 +1,18 @@
 package sge.test;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
+
+import sge.mappers.JsonHelper;
 import sge.persistencia.CapaPersistencia;
+import sge.usuario.Cliente;
 
 public class TestPersistenciaCliente {
 
