@@ -1,6 +1,6 @@
 package sge.test;
 
-//import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -12,7 +12,7 @@ import java.util.Calendar;
 public class TestClientePersistence {
 	
 	public static void main(String[] args) {
-/*		
+		
 		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 		EntityTransaction transaction = entityManager.getTransaction();
 		
@@ -29,8 +29,8 @@ public class TestClientePersistence {
         entityManager.persist(cliente);
         transaction.commit();
 	}
-*/
-	
+
+}
 
 
 // EJEMPLO
@@ -40,8 +40,7 @@ public class TestClientePersistence {
 //unRobo.setVehiculo(nuevoVehiculo);
 //entityManager.persist(unRobo);
 
-	}
-}
+
 
 
     

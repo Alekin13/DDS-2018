@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -131,7 +130,7 @@ public class JsonHelper {
 	            
 	        */
 	        //Instancio el cliente
-	        clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, LocalDateTime.now(), unTipoDoc,unNumDoc,unTelefono, null));
+	        clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, unaFechaC, unTipoDoc,unNumDoc,unTelefono, null));
 	     
 
 	    }
@@ -162,8 +161,8 @@ public class JsonHelper {
 	        String unaFecha = gsonObj.get("fechaAlta").getAsString();
 	        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	        Date date = sdf.parse(unaFecha);
-	        LocalDateTime unaFechaC = LocalDateTime.now();//Calendar.getInstance();
-	        //unaFechaC.setTime(date);
+	        Calendar unaFechaC = Calendar.getInstance();
+	        unaFechaC.setTime(date);
 	        administrador.setFecAlta(unaFechaC);	        
 	        
 	        administradores.add(administrador);
@@ -192,9 +191,8 @@ public class JsonHelper {
 		String jsonCategorias = JsonHelper.readFile(path);
 		JsonParser parser = new JsonParser();
 		List<Categoria> categorias = new ArrayList<Categoria>();
-		JsonObject gsonArr = parser.parse(jsonCategorias).getAsJsonObject();
-		JsonArray gsonObj1 = gsonArr.get("categorias").getAsJsonArray();
-	   	
+	   	JsonArray gsonObj1 = parser.parse(jsonCategorias).getAsJsonArray();
+
 	   	for (JsonElement obj : gsonObj1) {
 	   		
 	        JsonObject gsonObj = obj.getAsJsonObject();

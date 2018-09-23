@@ -1,6 +1,5 @@
 package sge.usuario;
 
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,23 +8,41 @@ import sge.dispositivo.Dispositivo;
 import sge.dispositivo.DispositivoEstandar;
 import sge.estados.Apagado;
 import sge.estados.Encendido;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name="Cliente")
 public class Cliente extends Usuario {
 
+	@Id
 	private int nroDoc; //El documento es unico y es numerico, clave candidata.
+	
 	private String tipoDoc;
 	private int telefono;
+	
+	@ManyToOne
 	private Categoria categoria;
+	
+	@OneToMany(mappedBy="Cliente")
 	private List<Dispositivo> dispositivos;
+	
 	private double consumo;
 	private int puntos;
 	private double latitud; //Por ahora estan, despues ver si se calcula con una Api (Entrega Web)
 	private double longitud; //Por ahora estan, despues ver si se calcula con una Api (Entrega Web)
 	private int transformadorId;
 	
-
+	public Cliente() {
+		super();
+	}
+	
 	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio,
-			LocalDateTime fechaAlta, String tipoDoc, int nroDoc, int telefono, Categoria categoria) {
+			Calendar fechaAlta, String tipoDoc, int nroDoc, int telefono, Categoria categoria) {
 		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
 		this.tipoDoc = tipoDoc;
 		this.nroDoc = nroDoc;
@@ -33,10 +50,6 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 	}
 	
-	public Cliente() {
-		// TODO Auto-generated constructor stub
-	}
-
 	public enum tipoDoc { DNI, CI, LE, LC }
 
 	public String getTipoDoc() {
