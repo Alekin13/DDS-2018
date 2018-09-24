@@ -8,7 +8,7 @@ public abstract class Sensor {
 
 	private double valor;
 	private String magnitud;
-	private DispositivoInteligente dispositivo;
+	private DispositivoInteligente idDispositivo;
 	private List<Regla> reglas;
 
 	public Sensor() {
@@ -34,11 +34,11 @@ public abstract class Sensor {
 	}
 	
 	public DispositivoInteligente getDispositivo() {
-		return dispositivo;
+		return idDispositivo;
 	}
 
 	public void setDispositivo(DispositivoInteligente dispositivo) {
-		this.dispositivo = dispositivo;
+		this.idDispositivo = dispositivo;
 	}
 
 	public List<Regla> getReglas() {
@@ -64,7 +64,7 @@ public abstract class Sensor {
 	public Sensor determinarMagnitud(int valor, String magnitud){
 		Sensor sensor = null;
 		switch (magnitud){
-		case "°C": sensor = new SensorTemperatura(valor,magnitud);
+		case "ï¿½C": sensor = new SensorTemperatura(valor,magnitud);
 			break;
 		case "%": sensor = new SensorHumedad(valor, magnitud);
 			break;

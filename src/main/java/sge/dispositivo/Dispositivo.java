@@ -11,15 +11,19 @@ import sge.estados.Estado;
  * E = Estandar
  */
 
-public abstract class Dispositivo {
+public class Dispositivo {
 
 	private String tipoDispositivo;
 	private Estado estado;
 	private double consumoKwH;
 	private String nombreDispositivo;
 	private String propiedad;
-	private int idDispositivo;
+	private int dispositivo;
+	private String idDispositivo;
 	
+	public void setIdDispositivo(String idDispositivo) {
+		this.idDispositivo = idDispositivo;
+	}
 	public Estado getEstado() {
 		return this.estado;
 	}
@@ -59,11 +63,11 @@ public abstract class Dispositivo {
 	}
 	
 	public int getIdDispositivo() {
-		return this.idDispositivo;
+		return this.dispositivo;
 	}
 	
 	public void setIdDispositivo(int idDispositivo) {
-		this.idDispositivo = idDispositivo;
+		this.dispositivo = idDispositivo;
 	}
 
 	public double obtenerCoeficiente() throws FileNotFoundException, IOException {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+	"-//Hibernate/Hibernate Mapping DTD//EN"  
+ 	"http://hibernate.org/dtd/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+	
+	<class name="sge.sensor.Sensor" table= "SENSORES">
+		<id name="id" column="ID"><generator class="native"></generator></id>
+		<property name="valor" 		column="VALOR"></property>
+		<property name="magnitud" 	column="MAGNITUD"></property>
+		
+		<set role="key" table="DISPOSITIVOS">
+			<key>
+				<column name="idDispositivo" not-null="true" />
+			</key>
+			<one-to-many class="sge.dispositivo.Dispositivo"/>
+		</set>
+
+        
+        <many-to-one name="reglas" 	column="REGLAS" not-null="true"/>
+	</class>
+	
+</hibernate-mapping>
