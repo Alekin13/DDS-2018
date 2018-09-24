@@ -14,11 +14,11 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import sge.categoria.Categoria;
+import sge.Entidades.Categoria;
 import sge.usuario.Administrador;
 import sge.usuario.Cliente;
-import sge.transformador.Transformador;
-import sge.zona.Zona;
+import sge.Entidades.Transformador;
+import sge.Entidades.Zona;
 
 public class JsonHelper {
 

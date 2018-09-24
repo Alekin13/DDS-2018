@@ -1,8 +1,8 @@
-package sge.transformador;
+package sge.Entidades;
 
 import java.util.List;
 import sge.usuario.Cliente;
-import sge.zona.Zona;
+import sge.Entidades.Zona;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;

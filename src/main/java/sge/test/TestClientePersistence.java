@@ -4,7 +4,7 @@ package sge.test;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import sge.categoria.Categoria;
+import sge.Entidades.Categoria;
 import sge.usuario.Cliente;
 import java.util.Calendar;
 

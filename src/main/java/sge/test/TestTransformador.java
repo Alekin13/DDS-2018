@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sge.mappers.JsonHelper;
-import sge.transformador.Transformador;
-import sge.zona.Zona;
+import sge.Entidades.Transformador;
+import sge.Entidades.Zona;
 
 public class TestTransformador {
 

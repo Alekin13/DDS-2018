@@ -1,7 +1,7 @@
-package sge.zona;
+package sge.Entidades;
 
 import java.util.List;
-import sge.transformador.Transformador;
+import sge.Entidades.Transformador;
 import sge.usuario.Cliente;
 
 public class Zona {
