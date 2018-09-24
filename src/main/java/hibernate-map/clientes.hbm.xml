@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC  
+	"-//Hibernate/Hibernate Mapping DTD//EN"  
+ 	"http://hibernate.org/dtd/hibernate-mapping.dtd">
+
+<hibernate-mapping>
+	
+	<class name="sge.usuario.Cliente" table= "CLIENTES">
+		
+		<id name="id"><generator class="native"></generator></id>
+		<property name="usuario" 		column="USUARIO"></property>
+		<property name="password" 		column="PASSWORD"/>
+		<property name="nombre" 		column="NOMBRE"/>
+		<property name="apellido" 		column="APELLIDO"/>
+		<property name="fecAlta" 		column="FEC_ALTA"/> 
+		<property name="domicilio" 		column="DOMICILIO"/>
+		<property name="telefono" 		column="TELEFONO"/>
+		<property name="tipoDoc" 		column="TIPO_DOC"/>
+		<many-to-one name="categoria" 	column="CATEGORIA" not-null="true"/>
+		<property name="nroDoc" 		column="NRO_DOC"/>
+		<property name="latitud" 		column="LATITUD"/>
+		<property name="longitud" 		column="LONGITUD"/>
+		<property name="puntos" 		column="PUNTOS"/>
+
+	</class>
+</hibernate-mapping>

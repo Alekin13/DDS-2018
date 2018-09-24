@@ -1,5 +1,6 @@
 package sge.usuario;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -24,7 +25,7 @@ public class Administrador extends Usuario {
 	}
 
 	public Administrador(String usuario, String password, String nombre, String apellido, String domicilio, 
-			Calendar fechaAlta, int valorId) { 
+			LocalDateTime fechaAlta, int valorId) { 
 		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
 		this.idAdmin = valorId;
 	}
