@@ -1,6 +1,6 @@
 package sge.estados;
 
-public class ModoAhorroEnergia implements Estado{
+public class ModoAhorroEnergia extends Estado{
 
 	@Override
 	public boolean estaEncendido() {

@@ -3,6 +3,14 @@ package sge.dispositivo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import sge.estados.Estado;
 
 /* Los tipos de dispositivo son por el momento:
@@ -11,17 +19,46 @@ import sge.estados.Estado;
  * E = Estandar
  */
 
+@Entity
+@Table(name = "DISPOSITIVOS")
 public class Dispositivo {
-
-	private String tipoDispositivo;
+	@ManyToOne(cascade = CascadeType.ALL, optional=true)
 	private Estado estado;
-	private double consumoKwH;
-	private String nombreDispositivo;
-	private String propiedad;
-	private int dispositivo;
-	private String idDispositivo;
 	
-	public void setIdDispositivo(String idDispositivo) {
+	private String propiedad;
+	
+	@Id
+	@GeneratedValue
+	private Long idDispositivo;
+	private String nombreDispositivo;
+	private String equipoConcreto;
+	private String tipoDispositivo;
+	private String bajoConsumo;
+	private double consumoKwH;
+	
+	
+//	public int getDispositivo() {
+//		return dispositivo;
+//	}
+//	public void setDispositivo(int dispositivo) {
+//		this.dispositivo = dispositivo;
+//	}
+	public String getEquipoConcreto() {
+		return equipoConcreto;
+	}
+	public void setEquipoConcreto(String equipoConcreto) {
+		this.equipoConcreto = equipoConcreto;
+	}
+	public String getBajoConsumo() {
+		return bajoConsumo;
+	}
+	public void setBajoConsumo(String bajoConsumo) {
+		this.bajoConsumo = bajoConsumo;
+	}
+	public void setPropiedad(String propiedad) {
+		this.propiedad = propiedad;
+	}
+	public void setIdDispositivo(Long idDispositivo) {
 		this.idDispositivo = idDispositivo;
 	}
 	public Estado getEstado() {
@@ -62,13 +99,13 @@ public class Dispositivo {
 		return this.propiedad;
 	}
 	
-	public int getIdDispositivo() {
-		return this.dispositivo;
-	}
-	
-	public void setIdDispositivo(int idDispositivo) {
-		this.dispositivo = idDispositivo;
-	}
+//	public int getIdDispositivo() {
+//		return this.idDispositivo;
+//	}
+//	
+//	public void setIdDispositivo(int idDispositivo) {
+//		this.idDispositivo = idDispositivo;
+//	}
 
 	public double obtenerCoeficiente() throws FileNotFoundException, IOException {
 		return 0;

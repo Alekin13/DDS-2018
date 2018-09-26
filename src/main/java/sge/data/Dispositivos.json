@@ -1,0 +1,67 @@
+{"dispositivos":
+	[	
+	{
+		"nombreDispositivo": "Aire Acondicionado",
+		"equipoConcreto": "3500 frigorias",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "No",
+		"consumoKwH": "1.613"
+	},
+	
+	{
+		"nombreDispositivo": "Aire Acondicionado",
+		"equipoConcreto": "2200 frigorias",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "1.013"
+	},
+	
+	{
+		"nombreDispositivo": "Televisor",
+		"equipoConcreto": "Tubo fluorescente de 21",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.075"
+	},
+	
+	{
+		"nombreDispositivo": "Televisor",
+		"equipoConcreto": "Tubo fluorescente de 29 a 34",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.175"
+	},
+	
+	{
+		"nombreDispositivo": "Televisor",
+		"equipoConcreto": "LCD de 40",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.18"
+	},
+	
+	{
+		"nombreDispositivo": "Televisor",
+		"equipoConcreto": "LED de 24",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.04"
+	},
+	
+	{
+		"nombreDispositivo": "Televisor",
+		"equipoConcreto": "LED de 32",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.055"
+	},
+	
+	{
+		"nombreDispositivo": "Televisor",
+		"equipoConcreto": "LED de 40",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.08"
+	}
+]
+}

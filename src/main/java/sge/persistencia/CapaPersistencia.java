@@ -4,10 +4,17 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 import org.hibernate.Session;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
+
 import sge.persistencia.HibernateUtils;
 import sge.usuario.Cliente;
 import sge.Entidades.Categoria;
+import sge.dispositivo.Dispositivo;
 import sge.mappers.JsonHelper;
 
 public class CapaPersistencia {
@@ -65,5 +72,36 @@ public class CapaPersistencia {
         return categoria.getCategoria();		
 	}
 	
+	public void cargarTablaDispositivos(String path) throws ParseException{
+		
+		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+    	
+		try {
+			dispositivos = JsonHelper.extraerDispositivosJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de Categorias");
+			e.printStackTrace();
+		}
+    	
+		for (Dispositivo dispositivo : dispositivos) {
+			persistirDispositivo(dispositivo);
+		}
+		
+	}
+	
+	public void persistirDispositivo(Dispositivo dispositivo) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaccion = entityManager.getTransaction();
+		
+		transaccion.begin();
+		entityManager.persist(dispositivo);
+		
+		transaccion.commit();
+//		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        session.save(dispositivo);
+//        session.getTransaction().commit();
+//        return dispositivo.getNombreDispositivo();		
+	}
 
 }

@@ -1,6 +1,6 @@
 package sge.estados;
 
-public class Apagado implements Estado {
+public class Apagado extends Estado {
 
 	@Override
 	public boolean estaEncendido() {

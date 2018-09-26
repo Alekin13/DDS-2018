@@ -19,6 +19,7 @@ import sge.usuario.Administrador;
 import sge.usuario.Cliente;
 import sge.Entidades.Transformador;
 import sge.Entidades.Zona;
+import sge.dispositivo.Dispositivo;
 
 public class JsonHelper {
 
@@ -265,4 +266,30 @@ public class JsonHelper {
 		return null;
 	}
 
+	
+	public static List<Dispositivo> extraerDispositivosJson(String path) throws IOException{
+		String jsonDispositivos = JsonHelper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+		JsonObject gsonObj1 = parser.parse(jsonDispositivos).getAsJsonObject();
+		JsonArray gsonArr = gsonObj1.get("dispositivos").getAsJsonArray();
+		
+	   	for (JsonElement obj : gsonArr) {
+	   		
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        Dispositivo dispositivo = new Dispositivo();
+	        //dispositivo.setIdDispositivo(gsonObj.get("id").getAsString());
+	        dispositivo.setNombreDispositivo(gsonObj.get("nombreDispositivo").getAsString());
+	        dispositivo.setEquipoConcreto(gsonObj.get("equipoConcreto").getAsString());
+	        dispositivo.setTipoDispositivo(gsonObj.get("tipoDispositivo").getAsString());
+	        dispositivo.setBajoConsumo(gsonObj.get("bajoConsumo").getAsString());
+	        dispositivo.setConsumoKwH(gsonObj.get("consumoKwH").getAsDouble());
+	        
+	        dispositivos.add(dispositivo);
+
+	   	}
+	   	
+	   	return dispositivos;
+	}
 }
