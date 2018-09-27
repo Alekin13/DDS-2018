@@ -7,42 +7,45 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ESTADOS")
-public abstract class Estado {
+public class Estado {
 
 	@Id
 	@GeneratedValue
-	private String idEstado;
-	private String encendido;
-	private String apagado;
-	private String ahorroEnergia;
+	private Long idEstado;
+	private int encendido;
+	private int apagado;
+	private int ahorroEnergia;
 	private String descripcion;
 	
 	
-	public String getEncendido() {
+	public int getEncendido() {
 		return encendido;
 	}
-	public void setEncendido(String encendido) {
+	
+	public void setEncendido(int encendido) {
 		this.encendido = encendido;
 	}
-	public String getApagado() {
+	
+	public int getApagado() {
 		return apagado;
 	}
-	public void setApagado(String apagado) {
+	
+	public void setApagado(int apagado) {
 		this.apagado = apagado;
 	}
-	public String getAhorroEnergia() {
+	public int getAhorroEnergia() {
 		return ahorroEnergia;
 	}
-	public void setAhorroEnergia(String ahorroEnergia) {
+	public void setAhorroEnergia(int ahorroEnergia) {
 		this.ahorroEnergia = ahorroEnergia;
 	}
 	public boolean estaEncendido() {
 		return false;
 	}
-	public String getIdEstado() {
+	public Long getIdEstado() {
 		return idEstado;
 	}
-	public void setIdEstado(String idEstado) {
+	public void setIdEstado(Long idEstado) {
 		this.idEstado = idEstado;
 	}
 	public String getDescripcion() {

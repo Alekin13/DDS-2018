@@ -49,15 +49,15 @@ public class TestJson {
 	
 	public void crearDatosDePrueba() throws Exception{
 		
-		fechaCliente1.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
+//		fechaCliente1.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos1.add(new DispositivoInteligente("PS4 Sony Pro", 200.00f, null, null, 0, true, 0, "Consola", null));
-		cliente1 = new Cliente("001_AlejandroMattioli", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", LocalDateTime.now(), 
-				"DNI", new Integer(38993333), new Integer(1551515555), categoria1);
+//		cliente1 = new Cliente("001_AlejandroMattioli", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", LocalDateTime.now(), 
+//				"DNI", new Integer(38993333), new Integer(1551515555), categoria1);
 		
-		fechaCliente2.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
+//		fechaCliente2.setTime(new SimpleDateFormat("dd/MM/yyyy").parse("22/04/2018"));
 		//dispositivos2.add(new DispositivoInteligente("Planchita Gama CP9", 40.00f, null, null, 0, true, 0, "Plancha Pelo", null));
-		cliente2 = new Cliente("002_CamilaSerra", "123456", "Camila", "Serra", "Olleros 1500", LocalDateTime.now(), 
-				"DNI", new Integer(38993332), new Integer(1545352313), categoria2);
+//		cliente2 = new Cliente("002_CamilaSerra", "123456", "Camila", "Serra", "Olleros 1500", LocalDateTime.now(), 
+//				"DNI", new Integer(38993332), new Integer(1545352313), categoria2);
 	
 	}
 

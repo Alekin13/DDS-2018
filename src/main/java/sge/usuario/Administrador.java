@@ -25,7 +25,7 @@ public class Administrador extends Usuario {
 	}
 
 	public Administrador(String usuario, String password, String nombre, String apellido, String domicilio, 
-			LocalDateTime fechaAlta, int valorId) { 
+			String fechaAlta, int valorId) { 
 		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
 		this.idAdmin = valorId;
 	}

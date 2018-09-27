@@ -17,9 +17,11 @@ import com.google.gson.JsonParser;
 import sge.Entidades.Categoria;
 import sge.usuario.Administrador;
 import sge.usuario.Cliente;
+import sge.usuario.Usuario;
 import sge.Entidades.Transformador;
 import sge.Entidades.Zona;
 import sge.dispositivo.Dispositivo;
+import sge.estados.Estado;
 
 public class JsonHelper {
 
@@ -132,7 +134,7 @@ public class JsonHelper {
 	            
 	        */
 	        //Instancio el cliente
-	        clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, LocalDateTime.now(), unTipoDoc,unNumDoc,unTelefono, null));
+	        //clientes.add(new Cliente(unUsuario, unaContrasena, unNombre, unApellido, unDomicilio, LocalDateTime.now(), unTipoDoc,unNumDoc,unTelefono, null));
 	     
 
 	    }
@@ -165,7 +167,7 @@ public class JsonHelper {
 	        Date date = sdf.parse(unaFecha);
 	        LocalDateTime unaFechaC = LocalDateTime.now();//Calendar.getInstance();
 	        //unaFechaC.setTime(date);
-	        administrador.setFecAlta(unaFechaC);	        
+	        //administrador.setFecAlta(unaFechaC);	        
 	        
 	        administradores.add(administrador);
 
@@ -279,12 +281,14 @@ public class JsonHelper {
 	        JsonObject gsonObj = obj.getAsJsonObject();
 	
 	        Dispositivo dispositivo = new Dispositivo();
-	        //dispositivo.setIdDispositivo(gsonObj.get("id").getAsString());
+	        
 	        dispositivo.setNombreDispositivo(gsonObj.get("nombreDispositivo").getAsString());
 	        dispositivo.setEquipoConcreto(gsonObj.get("equipoConcreto").getAsString());
 	        dispositivo.setTipoDispositivo(gsonObj.get("tipoDispositivo").getAsString());
 	        dispositivo.setBajoConsumo(gsonObj.get("bajoConsumo").getAsString());
-	        dispositivo.setConsumoKwH(gsonObj.get("consumoKwH").getAsDouble());
+	        dispositivo.setPropiedad(gsonObj.get("consumoKwH").getAsString());
+	        dispositivo.setUsomensualminhs(gsonObj.get("usomensualminhs").getAsDouble());
+	        dispositivo.setUsomensualmaxhs(gsonObj.get("usomensualmaxhs").getAsDouble());
 	        
 	        dispositivos.add(dispositivo);
 
@@ -292,4 +296,62 @@ public class JsonHelper {
 	   	
 	   	return dispositivos;
 	}
+	
+	public static List<Estado> extraerEstadosJson(String path) throws IOException{
+		String jsonEstados = JsonHelper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Estado> estados = new ArrayList<Estado>();
+		JsonObject gsonObj1 = parser.parse(jsonEstados).getAsJsonObject();
+		JsonArray gsonArr = gsonObj1.get("estados").getAsJsonArray();
+		
+	   	for (JsonElement obj : gsonArr) {
+	   		
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        Estado estado = new Estado();
+	        
+	        estado.setEncendido(gsonObj.get("encendido").getAsInt());
+	        estado.setApagado(gsonObj.get("apagado").getAsInt());
+	        estado.setAhorroEnergia(gsonObj.get("ahorroEnergia").getAsInt());
+	        estado.setDescripcion(gsonObj.get("descripcion").getAsString());
+	        
+	        estados.add(estado);
+
+	   	}
+	   	
+	   	return estados;
+	}
+	
+	public static List<Usuario> extraerUsuariosJson(String path) throws IOException{
+		String jsonUsuarios = JsonHelper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		JsonObject gsonObj1 = parser.parse(jsonUsuarios).getAsJsonObject();
+		JsonArray gsonArr = gsonObj1.get("usuarios").getAsJsonArray();
+		
+	   	for (JsonElement obj : gsonArr) {
+	   		
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        Usuario usuario = new Usuario();
+	        
+	        usuario.setUsuario(gsonObj.get("usuario").getAsString());
+	        usuario.setPassword(gsonObj.get("password").getAsString());
+	        usuario.setNombre(gsonObj.get("nombre").getAsString());
+	        usuario.setApellido(gsonObj.get("apellido").getAsString());
+	        usuario.setDomicilio(gsonObj.get("domicilio").getAsString());
+	        usuario.setRol(gsonObj.get("rol").getAsString());
+	        usuario.setFecAlta(gsonObj.get("fechaAlta").getAsString());
+	        usuario.setTipoDoc(gsonObj.get("tipoDoc").getAsString());
+	        usuario.setNroDoc(gsonObj.get("nroDoc").getAsString());
+	        usuario.setTelefono(gsonObj.get("telefono").getAsInt());
+	        
+	        usuarios.add(usuario);
+
+	   	}
+	   	
+	   	return usuarios;
+	}
+	
+	
 }

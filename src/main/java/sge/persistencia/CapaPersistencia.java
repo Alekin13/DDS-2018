@@ -13,8 +13,10 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import sge.persistencia.HibernateUtils;
 import sge.usuario.Cliente;
+import sge.usuario.Usuario;
 import sge.Entidades.Categoria;
 import sge.dispositivo.Dispositivo;
+import sge.estados.Estado;
 import sge.mappers.JsonHelper;
 
 public class CapaPersistencia {
@@ -79,7 +81,7 @@ public class CapaPersistencia {
 		try {
 			dispositivos = JsonHelper.extraerDispositivosJson(path);
 		} catch (IOException e) {
-			System.out.println("Error en la carga de Categorias");
+			System.out.println("Error en la carga de DISPOSITIVOS");
 			e.printStackTrace();
 		}
     	
@@ -97,11 +99,61 @@ public class CapaPersistencia {
 		entityManager.persist(dispositivo);
 		
 		transaccion.commit();
-//		Session session = HibernateUtils.getSessionFactory().getCurrentSession();
-//        session.beginTransaction();
-//        session.save(dispositivo);
-//        session.getTransaction().commit();
-//        return dispositivo.getNombreDispositivo();		
 	}
+	
+	public void cargarTablaEstados(String path) throws ParseException{
+		
+		List<Estado> estados = new ArrayList<Estado>();
+    	
+		try {
+			estados = JsonHelper.extraerEstadosJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de ESTADOS");
+			e.printStackTrace();
+		}
+    	
+		for (Estado estado : estados) {
+			persistirEstados(estado);
+		}
+		
+	}
+	
+	public void persistirEstados(Estado estado) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaccion = entityManager.getTransaction();
+		
+		transaccion.begin();
+		entityManager.persist(estado);
+		
+		transaccion.commit();
+	}
+	
+	public void cargarTablaUsuarios(String path) throws ParseException{
+		
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+    	
+		try {
+			usuarios = JsonHelper.extraerUsuariosJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de USUARIOS");
+			e.printStackTrace();
+		}
+    	
+		for (Usuario usuario : usuarios) {
+			persistirUsuarios(usuario);
+		}
+		
+	}
+	
+	public void persistirUsuarios(Usuario usuario) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaccion = entityManager.getTransaction();
+		
+		transaccion.begin();
+		entityManager.persist(usuario);
+		
+		transaccion.commit();
+	}
+	
 
 }

@@ -3,20 +3,33 @@ package sge.usuario;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 
-public abstract class Usuario {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "USUARIOS")
+public class Usuario {
 	
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String usuario;
 	private String password;
 	private String nombre;
 	private String apellido;
 	private String domicilio;
-	private LocalDateTime fecAlta;
-
+	private String fecAlta;
+	private String rol;
+	private String tipoDoc; 
+	private String nroDoc;
+	private int telefono;
+	
 	public Usuario() {
 	}
 	
-	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fechaAlta) {
+	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, String fechaAlta) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
@@ -27,6 +40,39 @@ public abstract class Usuario {
 	}
 
 	
+	
+	public String getTipoDoc() {
+		return tipoDoc;
+	}
+
+	public void setTipoDoc(String tipoDoc) {
+		this.tipoDoc = tipoDoc;
+	}
+
+	public String getNroDoc() {
+		return nroDoc;
+	}
+
+	public void setNroDoc(String nroDoc) {
+		this.nroDoc = nroDoc;
+	}
+
+	public int getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -75,12 +121,12 @@ public abstract class Usuario {
 		this.domicilio = domicilio;
 	}
 
-	public LocalDateTime getFecAlta() {
+	public String getFecAlta() {
 		return fecAlta;
 	}
 
-	public void setFecAlta(LocalDateTime fecAlta) {
-		this.fecAlta = fecAlta;
+	public void setFecAlta(String unaFechaC) {
+		this.fecAlta = unaFechaC;
 	}
 	
 }

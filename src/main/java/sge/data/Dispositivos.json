@@ -5,15 +5,18 @@
 		"equipoConcreto": "3500 frigorias",
 		"tipoDispositivo": "I",
 		"bajoConsumo": "No",
-		"consumoKwH": "1.613"
-	},
-	
+		"consumoKwH": "1.613",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},	
 	{
 		"nombreDispositivo": "Aire Acondicionado",
 		"equipoConcreto": "2200 frigorias",
 		"tipoDispositivo": "I",
 		"bajoConsumo": "Si",
-		"consumoKwH": "1.013"
+		"consumoKwH": "1.013",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
 	},
 	
 	{
@@ -21,7 +24,9 @@
 		"equipoConcreto": "Tubo fluorescente de 21",
 		"tipoDispositivo": "E",
 		"bajoConsumo": "No",
-		"consumoKwH": "0.075"
+		"consumoKwH": "0.075",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
 	},
 	
 	{
@@ -29,7 +34,9 @@
 		"equipoConcreto": "Tubo fluorescente de 29 a 34",
 		"tipoDispositivo": "E",
 		"bajoConsumo": "No",
-		"consumoKwH": "0.175"
+		"consumoKwH": "0.175",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
 	},
 	
 	{
@@ -37,7 +44,9 @@
 		"equipoConcreto": "LCD de 40",
 		"tipoDispositivo": "E",
 		"bajoConsumo": "No",
-		"consumoKwH": "0.18"
+		"consumoKwH": "0.18",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
 	},
 	
 	{
@@ -45,7 +54,9 @@
 		"equipoConcreto": "LED de 24",
 		"tipoDispositivo": "I",
 		"bajoConsumo": "Si",
-		"consumoKwH": "0.04"
+		"consumoKwH": "0.04",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
 	},
 	
 	{
@@ -53,7 +64,9 @@
 		"equipoConcreto": "LED de 32",
 		"tipoDispositivo": "I",
 		"bajoConsumo": "Si",
-		"consumoKwH": "0.055"
+		"consumoKwH": "0.055",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
 	},
 	
 	{
@@ -61,7 +74,156 @@
 		"equipoConcreto": "LED de 40",
 		"tipoDispositivo": "I",
 		"bajoConsumo": "Si",
-		"consumoKwH": "0.08"
+		"consumoKwH": "0.08",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	
+	{
+		"nombreDispositivo": "Heladera",
+		"equipoConcreto": "Con freezer",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.09",
+		"usomensualminhs": 720,
+		"usomensualmaxhs": 720
+	},
+	
+	{
+		"nombreDispositivo": "Heladera",
+		"equipoConcreto": "Sin freezer",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.075",
+        "usomensualminhs": 720,
+		"usomensualmaxhs": 720
+	},
+	{
+		"nombreDispositivo": "Lavarropas",
+		"equipoConcreto": "Automatico de 5kg con calentamiento de agua",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.875",
+		"usomensualminhs": 6,
+		"usomensualmaxhs": 30
+	},
+	{
+		"nombreDispositivo": "Lavarropas",
+		"equipoConcreto": "Automatico de 5kg",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.175",
+		"usomensualminhs": 6,
+		"usomensualmaxhs": 30
+	},
+	{
+		"nombreDispositivo": "Lavarropas",
+		"equipoConcreto": "Semi-automatico de 5 kg",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.1275",
+		"usomensualminhs": 6,
+		"usomensualmaxhs": 30
+	},
+	{
+		"nombreDispositivo": "Ventilador",
+		"equipoConcreto": "De Pie",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.09",
+		"usomensualminhs": 120,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Ventilador",
+		"equipoConcreto": "De Techo",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.09",
+		"usomensualminhs": 120,
+		"usomensualmaxhs": 360
+		
+	},
+	{
+		"nombreDispositivo": "Lampara",
+		"equipoConcreto": "Halogenas de 40W",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.04",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Lampara",
+		"equipoConcreto": "Halogenas de 60W",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.06",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Lampara",
+		"equipoConcreto": "Halogenas de 100W",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "No",
+		"consumoKwH": "0.015",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Lampara",
+		"equipoConcreto": "De 11W",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.011",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Lampara",
+		"equipoConcreto": "De 15W",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.015",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Lampara",
+		"equipoConcreto": "De 20W",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.02",
+		"usomensualminhs": 90,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "PC",
+		"equipoConcreto": "De escritorio",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.4",
+		"usomensualminhs": 60,
+		"usomensualmaxhs": 360
+	},
+	{
+		"nombreDispositivo": "Microondas",
+		"equipoConcreto": "Convencional",
+		"tipoDispositivo": "E",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.64",
+		"usomensualminhs": 3,
+		"usomensualmaxhs": 15
+	},
+	{
+		"nombreDispositivo": "Plancha",
+		"equipoConcreto": "A vapor",
+		"tipoDispositivo": "I",
+		"bajoConsumo": "Si",
+		"consumoKwH": "0.75",
+		"usomensualminhs": 3,
+		"usomensualmaxhs": 30
 	}
 ]
 }

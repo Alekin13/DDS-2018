@@ -22,7 +22,7 @@ import sge.estados.Estado;
 @Entity
 @Table(name = "DISPOSITIVOS")
 public class Dispositivo {
-	@ManyToOne(cascade = CascadeType.ALL, optional=true)
+	@ManyToOne//(cascade = CascadeType.ALL, optional=true)
 	private Estado estado;
 	
 	private String propiedad;
@@ -35,6 +35,8 @@ public class Dispositivo {
 	private String tipoDispositivo;
 	private String bajoConsumo;
 	private double consumoKwH;
+	private double usomensualminhs;
+	private double usomensualmaxhs;
 	
 	
 //	public int getDispositivo() {
@@ -43,8 +45,24 @@ public class Dispositivo {
 //	public void setDispositivo(int dispositivo) {
 //		this.dispositivo = dispositivo;
 //	}
+	
 	public String getEquipoConcreto() {
 		return equipoConcreto;
+	}
+	public double getUsomensualminhs() {
+		return usomensualminhs;
+	}
+	public void setUsomensualminhs(double usomensualminhs) {
+		this.usomensualminhs = usomensualminhs;
+	}
+	public double getUsomensualmaxhs() {
+		return usomensualmaxhs;
+	}
+	public void setUsomensualmaxhs(double usomensualmaxhs) {
+		this.usomensualmaxhs = usomensualmaxhs;
+	}
+	public Long getIdDispositivo() {
+		return idDispositivo;
 	}
 	public void setEquipoConcreto(String equipoConcreto) {
 		this.equipoConcreto = equipoConcreto;

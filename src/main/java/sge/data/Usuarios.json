@@ -1,0 +1,29 @@
+{"usuarios":
+	[	
+	{
+		"usuario": "001_AlejandroMattioli",
+		"password": "123456",
+		"nombre": "Alejandro",
+		"apellido": "Mattioli",
+		"domicilio": "Av. Rivadavia 5000",
+		"rol": "cliente",
+		"fechaAlta": "22/04/2018",
+		"tipoDoc": "DNI",
+		"nroDoc": "38993333",
+		"telefono": "1551515555"
+	},
+	
+	{
+		"usuario": "002_CamilaSerra",
+		"password": "123456",
+		"nombre": "Camila",
+		"apellido": "Serra",
+		"domicilio": "Olleros 1500",
+		"rol": "administrador",
+		"fechaAlta": "22/04/2018",
+		"tipoDoc": "DNI",
+		"nroDoc": "38993332",
+		"telefono": "1545352313"		
+	}
+]
+}

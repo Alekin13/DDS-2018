@@ -13,7 +13,7 @@ import sge.estados.ModoAhorroEnergia;
 
 public class DispositivoInteligente extends Dispositivo {
 
-	private int idDispositivo;
+	private Long idDispositivo;
 	private String nombreDispositivo;
 	private double consumoKwH;
 	private String tipoDispositivo;
@@ -30,20 +30,19 @@ public class DispositivoInteligente extends Dispositivo {
 
 	}
 
-	public DispositivoInteligente(int idDispositivo, String nombreDispositivo, double consumoKwH, Estado estado){
+	public DispositivoInteligente(String nombreDispositivo, double consumoKwH, Estado estado){
 		super();
-		this.idDispositivo = idDispositivo;
 		this.nombreDispositivo = nombreDispositivo;
 		this.consumoKwH = consumoKwH;
 		this.tipoDispositivo = "I";
 		this.estado = estado;
 	}
 	
-	public int getIdDispositivo() {
+	public Long getIdDispositivo() {
 		return idDispositivo;
 	}
 	
-	public void setIdDispositivo(int idDispositivo) {
+	public void setIdDispositivo(Long idDispositivo) {
 		this.idDispositivo = idDispositivo;
 	}
 	

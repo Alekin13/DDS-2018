@@ -11,6 +11,7 @@
     	<!-- Por cada clase que le agrego el Entity -->
     	<class>sge.dispositivo.Dispositivo</class>
     	<class>sge.estados.Estado</class>
+    	<class>sge.usuario.Usuario</class>
     	 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        

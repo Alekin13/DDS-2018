@@ -6,7 +6,7 @@ import sge.properties.ManejoProperties;
 
 public class DispositivoEstandar extends Dispositivo {
 
-	private int idDispositivo;
+	private Long idDispositivo;
 	private String nombreDispositivo;
 	private double consumoKwH;
 	private String tipoDispositivo;
@@ -18,9 +18,8 @@ public class DispositivoEstandar extends Dispositivo {
 	
 	}
 	
-	public DispositivoEstandar(int idDispositivo, String nombreDispositivo, double consumoKwH){
+	public DispositivoEstandar(String nombreDispositivo, double consumoKwH){
 		super();
-		this.idDispositivo = idDispositivo;
 		this.nombreDispositivo = nombreDispositivo;
 		this.consumoKwH = consumoKwH;
 		this.tipoDispositivo = "E";
@@ -34,11 +33,11 @@ public class DispositivoEstandar extends Dispositivo {
 		this.propiedad = propiedad;
 	}
 
-	public int getIdDispositivo() {
+	public Long getIdDispositivo() {
 		return this.idDispositivo;
 	}
 
-	public void setIdDispositivo(int idDispositivo) {
+	public void setIdDispositivo(Long idDispositivo) {
 		this.idDispositivo = idDispositivo;
 	}
 

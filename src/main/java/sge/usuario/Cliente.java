@@ -12,7 +12,7 @@ import sge.estados.Encendido;
 
 public class Cliente extends Usuario {
 
-	private int nroDoc; //El documento es unico y es numerico, clave candidata.
+	private String nroDoc; //El documento es unico y es numerico, clave candidata.
 	private String tipoDoc;
 	private int telefono;
 	private Categoria categoria;
@@ -25,7 +25,7 @@ public class Cliente extends Usuario {
 	
 
 	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio,
-			LocalDateTime fechaAlta, String tipoDoc, int nroDoc, int telefono, Categoria categoria) {
+			String fechaAlta, String tipoDoc, String nroDoc, int telefono, Categoria categoria) {
 		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
 		this.tipoDoc = tipoDoc;
 		this.nroDoc = nroDoc;
@@ -47,11 +47,11 @@ public class Cliente extends Usuario {
 		this.tipoDoc = tipoDoc;
 	}
 
-	public int getNroDoc() {
+	public String getNroDoc() {
 		return nroDoc;
 	}
 
-	public void setNroDoc(int nroDoc) {
+	public void setNroDoc(String nroDoc) {
 		this.nroDoc = nroDoc;
 	}
 
