@@ -16,6 +16,7 @@
     	<class>Dispositivo.Dispositivo</class>
     	<class>Dispositivo.DispositivoEstandar</class>
     	<class>Dispositivo.DispositivoInteligente</class>
+    	<class>Dispositivo.DispositivoEstado</class>
     	<class>Estado.Estado</class>
     	<class>Estado.Apagado</class>
     	<class>Estado.Encendido</class>
@@ -46,7 +47,7 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/SGE_BDD" /> 
             <property name="hibernate.connection.username" value="root" /> 
-            <property name="hibernate.connection.password" value="alekin13" /> 
+            <property name="hibernate.connection.password" value="root" /> 
 
             <property name="hibernate.show_sql" value="true" /> 
             <property name="hibernate.format_sql" value="true" /> 

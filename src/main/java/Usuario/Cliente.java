@@ -24,7 +24,7 @@ public class Cliente extends Usuario {
 	@Column(name="categoria")
 	private String categoria;
 	@OneToMany
-	@JoinColumn(name="dispositivo_id", referencedColumnName="id")
+	@JoinColumn(name="dispositivo_id", referencedColumnName="id") // Clave Foranea
 	private List<Dispositivo> dispositivos = new ArrayList<>();
 	@Column(name="consumo")
 	private double consumo;

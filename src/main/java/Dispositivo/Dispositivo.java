@@ -1,5 +1,8 @@
 package Dispositivo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 import Estado.Apagado;
 import Estado.Encendido;
@@ -32,6 +35,9 @@ public abstract class Dispositivo {
 	private double usoMensualMaxHs;
 	@ManyToOne
 	private Estado estado;
+	@OneToMany
+	@JoinColumn(name="idDispositivo", referencedColumnName="id")
+	private List<DispositivoEstado> estados = new ArrayList<>();
 	
 	public Dispositivo(){
 		
