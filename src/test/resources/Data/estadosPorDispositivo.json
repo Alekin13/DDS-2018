@@ -1,0 +1,21 @@
+{"estadosPorDisp":
+	[	
+	{
+		"idDispositivo":"1",
+	    "estadoAnterior": "Apagado",
+	    "estadoActual": "Prendido"
+	},
+	
+	{
+		"idDispositivo":"1",
+	    "estadoAnterior": "Prendido",
+	    "estadoActual": "ModoAhorroDeEnergia"	
+	},
+	
+	{
+		"idDispositivo":"1",
+	    "estadoAnterior": "ModoAhorroDeEnergia",
+	    "estadoActual": "Apagado"
+	}
+]
+}

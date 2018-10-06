@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import Dispositivo.Dispositivo;
+import Dispositivo.DispositivoEstado;
 import Estado.Apagado;
 import Estado.Encendido;
 import Estado.Estado;
@@ -246,5 +247,30 @@ public class JsonHelper {
 	   	return estados;
 	}
 
+
+	public static List<DispositivoEstado> extraerEstadosPorDispJson(String path) throws IOException{
+		
+		String jsonEstadosPorDisp = JsonHelper.readFile(path);
+		JsonParser parser = new JsonParser();
+		List<DispositivoEstado> estPorDisps = new ArrayList<DispositivoEstado>();
+		JsonArray gsonObj1 = parser.parse(jsonEstadosPorDisp).getAsJsonArray();
+
+	   	for (JsonElement obj : gsonObj1) {
+	   		
+	        JsonObject gsonObj = obj.getAsJsonObject();
+	
+	        DispositivoEstado estPorDisp = new DispositivoEstado();
+	        estPorDisp.setIdDispositivo(gsonObj.get("idDispositivo").getAsInt());
+	        estPorDisp.setEstadoAnterior(gsonObj.get("estadoAnterior").getAsString());
+	        estPorDisp.setEstadoActual(gsonObj.get("estadoActual").getAsString());
+	        estPorDisp.setFechaActual();
+	    
+	        
+	        estPorDisps.add(estPorDisp);
+
+	   	}
+	   	
+	   	return estPorDisps;
+	}
 	
 }

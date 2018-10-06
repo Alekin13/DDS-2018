@@ -15,6 +15,7 @@ import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dispositivo.Dispositivo;
+import Dispositivo.DispositivoEstado;
 import Usuario.Categoria;
 import Usuario.Cliente;
 import Estado.Estado;
@@ -269,5 +270,32 @@ public class EntityManagerHelper {
 		transaccion.commit();
 	}
 
+	
+	public void cargarDispositivoEstadoFromJson(String path) throws ParseException{
+		
+		List<DispositivoEstado> dispEstados = new ArrayList<DispositivoEstado>();
+    	
+		try {
+			dispEstados = JsonHelper.extraerEstadosPorDispJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de Estados por Dispositivos");
+			e.printStackTrace();
+		}
+    	
+		for (DispositivoEstado dispest : dispEstados) {
+			persistirDispositivoEstado(dispest);
+		}
+		
+	}
+	
+	public void persistirDispositivoEstado(DispositivoEstado de) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaccion = entityManager.getTransaction();
+		
+		transaccion.begin();
+		entityManager.persist(de);
+		
+		transaccion.commit();
+	}
 }
 
