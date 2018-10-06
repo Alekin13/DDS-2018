@@ -1,0 +1,12 @@
+{"administradores":
+	[	
+	{
+		"usuario": "LetsJae",
+		"password": "123456",
+		"nombre": "Jael",
+		"apellido": "Duran",
+		"domicilio": "Calle False 123",
+		"idAdmin": 1
+	}
+]
+}

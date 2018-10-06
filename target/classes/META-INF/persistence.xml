@@ -10,35 +10,7 @@
     	
     	<!-- Por cada clase que le agrego el Entity -->
     	<class>Usuario.Usuario</class>
-    	<class>Usuario.Administrador</class>
-    	<class>Usuario.Cliente</class>
-    	<class>Usuario.Categoria</class>
-    	<class>Dispositivo.Dispositivo</class>
-    	<class>Dispositivo.DispositivoEstandar</class>
-    	<class>Dispositivo.DispositivoInteligente</class>
-    	<class>Estado.Estado</class>
-    	<class>Estado.Apagado</class>
-    	<class>Estado.Encendido</class>
-    	<class>Estado.ModoAhorroEnergia</class>
-    	<class>SensorActuador.ACT_AhorroEnergia</class>
-    	<class>SensorActuador.ACT_Apagate</class>
-    	<class>SensorActuador.ACT_CambiarTemperatura</class>
-    	<class>SensorActuador.ACT_Luces</class>
-    	<class>SensorActuador.ACT_Prendete</class>
-    	<class>SensorActuador.CommandActuadores</class>
-    	<class>SensorActuador.Sensor</class>
-    	<class>SensorActuador.Regla</class>
-    	<class>SensorActuador.SensorHumedad</class>
-    	<class>SensorActuador.SensorLuminosidad</class>
-    	<class>SensorActuador.SensorTemperatura</class>
-    	<class>SensorActuador.SensorMovimiento</class>
-    	<class>SensorActuador.Condicion</class>
-    	<class>SensorActuador.CondicionSinMovimiento</class>
-    	<class>SensorActuador.CondicionTemperaturaBaja</class>
-    	<class>SensorActuador.CondicionTemperaturaAlta</class>    	
-    	<class>Zona.Zona</class>
-    	<class>Zona.Transformador</class>
-    	    	    	 
+    	 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         

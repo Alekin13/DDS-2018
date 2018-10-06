@@ -1,0 +1,18 @@
+{"estados":
+	[	
+	{
+		"descripcion":"Encendido",
+	    "clave": 'E'
+	},
+	
+	{
+		"descripcion":"Apagado",
+	    "clave": 'A'	
+	},
+	
+	{
+		"descripcion":"Modo Ahorro Energia",
+	    "clave": 'M'	
+	}
+]
+}
