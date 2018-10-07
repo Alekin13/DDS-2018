@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import Dispositivo.DispositivoInteligente;
 
 @Entity
-@Table(name="Condicion")
+@Table(name="CONDICIONES")
 public abstract class Condicion{
 	
 	

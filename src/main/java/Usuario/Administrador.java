@@ -5,7 +5,7 @@ import java.time.Period;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue("Administrador")
+@DiscriminatorValue("ADMINISTRADORES")
 public class Administrador extends Usuario {
 
 	@OneToOne(fetch = FetchType.LAZY) 

@@ -9,7 +9,7 @@ import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstandar;
 
 @Entity
-@DiscriminatorValue("Cliente")
+@DiscriminatorValue("CLIENTES")
 public class Cliente extends Usuario {
 
 	@OneToOne

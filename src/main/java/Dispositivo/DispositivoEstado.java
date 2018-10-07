@@ -16,7 +16,7 @@ import Estado.Estado;
 /* Esta clase representa la tabla que rompe la relacion de "muchos a muchos" entre estado y dispositivo */
 
 @Entity
-@Table(name="dispositivoEstados")
+@Table(name="DISPOSITIVOSESTADOS")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class DispositivoEstado {
 	
@@ -34,7 +34,7 @@ public class DispositivoEstado {
 	@Column(name="fechaDeCambioDeEstado")
 	private LocalDateTime fechaDeCambioDeEstado;
 	@Column(name="consumoEstadoPasado")
-	private LocalDateTime consumoEstadoPasado;
+	private double consumoEstadoPasado;
 	
 	public int getId() {
 		return id;
@@ -69,10 +69,10 @@ public class DispositivoEstado {
 	public void setHoraDeCambioDeEstado(LocalDateTime horaDeCambioDeEstado) {
 		this.fechaDeCambioDeEstado = horaDeCambioDeEstado;
 	}
-	public LocalDateTime getConsumoEstadoPasado() {
+	public double getConsumoEstadoPasado() {
 		return consumoEstadoPasado;
 	}
-	public void setConsumoEstadoPasado(LocalDateTime consumoEstadoPasado) {
+	public void setConsumoEstadoPasado(double consumoEstadoPasado) {
 		this.consumoEstadoPasado = consumoEstadoPasado;
 	}
 	

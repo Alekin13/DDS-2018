@@ -1,5 +1,6 @@
 package Dispositivo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +9,10 @@ import Estado.Apagado;
 import Estado.Encendido;
 import Estado.Estado;
 import Estado.ModoAhorroEnergia;
+import Helper.EntityManagerHelper;
 
 @Entity
-@Table(name="dispositivo")
+@Table(name="DISPOSITIVOS")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="tipo")
 public abstract class Dispositivo {
@@ -38,6 +40,8 @@ public abstract class Dispositivo {
 	@OneToMany
 	@JoinColumn(name="idDispositivo", referencedColumnName="id")
 	private List<DispositivoEstado> estados = new ArrayList<>();
+	@Transient
+	private String auxiliarDescripcionEstado;
 	
 	public Dispositivo(){
 		
@@ -45,14 +49,14 @@ public abstract class Dispositivo {
 	
 	public Dispositivo(String equipoConcreto, String nombreDispositivo, String tipoDispositivo, String bajoConsumo, double consumoKwH, double usoMensualMinHs, double usoMensualMaxHs, String estado){
 		super();
-		this.setBajoConsumo(bajoConsumo);
-		this.setConsumoKwH(consumoKwH);
 		this.setEquipoConcreto(equipoConcreto);
-		this.setEstado(estado);
 		this.setNombreDispositivo(nombreDispositivo);
 		this.setTipoDispositivo(tipoDispositivo);
+		this.setBajoConsumo(bajoConsumo);
+		this.setConsumoKwH(consumoKwH);
 		this.setUsoMensualMaxHs(usoMensualMaxHs);
 		this.setUsoMensualMinHs(usoMensualMinHs);
+		this.setEstado(estado);		
 	};
 	
 	public String getEquipoConcreto() {
@@ -120,12 +124,41 @@ public abstract class Dispositivo {
 	}
 
 	public void setEstado(String estado){
-		if(estado == "E")
+		if(estado == "E") {
 			this.estado = new Encendido();
-		else if(estado == "A")
+			this.estado.setDescripcion("Encendido");
+		} else if(estado == "A") {
 			this.estado = new Apagado();
-		else
+			this.estado.setDescripcion("Apagado");
+		} else {
 			this.estado = new ModoAhorroEnergia();
+			this.estado.setDescripcion("ModoAhorroDeEnergia");
+		}
+	}
+	
+	public void setCambioEstado(String estado){
+		EntityManagerHelper persistenciaDispositivo = new EntityManagerHelper();
+		DispositivoEstado nuevoEstado = new DispositivoEstado(); 
+		LocalDateTime now = LocalDateTime.now(); 
+		
+		nuevoEstado.setEstadoAnterior(this.estado.getDescripcion());
+		
+		if(estado == "E") {
+			this.estado = new Encendido();
+			this.estado.setDescripcion("Encendido");
+		} else if(estado == "A") {
+			this.estado = new Apagado();
+			this.estado.setDescripcion("Apagado");
+		} else {
+			this.estado = new ModoAhorroEnergia();
+			this.estado.setDescripcion("ModoAhorroDeEnergia");
+		}
+		
+		nuevoEstado.setIdDispositivo(this.id);
+		nuevoEstado.setEstadoActual(this.estado.getDescripcion());
+		nuevoEstado.setHoraDeCambioDeEstado(now);
+		
+		persistenciaDispositivo.persistirDispositivoEstado(nuevoEstado);
 	}
 
 }

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import Dispositivo.DispositivoInteligente;
 
 @Entity
-@Table(name="Actuador")
+@Table(name="ACTUADORES")
 public abstract class CommandActuadores {
 
 	@Id

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import Dispositivo.DispositivoInteligente;
 
 @Entity
-@Table(name="Sensor")
+@Table(name="SENSORES")
 public abstract class Sensor {
 
 	@Id

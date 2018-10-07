@@ -17,7 +17,7 @@ public class TestPersistencia {
 	    	dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
 	    	dbhelper.cargarCategoriasFromJson(PATH_JSON_CATEGORIAS);
 	    	dbhelper.cargarUsuarioFromJson(PATH_JSON_CLIENTES);
-	    	dbhelper.cargarDispositivoEstadoFromJson(PATH_JSON_ESTPORDISP);
+//	    	dbhelper.cargarDispositivoEstadoFromJson(PATH_JSON_ESTPORDISP);
 		}
 	}
 

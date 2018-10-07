@@ -3,7 +3,7 @@ package Estado;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Estado")
+@Table(name="ESTADOS")
 public abstract class Estado {
 	
 	@Id

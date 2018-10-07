@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import Dispositivo.DispositivoInteligente;
 
 @Entity
-@Table(name="Regla")
+@Table(name="REGLAS")
 public class Regla implements Observer {
 
 	@Id
