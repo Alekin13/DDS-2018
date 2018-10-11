@@ -35,10 +35,10 @@ public abstract class Dispositivo {
 	private double usoMensualMinHs;
 	@Column(name="usoMensualMaxHs")
 	private double usoMensualMaxHs;
-	@ManyToOne
+	@ManyToOne(optional=true)
 	private Estado estado;
 	@OneToMany
-	@JoinColumn(name="idDispositivo", referencedColumnName="id")
+	@JoinColumn(name="idDispositivo", referencedColumnName="id" , nullable=true)
 	private List<DispositivoEstado> estados = new ArrayList<>();
 	@Transient
 	private String auxiliarDescripcionEstado;

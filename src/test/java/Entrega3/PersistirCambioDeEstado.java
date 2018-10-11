@@ -6,27 +6,41 @@ import java.time.LocalDateTime;
 import org.junit.Test;
 
 import Dispositivo.Dispositivo;
-import Dispositivo.DispositivoEstado;
 import Dispositivo.DispositivoEstandar;
 import Dispositivo.DispositivoFactory;
+import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
 import Usuario.Cliente;
 
 public class PersistirCambioDeEstado {
 
+	private static final String PATH_JSON_ESTADOS = "src/test/resources/Data/Estados.json";
+	
 	@Test
 	public void casoPrueba1() throws ParseException{
 		
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
 
 		DispositivoFactory fabricaDeDispositivos = new DispositivoFactory();
-		DispositivoEstandar unDispositivo = new DispositivoEstandar(); 
+		
 		Cliente unCliente = new Cliente("jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
+		//unCliente.addDispositivo(fabricaDeDispositivos.aireAcondicionado2200());
 		dbhelper.persistirCliente(unCliente);
 		
-		unCliente.addDispositivo(fabricaDeDispositivos.aireAcondicionado2200());
-		unCliente.addDispositivo(fabricaDeDispositivos.pcDeEscritorio());
-		dbhelper.modificar(unCliente);
+		dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
+		
+		DispositivoInteligente disp = fabricaDeDispositivos.aireAcondicionado2200();
+		
+		disp.setCliente(unCliente.getId());
+		
+		dbhelper.modificar(disp);
+		
+		
+		
+		//dbhelper.persistirDispositivo(unDispositivo);
+		
+//		unCliente.addDispositivo(fabricaDeDispositivos.pcDeEscritorio());
+////		dbhelper.modificar(unCliente);
 		
 		//dbhelper.cargarEstadosFromJson("src/test/resources/Data/Estados.json");
 		
@@ -40,7 +54,7 @@ public class PersistirCambioDeEstado {
 		
 		
 		
-		//dbhelper.persistirDispositivo(unDispositivo);
+		//
 		
 		//dbhelper.persistirCliente(otroCliente);
 		

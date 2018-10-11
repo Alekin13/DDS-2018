@@ -18,7 +18,19 @@ public class DispositivoInteligente extends Dispositivo {
 		private CommandActuadores actuador;
 		@Column(name="valorInherente")
 		private double valorInherente;
-	
+		@Column(name="idCliente")
+		private long cliente;
+		
+		
+		
+		public long getCliente() {
+			return cliente;
+		}
+
+		public void setCliente(Long long1) {
+			this.cliente = long1;
+		}
+
 		public DispositivoInteligente() {
 		
 		}

@@ -15,6 +15,8 @@ import com.google.gson.JsonParser;
 
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
+import Dispositivo.DispositivoEstandar;
+import Dispositivo.DispositivoInteligente;
 import Estado.Apagado;
 import Estado.Encendido;
 import Estado.Estado;
@@ -142,18 +144,36 @@ public class JsonHelper {
 	   		
 	        JsonObject gsonObj = obj.getAsJsonObject();
 	
-	        Dispositivo dispositivo = null;
-	        
-	        dispositivo.setEquipoConcreto(gsonObj.get("equipoConcreto").getAsString());
-	        dispositivo.setNombreDispositivo(gsonObj.get("nombreDispositivo").getAsString());
-	        dispositivo.setTipoDispositivo(gsonObj.get("tipoDispositivo").getAsString());
-	        dispositivo.setBajoConsumo(gsonObj.get("bajoConsumo").getAsString());
-	        dispositivo.setConsumoKwH(gsonObj.get("consumoKwH").getAsDouble());
-	        dispositivo.setUsoMensualMinHs(gsonObj.get("usomensualminhs").getAsDouble());
-	        dispositivo.setUsoMensualMaxHs(gsonObj.get("usomensualmaxhs").getAsDouble());
-	        dispositivo.setEstado("A");
-	        
-	        dispositivos.add(dispositivo);
+	        if(gsonObj.get("tipoDispositivo").getAsString() == "I"){
+	        	Dispositivo dispositivo = new DispositivoInteligente();
+		        
+		        dispositivo.setEquipoConcreto(gsonObj.get("equipoConcreto").getAsString());
+		        dispositivo.setNombreDispositivo(gsonObj.get("nombreDispositivo").getAsString());
+		        dispositivo.setTipoDispositivo(gsonObj.get("tipoDispositivo").getAsString());
+		        dispositivo.setBajoConsumo(gsonObj.get("bajoConsumo").getAsString());
+		        dispositivo.setConsumoKwH(gsonObj.get("consumoKwH").getAsDouble());
+		        dispositivo.setUsoMensualMinHs(gsonObj.get("usomensualminhs").getAsDouble());
+		        dispositivo.setUsoMensualMaxHs(gsonObj.get("usomensualmaxhs").getAsDouble());
+		        dispositivo.setEstado("A");
+		        
+		        dispositivos.add(dispositivo);
+		        	
+	        }
+	        else{
+	        	Dispositivo dispositivo = new DispositivoEstandar();
+		        
+		        dispositivo.setEquipoConcreto(gsonObj.get("equipoConcreto").getAsString());
+		        dispositivo.setNombreDispositivo(gsonObj.get("nombreDispositivo").getAsString());
+		        dispositivo.setTipoDispositivo(gsonObj.get("tipoDispositivo").getAsString());
+		        dispositivo.setBajoConsumo(gsonObj.get("bajoConsumo").getAsString());
+		        dispositivo.setConsumoKwH(gsonObj.get("consumoKwH").getAsDouble());
+		        dispositivo.setUsoMensualMinHs(gsonObj.get("usomensualminhs").getAsDouble());
+		        dispositivo.setUsoMensualMaxHs(gsonObj.get("usomensualmaxhs").getAsDouble());
+		        dispositivo.setEstado("A");
+		        
+		        dispositivos.add(dispositivo);
+		        	
+	        }
 	        
 	        }
 	   	

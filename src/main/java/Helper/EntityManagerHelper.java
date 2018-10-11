@@ -228,8 +228,15 @@ public class EntityManagerHelper {
 			e.printStackTrace();
 		}
     	
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		
+		EntityTransaction transaccion = entityManager.getTransaction();
 		for (Dispositivo dispositivo : dispositivos) {
-			persistirDispositivo(dispositivo);
+			
+			transaccion.begin();
+			agregar(dispositivo);
+			transaccion.commit();
+			//persistirDispositivo(dispositivo);
 		}
 		
 	}
