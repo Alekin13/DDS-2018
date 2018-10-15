@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class DispositivoEstandar extends Dispositivo{
 
-	@Column(name="HsUsoEstimada")
+	@Column(name="DISP_HS_USO_ESTIMADA")
 	private double HsUsoEstimada; 
 	
 	public DispositivoEstandar(){

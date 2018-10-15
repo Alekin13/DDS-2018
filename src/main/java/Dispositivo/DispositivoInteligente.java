@@ -16,27 +16,15 @@ public class DispositivoInteligente extends Dispositivo {
 		private Sensor sensor;
 		@ManyToOne
 		private CommandActuadores actuador;
-		@Column(name="valorInherente")
+		@Column(name="DISP_VALOR_INHERENTE")
 		private double valorInherente;
-		@Column(name="idCliente")
-		private long cliente;
 		
-		
-		
-		public long getCliente() {
-			return cliente;
-		}
-
-		public void setCliente(Long long1) {
-			this.cliente = long1;
-		}
-
 		public DispositivoInteligente() {
 		
 		}
 
 		public DispositivoInteligente(String equipoConcreto, String nombreDispositivo, String tipoDispositivo, String bajoConsumo, double consumoKwH, double usoMensualMinHs, double usoMensualMaxHs, String estado){
-			super(equipoConcreto, nombreDispositivo, "A", bajoConsumo, consumoKwH, usoMensualMinHs, usoMensualMaxHs, estado);
+			super(equipoConcreto, nombreDispositivo, "I", bajoConsumo, consumoKwH, usoMensualMinHs, usoMensualMaxHs, estado);
 		}
 		
 		public double getValorInherente() {

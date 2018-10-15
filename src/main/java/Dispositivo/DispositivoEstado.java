@@ -1,9 +1,7 @@
 package Dispositivo;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,19 +9,16 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import Estado.Estado;
-
 /* Esta clase representa la tabla que rompe la relacion de "muchos a muchos" entre estado y dispositivo */
 
 @Entity
-@Table(name="DISPOSITIVOSESTADOS")
+@Table(name="DISPOSITIVO_ESTADOS")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class DispositivoEstado {
 	
-	// Clave subrrogada para identificar el estado
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name="ID")
 	private int id;
 	@Column(name="idDispositivo")
 	private int idDispositivo;

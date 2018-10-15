@@ -3,7 +3,6 @@ package Dispositivo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.*;
 import Estado.Apagado;
 import Estado.Encendido;
@@ -12,33 +11,34 @@ import Estado.ModoAhorroEnergia;
 import Helper.EntityManagerHelper;
 
 @Entity
-@Table(name="DISPOSITIVOS")
+@Table(name="DISPOSITIVO")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="tipo")
+@DiscriminatorColumn(name="CLASE")
 public abstract class Dispositivo {
 	
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name="DISP_ID")
 	private int id;
-	@Column(name="equipoConcreto")
+	@Column(name="DISP_EQUIPO")
 	private String equipoConcreto;
-	@Column(name="nombreDispositivo")
+	@Column(name="DISP_NOMBRE")
 	private String nombreDispositivo;
-	@Column(name="tipoDispositivo")
+	@Column(name="DISP_TIPO")
 	private String tipoDispositivo;
-	@Column(name="bajoConsumo")
+	@Column(name="DISP_BAJO_CONSUMO")
 	private String bajoConsumo;
-	@Column(name="consumoKwH")
+	@Column(name="DISP_CONSUMO_KWH")
 	private double consumoKwH;
-	@Column(name="usoMensualMinHs")
+	@Column(name="DISP_USO_MENSUAL_MIN")
 	private double usoMensualMinHs;
-	@Column(name="usoMensualMaxHs")
+	@Column(name="DISP_USO_MENSUAL_MAX")
 	private double usoMensualMaxHs;
 	@Transient
+	@Column(name="DISP_ESTADO")
 	private Estado estado;
 	@OneToMany
-	@JoinColumn(name="idDispositivo", referencedColumnName="id" , nullable=true)
+	@JoinColumn(name="DISP_ESTADO_ID", referencedColumnName="DISP_ID" , nullable=true)
 	private List<DispositivoEstado> estados = new ArrayList<>();
 	
 	public Dispositivo(){
