@@ -22,6 +22,7 @@ import Estado.Estado;
 
 
 public class EntityManagerHelper {
+
 	private static EntityManagerFactory factory;
 	private static ThreadLocal<EntityManager> threadLocal;
 	
@@ -56,7 +57,6 @@ public class EntityManagerHelper {
 	}
 	 
 	private void execute(String deNombre, Object unObjeto) {
-		this.initTransaccion();
 		try{
 			Method unMetodo = this.entityManager().getClass().getMethod(deNombre, new Object().getClass());
 			this.initTransaccion();
@@ -97,7 +97,6 @@ public class EntityManagerHelper {
 		return find;
 	}
 	
-	@SuppressWarnings("unchecked")
 	private <T> TypedQuery<T> generarQueryPara(Class<T> clase, ImmutablePair<Object, Object> ... pair){
 		String condiciones =  " where ";
 		for(int index = 0; index<pair.length; index++) {
@@ -110,7 +109,6 @@ public class EntityManagerHelper {
 		return query;
 	}
 	
-	@SuppressWarnings("unchecked")
 	public <T> T buscar(Class<T> clase, ImmutablePair<Object, Object> ... pair) {
 		TypedQuery<T> query = this.generarQueryPara(clase, pair);
 		List<T> resultados = query.getResultList();
@@ -153,7 +151,6 @@ public class EntityManagerHelper {
     	}
     }
 
-
     public void cargarUsuarioFromJson(String path) throws ParseException{
     		
 		List<Cliente> clientes = new ArrayList<Cliente>();
@@ -167,7 +164,7 @@ public class EntityManagerHelper {
     	
 		for (Cliente cliente : clientes) {
 			System.out.println("Error en la carga de Clientes" + " " + cliente.getApellido());
-			persistirCliente(cliente);;
+			persistirCliente(cliente);
 		}
 		
 	}
@@ -178,11 +175,12 @@ public class EntityManagerHelper {
 		EntityTransaction transaction = entityManager.getTransaction();
 		
         transaction.begin();
-    
         entityManager.persist(cliente);
         System.out.println("Transaccion Exitosa: " + cliente.getNombre());
         transaction.commit();
+        entityManager.close();
 	
+        
 	}
 	
 	
@@ -213,6 +211,7 @@ public class EntityManagerHelper {
         entityManager.persist(categoria);
         System.out.println("Transaccion Exitosa: " + categoria.getCategoria());
         transaction.commit();
+        entityManager.close();
 
 	}
 	
@@ -236,7 +235,7 @@ public class EntityManagerHelper {
 			transaccion.begin();
 			agregar(dispositivo);
 			transaccion.commit();
-			//persistirDispositivo(dispositivo);
+			persistirDispositivo(dispositivo);
 		}
 		
 	}
@@ -247,6 +246,7 @@ public class EntityManagerHelper {
 		transaccion.begin();
 		entityManager.persist(dispositivo);
 		transaccion.commit();
+		entityManager.close();
 	}
     	
 	
@@ -273,8 +273,8 @@ public class EntityManagerHelper {
 		
 		transaccion.begin();
 		entityManager.persist(estado);
-		
 		transaccion.commit();
+		entityManager.close();
 	}
 
 	
@@ -301,8 +301,8 @@ public class EntityManagerHelper {
 		
 		transaccion.begin();
 		entityManager.persist(de);
-		
 		transaccion.commit();
+		entityManager.close();
 	}
 }
 

@@ -20,20 +20,21 @@ public class PersistirCambioDeEstado {
 	public void casoPrueba1() throws ParseException{
 		
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
-
 		DispositivoFactory fabricaDeDispositivos = new DispositivoFactory();
 		
+		dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
+		//Cliente otroCliente = new Cliente("Alekin", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", LocalDateTime.now(), "DNI", 38993333, 1551515555, "R1");
 		Cliente unCliente = new Cliente("jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
-		//unCliente.addDispositivo(fabricaDeDispositivos.aireAcondicionado2200());
+		unCliente.addDispositivo(fabricaDeDispositivos.aireAcondicionado2200());
 		dbhelper.persistirCliente(unCliente);
 		
-		dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
 		
-		DispositivoInteligente disp = fabricaDeDispositivos.aireAcondicionado2200();
 		
-		disp.setCliente(unCliente.getId());
+		//DispositivoInteligente disp = fabricaDeDispositivos.aireAcondicionado2200();
 		
-		dbhelper.modificar(disp);
+		//disp.setCliente(unCliente.getId());
+		
+		//dbhelper.modificar(disp);
 		
 		
 		
@@ -45,7 +46,7 @@ public class PersistirCambioDeEstado {
 		//dbhelper.cargarEstadosFromJson("src/test/resources/Data/Estados.json");
 		
 		
-		//Cliente otroCliente = new Cliente("Alekin", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", LocalDateTime.now(), "DNI", 38993333, 1551515555, "R1");
+		//
 		
 		//otroCliente.addDispositivo(fabricaDeDispositivos.microondas());
 		

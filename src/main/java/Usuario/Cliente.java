@@ -24,7 +24,7 @@ public class Cliente extends Usuario {
 	@Column(name="categoria")
 	private String categoria;
 	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="dispositivo_id", referencedColumnName="id") // Clave Foranea
+	@JoinColumn(name="ClienteDispositivo", referencedColumnName="id") // Clave Foranea
 	private List<Dispositivo> dispositivos = new ArrayList<>();
 	@Column(name="consumo")
 	private double consumo;
