@@ -45,6 +45,13 @@ public class Cliente extends Usuario {
 		this.categoria = categoria;
 	}
 	
+	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio, String fechaAlta, String tipoDoc, int unNumDoc, int telefono, String categoria) {
+		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
+		this.tipoDoc = tipoDoc;
+		this.nroDoc = unNumDoc;
+		this.telefono = telefono;
+		this.categoria = categoria;
+	}
 	public Cliente() {
 	
 	}

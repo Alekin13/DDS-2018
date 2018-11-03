@@ -2,6 +2,8 @@ package Usuario;
 
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.*;
 
 @Entity
@@ -31,7 +33,10 @@ public class Administrador extends Usuario {
 		this.idAdmin = idAdmin;
 	}
 
-	public long antiguedadEnMeses(LocalDateTime fechaHasta){
+	public long antiguedadEnMeses(String fechaHastaString){
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); 
+		LocalDateTime fechaHasta = LocalDateTime.parse(fechaHastaString, formatter);
 		return Period.between(fechaHasta.toLocalDate(),LocalDateTime.now().toLocalDate()).toTotalMonths();
 	}
 

@@ -61,6 +61,14 @@ public abstract class Dispositivo {
 		return equipoConcreto;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setEquipoConcreto(String equipoConcreto) {
 		this.equipoConcreto = equipoConcreto;
 	}
@@ -124,14 +132,12 @@ public abstract class Dispositivo {
 	public void setEstado(String estado){
 		if(estado == "E") {
 			this.estado = new Encendido();
-			this.estado.setDescripcion("Encendido");
 		} else if(estado == "A") {
 			this.estado = new Apagado();
-			this.estado.setDescripcion("Apagado");
 		} else {
 			this.estado = new ModoAhorroEnergia();
-			this.estado.setDescripcion("ModoAhorroDeEnergia");
 		}
+		
 	}
 	
 	public void setCambioEstado(String estado){
@@ -141,22 +147,31 @@ public abstract class Dispositivo {
 		
 		nuevoEstado.setEstadoAnterior(this.estado.getDescripcion());
 		
-		if(estado == "E") {
-			this.estado = new Encendido();
-			this.estado.setDescripcion("Encendido");
-		} else if(estado == "A") {
-			this.estado = new Apagado();
-			this.estado.setDescripcion("Apagado");
-		} else {
-			this.estado = new ModoAhorroEnergia();
-			this.estado.setDescripcion("ModoAhorroDeEnergia");
+		if((estado == "E") && (this.estado.getClave() != "E")) {
+			this.setEstado("E");
+			//this.estado.setDescripcion("Encendido");
+		} else if(estado == "A" && (this.estado.getClave() != "A")) {
+			this.setEstado("A");
+			//this.estado.setDescripcion("Apagado");
+		} else if (estado == "M" && (this.estado.getClave() != "M")) {
+			this.setEstado("M");
+			//this.estado.setDescripcion("ModoAhorroDeEnergia");
+		}
+		else{
+			return;
 		}
 		
 		nuevoEstado.setIdDispositivo(this.id);
 		nuevoEstado.setEstadoActual(this.estado.getDescripcion());
 		nuevoEstado.setHoraDeCambioDeEstado(now);
+		this.estados.add(nuevoEstado);
 		
-		persistenciaDispositivo.persistirDispositivoEstado(nuevoEstado);
+		System.out.println(this.getEstado().getClave() + " == " + estado);
+		
+		if(estado != this.getEstado().getClave()){
+			persistenciaDispositivo.agregar(nuevoEstado);	
+		}
+		
 	}
 
 }

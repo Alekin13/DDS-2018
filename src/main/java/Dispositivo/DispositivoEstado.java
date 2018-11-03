@@ -27,7 +27,7 @@ public class DispositivoEstado {
 	@Column(name="estadoActual")
 	private String estadoActual;
 	@Column(name="fechaDeCambioDeEstado")
-	private LocalDateTime fechaDeCambioDeEstado;
+	private String fechaDeCambioDeEstado;
 	@Column(name="consumoEstadoPasado")
 	private double consumoEstadoPasado;
 	
@@ -56,13 +56,13 @@ public class DispositivoEstado {
 		this.estadoActual = estadoActual;
 	}
 	public void setFechaActual() {
-		fechaDeCambioDeEstado.toLocalDate();
+		fechaDeCambioDeEstado.toString();
 	}
-	public LocalDateTime getHoraDeCambioDeEstado() {
+	public String getHoraDeCambioDeEstado() {
 		return fechaDeCambioDeEstado;
 	}
 	public void setHoraDeCambioDeEstado(LocalDateTime horaDeCambioDeEstado) {
-		this.fechaDeCambioDeEstado = horaDeCambioDeEstado;
+		this.fechaDeCambioDeEstado = horaDeCambioDeEstado.toString();
 	}
 	public double getConsumoEstadoPasado() {
 		return consumoEstadoPasado;

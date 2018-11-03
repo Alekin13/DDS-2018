@@ -1,6 +1,9 @@
 package Usuario;
 
 import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.*;
 
 
@@ -25,12 +28,28 @@ public abstract class Usuario {
 	@Column(name="domicilio")
 	private String domicilio;
 	@Column(name="fecAlta")
-	private LocalDateTime fecAlta;
+	private String fecAlta;
+	
 	
 	public Usuario() {
 	}
 	
 	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fechaAlta) {
+		super();
+		this.usuario = usuario;
+		this.password = password;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.domicilio = domicilio;
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime dateTime = LocalDateTime.of(fechaAlta.getYear(), fechaAlta.getMonth(), fechaAlta.getDayOfMonth(), fechaAlta.getHour(), fechaAlta.getMinute());
+		String formattedDateTime = dateTime.format(formatter); // "1986-04-08 12:30"
+		this.fecAlta = formattedDateTime;
+	}
+
+	public Usuario(String usuario2, String password2, String nombre2, String apellido2, String domicilio2,
+			String fechaAlta) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
@@ -88,11 +107,11 @@ public abstract class Usuario {
 		this.domicilio = domicilio;
 	}
 
-	public LocalDateTime getFecAlta() {
+	public String getFecAlta() {
 		return fecAlta;
 	}
 
-	public void setFecAlta(LocalDateTime fecAlta) {
+	public void setFecAlta(String fecAlta) {
 		this.fecAlta = fecAlta;
 	}
 	

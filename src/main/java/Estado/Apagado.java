@@ -5,6 +5,10 @@ import javax.persistence.Entity;
 @Entity
 public class Apagado extends Estado {
 
+	public void Apagado(){
+		this.setDescripcion("Apagado");
+		this.setClave("A");
+	}
 	
 	@Override
 	public boolean estaEncendido() {
@@ -20,5 +24,22 @@ public class Apagado extends Estado {
 	public boolean estaEnModoAhorro() {
 		return false;
 	}
-
+	
+	public String getDescripcion() {
+		return super.getDescripcion();
+	}
+	
+	public void setDescripcion(String descripcion) {
+		super.setDescripcion(descripcion);
+	}
+	
+	public String getClave() {
+		return super.getClave();
+	}
+	
+	public void setClave(String clave) {
+		super.setClave(clave);
+	}
+	
+	
 }

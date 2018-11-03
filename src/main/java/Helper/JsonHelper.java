@@ -96,7 +96,7 @@ public class JsonHelper {
 	        administrador.setNombre(gsonObj.get("nombre").getAsString());
 	        administrador.setApellido(gsonObj.get("apellido").getAsString());
 	        administrador.setIdAdmin(gsonObj.get("idAdmin").getAsInt());
-	        administrador.setFecAlta(LocalDateTime.now());	        
+	        administrador.setFecAlta(LocalDateTime.now().toString());	        
 	        
 	        administradores.add(administrador);
 

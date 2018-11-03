@@ -18,6 +18,7 @@ public class DispositivoInteligente extends Dispositivo {
 		private CommandActuadores actuador;
 		@Column(name="DISP_VALOR_INHERENTE")
 		private double valorInherente;
+
 		
 		public DispositivoInteligente() {
 		
