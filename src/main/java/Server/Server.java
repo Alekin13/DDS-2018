@@ -38,5 +38,19 @@ public class Server {
 			
 		});
 		
+		//HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+		Spark.get("/formulario/access", (req,res) -> {  
+						
+			return new ModelAndView(null, "Login.html");                     
+		}, engine);
+		
+		
+		Spark.post("/usuario", (req,res) -> {
+			req.queryParams("nombre");
+			req.queryParams("password");
+			
+			res.redirect("/home");
+			return null;
+		});	
 	}
 }
