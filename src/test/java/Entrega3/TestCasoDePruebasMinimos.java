@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dispositivo.Dispositivo;
+import Dispositivo.DispositivoEstado;
 import Dispositivo.DispositivoFactory;
 import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
@@ -73,10 +74,22 @@ public class TestCasoDePruebasMinimos {
 		dispositivo.setCambioEstado("E");
 		System.out.println(dispositivo.getEstado().getDescripcion());
 		dbhelper.modificar(dispositivo);
-		
+
 		dispositivo.setCambioEstado("E");
 		System.out.println(dispositivo.getEstado().getDescripcion());
 		dbhelper.modificar(dispositivo);
+		
+		
+		
+		
+//		Query consultaConsumos = entityManager.createQuery("FROM DISPOSITIVO_ESTADOS WHERE idDispositivo = 1");
+//		consultaConsumos.setParameter("ids", dispositivo.getId());
+//		List<DispositivoEstado> dest = consultaConsumos.getResultList();
+		
+//		for (DispositivoEstado estado : dest) {
+//		    System.out.println(estado.getConsumoEstadoPasado());
+//		}
+		
 	}
 	
 	@Test

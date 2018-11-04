@@ -28,5 +28,10 @@ public class DispositivoEstandar extends Dispositivo{
 	public void setHsUsoEstimada(double hsUsoEstimada) {
 		HsUsoEstimada = hsUsoEstimada;
 	}
+
+	@Override
+	public void setCambioEstado(String estado) {
+			
+	}
 	
 }

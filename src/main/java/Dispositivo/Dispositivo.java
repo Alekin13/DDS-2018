@@ -37,6 +37,8 @@ public abstract class Dispositivo {
 	@Transient
 	@Column(name="DISP_ESTADO")
 	private Estado estado;
+	@Column(name="DISP_FH_ULTIMO_EST")
+	private LocalDateTime FHUltimoCambioEstado;
 	@OneToMany
 	@JoinColumn(name="DISP_ESTADO_ID", referencedColumnName="DISP_ID" , nullable=true)
 	private List<DispositivoEstado> estados = new ArrayList<>();
@@ -54,7 +56,8 @@ public abstract class Dispositivo {
 		this.setConsumoKwH(consumoKwH);
 		this.setUsoMensualMaxHs(usoMensualMaxHs);
 		this.setUsoMensualMinHs(usoMensualMinHs);
-		this.setEstado(estado);		
+		this.setEstado(estado);
+		this.setFHUltimoCambioEstado(LocalDateTime.now());
 	};
 	
 	public String getEquipoConcreto() {
@@ -130,9 +133,9 @@ public abstract class Dispositivo {
 	}
 
 	public void setEstado(String estado){
-		if(estado == "E") {
+		if(estado == "E"){
 			this.estado = new Encendido();
-		} else if(estado == "A") {
+		} else if(estado == "A"){
 			this.estado = new Apagado();
 		} else {
 			this.estado = new ModoAhorroEnergia();
@@ -140,38 +143,14 @@ public abstract class Dispositivo {
 		
 	}
 	
-	public void setCambioEstado(String estado){
-		EntityManagerHelper persistenciaDispositivo = new EntityManagerHelper();
-		DispositivoEstado nuevoEstado = new DispositivoEstado(); 
-		LocalDateTime now = LocalDateTime.now(); 
-		
-		nuevoEstado.setEstadoAnterior(this.estado.getDescripcion());
-		
-		if((estado == "E") && (this.estado.getClave() != "E")) {
-			this.setEstado("E");
-			//this.estado.setDescripcion("Encendido");
-		} else if(estado == "A" && (this.estado.getClave() != "A")) {
-			this.setEstado("A");
-			//this.estado.setDescripcion("Apagado");
-		} else if (estado == "M" && (this.estado.getClave() != "M")) {
-			this.setEstado("M");
-			//this.estado.setDescripcion("ModoAhorroDeEnergia");
-		}
-		else{
-			return;
-		}
-		
-		nuevoEstado.setIdDispositivo(this.id);
-		nuevoEstado.setEstadoActual(this.estado.getDescripcion());
-		nuevoEstado.setHoraDeCambioDeEstado(now);
-		this.estados.add(nuevoEstado);
-		
-		System.out.println(this.getEstado().getClave() + " == " + estado);
-		
-		if(estado != this.getEstado().getClave()){
-			persistenciaDispositivo.agregar(nuevoEstado);	
-		}
-		
+	public LocalDateTime getFHUltimoCambioEstado() {
+		return this.FHUltimoCambioEstado;
 	}
 
+	public void setFHUltimoCambioEstado(LocalDateTime fHUltimoCambioEstado) {
+		this.FHUltimoCambioEstado = fHUltimoCambioEstado;
+	}
+
+	public abstract void setCambioEstado(String estado);
+	
 }

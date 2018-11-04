@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import Estado.Estado;
+import Helper.EntityManagerHelper;
 import SensorActuador.CommandActuadores;
 import SensorActuador.Sensor;
 
@@ -106,7 +107,7 @@ public class DispositivoInteligente extends Dispositivo {
 		}
 		
 		public double calcularConsumo(LocalDateTime fechaDesde, LocalDateTime fechaHasta) {
-			return Duration.between(fechaDesde.toLocalDate(), fechaHasta.toLocalDate()).toHours() * this.getConsumoKwH();
+			return (Duration.between(fechaDesde, fechaHasta).toMinutes() * this.getConsumoKwH());
 		}
 		
 		public void apagarDispositivo() {
@@ -136,5 +137,34 @@ public class DispositivoInteligente extends Dispositivo {
 		public void convertirseAInteligente(){
 			System.out.println("Este dispositivo ya es Inteligente. No se puede Adaptar.");
 		}
+
+		@Override
+		public void setCambioEstado(String estado) {
+				EntityManagerHelper persistenciaDispositivo = new EntityManagerHelper();
+				DispositivoEstado nuevoEstado = new DispositivoEstado(); 
+				LocalDateTime now = LocalDateTime.now();
+				String clave = super.getEstado().getClave();
+				nuevoEstado.setEstadoAnterior(super.getEstado().getDescripcion());
+				
+				if(estado == "E") {
+					this.setEstado("E");
+				} else if(estado == "A") {
+					this.setEstado("A");
+				} else if (estado == "M") {
+					this.setEstado("M");
+				}
+				
+				nuevoEstado.setIdDispositivo(this.getId());
+				nuevoEstado.setEstadoActual(this.getEstado().getDescripcion());
+				nuevoEstado.setHoraDeCambioDeEstado(now);
+				nuevoEstado.setConsumoEstadoPasado(this.calcularConsumo(super.getFHUltimoCambioEstado(),now));
+								
+				System.out.println(this.getEstado().getClave() + " == " + estado);
+				
+				if(estado != clave){
+					persistenciaDispositivo.agregar(nuevoEstado);	
+				}
+
+			}
 
 }

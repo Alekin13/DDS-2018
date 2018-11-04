@@ -57,7 +57,7 @@ public class Server {
 //			EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
 //			javax.persistence.Query query = entityManager.createQuery("SELECT * FROM USUARIOS WHERE usuario =:nombreUsuario");
 			
-			System.out.println(query);
+	//		System.out.println(query);
 			
 			
 			//res.redirect("/home");
