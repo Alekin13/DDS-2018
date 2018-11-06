@@ -45,7 +45,7 @@ public class Server {
 //		
 //		
 //		unCliente.setDispositivos(dispositivos);
-//		
+//			
 //		Spark.get("/elUSuario", (req,res) -> {
 //			return unCliente.getDispositivos();
 //			
@@ -61,7 +61,7 @@ public class Server {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
-			accesoBDD.controlLogin(nombreUsuario, password);
+			//accesoBDD.controlLogin(nombreUsuario, password);
 					
 			//res.redirect("/home");
 			return new ModelAndView(null, "Login.html"); 
