@@ -6,6 +6,8 @@ import javax.persistence.*;
 public class Encendido extends Estado {
 	
 	public Encendido(){
+		this.setDescripcion("Encendido");
+		this.setClave("E");
 	}
 	
 	@Override
@@ -24,8 +26,12 @@ public class Encendido extends Estado {
 	}
 
 	@Override
-	public void setValores(String clave, String descripcion) {
+	public void setClave(String clave) {
 		super.setClave(clave);
+	}
+
+	@Override
+	public void setDescripcion(String descripcion) {
 		super.setDescripcion(descripcion);
 	}
 

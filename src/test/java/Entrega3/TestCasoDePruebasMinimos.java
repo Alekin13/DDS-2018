@@ -2,6 +2,7 @@ package Entrega3;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -78,17 +79,16 @@ public class TestCasoDePruebasMinimos {
 		dispositivo.setCambioEstado("E");
 		System.out.println(dispositivo.getEstado().getDescripcion());
 		dbhelper.modificar(dispositivo);
+				
+		Query consultaConsumos = entityManager.createQuery("from DispositivoEstado where idDispositivo = :id");
+		consultaConsumos.setParameter("id", dispositivo.getId());
+		System.out.println(consultaConsumos.getResultList().size());
+		List<DispositivoEstado> dest = new ArrayList<DispositivoEstado>(); 
+		dest.addAll(consultaConsumos.getResultList());
 		
-		
-		
-		
-//		Query consultaConsumos = entityManager.createQuery("FROM DISPOSITIVO_ESTADOS WHERE idDispositivo = 1");
-//		consultaConsumos.setParameter("ids", dispositivo.getId());
-//		List<DispositivoEstado> dest = consultaConsumos.getResultList();
-		
-//		for (DispositivoEstado estado : dest) {
-//		    System.out.println(estado.getConsumoEstadoPasado());
-//		}
+		for (DispositivoEstado estado : dest) {
+			System.out.println(estado.getEstadoAnterior() + dest.size());
+		}
 		
 	}
 	

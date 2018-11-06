@@ -140,31 +140,31 @@ public class DispositivoInteligente extends Dispositivo {
 
 		@Override
 		public void setCambioEstado(String estado) {
-				EntityManagerHelper persistenciaDispositivo = new EntityManagerHelper();
-				DispositivoEstado nuevoEstado = new DispositivoEstado(); 
-				LocalDateTime now = LocalDateTime.now();
-				String clave = super.getEstado().getClave();
-				nuevoEstado.setEstadoAnterior(super.getEstado().getDescripcion());
-				
-				if(estado == "E") {
-					this.setEstado("E");
-				} else if(estado == "A") {
-					this.setEstado("A");
-				} else if (estado == "M") {
-					this.setEstado("M");
-				}
-				
-				nuevoEstado.setIdDispositivo(this.getId());
-				nuevoEstado.setEstadoActual(this.getEstado().getDescripcion());
-				nuevoEstado.setHoraDeCambioDeEstado(now);
-				nuevoEstado.setConsumoEstadoPasado(this.calcularConsumo(super.getFHUltimoCambioEstado(),now));
-								
-				System.out.println(this.getEstado().getClave() + " == " + estado);
-				
-				if(estado != clave){
-					persistenciaDispositivo.agregar(nuevoEstado);	
-				}
-
+			EntityManagerHelper persistenciaDispositivo = new EntityManagerHelper();
+			DispositivoEstado nuevoEstado = new DispositivoEstado(); 
+			LocalDateTime now = LocalDateTime.now();
+			String clave = super.getEstado().getClave();
+			nuevoEstado.setEstadoAnterior(super.getEstado().getDescripcion());
+			
+			if(estado == "E") {
+				this.setEstado("E");
+			} else if(estado == "A") {
+				this.setEstado("A");
+			} else if (estado == "M") {
+				this.setEstado("M");
 			}
+			
+			nuevoEstado.setIdDispositivo(this.getId());
+			nuevoEstado.setEstadoActual(this.getEstado().getDescripcion());
+			nuevoEstado.setHoraDeCambioDeEstado(now);
+			nuevoEstado.setConsumoEstadoPasado(this.calcularConsumo(super.getFHUltimoCambioEstado().minusHours(2),now));
+							
+			System.out.println(this.getEstado().getClave() + " == " + estado);
+			
+			if(estado != clave){
+				persistenciaDispositivo.agregar(nuevoEstado);	
+			}
+	
+		}
 
 }

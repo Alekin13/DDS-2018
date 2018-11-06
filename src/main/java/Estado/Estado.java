@@ -15,7 +15,6 @@ public abstract class Estado {
 	@Column(name="clave")
 	private String clave;
 	
-	
 	public Estado(){
 	}
 	
@@ -40,5 +39,5 @@ public abstract class Estado {
 	public abstract boolean estaEncendido();
 	public abstract boolean estaApagado();	
 	public abstract boolean estaEnModoAhorro();
-	public abstract void setValores(String clave, String descripcion);
+
 }

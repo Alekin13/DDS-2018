@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 public class ModoAhorroEnergia extends Estado{
 
 	public ModoAhorroEnergia(){
+		this.setDescripcion("Modo Ahorro Energia");
+		this.setClave("M");
 	}
 	
 	@Override
@@ -22,14 +24,16 @@ public class ModoAhorroEnergia extends Estado{
 	public boolean estaEnModoAhorro() {
 		return true;
 	}
+
+	@Override
+	public void setClave(String clave) {
+		super.setClave(clave);
+	}
 	
 	@Override
-	public void setValores(String clave, String descripcion) {
-		super.setClave(clave);
+	public void setDescripcion(String descripcion) {
 		super.setDescripcion(descripcion);
-		
 	}
-
 
 	@Override
 	public String getClave() {
@@ -40,4 +44,5 @@ public class ModoAhorroEnergia extends Estado{
 	public String getDescripcion() {
 		return "Modo Ahorro Energia";
 	}
+
 }

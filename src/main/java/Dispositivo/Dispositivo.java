@@ -142,7 +142,7 @@ public abstract class Dispositivo {
 		}
 		
 	}
-	
+		
 	public LocalDateTime getFHUltimoCambioEstado() {
 		return this.FHUltimoCambioEstado;
 	}
