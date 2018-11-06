@@ -19,13 +19,21 @@ import spark.Spark;
 
 public class Server {
 	
-	public void loginUsuario() {
-		spark.debug.DebugScreen.enableDebugScreen();
-		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-		Spark.port(8080);
+	public static void main (String [ ] args) {
+		Spark.staticFileLocation("/public");
+		
+		accesoServerBDD accesoBDD = new accesoServerBDD();
+		
 
+		spark.debug.DebugScreen.enableDebugScreen();
+		
+		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+		
+		Spark.port(8080);
+		
 		Spark.get("/hello", (req, res) -> "Hello World");
-//		
+		
+		
 //		System.out.println("Hoooola");
 //		
 //		Cliente unCliente = new Cliente();
@@ -53,11 +61,10 @@ public class Server {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
-//			EntityManagerHelper dbhelper = new EntityManagerHelper();
-//			EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
-//			javax.persistence.Query query = entityManager.createQuery("SELECT * FROM USUARIOS WHERE usuario =:nombreUsuario");
+			accesoBDD.controlLogin(nombreUsuario, password);
 			
-			System.out.println(query);
+			
+			//System.out.println(query);
 			
 			
 			//res.redirect("/home");

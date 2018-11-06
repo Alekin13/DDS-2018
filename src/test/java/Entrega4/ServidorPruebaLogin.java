@@ -11,7 +11,7 @@ public class ServidorPruebaLogin {
 	@Test
 	public void test() {
 		Server srv = new Server();
-		srv.loginUsuario();
+		//srv.loginUsuario();
 	}
 
 }
