@@ -4,10 +4,8 @@ import javax.persistence.*;
 
 @Entity
 public class Encendido extends Estado {
-
-	public void Encedido(){
-		this.setDescripcion("Encendido");
-		this.setClave("E");
+	
+	public Encendido(){
 	}
 	
 	@Override
@@ -25,20 +23,20 @@ public class Encendido extends Estado {
 		return false;
 	}
 
-	public String getDescripcion() {
-		return super.getDescripcion();
-	}
-	
-	public void setDescripcion(String descripcion) {
+	@Override
+	public void setValores(String clave, String descripcion) {
+		super.setClave(clave);
 		super.setDescripcion(descripcion);
 	}
-	
+
+	@Override
 	public String getClave() {
-		return super.getClave();
+		return "E";
 	}
-	
-	public void setClave(String clave) {
-		super.setClave(clave);
+
+	@Override
+	public String getDescripcion() {
+		return "Encendido";
 	}
-	
+
 }

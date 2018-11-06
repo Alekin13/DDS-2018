@@ -64,7 +64,11 @@ public class Server {
 			accesoBDD.controlLogin(nombreUsuario, password);
 			
 			
+<<<<<<< HEAD
 			//System.out.println(query);
+=======
+	//		System.out.println(query);
+>>>>>>> 71f19ee9398bd53bf47bbca4ead7af7e49fdd4df
 			
 			
 			//res.redirect("/home");

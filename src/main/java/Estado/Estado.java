@@ -17,7 +17,6 @@ public abstract class Estado {
 	
 	
 	public Estado(){
-		
 	}
 	
 	public Long getId() {
@@ -28,25 +27,18 @@ public abstract class Estado {
 		this.id = id;
 	}
 	
-	public String getDescripcion() {
-		return descripcion;
-	}
-	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-	
-	public String getClave() {
-		return clave;
 	}
 	
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
 	
-	
+	public abstract String getClave();
+	public abstract String getDescripcion();
 	public abstract boolean estaEncendido();
 	public abstract boolean estaApagado();	
 	public abstract boolean estaEnModoAhorro();
-
+	public abstract void setValores(String clave, String descripcion);
 }
