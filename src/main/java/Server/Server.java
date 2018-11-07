@@ -31,41 +31,33 @@ public class Server {
 		
 		Spark.port(8080);
 		
+		// Testing connection
 		Spark.get("/hello", (req, res) -> "Hello World");
+
 		
+		Spark.get("/PaginaSGE", (req,res) -> {
+			return new ModelAndView(null, "Login.html");
+
+		},engine);	
 		
-//		System.out.println("Hoooola");
-//		
-//		Cliente unCliente = new Cliente();
-//		List<Dispositivo> dispositivos = new ArrayList<>();
-//		DispositivoFactory fabricaDeDispositivos = new DispositivoFactory();
-//		DispositivoInteligente dispositivo = fabricaDeDispositivos.aireAcondicionado2200();
-//		
-//		dispositivos.add(dispositivo);
-//		
-//		
-//		unCliente.setDispositivos(dispositivos);
-//			
-//		Spark.get("/elUSuario", (req,res) -> {
-//			return unCliente.getDispositivos();
-//			
-//		});
-		
-//		//HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
-//		Spark.get("/loginaccess", (req,res) -> {  
-//			return new ModelAndView(null, "Login.html");                     
-//		}, engine);
-		
-		
-		Spark.get("/loginaccess", (req,res) -> {
+		Spark.post("/loginaccess", (req,res) -> {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
-			//accesoBDD.controlLogin(nombreUsuario, password);
-					
-			//res.redirect("/home");
-			return new ModelAndView(null, "Login.html"); 
+			if (accesoBDD.controlLogin(nombreUsuario, password)) {
+				
+			}
 			
-		}, engine);	
-	}
+			return null;
+			
+			
+		});
+		
+		//res.redirect("/home" );
+
+		
+		
+		}
+	
+
 }

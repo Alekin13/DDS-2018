@@ -10,7 +10,36 @@
     	
     	<!-- Por cada clase que le agrego el Entity -->
     	<class>Usuario.Usuario</class>
-    	 
+    	<class>Usuario.Administrador</class>
+    	<class>Usuario.Cliente</class>
+    	<class>Usuario.Categoria</class>
+    	<class>Dispositivo.Dispositivo</class>
+    	<class>Dispositivo.DispositivoEstandar</class>
+    	<class>Dispositivo.DispositivoInteligente</class>
+    	<class>Dispositivo.DispositivoEstado</class>
+    	<class>Estado.Estado</class>
+    	<class>Estado.Apagado</class>
+    	<class>Estado.Encendido</class>
+    	<class>Estado.ModoAhorroEnergia</class>
+    	<class>SensorActuador.ACT_AhorroEnergia</class>
+    	<class>SensorActuador.ACT_Apagate</class>
+    	<class>SensorActuador.ACT_CambiarTemperatura</class>
+    	<class>SensorActuador.ACT_Luces</class>
+    	<class>SensorActuador.ACT_Prendete</class>
+    	<class>SensorActuador.CommandActuadores</class>
+    	<class>SensorActuador.Sensor</class>
+    	<class>SensorActuador.Regla</class>
+    	<class>SensorActuador.SensorHumedad</class>
+    	<class>SensorActuador.SensorLuminosidad</class>
+    	<class>SensorActuador.SensorTemperatura</class>
+    	<class>SensorActuador.SensorMovimiento</class>
+    	<class>SensorActuador.Condicion</class>
+    	<class>SensorActuador.CondicionSinMovimiento</class>
+    	<class>SensorActuador.CondicionTemperaturaBaja</class>
+    	<class>SensorActuador.CondicionTemperaturaAlta</class>    	
+    	<class>Zona.Zona</class>
+    	<class>Zona.Transformador</class>
+    	    	    	 
         <properties> 
 	    <property name="hibernate.archive.autodetection" value="class"/>        
         
@@ -18,12 +47,12 @@
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/SGE_BDD" /> 
             <property name="hibernate.connection.username" value="root" /> 
-            <property name="hibernate.connection.password" value="alekin13" /> 
+            <property name="hibernate.connection.password" value="root" /> 
 
             <property name="hibernate.show_sql" value="true" /> 
             <property name="hibernate.format_sql" value="true" /> 
             <property name="use_sql_comments" value="true" /> 
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
           
     </persistence-unit> 

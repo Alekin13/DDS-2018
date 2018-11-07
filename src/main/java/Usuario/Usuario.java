@@ -51,11 +51,11 @@ public abstract class Usuario {
 	public Usuario(String usuario2, String password2, String nombre2, String apellido2, String domicilio2,
 			String fechaAlta) {
 		super();
-		this.usuario = usuario;
-		this.password = password;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.domicilio = domicilio;
+		this.usuario = usuario2;
+		this.password = password2;
+		this.nombre = nombre2;
+		this.apellido = apellido2;
+		this.domicilio = domicilio2;
 		this.fecAlta = fechaAlta;
 	}
 
