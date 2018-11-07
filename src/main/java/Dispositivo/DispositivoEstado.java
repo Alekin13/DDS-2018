@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /* Esta clase representa la tabla que rompe la relacion de "muchos a muchos" entre estado y dispositivo */
@@ -14,6 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="DISPOSITIVO_ESTADOS")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@NamedQueries({@NamedQuery(name = "DispositivoEstado.getAll", query = "SELECT d from DispositivoEstado d")})
 public class DispositivoEstado {
 	
 	@Id
