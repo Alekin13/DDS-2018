@@ -12,9 +12,9 @@ import Dispositivo.DispositivoEstandar;
 @DiscriminatorValue("CLIENTES")
 public class Cliente extends Usuario {
 
-	@OneToOne
-	@JoinColumn(name="id")
-	private Usuario usuario;
+//	@OneToOne
+//	@JoinColumn(name="id")
+//	private Usuario usuario;
 	@Column(name="tipoDocumento")
 	private String tipoDoc;
 	@Column(name="numeroDocumento")
