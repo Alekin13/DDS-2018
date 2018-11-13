@@ -23,8 +23,7 @@ public class ConsultasRandomALaBase {
 	
 	@Test
 	public void casoPruebaConsulta(){
-		
-//		EntityManager em = PerThreadEntityManagers.getEntityManager();
+
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
 		
 
@@ -41,19 +40,7 @@ public class ConsultasRandomALaBase {
 		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",unCliente.getUsuario()));
 				
 		System.out.println(user.getUsuario());
-		
-		//EntityManager em = PerThreadEntityManagers.getEntityManager();
-		//String tel = "1551515555";
-		//int telefono = Integer.parseInt(tel);
-		//Query query = em.createQuery("FROM Usuario WHERE telefonoContacto = :tel");
-		//query.setParameter("tel", telefono);
-		//List list = query.getResultList();
-		
-		//List<Cliente> list = em.createQuery("SELECT c FROM Cliente c WHERE c.tel LIKE :tel").setParameter("tel", tel).getResultList();
-		
-		//Cliente c = (Cliente) list.get(0);
-		
-		//System.out.println(c.getUsuario());
+
 	}
 	
 }
