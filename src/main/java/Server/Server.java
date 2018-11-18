@@ -40,20 +40,17 @@ public class Server {
 
 		},engine);	
 		
+		HandlebarsTemplateEngine engine1 = new HandlebarsTemplateEngine();
+		
 		Spark.post("/loginaccess", (req,res) -> {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
 			if (accesoBDD.controlLogin(nombreUsuario, password)) {
-				
-			}
-			
-			return null;
-			
-			
-		});
+				return new ModelAndView(null, "Home.html");
+			} else { return null; }
+        },engine1);
 		
-		//res.redirect("/home" );
 
 		
 		

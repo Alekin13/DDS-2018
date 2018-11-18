@@ -22,8 +22,9 @@ public class accesoServerBDD {
 		Cliente unCliente = new Cliente();
 		unCliente.setUsuario(nombreUsuario);
 		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",unCliente.getUsuario()));
-		//System.out.println(user.getUsuario());
-		if ( user.getPassword() == password) {
+		System.out.println(user.getUsuario());
+		System.out.println(user.getPassword());
+		if ( user.getPassword().equals(password)) {
 			return true;			
 		} else return false;
 		
