@@ -52,9 +52,16 @@ public class Server {
         },engine1);
 		
 
+		//prueba Gonzalo
+		Spark.get("/AltaDispositivos", (req,res) -> "Alta Dispositivos");		
+		
+		
+		
+		
+		
+		
 		
 		
 		}
-	
 
 }
