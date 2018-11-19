@@ -53,7 +53,9 @@ public class Server {
 		
 
 		//prueba Gonzalo
-		Spark.get("/AltaDispositivos", (req,res) -> "Alta Dispositivos");		
+		Spark.get("/AltaDispositivos", 
+				(req,res) -> {return new ModelAndView(null, "AltaDispositivos.html");}, 
+				engine);		
 		
 		
 		
