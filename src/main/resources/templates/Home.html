@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
 <meta charset="UTF-8">
 <title>SGE PLATFORM: HOME</title>
 </head>
 
 <body>
-	<form action="/loginaccess" method="post">	
-	<div align="center" >
-	<hr/>
-	<h1> Bienvenido a SGE</h1>
-	<h1> Sistema de Gestión de energía</h1>
-	<hr/>
-	
-	<div id="navegador">
-	
-	<ul>
-	<li><input type="button" value="Ultimas mediciones" autofocus> </li>
-	<br><br/>
-	<li><input type="button" value="Consumo por período" autofocus> </li>
-	<br><br/>
-	<li><input type="button" value="Estado por dispositivo" autofocus> </li>
-	<br><br/>
-	<li><input type="button" value="Reglas Activas" autofocus> </li>
-	<br><br/>
-	<li><input type="button" value="Alta/Baja de Dispositivo" autofocus> </li>
-	<br><br/>
-	</ul>
-	</div>
-	</div>
+	<form>
+		<div align="center">
+		
+		<hr/>
+		<h1> Bienvenido a SGE</h1>
+		<h1> Sistema de Gestión de energía</h1>
+		<hr/>
+		
+		
+		<a href="/seleccionUsuario/UltimasMediciones"> <input type="button" value="Ultimas mediciones" autofocus> </a>
+
+		<br><br/>
+		
+		<a href="/seleccionUsuario/ConsumoPorPeriodo"> <input type="button" value="Consumo por período" autofocus> </a>
+		
+		<br><br/>
+		
+		<a href="/seleccionUsuario/EstadoPorDispositivo"> <input type="button" value="Estado por dispositivo" autofocus> </a>
+
+		<br><br/>
+
+        <a href="/seleccionUsuario/ReglasActivas"> <input type="button" value="Reglas Activas" autofocus> </a>
+
+		<br><br/>
+
+        <a href="/seleccionUsuario/AltaDispositivo"> <input type="button" value="Alta Dispositivo" autofocus> </a>
+		
+		<br><br/>
+		</div>
 	</form>
 	
  </body>
