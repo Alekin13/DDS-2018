@@ -20,38 +20,53 @@ import spark.Spark;
 public class Server {
 	
 	public static void main (String [ ] args) {
-		Spark.staticFileLocation("/public");
-		
-		accesoServerBDD accesoBDD = new accesoServerBDD();
-		
-
+		// Spark configuration
 		spark.debug.DebugScreen.enableDebugScreen();
+		Spark.staticFileLocation("/public");
+		Spark.port(8080);
+		
+		// useful initializations
+		accesoServerBDD accesoBDD = new accesoServerBDD();
+
+				
+		// Testing connection
+		Spark.get("/hello", (req, res) -> "Hello World");
 		
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 		
-		Spark.port(8080);
-		
-		// Testing connection
-		Spark.get("/hello", (req, res) -> "Hello World");
-
-		
 		Spark.get("/PaginaSGE", (req,res) -> {
 			return new ModelAndView(null, "Login.html");
-
 		},engine);	
 		
-		HandlebarsTemplateEngine engine1 = new HandlebarsTemplateEngine();
-		
-		Spark.post("/loginaccess", (req,res) -> {
+		//Creating loggin: accessing 
+		Spark.post("/PaginaSGE/Home", (req,res) -> {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
 			if (accesoBDD.controlLogin(nombreUsuario, password)) {
 				return new ModelAndView(null, "Home.html");
 			} else { return null; }
-        },engine1);
+        },engine);
+		
+		Spark.get("/seleccionUsuario/UltimasMediciones", (req,res) -> 
+		"UltimasMediciones");
+		
+		Spark.get("/seleccionUsuario/ConsumoPorPeriodo", (req,res) -> 
+		"ConsumoPorPeriodo");
+		
+		Spark.get("/seleccionUsuario/EstadoPorDispositivo", (req,res) -> 
+		"EstadoPorDispositivo");
+		
+		Spark.get("/seleccionUsuario/ReglasActivas", (req,res) -> 
+		"ReglasActivas");
+		
+		Spark.get("/seleccionUsuario/AltaDispositivo", (req,res) -> 
+		"AltaDispositivo");
 		
 
+		
+		
+		
 		//prueba Gonzalo
 		Spark.get("/AltaDispositivos", 
 				(req,res) -> {return new ModelAndView(null, "AltaDispositivos.html");}, 
