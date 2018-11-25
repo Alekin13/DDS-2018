@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ejecucion Simplex</title>
+</head>
+<body>
+
+<h1>Usuario: {{usuario}}</h1>
+
+<h2>El valor Optimo en horas que el usuario deberia consumir es: {{ consumoOptimo }}</h2>
+
+<ul>
+{{#each dispositivos}}
+	<li>
+		<p> Las horas de uso de: {{ nombreDispositivo}} , deberían ser: {{ horasRecomendadas}} </p>
+	</li>	
+{{/each}}
+</ul>
+
+
+</body>
+</html>

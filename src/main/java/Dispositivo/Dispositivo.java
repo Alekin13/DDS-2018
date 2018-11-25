@@ -42,6 +42,9 @@ public abstract class Dispositivo {
 	@OneToMany
 	@JoinColumn(name="DISP_ESTADO_ID", referencedColumnName="DISP_ID" , nullable=true)
 	private List<DispositivoEstado> estados = new ArrayList<>();
+	@Transient
+	@Column(name="HORAS_USO_RECOMENDADAS")
+	private double horasRecomendadas;
 	
 	public Dispositivo(){
 		
@@ -58,6 +61,7 @@ public abstract class Dispositivo {
 		this.setUsoMensualMinHs(usoMensualMinHs);
 		this.setEstado(estado);
 		this.setFHUltimoCambioEstado(LocalDateTime.now());
+		this.setHorasRecomendadas(0.0);
 	};
 	
 	public String getEquipoConcreto() {
@@ -152,5 +156,13 @@ public abstract class Dispositivo {
 	}
 
 	public abstract void setCambioEstado(String estado);
+	
+	public double getHorasRecomendadas() {
+		return horasRecomendadas;
+	}
+
+	public void setHorasRecomendadas(double horasRecomendadas) {
+		this.horasRecomendadas = horasRecomendadas;
+	}
 	
 }
