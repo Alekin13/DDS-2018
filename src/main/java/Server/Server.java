@@ -65,8 +65,10 @@ public class Server {
 			return new ModelAndView(incomingUser, "EjecucionSimplexActual.html");
 		}, engine);
 		
-		Spark.get("/seleccionUsuario/ConsumoPorPeriodo", (req,res) -> 
-		"ConsumoPorPeriodo");
+		Spark.get("/ConsumoPorPeriodo", (req,res) -> {
+			
+			return new ModelAndView(null, "ConsumoPorPeriodo.html");
+		}, engine);
 		
 		Spark.get("/seleccionUsuario/EstadoPorDispositivo", (req,res) -> 
 		"EstadoPorDispositivo");

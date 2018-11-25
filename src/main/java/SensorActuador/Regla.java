@@ -17,18 +17,20 @@ public class Regla implements Observer {
 	@GeneratedValue
 	@Column(name="id")
 	private Long id;
-
 	@ManyToOne
 	private Condicion condicion;
 	@ManyToOne
 	private CommandActuadores accion;
 	@ManyToOne
 	private DispositivoInteligente dispositivo;
+	@Column(name="EnUso")
+	private Boolean enUso;
 	
 	public Regla(Condicion condicion, CommandActuadores accion, DispositivoInteligente unDispositivo){
 		this.setAccion(accion);
 		this.setCondicion(condicion);
 		this.setDispositivo(unDispositivo);
+		this.setEnUso(false);
 	}
 	
 	public Condicion getCondicion() {
@@ -78,6 +80,14 @@ public class Regla implements Observer {
 
 	public void update(double valor) {
 		System.out.println(valor);
+	}
+	
+	public Boolean getEnUso() {
+		return enUso;
+	}
+
+	public void setEnUso(Boolean enUso) {
+		this.enUso = enUso;
 	}
 
 }
