@@ -29,8 +29,10 @@ public abstract class Usuario {
 	private String domicilio;
 	@Column(name="fecAlta")
 	private String fecAlta;
-	
-	
+	@Transient
+	@Column(name="CONSUMO_OPTIMO")
+	private double consumoOptimo;
+
 	public Usuario() {
 	}
 	
@@ -115,4 +117,12 @@ public abstract class Usuario {
 		this.fecAlta = fecAlta;
 	}
 	
+	public double getConsumoOptimo() {
+		return consumoOptimo;
+	}
+
+	public void setConsumoOptimo(double consumoOptimo) {
+		this.consumoOptimo = consumoOptimo;
+	}
+
 }

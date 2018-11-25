@@ -38,8 +38,9 @@ public class SimplexJob {
 		helper.setearRestriccionesConsumo(dispositivosSeleccionados, simplexFacade);
 		
 		PointValuePair solucion = simplexFacade.resolver();
-	
+		
 		for (Dispositivo dispositivo : dispositivosSeleccionados){
+			
 			if (inicio < dispositivosSeleccionados.size()){
 				if (solucion.getPoint()[inicio] <= dispositivo.getConsumoKwH()){ /* consumo */
 					
@@ -51,11 +52,13 @@ public class SimplexJob {
 			}
 		}
 		
-		System.out.println("El valor Optimo en horas que el usuario estara consumiendo: " + solucion.getValue());
-		
+		System.out.println("El valor Optimo en horas que el usuario deberia consumir es: " + solucion.getValue());
+		cliente.setConsumoOptimo(solucion.getValue());
 		inicio = 0;
 		for (Dispositivo dispositivo : dispositivosSeleccionados){
+			
 			if (inicio < dispositivosSeleccionados.size()){
+				    dispositivo.setHorasRecomendadas(solucion.getPoint()[inicio]);
 					System.out.println("Las horas de uso de " + dispositivo.getNombreDispositivo() + " deberian ser: " + solucion.getPoint()[inicio]);
 				inicio = inicio + 1;
 			}
