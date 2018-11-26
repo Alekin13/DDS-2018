@@ -58,10 +58,10 @@ public class DispositivoEstado {
 	public void setEstadoActual(String estadoActual) {
 		this.estadoActual = estadoActual;
 	}
-	public void setFechaActual() {
+	public void setFechaDeCambioDeEstado() {
 		fechaDeCambioDeEstado.toString();
 	}
-	public String getHoraDeCambioDeEstado() {
+	public String getFechaDeCambioDeEstado() {
 		return fechaDeCambioDeEstado;
 	}
 	public void setHoraDeCambioDeEstado(LocalDateTime horaDeCambioDeEstado) {

@@ -36,19 +36,20 @@ $(document).ready(function() {
 	 });
 </script>
 </head>
+
 <body>
 <h1>Seleccion del período de interés</h1>
-<form action="">
+<form action="/ConsumoPorPeriodo" method="post">
   <label> Seleccionar Fecha de Inicio:</label>
-  <input type="text" name="datepicker" id="datepicker" readonly="readonly" size="12" />
-</form>
+  <input type="text" name="datepicker" id="datepicker" size="12" />
 
-<form action="">
   <label> Seleccionar Fecha de Fin:</label>
-  <input type="text" name="datepicker2" id="datepicker2" readonly="readonly" size="12" />
+  <input type="text" name="datepicker2" id="datepicker2" size="12" />
+
+  <input type="submit" value="Lets Go"/>
 </form>
 
-<input type="submit" value="Lets Go" class="login-button" />
+
 
 </body>
 </html>

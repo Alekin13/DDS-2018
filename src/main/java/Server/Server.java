@@ -1,6 +1,9 @@
 package Server;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -9,6 +12,7 @@ import org.apache.commons.math3.optim.PointValuePair;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dispositivo.Dispositivo;
+import Dispositivo.DispositivoEstado;
 import Dispositivo.DispositivoFactory;
 import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
@@ -31,7 +35,6 @@ public class Server {
 		// useful initializations
 		accesoServerBDD accesoBDD = new accesoServerBDD();
 		//final Cliente incomingUser = new Cliente();
-		String globalUser;
 		
 		// Testing connection
 		Spark.get("/hello", (req, res) -> "Hello World");
@@ -66,6 +69,32 @@ public class Server {
 		}, engine);
 		
 		Spark.get("/ConsumoPorPeriodo", (req,res) -> {
+			return new ModelAndView(null, "ConsumoPorPeriodo.html");
+		},engine);	
+		
+		Spark.post("/ConsumoPorPeriodo", (req,res) -> {
+			
+			String fechaInicio = req.queryParams("datepicker");
+			String fechaFin = req.queryParams("datepicker2");
+			Cliente incomingUser = accesoBDD.getSessionUser();
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			Date fechaInicio_ld = sdf.parse(fechaInicio);
+			Date fechaFin_ld = sdf.parse(fechaFin);
+			 
+			for (Dispositivo dispositivo : incomingUser.getDispositivos()) {
+				for (DispositivoEstado dEstado : dispositivo.getEstados()) {
+					Date cambioEstadoDispositivo = 
+							sdf.parse(dEstado.getFechaDeCambioDeEstado());
+					 
+					if ( cambioEstadoDispositivo.compareTo(fechaInicio_ld) > 0 &&
+						 cambioEstadoDispositivo.compareTo(fechaInicio_ld) < 0 ) {
+						 System.out.println("hola");
+					}
+				}
+				
+				
+			}
 			
 			return new ModelAndView(null, "ConsumoPorPeriodo.html");
 		}, engine);

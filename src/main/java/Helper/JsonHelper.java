@@ -283,7 +283,7 @@ public class JsonHelper {
 	        estPorDisp.setIdDispositivo(gsonObj.get("idDispositivo").getAsInt());
 	        estPorDisp.setEstadoAnterior(gsonObj.get("estadoAnterior").getAsString());
 	        estPorDisp.setEstadoActual(gsonObj.get("estadoActual").getAsString());
-	        estPorDisp.setFechaActual();
+	        estPorDisp.setFechaDeCambioDeEstado();
 	    
 	        
 	        estPorDisps.add(estPorDisp);

@@ -164,5 +164,19 @@ public abstract class Dispositivo {
 	public void setHorasRecomendadas(double horasRecomendadas) {
 		this.horasRecomendadas = horasRecomendadas;
 	}
+
+	public List<DispositivoEstado> getEstados() {
+		return estados;
+	}
+
+	public void setEstados(List<DispositivoEstado> estados) {
+		this.estados = estados;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
+	
+	
 	
 }
