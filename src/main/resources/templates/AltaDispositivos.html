@@ -1,69 +1,79 @@
 <!DOCTYPE html>
-
 <html lang ="es">
 
-<head>
+   <head>
+      <meta charset="UTF-8">
+      <title>Alta Dispositivos</title>
+      <link rel="stylesheet" type="text/css" href="style.css"> <!--NO SE QUE ES ESTO-->
+   </head>
+   
+   <body>
+      <div>
+      
+         <h1>Alta Dispositivos</h1>
+         
+         <form class="device_form">
+            <ul>                             <!--type="email"; type="website"; pattern="(http|https)://.+"; <textarea></textarea>; button"-->
+               <li>
+                  <label for="concreteEquipment">
+                  Equipo Concreto:
+                  </label>
+                  
+                  <input type="text" placeholder="3500 frigorias" id="EquipoConcreto" required>
+                  
+                  <span class="form_hint">
+                  Formato adecuado "NNNN frigorias"
+                  </span>
+               </li>
+               
+               <li>
+                  <label for="name">
+                  Nombre Dispositivo:
+                  </label>
+                  
+                  <input type="text" placeholder="Aire Acondicionado" id="NombreDispositivo" required>
+               </li>
+               
+               <li>
+                  <label for="tipo">
+                  Tipo de Dispositivo:
+                  </label>
+                  
+                  <input type="text" placeholder="I/E" id="TipoDeDispositivo" required pattern="(I|E)" title="Debe ser I o E">
+               </li>
+               
+               <li>
+                  <label for="lowConsumption">
+                  Bajo Consumo:
+                  </label>
+                  
+				  <select name="si_no">
+				    <option value="No">NO</option>
+				    <option value="Si" selected>SI</option>
+				  </select>
+               </li>
+               
+               <li>
+                  <label for="KWh">
+                  Consumo en KWh:
+                  </label>
+                  
+                  <input type="number" placeholder="1.613" id="ConsumoKWh" required pattern="x.y" title="Nro. decimal, ejemplo: 1.613"> <!--pattern="x.y" no es una e. regular-->
+               </li>             
+            </ul>
+            
+           
 
-<meta charset="UTF-8">
-
-
-<title>Alta Dispositivos</title>
-
-<body>
-
-
-<div style="color: blue;">
-<h1>Alta Dispositivos</h1>
-</div>
-
-
-<form>
-
-Equipo Concreto:
-
-<input type="text" id="EquipoConcreto" />
-
-Nombre Dispositivo:
-
-<input type="text" id="NombreDispositivo" />
-
-Tipo de Dispositivo:
-
-<input type="text" id="TipoDeDispositivo" />
-
-Bajo Consumo:
-
-<input type="text" id="BajoConsumo" />
-
-Consumo en KWh:
-
-<input type="text" id="ConsumoKWh" />
-
-Uso Mensual Mínimo:
-
-<input type="text" id="UsoMensualMin" />
-
-Uso Mensual Máximo:
-
-<input type="text" id="UsoMensualMax" />
-
-
-<input type = "submit" value="GUARDAR"/>
-
-
-</form>
-
-
-</body>
-
-
-</head>
-
-
-
-
-
+            Uso Mensual Mínimo:
+            <input type="text" id="UsoMensualMin" />
+            Uso Mensual Máximo:
+            <input type="text" id="UsoMensualMax" />
+            <input type = "submit" value="GUARDAR"/>
+         </form>
+      </div>
+   </body>
 </html>
+
 
 
 
