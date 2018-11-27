@@ -4,7 +4,7 @@
    <head>
       <meta charset="UTF-8">
       <title>Alta Dispositivos</title>
-      <link rel="stylesheet" type="text/css" href="style.css"> <!--NO SE QUE ES ESTO-->
+      <link rel="stylesheet" type="text/css" href="css/StyleAltaDisp.css">
    </head>
    
    <body>
@@ -15,6 +15,14 @@
          <form class="device_form">
             <ul>                             <!--type="email"; type="website"; pattern="(http|https)://.+"; <textarea></textarea>; button"-->
                <li>
+                  <label for="name">
+                  Nombre Dispositivo:
+                  </label>
+                  
+                  <input type="text" placeholder="Aire Acondicionado" id="NombreDispositivo" required>
+               </li>
+                           
+               <li>
                   <label for="concreteEquipment">
                   Equipo Concreto:
                   </label>
@@ -22,16 +30,8 @@
                   <input type="text" placeholder="3500 frigorias" id="EquipoConcreto" required>
                   
                   <span class="form_hint">
-                  Formato adecuado "NNNN frigorias"
+                  Ejemplos: "4000 frigorias" o "Tubo fluorescente de 21" o "LCD de 40" o "Halogenas de 100W" o etc.
                   </span>
-               </li>
-               
-               <li>
-                  <label for="name">
-                  Nombre Dispositivo:
-                  </label>
-                  
-                  <input type="text" placeholder="Aire Acondicionado" id="NombreDispositivo" required>
                </li>
                
                <li>
@@ -39,7 +39,10 @@
                   Tipo de Dispositivo:
                   </label>
                   
-                  <input type="text" placeholder="I/E" id="TipoDeDispositivo" required pattern="(I|E)" title="Debe ser I o E">
+				  <select name="I_E">
+				    <option value="I">I</option>
+				    <option value="E">E</option>
+				  </select>
                </li>
                
                <li>
@@ -58,17 +61,29 @@
                   Consumo en KWh:
                   </label>
                   
-                  <input type="number" placeholder="1.613" id="ConsumoKWh" required pattern="x.y" title="Nro. decimal, ejemplo: 1.613"> <!--pattern="x.y" no es una e. regular-->
-               </li>             
+                  <input type="number" placeholder="1.613" id="ConsumoKWh" required pattern="[0-9]{*}.[0-9]{*}" title="Debe ser un número decimal">
+               </li>
+               
+               <li>
+                  <label for="monthlyUseMin">
+                  Uso Mensual Mínimo:
+                  </label>
+                  
+                  <input type="number"  id="UsoMensualMin" required  min="1" max="200">
+               </li>
+               
+               <li>
+                  <label for="monthlyUseMax">
+                  Uso Mensual Máximo:
+                  </label>
+                  
+                  <input type="number"  id="UsoMensualMax" required  min="1" max="900">
+               </li>
+               
+               <li>
+               <button class="submit" type="submit">GUARDAR</button>
+               </li>                                 
             </ul>
-            
-           
-
-            Uso Mensual Mínimo:
-            <input type="text" id="UsoMensualMin" />
-            Uso Mensual Máximo:
-            <input type="text" id="UsoMensualMax" />
-            <input type = "submit" value="GUARDAR"/>
          </form>
       </div>
    </body>
