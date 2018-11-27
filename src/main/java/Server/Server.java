@@ -112,8 +112,8 @@ public class Server {
 		
 		//prueba Gonzalo
 		Spark.post("/seleccionUsuario/AltaDispositivos", (req,res) -> {
-			Cliente incomingUser = accesoBDD.getSessionUser();
-			String nombreDisp =req.queryParams("nombreDisp");
+			//Cliente incomingUser = accesoBDD.getSessionUser();
+			//String nombreDisp =req.queryParams("nombreDisp");
 			//String nombreDisp =req.queryParams("nombreDisp");
 			return new ModelAndView(null, "AltaDispositivos.html");
 			}, engine);		
