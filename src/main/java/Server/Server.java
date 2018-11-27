@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
@@ -107,14 +108,20 @@ public class Server {
 			return new ModelAndView(incomingUser, "EstadoPorDispositivo.html");
 		}, engine);
 		
-		Spark.get("/seleccionUsuario/ReglasActivas", (req,res) -> 
-		"ReglasActivas");
+		Spark.get("/seleccionUsuario/ReglasActivas", (req,res) -> {
+			Cliente incomingUser = accesoBDD.getSessionUser(); 
+//			List<Dispositivo> dispCliene = incomingUser.getDispositivos();
+//			List<Dispositivo> dispInteligentes = dispCliene.stream().filter(d -> d.tipoDispositivo == "I").collect(Collectors.toList()).size();
+		
+			return new ModelAndView(incomingUser, "ReglasActivas.html" );
+		},engine);
 		
 		//prueba Gonzalo
 		Spark.post("/seleccionUsuario/AltaDispositivos", (req,res) -> {
 			//Cliente incomingUser = accesoBDD.getSessionUser();
 			//String nombreDisp =req.queryParams("nombreDisp");
 			//String nombreDisp =req.queryParams("nombreDisp");
+
 			return new ModelAndView(null, "AltaDispositivos.html");
 			}, engine);		
 		
