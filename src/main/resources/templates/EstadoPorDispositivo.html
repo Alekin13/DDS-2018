@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Estados por dispositivo</title>
+</head>
+<body>
+
+<h1>Usuario: {{usuario}}</h1>
+
+<h2>Los estados por dispositivos se muestran a continuación: </h2>
+
+<ul>
+{{#each dispositivos}}
+	<li>
+		<p> Dipositivo: {{nombreDispositivo}} , en estado: {{ estado.descripcion }} </p>
+	</li>	
+{{/each}}
+</ul>
+
+
+</body>
+</html>

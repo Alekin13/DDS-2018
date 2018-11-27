@@ -82,6 +82,8 @@ public class Server {
 			Date fechaInicio_ld = sdf.parse(fechaInicio);
 			Date fechaFin_ld = sdf.parse(fechaFin);
 			 
+			double consumoTotal = 0.0;
+			
 			for (Dispositivo dispositivo : incomingUser.getDispositivos()) {
 				for (DispositivoEstado dEstado : dispositivo.getEstados()) {
 					Date cambioEstadoDispositivo = 
@@ -89,33 +91,32 @@ public class Server {
 					 
 					if ( cambioEstadoDispositivo.compareTo(fechaInicio_ld) > 0 &&
 						 cambioEstadoDispositivo.compareTo(fechaInicio_ld) < 0 ) {
-						 System.out.println("hola");
+						 
+						consumoTotal = consumoTotal + dEstado.getConsumoEstadoPasado();
 					}
-				}
-				
+				}				
 				
 			}
 			
-			return new ModelAndView(null, "ConsumoPorPeriodo.html");
+			return new ModelAndView(consumoTotal, "resultadoDelConsumoPeriodo.html");
 		}, engine);
 		
-		Spark.get("/seleccionUsuario/EstadoPorDispositivo", (req,res) -> 
-		"EstadoPorDispositivo");
+		Spark.get("/seleccionUsuario/EstadoPorDispositivo", (req,res) -> {
+			Cliente incomingUser = accesoBDD.getSessionUser();
+			
+			return new ModelAndView(incomingUser, "EstadoPorDispositivo.html");
+		}, engine);
 		
 		Spark.get("/seleccionUsuario/ReglasActivas", (req,res) -> 
 		"ReglasActivas");
 		
-		Spark.get("/seleccionUsuario/AltaDispositivo", (req,res) -> 
-		"AltaDispositivo");
-		
-
-		
-		
-		
 		//prueba Gonzalo
-		Spark.get("/AltaDispositivos", 
-				(req,res) -> {return new ModelAndView(null, "AltaDispositivos.html");}, 
-				engine);		
+		Spark.post("/seleccionUsuario/AltaDispositivos", (req,res) -> {
+			Cliente incomingUser = accesoBDD.getSessionUser();
+			String nombreDisp =req.queryParams("nombreDisp");
+			//String nombreDisp =req.queryParams("nombreDisp");
+			return new ModelAndView(null, "AltaDispositivos.html");
+			}, engine);		
 		
 		
 		
