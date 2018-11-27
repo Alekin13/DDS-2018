@@ -6,11 +6,14 @@ import org.junit.Test;
 
 import Server.Server;
 
-public class ServidorPruebaLogin {
+public class CasosDePruebaServidor {
 
 	@Test
 	public void test() {
 		Server srv = new Server();
+		
+		
+		
 		//srv.loginUsuario();
 	}
 
