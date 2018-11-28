@@ -195,7 +195,7 @@ public class Server {
 					}
 
 					return null;
-					});			
+					}, engine);			
 				
 				//by Gonzalo
 				Spark.get("/Inteligente", (req, res) -> "Alta Dispositivo Inteligente");
