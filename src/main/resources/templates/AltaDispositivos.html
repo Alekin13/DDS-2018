@@ -12,7 +12,7 @@
       
          <h1>Alta Dispositivos</h1>
          
-         <form class="device_form">
+         <form class="device_form" action="/AltaDispositivos" method="POST">
             <ul>                             <!--type="email"; type="website"; pattern="(http|https)://.+"; <textarea></textarea>; button"-->
                <li>
                   <label for="name">
@@ -38,8 +38,8 @@
                   <label for="tipo">
                   Tipo de Dispositivo:
                   </label>
-                  
-				  <select name="I_E">
+                                   
+				  <select name="tipo" id="tipo">
 				    <option value="I">I</option>
 				    <option value="E">E</option>
 				  </select>
@@ -50,7 +50,7 @@
                   Bajo Consumo:
                   </label>
                   
-				  <select name="si_no">
+				  <select name="lowC" id="lowC">
 				    <option value="No">NO</option>
 				    <option value="Si" selected>SI</option>
 				  </select>
@@ -61,7 +61,7 @@
                   Consumo en KWh:
                   </label>
                   
-                  <input type="number" placeholder="1.613" id="ConsumoKWh" required pattern="[0-9]{*}.[0-9]{*}" title="Debe ser un número decimal">
+                  <input type="text" placeholder="1.613" id="ConsumoKWh" required pattern="[0-9]{1}.[0-9]{3}" title="Debe ser un número decimal">
                </li>
                
                <li>
@@ -88,7 +88,3 @@
       </div>
    </body>
 </html>
-
-
-
-
