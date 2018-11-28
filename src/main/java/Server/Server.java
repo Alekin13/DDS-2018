@@ -168,6 +168,9 @@ public class Server {
 				        dispositivo.setEstado("A");		
 						
 						res.redirect("/Inteligente");
+						EntityManagerHelper dbhelper = new EntityManagerHelper();
+						dbhelper.agregar(dispositivo);
+						
 					}
 					
 					//else { 
@@ -185,11 +188,12 @@ public class Server {
 				        dispositivo.setEstado("A");					
 						
 						res.redirect("/Estandar");
+						
+						EntityManagerHelper dbhelper = new EntityManagerHelper();
+						dbhelper.agregar(dispositivo);
+						
 					}
 
-					EntityManagerHelper dbhelper = new EntityManagerHelper();
-					dbhelper.agregar(dispositivo);
-					
 					return null;
 					});			
 				
