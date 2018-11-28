@@ -24,6 +24,7 @@
     <div id="mapa" style="height: 500px"> </div>
     
 	<script type="text/javascript">
+	
 	$( document ).ready(function() {
 		mapa = L.map('mapa', {
 	    center: [-34.598313, -58.463745],
@@ -34,39 +35,22 @@
 		});
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	    attribution: ''}).addTo(mapa);
+	
+		var marker = L.marker([-34.659438,-58.4704135]).addTo(mapa).on('click', onClick);
+	
+	});
+	
+	function onClick(e){
+		var r = confirm("Ir a medrano?");
+		if (r == true) {
+			mapa.setView(new L.LatLng((-34.598494), (-58.420186)), parseInt(17));
+		} else {
+		    
+		}
 	}
+	
 	</script> 
- 		
- 	<script type="text/javascript">
-			// Un punto
-		var marker2 = L.marker([-34.659438,-58.4704135]).addTo(mapa).on('click', onClick);
-		//Un poligono
-		var polygon = L.polygon([
-			[-34.697878, -58.468897],
-		    [-34.686919, -58.486813],
-		    [-34.651905, -58.530758],
-		    [-34.65924, -58.418313]
-		],{
-			 color: 'red',
-			 fillColor: 'blue',
-		    fillOpacity: 0.1
-		}).addTo(mapa);
-		//Un circulo
-		var circle = L.circle([-34.697878, -58.468897], {
-				    color: 'blue',
-				    fillColor: '#f03',
-				    fillOpacity: 0.5,
-				    radius: 500
-				}).addTo(mapa);
-	</script>
-			 		
-	<div align="center">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d210146.68168877435!2d-58.573383207134555!3d-34.61574368899789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos+Aires%2C+CABA!5e0!3m2!1ses!2sar!4v1541374695967" width="800" height="600" frameborder="0" style="border:0"></iframe>
-	</div>
-
- 		
+ 			
  </body>
 
 </html>
-
-
