@@ -14,6 +14,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
+import Dispositivo.DispositivoEstandar;
 import Dispositivo.DispositivoFactory;
 import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
@@ -116,19 +117,92 @@ public class Server {
 			return new ModelAndView(incomingUser, "ReglasActivas.html" );
 		},engine);
 		
-		//prueba Gonzalo
-		Spark.post("/seleccionUsuario/AltaDispositivos", (req,res) -> {
-			//Cliente incomingUser = accesoBDD.getSessionUser();
-			//String nombreDisp =req.queryParams("nombreDisp");
-			//String nombreDisp =req.queryParams("nombreDisp");
+		
+		
 
-			return new ModelAndView(null, "AltaDispositivos.html");
-			}, engine);		
+		
+
 		
 		
-		
-		
-		
+		//by Gonzalo
+				Spark.get("/AltaDispositivos", (req,res) -> {
+
+					return new ModelAndView(null, "AltaDispositivos.html");
+					}, engine);
+				
+				//by Gonzalo
+				Spark.post("/AltaDispositivos", (req,res) -> {
+
+					//todo esto para obtener double
+					String ConsKWh;
+					ConsKWh = req.queryParams("ConsumoKWh");
+					double ConsKWhD;
+					ConsKWhD = Double.parseDouble(ConsKWh);
+					
+					//todo esto para obtener double
+					String minhs;
+					minhs = req.queryParams("UsoMensualMin");			
+					double minhsD;
+					minhsD = Double.parseDouble(minhs);
+					
+					//todo esto para obtener double
+					String maxhs;
+					maxhs = req.queryParams("UsoMensualMax");			
+					double maxhsD;
+					maxhsD = Double.parseDouble(maxhs);			
+					
+					String tipoDisp;
+					tipoDisp = req.queryParams("tipo").trim();			
+					
+					if(tipoDisp == "I") {
+						
+						Dispositivo dispositivo = new DispositivoInteligente();
+					
+				        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
+				        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
+				        dispositivo.setTipoDispositivo("I");
+				        dispositivo.setBajoConsumo(req.queryParams("lowC"));
+				        dispositivo.setConsumoKwH(ConsKWhD);
+				        dispositivo.setUsoMensualMinHs(minhsD);
+				        dispositivo.setUsoMensualMaxHs(maxhsD);
+				        dispositivo.setEstado("A");		
+						
+						res.redirect("/Inteligente");
+						EntityManagerHelper dbhelper = new EntityManagerHelper();
+						dbhelper.agregar(dispositivo);
+						
+					}
+					
+					//else { 
+					if(tipoDisp == "E") {
+						
+						Dispositivo dispositivo = new DispositivoEstandar();
+
+				        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
+				        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
+				        dispositivo.setTipoDispositivo("E");
+				        dispositivo.setBajoConsumo(req.queryParams("lowC"));
+				        dispositivo.setConsumoKwH(ConsKWhD);
+				        dispositivo.setUsoMensualMinHs(minhsD);
+				        dispositivo.setUsoMensualMaxHs(maxhsD);
+				        dispositivo.setEstado("A");					
+						
+						res.redirect("/Estandar");
+						
+						EntityManagerHelper dbhelper = new EntityManagerHelper();
+						dbhelper.agregar(dispositivo);
+						
+					}
+
+					return null;
+					});			
+				
+				//by Gonzalo
+				Spark.get("/Inteligente", (req, res) -> "Alta Dispositivo Inteligente");
+				
+				//by Gonzalo
+				Spark.get("/Estandar", (req, res) -> "Alta Dispositivo Estandar");	
+				
 		
 		
 		
