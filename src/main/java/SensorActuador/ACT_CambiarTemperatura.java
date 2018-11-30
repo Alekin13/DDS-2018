@@ -10,6 +10,7 @@ public class ACT_CambiarTemperatura extends CommandActuadores {
 	public void ejecutarAccion(DispositivoInteligente dispositivo) {
 		int nuevaTemperatura = 23;
 		dispositivo.setValorInherente(nuevaTemperatura);
+		System.out.println("Pone el Aire a " + dispositivo.getValorInherente());
 		
 	}
 

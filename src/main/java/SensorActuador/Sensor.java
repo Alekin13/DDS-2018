@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
+
 import Dispositivo.DispositivoInteligente;
+import Integracion.SubscriberMQTT;
 
 @Entity
 @Table(name="SENSORES")
@@ -30,6 +33,7 @@ public abstract class Sensor {
 	
 	public void setValor(double valor) {
 		this.valor = valor;
+		System.out.println("Llego a setValor");
 		if (this.reglas.size()>0){
 			for (Regla regla : this.reglas) {
 			regla.update(this.valor);
@@ -79,6 +83,16 @@ public abstract class Sensor {
 			break;
 		}
 		return sensor;
+	}
+	
+	public void suscripcion() throws MqttException, InterruptedException{
+		
+		SubscriberMQTT suscriptor = new SubscriberMQTT();
+		System.out.println("Llega 1 ");
+		suscriptor.setUpMQTTSubscriber(this);
+		System.out.println("Llega 2 ");
+		
+	
 	}
  
 }

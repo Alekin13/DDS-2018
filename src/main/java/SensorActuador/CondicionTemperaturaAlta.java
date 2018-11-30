@@ -11,7 +11,7 @@ public class CondicionTemperaturaAlta extends Condicion {
 	public boolean cumpleCondicion(DispositivoInteligente dispositivo) {
 		boolean cumpleCondicion = true;
 		Sensor unSensor = dispositivo.getSensor();
-		
+		System.out.println("Llego a cumpleCondicion");
 		if(unSensor.getValor() >= 35){
 			cumpleCondicion = false;
 		}

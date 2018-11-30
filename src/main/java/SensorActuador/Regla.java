@@ -59,6 +59,7 @@ public class Regla implements Observer {
 
 	public boolean cumpleCondicion(){
 		boolean cumpleCondicion = true;
+		System.out.println("Llego a cumpleCondicion");
 			if(!this.condicion.cumpleCondicion(this.dispositivo))
 				cumpleCondicion = false;
 		
@@ -73,13 +74,15 @@ public class Regla implements Observer {
 	public boolean evaluarDispositivo(){
 		boolean cumpleCondicion = this.cumpleCondicion();
 		if(!cumpleCondicion){
+			System.out.println("No Cumple");
 			this.ejecutarAcciones();
 		}
 		return cumpleCondicion;
 	}
 
 	public void update(double valor) {
-		System.out.println(valor);
+		this.evaluarDispositivo();
+		System.out.println("Llego al update");
 	}
 	
 	public Boolean getEnUso() {

@@ -1,27 +1,16 @@
 package Server;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.persistence.EntityManager;
-
 import org.apache.commons.math3.optim.PointValuePair;
-import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
-
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
 import Dispositivo.DispositivoEstandar;
-import Dispositivo.DispositivoFactory;
 import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
 import Simplex.SimplexJob;
 import Usuario.Cliente;
 import Usuario.Usuario;
-import spark.debug.DebugScreen;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.ModelAndView;
 import spark.Spark;
