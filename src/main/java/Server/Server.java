@@ -25,7 +25,6 @@ public class Server {
 		
 		// useful initializations
 		accesoServerBDD accesoBDD = new accesoServerBDD();
-		//final Cliente incomingUser = new Cliente();
 		
 		// Testing connection
 		Spark.get("/hello", (req, res) -> "Hello World");
@@ -37,7 +36,7 @@ public class Server {
 		},engine);	
 		
 		//Creating login: accessing 
-		Spark.post("/PaginaSGE/Home", (req,res) -> {
+		Spark.post("/Home", (req,res) -> {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
@@ -51,7 +50,7 @@ public class Server {
         },engine);
 
 		
-		Spark.get("/seleccionUsuario/EjecutarSimplex", (req,res) -> {
+		Spark.get("/EjecutarSimplex", (req,res) -> {
 			Cliente incomingUser = accesoBDD.getSessionUser();
 			SimplexJob ejecucionDelSimplexInstance = new SimplexJob(incomingUser);
 			PointValuePair solucion = ejecucionDelSimplexInstance.ejecutarPeticion();
@@ -88,113 +87,121 @@ public class Server {
 				}				
 				
 			}
-			
-			return new ModelAndView(consumoTotal, "resultadoDelConsumoPeriodo.html");
+			incomingUser.setConsumo(consumoTotal);
+			return new ModelAndView( incomingUser, "resultadoDelConsumoPeriodo.html");
 		}, engine);
 		
-		Spark.get("/seleccionUsuario/EstadoPorDispositivo", (req,res) -> {
+		Spark.get("/EstadoPorDispositivo", (req,res) -> {
 			Cliente incomingUser = accesoBDD.getSessionUser();
 			
 			return new ModelAndView(incomingUser, "EstadoPorDispositivo.html");
 		}, engine);
 		
-		Spark.get("/seleccionUsuario/ReglasActivas", (req,res) -> {
+		Spark.get("/ReglasActivas", (req,res) -> {
 			Cliente incomingUser = accesoBDD.getSessionUser(); 
 //			List<Dispositivo> dispCliene = incomingUser.getDispositivos();
 //			List<Dispositivo> dispInteligentes = dispCliene.stream().filter(d -> d.tipoDispositivo == "I").collect(Collectors.toList()).size();
 		
 			return new ModelAndView(incomingUser, "ReglasActivas.html" );
 		},engine);
-		
-		
-		
 
-		
+		//by Gonzalo
+		Spark.get("/AltaDispositivos", (req,res) -> {
 
-		
+			return new ModelAndView(null, "AltaDispositivos.html");
+			}, engine);
 		
 		//by Gonzalo
-				Spark.get("/AltaDispositivos", (req,res) -> {
+		Spark.post("/AltaDispositivos", (req,res) -> {
 
-					return new ModelAndView(null, "AltaDispositivos.html");
-					}, engine);
+			//todo esto para obtener double
+			String ConsKWh;
+			ConsKWh = req.queryParams("ConsumoKWh");
+			double ConsKWhD;
+			ConsKWhD = Double.parseDouble(ConsKWh);
+			
+			//todo esto para obtener double
+			String minhs;
+			minhs = req.queryParams("UsoMensualMin");			
+			double minhsD;
+			minhsD = Double.parseDouble(minhs);
+			
+			//todo esto para obtener double
+			String maxhs;
+			maxhs = req.queryParams("UsoMensualMax");			
+			double maxhsD;
+			maxhsD = Double.parseDouble(maxhs);			
+			
+			String tipoDisp;
+			tipoDisp = req.queryParams("tipo").trim();			
+			
+			if(tipoDisp == "I") {
 				
-				//by Gonzalo
-				Spark.post("/AltaDispositivos", (req,res) -> {
+				Dispositivo dispositivo = new DispositivoInteligente();
+			
+		        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
+		        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
+		        dispositivo.setTipoDispositivo("I");
+		        dispositivo.setBajoConsumo(req.queryParams("lowC"));
+		        dispositivo.setConsumoKwH(ConsKWhD);
+		        dispositivo.setUsoMensualMinHs(minhsD);
+		        dispositivo.setUsoMensualMaxHs(maxhsD);
+		        dispositivo.setEstado("A");		
+				
+				res.redirect("/Inteligente");
+				EntityManagerHelper dbhelper = new EntityManagerHelper();
+				dbhelper.agregar(dispositivo);
+				
+			}
+			
+			//else { 
+			if(tipoDisp == "E") {
+				
+				Dispositivo dispositivo = new DispositivoEstandar();
 
-					//todo esto para obtener double
-					String ConsKWh;
-					ConsKWh = req.queryParams("ConsumoKWh");
-					double ConsKWhD;
-					ConsKWhD = Double.parseDouble(ConsKWh);
-					
-					//todo esto para obtener double
-					String minhs;
-					minhs = req.queryParams("UsoMensualMin");			
-					double minhsD;
-					minhsD = Double.parseDouble(minhs);
-					
-					//todo esto para obtener double
-					String maxhs;
-					maxhs = req.queryParams("UsoMensualMax");			
-					double maxhsD;
-					maxhsD = Double.parseDouble(maxhs);			
-					
-					String tipoDisp;
-					tipoDisp = req.queryParams("tipo").trim();			
-					
-					if(tipoDisp == "I") {
-						
-						Dispositivo dispositivo = new DispositivoInteligente();
-					
-				        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
-				        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
-				        dispositivo.setTipoDispositivo("I");
-				        dispositivo.setBajoConsumo(req.queryParams("lowC"));
-				        dispositivo.setConsumoKwH(ConsKWhD);
-				        dispositivo.setUsoMensualMinHs(minhsD);
-				        dispositivo.setUsoMensualMaxHs(maxhsD);
-				        dispositivo.setEstado("A");		
-						
-						res.redirect("/Inteligente");
-						EntityManagerHelper dbhelper = new EntityManagerHelper();
-						dbhelper.agregar(dispositivo);
-						
-					}
-					
-					//else { 
-					if(tipoDisp == "E") {
-						
-						Dispositivo dispositivo = new DispositivoEstandar();
+		        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
+		        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
+		        dispositivo.setTipoDispositivo("E");
+		        dispositivo.setBajoConsumo(req.queryParams("lowC"));
+		        dispositivo.setConsumoKwH(ConsKWhD);
+		        dispositivo.setUsoMensualMinHs(minhsD);
+		        dispositivo.setUsoMensualMaxHs(maxhsD);
+		        dispositivo.setEstado("A");					
+				
+				res.redirect("/Estandar");
+				
+				EntityManagerHelper dbhelper = new EntityManagerHelper();
+				dbhelper.agregar(dispositivo);
+				
+			}
 
-				        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
-				        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
-				        dispositivo.setTipoDispositivo("E");
-				        dispositivo.setBajoConsumo(req.queryParams("lowC"));
-				        dispositivo.setConsumoKwH(ConsKWhD);
-				        dispositivo.setUsoMensualMinHs(minhsD);
-				        dispositivo.setUsoMensualMaxHs(maxhsD);
-				        dispositivo.setEstado("A");					
-						
-						res.redirect("/Estandar");
-						
-						EntityManagerHelper dbhelper = new EntityManagerHelper();
-						dbhelper.agregar(dispositivo);
-						
-					}
-
-					return null;
-					}, engine);			
-				
-				//by Gonzalo
-				Spark.get("/Inteligente", (req, res) -> "Alta Dispositivo Inteligente");
-				
-				//by Gonzalo
-				Spark.get("/Estandar", (req, res) -> "Alta Dispositivo Estandar");	
-				
+			return null;
+			}, engine);			
 		
+		//by Gonzalo
+		Spark.get("/Inteligente", (req, res) -> "Alta Dispositivo Inteligente");
 		
+		//by Gonzalo
+		Spark.get("/Estandar", (req, res) -> "Alta Dispositivo Estandar");	
 		
-		}
+		Spark.post("/LoginAdmin", (req,res) -> {
+			String nombreUsuario = req.queryParams("nombre");
+			String password = req.queryParams("password");
+			
+			// Need to preserve user when logged in  
+			if (accesoBDD.controlLoginAdmin(nombreUsuario, password)) {
+				Usuario incomingUser = accesoBDD.gettingAdminFromDB(nombreUsuario);
+				return new ModelAndView(incomingUser, "Home.html");
+			} else { 
+				Spark.halt(401,"Didnt recognised user");
+				return null; }
+		}, engine);
+		
+		Spark.get("/Admin", (req,res) -> {
+			return new ModelAndView(null, "LoginAdmin.html");
+		},engine);	
+		
+
+}
 
 }

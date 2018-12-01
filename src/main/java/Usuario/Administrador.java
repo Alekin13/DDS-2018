@@ -10,9 +10,9 @@ import javax.persistence.*;
 @DiscriminatorValue("ADMINISTRADORES")
 public class Administrador extends Usuario {
 
-	@OneToOne(fetch = FetchType.LAZY) 
-	@JoinColumn(name="id")
-	private Usuario usuario;
+//	@OneToOne(fetch = FetchType.LAZY) 
+//	@JoinColumn(name="id")
+//	private Usuario usuario;
 	@Column(name="identificadorSistema")
 	private int idAdmin;
 	

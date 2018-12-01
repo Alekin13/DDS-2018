@@ -1,4 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
 <head>
 <title>Consumo Por Período</title>
 <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
@@ -38,14 +39,14 @@ $(document).ready(function() {
 </head>
 
 <body>
-<h1>Seleccion del período de interés</h1>
-<form action="/ConsumoPorPeriodo" method="post">
-  <label> Seleccionar Fecha de Inicio:</label>
+<h1 style="color:white;">Seleccion del período de interés</h1>
+<form action="/ConsumoPorPeriodo" method="post" autocomplete="off">
+  <label style="color:white;"> Seleccionar Fecha de Inicio:</label>
   <input type="text" name="datepicker" id="datepicker" size="12" />
 
-  <label> Seleccionar Fecha de Fin:</label>
+  <label style="color:white;"> Seleccionar Fecha de Fin:</label>
   <input type="text" name="datepicker2" id="datepicker2" size="12" />
 
-  <input type="submit" value="Lets Go"/>
+  <input type="submit" value="Consultar"/>
 </form>
 

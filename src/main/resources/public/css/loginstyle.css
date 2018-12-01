@@ -1,5 +1,5 @@
 body {
-  background: #2d343d;
+  background: #145A32;
 }
 
 .login {
@@ -48,5 +48,13 @@ h1.login-title {
   border-radius: 5px;
   cursor: pointer; 
   outline:0;
+}
+
+.boton {
+  padding: 10px;
+  border: 0;
+  background: red;
+  font-size: 1.2em;
+  color: #FFF;
 }
 

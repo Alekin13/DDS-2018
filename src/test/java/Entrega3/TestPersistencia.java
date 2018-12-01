@@ -11,6 +11,7 @@ public class TestPersistencia {
 	private static final String PATH_JSON_ESTADOS = "src/test/resources/Data/Estados.json";
 	private static final String PATH_JSON_ESTPORDISP = "src/test/resources/Data/estadosPorDispositivo.json";
 	private static final String PATH_JSON_DISPOSITIVOS = "src/test/resources/Data/Dispositivos.json";
+	private static final String PATH_JSON_ADMIN = "src/test/resources/Data/Administradores.json";
 	static EntityManagerHelper dbhelper = new EntityManagerHelper();
 
 	    @Test
@@ -19,6 +20,7 @@ public class TestPersistencia {
 	    	dbhelper.cargarCategoriasFromJson(PATH_JSON_CATEGORIAS);
 	    	dbhelper.cargarUsuarioFromJson(PATH_JSON_CLIENTES);
 	    	dbhelper.cargarDispositivosFromJson(PATH_JSON_DISPOSITIVOS);
+	    	dbhelper.cargarCategoriasFromJson(PATH_JSON_ADMIN);
 //	    	dbhelper.cargarDispositivoEstadoFromJson(PATH_JSON_ESTPORDISP);
 		}
 	}
