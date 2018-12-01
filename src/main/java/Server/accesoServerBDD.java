@@ -13,6 +13,7 @@ import Helper.EntityManagerHelper;
 import Usuario.Administrador;
 import Usuario.Cliente;
 import Usuario.Usuario;
+import spark.Spark;
 
 public class accesoServerBDD {
 	// Session incoming user
@@ -38,6 +39,10 @@ public class accesoServerBDD {
 		//initialize variable to maintain inside session
 		sessionUser = (Cliente) user;
 				
+		if (sessionUser == null) {
+			Spark.halt(401,"Usuario inexistente !!!");
+		}
+			
 		//System.out.println(user.getUsuario());
 		//System.out.println(user.getPassword());
 		if ( user.getPassword().equals(password)) {
@@ -57,7 +62,11 @@ public class accesoServerBDD {
 		
 		//initialize variable to maintain inside session
 		adminLogueado = (Administrador) user;
-				
+		
+		if (adminLogueado == null) {
+			Spark.halt(401,"Usuario inexistente !!!");
+		}
+			
 		if ( user.getPassword().equals(password)) {
 			return true;			
 		} else return false;

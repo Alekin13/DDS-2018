@@ -15,7 +15,7 @@ public class TestAdmin {
     @Test
     public void CantidadDeMesesComoAdmin() throws IOException, ParseException {
     	
-    	Administrador alejandro = new Administrador("Alekin", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", LocalDateTime.of(2017, 6, 13, 14, 14), 1);
+    	Administrador alejandro = new Administrador("Alekin", "123456", "Alejandro", "Mattioli", "Av. Rivadavia 5000", "01/01/2018", 1);
     	
     	System.out.println(alejandro.getFecAlta().toString());
 

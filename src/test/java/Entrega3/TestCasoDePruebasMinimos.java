@@ -51,7 +51,7 @@ public class TestCasoDePruebasMinimos {
 	@SuppressWarnings("unchecked")
 	public void casoPrueba2() throws ParseException{
 		//Recuperar un dispositivo. 
-		//Mostrar por consola todos los intervalos que estuvo encendido durante el último mes. 
+		//Mostrar por consola todos los intervalos que estuvo encendido durante el ï¿½ltimo mes. 
 		//Modificar su nombre (o cualquier otro atributo editable) y grabarlo. 
 		//Recuperarlo y evaluar que el nombre coincida con el esperado.
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
@@ -102,7 +102,7 @@ public class TestCasoDePruebasMinimos {
 	public void test() throws ParseException{
 		
 		
-		this.casoPrueba2();
+		this.casoPrueba1();
 		
 	}
 }

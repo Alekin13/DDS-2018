@@ -112,6 +112,9 @@ public class EntityManagerHelper {
 	public <T> T buscar(Class<T> clase, ImmutablePair<Object, Object> ... pair) {
 		TypedQuery<T> query = this.generarQueryPara(clase, pair);
 		List<T> resultados = query.getResultList();
+		if (resultados.size() == 0 ) {
+			return null;
+		}
 		return resultados.get(query.getFirstResult());
 	}
 	
