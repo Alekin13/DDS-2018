@@ -87,7 +87,7 @@ public class Server {
 				}				
 				
 			}
-			incomingUser.setConsumo(consumoTotal);
+			incomingUser.setConsumoxPeriodo(consumoTotal);
 			return new ModelAndView( incomingUser, "resultadoDelConsumoPeriodo.html");
 		}, engine);
 		

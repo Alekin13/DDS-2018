@@ -28,6 +28,8 @@ public class Cliente extends Usuario {
 	private List<Dispositivo> dispositivos = new ArrayList<>();
 	@Column(name="consumo")
 	private double consumo;
+	@Column(name="ConsumoxPeriodo")
+	private double ConsumoxPeriodo;
 	@Column(name="puntos")
 	private int puntos;
 	@Column(name="latitud")
@@ -186,5 +188,14 @@ public class Cliente extends Usuario {
 	public void setIdTransformador(int idTransformador) {
 		this.idTransformador = idTransformador;
 	}
+
+	public double getConsumoxPeriodo() {
+		return ConsumoxPeriodo;
+	}
+
+	public void setConsumoxPeriodo(double consumoxPeriodo) {
+		ConsumoxPeriodo = consumoxPeriodo;
+	}
+	
 	
 }
