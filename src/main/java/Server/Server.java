@@ -44,8 +44,10 @@ public class Server {
 			if (accesoBDD.controlLogin(nombreUsuario, password)) {
 				Usuario incomingUser = accesoBDD.gettingUserFromDB(nombreUsuario);
 				return new ModelAndView(incomingUser, "Home.html");
+                return new ModelAndView(incomingUser, "Home.html");
 			} else { 
 				Spark.halt(401,"Didnt recognised user");
+				Spark.halt(401,"Contraseña inválida");
 				return null; }
         },engine);
 
@@ -192,6 +194,7 @@ public class Server {
 			if (accesoBDD.controlLoginAdmin(nombreUsuario, password)) {
 				Usuario incomingUser = accesoBDD.gettingAdminFromDB(nombreUsuario);
 				return new ModelAndView(incomingUser, "Home.html");
+				return new ModelAndView(incomingUser, "HomeAdmin.html");
 			} else { 
 				Spark.halt(401,"Didnt recognised user");
 				return null; }

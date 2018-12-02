@@ -128,6 +128,9 @@ public class EntityManagerHelper {
 			TypedQuery<T> query = this.generarQueryPara(clase, pair);
 		
 		List<T> resultados = query.getResultList();
+		if (resultados.size() == 0 ) {
+			return null;
+		}
 		return resultados.get(query.getFirstResult());
 		}
 		catch(Exception ex) {
