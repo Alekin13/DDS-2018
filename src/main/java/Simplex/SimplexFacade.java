@@ -45,4 +45,5 @@ public class SimplexFacade {
 										new NonNegativeConstraint(this.variablesPositivas)
 				);
 	}
+
 }

@@ -131,7 +131,6 @@ public class JsonHelper {
 	}
 
 	
-	@SuppressWarnings("null")
 	public static List<Dispositivo> extraerDispositivosJson(String path) throws IOException{
 		
 		String jsonDispositivos = JsonHelper.readFile(path);

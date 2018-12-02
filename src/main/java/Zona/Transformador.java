@@ -1,20 +1,16 @@
 package Zona;
 
+import java.time.LocalDateTime;
 import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
-
 import Usuario.Cliente;
 
 @Entity
-@Table(name="TRANSFORMADOR")
+@Table(name="Transformador")
 public class Transformador {
 	
 	@Id
@@ -80,4 +76,15 @@ public class Transformador {
 	public void setIdZona(int idZona) {
 		this.idZona = idZona;
 	}
+
+	public List<Transformador> getClientesConectados() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public char[] consumoPromedioEntre(LocalDateTime inicio, LocalDateTime fin) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

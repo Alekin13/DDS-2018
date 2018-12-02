@@ -2,13 +2,16 @@ package Dispositivo;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "DispositivoEstandar")
+@Table(name = "Dispositivo_Estandar")
+@DiscriminatorValue("1")
 public class DispositivoEstandar extends Dispositivo{
 
-	@Column(name="DISP_HS_USO_ESTIMADA")
+	@Column(name="DispHsUsoEstimada")
 	private double HsUsoEstimada; 
 	
 	public DispositivoEstandar(){
+		super();
 	}
 	
 	public DispositivoEstandar(String equipoConcreto, String nombreDispositivo, String tipoDispositivo, String bajoConsumo, double consumoKwH, double usoMensualMinHs, double usoMensualMaxHs){

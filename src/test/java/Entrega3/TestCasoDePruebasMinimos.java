@@ -2,16 +2,12 @@ package Entrega3;
 
 import java.text.ParseException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.junit.Test;
 import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
-
-import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
 import Dispositivo.DispositivoFactory;
 import Dispositivo.DispositivoInteligente;
@@ -24,6 +20,7 @@ public class TestCasoDePruebasMinimos {
 	private static final String PATH_JSON_ESTADOS = "src/test/resources/Data/Estados.json";
 	
 	
+	@SuppressWarnings("rawtypes")
 	public void casoPrueba1(){
 		
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
@@ -48,7 +45,7 @@ public class TestCasoDePruebasMinimos {
 		
 	}
 	
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void casoPrueba2() throws ParseException{
 		//Recuperar un dispositivo. 
 		//Mostrar por consola todos los intervalos que estuvo encendido durante el último mes. 
@@ -61,8 +58,8 @@ public class TestCasoDePruebasMinimos {
 		
 		dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
 		Cliente unCliente = new Cliente("jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
-		unCliente.addDispositivo(dispositivo);
-		unCliente.addDispositivo(dispositivo2);
+		unCliente.agregarDispositivo(dispositivo);
+		unCliente.agregarDispositivo(dispositivo2);
 		dbhelper.persistirCliente(unCliente);
 
 		System.out.println(dispositivo.getEstado().getDescripcion());

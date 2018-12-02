@@ -4,76 +4,90 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.persistence.*;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstandar;
+import Zona.Transformador;
 
 @Entity
-@DiscriminatorValue("CLIENTES")
+@Table(name = "Cliente")
+@DiscriminatorValue("1")
 public class Cliente extends Usuario {
 
-//	@OneToOne
-//	@JoinColumn(name="id")
-//	private Usuario usuario;
-	@Column(name="tipoDocumento")
-	private String tipoDoc;
-	@Column(name="numeroDocumento")
-	private int nroDoc;
-	@Column(name="telefonoContacto")
+	@Column(name="TipoDocumento")
+	private String tipoDocumento;
+	@Column(name="NumeroDocumento")
+	private int numeroDocumento;
+	@Column(name="Telefono")
 	private int telefono;
-	@Column(name="categoria")
+	@Column(name="Categoria")
 	private String categoria;
 	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="DISP_CLIENTE_ID", referencedColumnName="id") // Clave Foranea
-	private List<Dispositivo> dispositivos = new ArrayList<>();
-	@Column(name="consumo")
+	@JoinColumn(name="DISP_CLIENTE_ID", referencedColumnName="id")
+	private List<Dispositivo> dispositivos = new ArrayList<Dispositivo>();
+	@Column(name="Consumo")
 	private double consumo;
 	@Column(name="ConsumoxPeriodo")
 	private double ConsumoxPeriodo;
-	@Column(name="puntos")
-	private int puntos;
-	@Column(name="latitud")
+	@Column(name="Puntos")
+	private int puntos = 0;
+	@Column(name="Latitud")
 	private double latitud;
-	@Column(name="longitud")
+	@Column(name="Longitud")
 	private double longitud;
-	@Column(name="idTransformador")
-	private int idTransformador;
+	@ManyToOne
+	@JoinColumn(name = "transformador_id", referencedColumnName = "id")
+	private Transformador transformador;
+	@Transient
+	private double ConsumoOptimo;
 	
-	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fechaAlta, String tipoDoc, int unNumDoc, int telefono, String categoria) {
-		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
-		this.tipoDoc = tipoDoc;
-		this.nroDoc = unNumDoc;
-		this.telefono = telefono;
-		this.categoria = categoria;
-	}
-	
-	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio, String fechaAlta, String tipoDoc, int unNumDoc, int telefono, String categoria) {
-		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
-		this.tipoDoc = tipoDoc;
-		this.nroDoc = unNumDoc;
-		this.telefono = telefono;
-		this.categoria = categoria;
-	}
-	public Cliente() {
-	
-	}
-
 	public enum tipoDoc { DNI, CI, LE, LC }
-
-	public String getTipoDoc() {
-		return tipoDoc;
+	
+	public Cliente() {
+		super();
 	}
 
-	public void setTipoDoc(String tipoDoc) {
-		this.tipoDoc = tipoDoc;
+	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fechaAlta, String tipoDoc, int numDoc, int telefono, String categoria) {
+		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
+		this.tipoDocumento = tipoDoc;
+		this.numeroDocumento = numDoc;
+		this.telefono = telefono;
+		this.categoria = categoria;
+	}
+	
+	public Cliente(String usuario, String password, String nombre, String apellido, String domicilio, String fechaAlta, String tipoDoc, int numDoc, int telefono, String categoria) {
+		super(usuario, password, nombre, apellido, domicilio, fechaAlta);
+		this.tipoDocumento = tipoDoc;
+		this.numeroDocumento = numDoc;
+		this.telefono = telefono;
+		this.categoria = categoria;
+	}
+	
+	public String getTipoDocumento() {
+		return tipoDocumento;
 	}
 
-	public int getNroDoc() {
-		return nroDoc;
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
 	}
 
-	public void setNroDoc(int nroDoc) {
-		this.nroDoc = nroDoc;
+	public int getNumeroDocumento() {
+		return numeroDocumento;
+	}
+
+	public void setNumeroDocumento(int numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
 	}
 
 	public int getTelefono() {
@@ -98,7 +112,7 @@ public class Cliente extends Usuario {
 
 	public void setDispositivos(List<Dispositivo> dispositivos) {
 		this.dispositivos = dispositivos;
-	}	
+	}
 
 	public double getConsumo() {
 		return consumo;
@@ -108,53 +122,12 @@ public class Cliente extends Usuario {
 		this.consumo = consumo;
 	}
 
-	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
-		if(this.cantidadDispositivosEncencidos(this.dispositivos) > 0)
-			return true;
-		else
-			return false;
+	public double getConsumoxPeriodo() {
+		return ConsumoxPeriodo;
 	}
 
-	public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
-		List<Dispositivo> dispositivosEncendidos;
-		
-		dispositivosEncendidos = this.dispositivos.stream().filter(d -> d.getEstado().estaEncendido()).collect(Collectors.toList());
-		return dispositivosEncendidos.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
-	}
-
-	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
-		List<Dispositivo> dispositivosApagados;
-		
-		dispositivosApagados = this.dispositivos.stream().filter(d -> d.getEstado().estaApagado()).collect(Collectors.toList());
-		return dispositivosApagados.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
-	}
-
-	public int cantidadTotalDispositivos() {
-		return this.dispositivos.size();
-	}
-
-	public double consumoCliente() {
-		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum();
-	}
-	
-	public void addDispositivo(Dispositivo dispositivo){
-		this.dispositivos.add(dispositivo);
-		if(dispositivo.esInteligente())
-			sumarPuntos(15);
-	}
-	
-	
-	public void adaptarDispositivo(DispositivoEstandar dispositivo){
-		dispositivo.convertirseAInteligente();
-		sumarPuntos(10);
-	}
-	
-	private void sumarPuntos(int puntos) {
-		this.setPuntos(puntos);		
-	}
-
-	public void hsUsoEstimadaDispositivoEstandar(DispositivoEstandar dispositivo, double hsUsoEstimada){
-		dispositivo.setHsUsoEstimada(hsUsoEstimada);
+	public void setConsumoxPeriodo(double consumoxPeriodo) {
+		ConsumoxPeriodo = consumoxPeriodo;
 	}
 
 	public int getPuntos() {
@@ -181,21 +154,80 @@ public class Cliente extends Usuario {
 		this.longitud = longitud;
 	}
 
-	public int getIdTransformador() {
-		return idTransformador;
+	public Transformador getTransformador() {
+		return transformador;
 	}
 
-	public void setIdTransformador(int idTransformador) {
-		this.idTransformador = idTransformador;
-	}
-
-	public double getConsumoxPeriodo() {
-		return ConsumoxPeriodo;
-	}
-
-	public void setConsumoxPeriodo(double consumoxPeriodo) {
-		ConsumoxPeriodo = consumoxPeriodo;
+	public void setTransformador(Transformador transformador) {
+		this.transformador = transformador;
 	}
 	
+	public double getConsumoOptimo() {
+		return ConsumoOptimo;
+	}
+
+	public void setConsumoOptimo(double consumoOptimo) {
+		ConsumoOptimo = consumoOptimo;
+	}
+
+	public boolean hayDispositivosEncendidos(List<Dispositivo> dispositivos) {
+		if(this.cantidadDispositivosEncencidos(this.dispositivos) > 0)
+			return true;
+		else
+			return false;
+	}
 	
+	public int cantidadDispositivosEncencidos(List<Dispositivo> dispositivos) {
+		List<Dispositivo> dispositivosEncendidos;
+		
+		dispositivosEncendidos = this.dispositivos.stream().filter(d -> d.getEstado().estaEncendido()).collect(Collectors.toList());
+		return dispositivosEncendidos.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
+	}
+
+	public int cantidadDispositivosApagados(List<Dispositivo> dispositivos) {
+		List<Dispositivo> dispositivosApagados;
+		
+		dispositivosApagados = this.dispositivos.stream().filter(d -> d.getEstado().estaApagado()).collect(Collectors.toList());
+		return dispositivosApagados.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList()).size();
+	}
+
+	public int cantidadTotalDispositivos() {
+		return this.dispositivos.size();
+	}
+
+	public double consumoCliente() {
+		return this.dispositivos.stream().mapToDouble(d -> d.getConsumoKwH()).sum()*24;
+	}
+
+	public void agregarDispositivo(Dispositivo dispositivo){
+		this.dispositivos.add(dispositivo);
+		if(dispositivo.esInteligente())
+			sumarPuntos(15);
+	}
+	
+	public void adaptarDispositivo(DispositivoEstandar dispositivo){
+		dispositivo.convertirseAInteligente();
+		sumarPuntos(10);
+	}
+	
+	private void sumarPuntos(int puntos) {
+		this.setPuntos(puntos);		
+	}
+
+	public void hsUsoEstimadaDispositivoEstandar(DispositivoEstandar dispositivo, double hsUsoEstimada){
+		dispositivo.setHsUsoEstimada(hsUsoEstimada);
+	}
+
+	public double calcularConsumoEntrePeriodos(LocalDateTime inicio, LocalDateTime fin) {
+		double consumoTotal = 0;
+		for (Dispositivo dispositivo : this.dispositivos) {
+			consumoTotal = consumoTotal + dispositivo.consumoTotalComprendidoEntre(inicio, fin);
+		}
+		return consumoTotal;
+	}
+
+	public void removerDispositivo(Dispositivo dispositivo) {
+		this.dispositivos.remove(dispositivo);
+	}
+
 }

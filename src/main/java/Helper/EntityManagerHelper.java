@@ -16,6 +16,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
+import Usuario.Administrador;
 import Usuario.Categoria;
 import Usuario.Cliente;
 import Estado.Estado;
@@ -91,12 +92,24 @@ public class EntityManagerHelper {
 	public void eliminar(Object unObjeto) {
 		this.execute("remove", unObjeto);
 	}
+
+	public void desatachar(Object unObjeto) {
+		this.execute("detach", unObjeto);
+	}
+
+	public int eliminarTodos(Class<?> clase) {
+		this.initTransaccion();
+		int cant = this.entityManager().createQuery("DELETE FROM " + clase.getName()).executeUpdate();
+		this.commitTransaccion();
+		return cant;
+	}
 	
 	public <T> T buscar(Class<T> clase, int id) {
 		T find = (T) this.entityManager().find(clase, id);
 		return find;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private <T> TypedQuery<T> generarQueryPara(Class<T> clase, ImmutablePair<Object, Object> ... pair){
 		String condiciones =  " where ";
 		for(int index = 0; index<pair.length; index++) {
@@ -109,10 +122,19 @@ public class EntityManagerHelper {
 		return query;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public <T> T buscar(Class<T> clase, ImmutablePair<Object, Object> ... pair) {
-		TypedQuery<T> query = this.generarQueryPara(clase, pair);
+		try{
+			TypedQuery<T> query = this.generarQueryPara(clase, pair);
+		
 		List<T> resultados = query.getResultList();
 		return resultados.get(query.getFirstResult());
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return (T) "Error: Usuario Inexistente";
+		}
+		
 	}
 	
 	public <T> List<T> buscarTodos(Class<T> clase) {
@@ -182,9 +204,7 @@ public class EntityManagerHelper {
 	
         
 	}
-	
-	
-            	
+	        	
 	public void cargarCategoriasFromJson(String path) throws ParseException{
 		
 		List<Categoria> categorias = new ArrayList<Categoria>();
@@ -304,5 +324,35 @@ public class EntityManagerHelper {
 		transaccion.commit();
 		entityManager.close();
 	}
-}
+	
+public void cargarAdministradoresFromJson(String path) throws ParseException{
+		
+		List<Administrador> admins = new ArrayList<Administrador>();
+    	
+		try {
+			admins = JsonHelper.extraerAdministradorJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de Categorias");
+			e.printStackTrace();
+		}
+    	
+		for (Administrador admin : admins) {
+			persistirAdmin(admin);
+		}
+		
+	}
+    		
+	public void persistirAdmin(Administrador admin) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		
+        transaction.begin();
+    
+        entityManager.persist(admin);
+        System.out.println("Transaccion Exitosa: " + admin.getApellido());
+        transaction.commit();
+        entityManager.close();
 
+	}
+
+}

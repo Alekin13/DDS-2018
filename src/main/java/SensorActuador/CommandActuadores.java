@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import Dispositivo.DispositivoInteligente;
 
 @Entity
-@Table(name="ACTUADORES")
+@Table(name="Actuador")
 public abstract class CommandActuadores {
 
 	@Id
@@ -17,16 +17,13 @@ public abstract class CommandActuadores {
 	@Column(name="id")
 	private Long id;
 	
-	
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public abstract void ejecutarAccion(DispositivoInteligente dispositivo);
 

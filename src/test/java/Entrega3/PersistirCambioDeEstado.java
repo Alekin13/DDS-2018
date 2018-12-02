@@ -4,9 +4,6 @@ import java.text.ParseException;
 import java.time.LocalDateTime;
 
 import org.junit.Test;
-
-import Dispositivo.Dispositivo;
-import Dispositivo.DispositivoEstandar;
 import Dispositivo.DispositivoFactory;
 import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
@@ -25,7 +22,7 @@ public class PersistirCambioDeEstado {
 		
 		dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
 		Cliente unCliente = new Cliente("jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
-		unCliente.addDispositivo(dispositivo);
+		unCliente.agregarDispositivo(dispositivo);
 		
 		dbhelper.persistirCliente(unCliente);
 

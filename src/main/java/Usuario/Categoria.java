@@ -3,7 +3,7 @@ package Usuario;
 import javax.persistence.*;
 
 @Entity
-@Table(name="CATEGORIAS")
+@Table(name="Categoria")
 public class Categoria {
 
 	@Id

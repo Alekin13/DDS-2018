@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.text.ParseException;
 import java.time.LocalDateTime;
-
 import org.junit.Test;
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoInteligente;
@@ -19,8 +18,8 @@ public class TestUsuario {
     	Dispositivo dispositivo = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "A");
     	Dispositivo dispositivo1 = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "E");
     	
-    	alejandro.addDispositivo(dispositivo);
-    	alejandro.addDispositivo(dispositivo1);
+    	alejandro.agregarDispositivo(dispositivo);
+    	alejandro.agregarDispositivo(dispositivo1);
 
     	assertEquals("Dispositivos Encendidos",1, alejandro.cantidadDispositivosEncencidos(alejandro.getDispositivos()));
     }
@@ -32,8 +31,8 @@ public class TestUsuario {
     	Dispositivo dispositivo = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "A");
     	Dispositivo dispositivo1 = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "E");
     	
-    	alejandro.addDispositivo(dispositivo);
-    	alejandro.addDispositivo(dispositivo1);
+    	alejandro.agregarDispositivo(dispositivo);
+    	alejandro.agregarDispositivo(dispositivo1);
 
     	assertEquals("Existen Dispositivos Encendidos", true, alejandro.hayDispositivosEncendidos(alejandro.getDispositivos()));
     }
@@ -45,8 +44,8 @@ public class TestUsuario {
     	Dispositivo dispositivo = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "A");
     	Dispositivo dispositivo1 = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "E");
     	
-    	alejandro.addDispositivo(dispositivo);
-    	alejandro.addDispositivo(dispositivo1);
+    	alejandro.agregarDispositivo(dispositivo);
+    	alejandro.agregarDispositivo(dispositivo1);
 
     	assertEquals("Dispositivos Encendidos",1, alejandro.cantidadDispositivosApagados(alejandro.getDispositivos()));
     }
@@ -58,8 +57,8 @@ public class TestUsuario {
     	Dispositivo dispositivo = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "A");
     	Dispositivo dispositivo1 = new DispositivoInteligente("Aire Acondicionado", "3500 frigorias", "I", "No", 1.613, 90, 360, "E");
     	
-    	alejandro.addDispositivo(dispositivo);
-    	alejandro.addDispositivo(dispositivo1);
+    	alejandro.agregarDispositivo(dispositivo);
+    	alejandro.agregarDispositivo(dispositivo1);
 
     	assertEquals("Dispositivos Encendidos",2, alejandro.cantidadTotalDispositivos());
     }    

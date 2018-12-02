@@ -1,22 +1,29 @@
 package Usuario;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
-
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.Table;
+import javax.persistence.InheritanceType;
+import javax.persistence.DiscriminatorType;
 
 @Entity
-@Table(name="USUARIOS")
-@Inheritance(strategy=InheritanceType.JOINED)
-@DiscriminatorValue(value="Usuario")
+@Table(name = "Usuario")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)	
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER, name = "rol")
+	
 public abstract class Usuario {
 	
 	@Id
-	@GeneratedValue
-	@Column(name="id")
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, nullable = false)
+	protected int id;
 	@Column(name="usuario")
 	private String usuario;
 	@Column(name="password")
@@ -29,43 +36,39 @@ public abstract class Usuario {
 	private String domicilio;
 	@Column(name="fecAlta")
 	private String fecAlta;
-	@Transient
-	@Column(name="CONSUMO_OPTIMO")
-	private double consumoOptimo;
 
 	public Usuario() {
 	}
-	
-	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fechaAlta) {
+
+	public Usuario(String usuario, String password, String nombre, String apellido, String domicilio, LocalDateTime fecAlta) {
 		super();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime dateTime = LocalDateTime.of(fecAlta.getYear(), fecAlta.getMonth(), fecAlta.getDayOfMonth(), fecAlta.getHour(), fecAlta.getMinute());
+		String fecAltaDate = dateTime.format(formatter);
+		
 		this.usuario = usuario;
 		this.password = password;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.domicilio = domicilio;
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		LocalDateTime dateTime = LocalDateTime.of(fechaAlta.getYear(), fechaAlta.getMonth(), fechaAlta.getDayOfMonth(), fechaAlta.getHour(), fechaAlta.getMinute());
-		String formattedDateTime = dateTime.format(formatter); // "1986-04-08 12:30"
-		this.fecAlta = formattedDateTime;
+		this.fecAlta = fecAltaDate;
 	}
 
-	public Usuario(String usuario2, String password2, String nombre2, String apellido2, String domicilio2,
-			String fechaAlta) {
+	public Usuario(String usuario2, String password2, String nombre2, String apellido2, String domicilio2, String fecAlta2) {
 		super();
 		this.usuario = usuario2;
 		this.password = password2;
 		this.nombre = nombre2;
 		this.apellido = apellido2;
 		this.domicilio = domicilio2;
-		this.fecAlta = fechaAlta;
+		this.fecAlta = fecAlta2;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -115,14 +118,6 @@ public abstract class Usuario {
 
 	public void setFecAlta(String fecAlta) {
 		this.fecAlta = fecAlta;
-	}
-	
-	public double getConsumoOptimo() {
-		return consumoOptimo;
-	}
-
-	public void setConsumoOptimo(double consumoOptimo) {
-		this.consumoOptimo = consumoOptimo;
 	}
 
 }

@@ -38,16 +38,16 @@ public class testEntrega4 {
 	dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
 	
 	Cliente unCliente = new Cliente("Nicolas", "123456", "Nico ", "Cufre", "Lorca 385", LocalDateTime.now(), "DNI", 29760667, 45459595, "R1");
-	unCliente.addDispositivo(d1A);
-	unCliente.addDispositivo(d2A);
-	unCliente.addDispositivo(d3A);
-	unCliente.addDispositivo(d4A);
-	unCliente.addDispositivo(d5A);
-	unCliente.addDispositivo(d6A);
-	unCliente.addDispositivo(d7A);
-	unCliente.addDispositivo(d8A);
-	unCliente.addDispositivo(d9A);
-	unCliente.addDispositivo(d10A);
+	unCliente.agregarDispositivo(d1A);
+	unCliente.agregarDispositivo(d2A);
+	unCliente.agregarDispositivo(d3A);
+	unCliente.agregarDispositivo(d4A);
+	unCliente.agregarDispositivo(d5A);
+	unCliente.agregarDispositivo(d6A);
+	unCliente.agregarDispositivo(d7A);
+	unCliente.agregarDispositivo(d8A);
+	unCliente.agregarDispositivo(d9A);
+	unCliente.agregarDispositivo(d10A);
 	
 	dbhelper.persistirCliente(unCliente);
 
@@ -72,16 +72,16 @@ public class testEntrega4 {
 	DispositivoEstandar d10B = fabricaDeDispositivos.ventiladorDePie();
 	
 	Cliente unCliente2 = new Cliente("Cecilia", "123456", "Cecilia ", "Molina", "Riglos 385", LocalDateTime.now(), "DNI", 28763223, 45459595, "R2");
-	unCliente2.addDispositivo(d1B);
-	unCliente2.addDispositivo(d2B);
-	unCliente2.addDispositivo(d3B);
-	unCliente2.addDispositivo(d4B);
-	unCliente2.addDispositivo(d5B);
-	unCliente2.addDispositivo(d6B);
-	unCliente2.addDispositivo(d7B);
-	unCliente2.addDispositivo(d8B);
-	unCliente2.addDispositivo(d9B);
-	unCliente2.addDispositivo(d10B);
+	unCliente2.agregarDispositivo(d1B);
+	unCliente2.agregarDispositivo(d2B);
+	unCliente2.agregarDispositivo(d3B);
+	unCliente2.agregarDispositivo(d4B);
+	unCliente2.agregarDispositivo(d5B);
+	unCliente2.agregarDispositivo(d6B);
+	unCliente2.agregarDispositivo(d7B);
+	unCliente2.agregarDispositivo(d8B);
+	unCliente2.agregarDispositivo(d9B);
+	unCliente2.agregarDispositivo(d10B);
 	
 	dbhelper.agregar(unCliente2);
 

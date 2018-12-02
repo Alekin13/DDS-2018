@@ -6,7 +6,6 @@ import java.util.List;
 import Dispositivo.DispositivoEstado;
 import Helper.EntityManagerHelper;
 import Usuario.Cliente;
-import Usuario.Usuario;
 
 public class Reporte {
 

@@ -6,13 +6,14 @@ import java.io.IOException;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
+
 import Helper.JsonHelper;
 import Zona.Transformador;
 import Zona.Zona;
 
 public class TestTransformador {
 
-	private static final String PATH_JSON_ZONA	= "src/test/resources/Data/Zonas.json";
+	private static final String PATH_JSON_ZONA	= "src/test/resources/Data/zonas.json";
 	private static final String PATH_JSON_TRANSFORMADOR	= "src/test/resources/Data/Transformadores.json";
 	private List<Transformador> transformadoresJson;
 	private List<Zona> zonasJson;

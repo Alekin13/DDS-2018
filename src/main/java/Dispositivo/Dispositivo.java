@@ -3,17 +3,21 @@ package Dispositivo;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nullable;
 import javax.persistence.*;
+
+import org.junit.Ignore;
+
 import Estado.Apagado;
 import Estado.Encendido;
 import Estado.Estado;
 import Estado.ModoAhorroEnergia;
-import Helper.EntityManagerHelper;
 
-@Entity
-@Table(name="DISPOSITIVO")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="CLASE")
+@Entity(name = "Dispositivo")
+@Table(name = "Dispositivo")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER, name = "Tipo_Dispositivo")
 public abstract class Dispositivo {
 	
 	@Id
@@ -34,17 +38,17 @@ public abstract class Dispositivo {
 	private double usoMensualMinHs;
 	@Column(name="DISP_USO_MENSUAL_MAX")
 	private double usoMensualMaxHs;
-	@Transient
-	@Column(name="DISP_ESTADO")
-	private Estado estado;
 	@Column(name="DISP_FH_ULTIMO_EST")
 	private LocalDateTime FHUltimoCambioEstado;
-	@OneToMany
-	@JoinColumn(name="DISP_ESTADO_ID", referencedColumnName="DISP_ID" , nullable=true)
-	private List<DispositivoEstado> estados = new ArrayList<>();
+	//@Column(name="DISP_ESTADO")
 	@Transient
+	private Estado estado = new Encendido();
+	//@OneToMany
+	//@JoinColumn(name="DISP_ESTADO_ID", referencedColumnName="DISP_ID" , nullable=true)
 	@Column(name="HORAS_USO_RECOMENDADAS")
 	private double horasRecomendadas;
+	@Transient
+	private List<DispositivoEstado> estados = new ArrayList<>();
 	
 	public Dispositivo(){
 		
@@ -177,6 +181,20 @@ public abstract class Dispositivo {
 		this.estado = estado;
 	}
 	
-	
+	public String getUrlBorrar() {
+		return "/cliente/dispositivos/" + id + "/borrar";
+	}
+
+	public String getUrlEditar() {
+		return "/cliente/dispositivos/" + id + "/editar";
+	}
+
+	public String getUrlVerConsumo() {
+		return "/administrador/hogares-consumos/" + id;
+	}
+
+	public double consumoTotalComprendidoEntre(LocalDateTime inicio, LocalDateTime fin) {
+		return 0;
+	}
 	
 }

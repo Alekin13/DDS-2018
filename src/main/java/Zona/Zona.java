@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import Usuario.Cliente;
 
 @Entity
-@Table(name="ZONA")
+@Table(name="Zona")
 public class Zona {
 	
 	@Id
@@ -150,12 +150,12 @@ public class Zona {
 				unTransformador = transformador;
 			}
 		}
-		this.conectarCercano(cliente, unTransformador.getId());
+		this.conectarCercano(cliente, unTransformador);
 	}
 
-	private void conectarCercano(Cliente cliente, int idTransformador) {
-		cliente.setIdTransformador(idTransformador);
+	private void conectarCercano(Cliente cliente, Transformador idTransformador) {
+		cliente.setTransformador(idTransformador);
 		
 	}
-	
+
 }
