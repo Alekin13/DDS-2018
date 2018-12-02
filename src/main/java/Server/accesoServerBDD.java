@@ -22,9 +22,6 @@ public class accesoServerBDD {
 	}
 
 	public Boolean controlLogin(String nombreUsuario, String password) {
-		
-		
-		//EntityManagerHelper dbhelper = new EntityManagerHelper();
 		Cliente unCliente = new Cliente();
 		unCliente.setUsuario(nombreUsuario);
 		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",unCliente.getUsuario()));
@@ -36,8 +33,6 @@ public class accesoServerBDD {
 			Spark.halt(401,"Usuario inexistente !!!");
 		}
 			
-		//System.out.println(user.getUsuario());
-		//System.out.println(user.getPassword());
 		if ( user.getPassword().equals(password)) {
 			return true;			
 		} else return false;
@@ -69,17 +64,18 @@ public class accesoServerBDD {
 	}
 	
 	public Cliente gettingUserFromDB() {
-
 		return sessionUser;
-		
-		
 	}
 	
 	public Administrador gettingAdminFromDB() {
-		
 		return adminLogueado;
-		
-		
+	}
+
+	public void CerrarSesionUsuario() {
+		this.sessionUser = null;
 	}
 	
+	public void CerrarSesionAmin() {
+		this.adminLogueado = null;
+	}
 }

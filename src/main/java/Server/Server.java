@@ -30,12 +30,17 @@ public class Server {
 		Spark.get("/hello", (req, res) -> "Hello World");
 		
 		HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
+
+		
+//////// Pagina principal, con acceso para el usuario y opcon de administrador //////////
 		
 		Spark.get("/PaginaSGE", (req,res) -> {
 			return new ModelAndView(null, "Login.html");
 		},engine);	
 		
-		//Creating login: accessing 
+		
+//////// LOGIN de USUARIO //////////
+		
 		Spark.post("/Home", (req,res) -> {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
@@ -51,13 +56,25 @@ public class Server {
         },engine);
 
 		
+////////USUARIO: LISTAR DISPOSITIVOS //////////
+		
+		Spark.get("/MostrarDispositivosDelUsuario", (req,res) -> {
+			Usuario incomingUser = accesoBDD.gettingUserFromDB();
+			return new ModelAndView(incomingUser, "ListarLosDispositivosParaElCliente.html");
+			}, engine);
+
+		
+//////// USUARIO: EJECUCION DEL SIMPLEX //////////
+		
 		Spark.get("/EjecutarSimplex", (req,res) -> {
 			Cliente incomingUser = accesoBDD.getSessionUser();
 			SimplexJob ejecucionDelSimplexInstance = new SimplexJob(incomingUser);
 			PointValuePair solucion = ejecucionDelSimplexInstance.ejecutarPeticion();
-						
 			return new ModelAndView(incomingUser, "EjecucionSimplexActual.html");
 		}, engine);
+
+		
+//////// USUARIO: CONSUMO POR PERIODO //////////
 		
 		Spark.get("/ConsumoPorPeriodo", (req,res) -> {
 			return new ModelAndView(null, "ConsumoPorPeriodo.html");
@@ -92,11 +109,17 @@ public class Server {
 			return new ModelAndView( incomingUser, "resultadoDelConsumoPeriodo.html");
 		}, engine);
 		
+		
+////////USUARIO: ESTADO POR DISPOSITIVO //////////		
+		
 		Spark.get("/EstadoPorDispositivo", (req,res) -> {
 			Cliente incomingUser = accesoBDD.getSessionUser();
 			
 			return new ModelAndView(incomingUser, "EstadoPorDispositivo.html");
 		}, engine);
+
+		
+////////USUARIO: REGLAS ACTIVAS //////////
 		
 		Spark.get("/ReglasActivas", (req,res) -> {
 			Cliente incomingUser = accesoBDD.getSessionUser(); 
@@ -106,28 +129,33 @@ public class Server {
 			return new ModelAndView(incomingUser, "ReglasActivas.html" );
 		},engine);
 
+		
+////////USUARIO: ALTA DISPOSITIVO //////////	
+		
 		//by Gonzalo
 		Spark.get("/AltaDispositivos", (req,res) -> {
 
 			return new ModelAndView(null, "AltaDispositivos.html");
 			}, engine);
 		
+
+////////USUARIO: ALTA DISPOSITIVO //////////
+		
 		//by Gonzalo
 		Spark.post("/AltaDispositivos", (req,res) -> {
 			Cliente incomingUser = (Cliente) accesoBDD.gettingUserFromDB();
-			//todo esto para obtener double
+
 			String ConsKWh;
 			ConsKWh = req.queryParams("ConsumoKWh");
 			double ConsKWhD;
 			ConsKWhD = Double.parseDouble(ConsKWh);
 			
-			//todo esto para obtener double
+
 			String minhs;
 			minhs = req.queryParams("UsoMensualMin");			
 			double minhsD;
 			minhsD = Double.parseDouble(minhs);
 			
-			//todo esto para obtener double
 			String maxhs;
 			maxhs = req.queryParams("UsoMensualMax");			
 			double maxhsD;
@@ -155,11 +183,8 @@ public class Server {
 				dbhelper.modificar(incomingUser);
 
 				res.redirect("/Inteligente");
-
-				
 			}
-			
-			//else { 
+
 			if(tipoDisp.equals(new String("E"))) {
 				
 				Dispositivo dispositivo = new DispositivoEstandar();
@@ -176,7 +201,7 @@ public class Server {
 		        incomingUser.agregarDispositivo(dispositivo);
 		        
 				EntityManagerHelper dbhelper = new EntityManagerHelper();
-				dbhelper.agregar(dispositivo);
+				dbhelper.modificar(incomingUser);
 		        
 				res.redirect("/Estandar");				
 			}
@@ -194,7 +219,6 @@ public class Server {
 			String nombreUsuario = req.queryParams("nombre");
 			String password = req.queryParams("password");
 			
-			// Need to preserve user when logged in  
 			if (accesoBDD.controlLoginAdmin(nombreUsuario, password)) {
 				Usuario incomingUser = accesoBDD.gettingAdminFromDB();
 				return new ModelAndView(incomingUser, "HomeAdmin.html");
@@ -204,9 +228,14 @@ public class Server {
 		}, engine);
 		
 		
+//////// LOGIN de ADMIN //////////
+		
 		Spark.get("/Admin", (req,res) -> {
 			return new ModelAndView(null, "LoginAdmin.html");
 		},engine);
+		
+		
+//////// LOGIN de USUARIO //////////
 		
 		Spark.post("/LoginAdmin", (req,res) -> {
 			String nombreUsuario = req.queryParams("nombre");
@@ -220,12 +249,17 @@ public class Server {
 				Spark.halt(401,"Didnt recognised user");
 				return null; }
 		}, engine);
+
 		
+//////// ADMIN: CREAR DISPOSITIVO //////////
 		
 		Spark.get("/CrearDispositivo", (req,res) -> {
 
 			return new ModelAndView(null, "CrearDispositivo.html");
 			}, engine);
+
+		
+//////// ADMIN: CREAR DISPOSITIVO //////////
 		
 		Spark.post("/CrearDispositivo", (req,res) -> {
 
@@ -287,7 +321,27 @@ public class Server {
 				
 			}
 			return null;
-			},engine);			
+			},engine);	
+		
+////////ADMIN: CERRAR SESION USUARIO //////////
+		
+		Spark.get("/CerrarSesionUsuario", (req,res) -> {
+			accesoBDD.CerrarSesionUsuario();
+			
+			res.redirect("/PaginaSGE");
+			
+			return null;
+			}, engine);
+		
+////////ADMIN: CERRAR SESION ADMIN //////////
+		
+		Spark.get("/CerrarSesionAdmin", (req,res) -> {
+			accesoBDD.CerrarSesionAmin();
+			
+			res.redirect("/PaginaSGE");
+			
+			return null;
+			}, engine);
 
 			
 	}

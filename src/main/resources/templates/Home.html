@@ -11,12 +11,20 @@
 	<form>
 		<div align="center">
 		
+		<div align="right"> 
+        	<a href="/CerrarSesionUsuario"> <input type="button" value="Cerrar Sesión" autofocus> </a>
+        </div>
+        
 		<hr/>
 		<h1 style="color:white;"> Bienvenido a SGE</h1>
 		<h1 style="color:white;"> Sistema de Gestión de energía</h1>
 		<hr/>
 		
 		<h2 style="color:white;">Usuario: {{usuario}}</h2>
+		
+		<a href="/MostrarDispositivosDelUsuario"> <input type="button" value="Listar dispositivos" autofocus> </a>
+
+		<br><br/>
 		
 		<a href="/EjecutarSimplex"> <input type="button" value="Ejecutar Simplex" autofocus> </a>
 

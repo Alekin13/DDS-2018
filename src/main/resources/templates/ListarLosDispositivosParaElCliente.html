@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
+
+<meta charset="UTF-8">
+<title>Ejecucion Simplex</title>
+</head>
+<body>
+
+<h1 style="color:white;">Usuario: {{usuario}}</h1>
+
+<h2 style="color:white;">Los dispositivos del hogar son: </h2>
+
+<ul>
+{{#each dispositivos}}
+	<li>
+		<p style="color:white;"> Equipo concreto: {{ equipoConcreto }} </p>
+		<div class=hr></div>
+		<p style="color:white;"> Nombre del dispositivo: {{ nombreDispositivo }} </p>
+		
+		<p style="color:white;"> Tipo del dispositivo: {{ tipoDispositivo }} </p>
+		
+		<p style="color:white;"> Tipo del dispositivo: {{ bajoConsumo }} </p>
+
+		
+	</li>	
+{{/each}}
+</ul>
+
+
+</body>
+</html>
