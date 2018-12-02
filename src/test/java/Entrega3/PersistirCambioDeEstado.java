@@ -1,3 +1,5 @@
+// Test para generar usuario en la base: cliente para prueba
+
 package Entrega3;
 
 import java.text.ParseException;

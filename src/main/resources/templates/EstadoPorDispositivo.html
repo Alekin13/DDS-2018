@@ -7,14 +7,14 @@
 </head>
 <body>
 
-<h1>Usuario: {{usuario}}</h1>
+<h1 style="color:white;">Usuario: {{usuario}}</h1>
 
-<h2>Los estados por dispositivos se muestran a continuación: </h2>
+<h2 style="color:white;">Los estados por dispositivos se muestran a continuación: </h2>
 
 <ul>
 {{#each dispositivos}}
 	<li>
-		<p> Dipositivo: {{nombreDispositivo}} , en estado: {{ estado.descripcion }} </p>
+		<p style="color:white;"> Dipositivo: {{nombreDispositivo}} , en estado: {{ estado.descripcion }} </p>
 	</li>	
 {{/each}}
 </ul>

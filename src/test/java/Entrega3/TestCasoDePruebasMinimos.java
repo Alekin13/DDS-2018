@@ -48,7 +48,7 @@ public class TestCasoDePruebasMinimos {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void casoPrueba2() throws ParseException{
 		//Recuperar un dispositivo. 
-		//Mostrar por consola todos los intervalos que estuvo encendido durante el último mes. 
+		//Mostrar por consola todos los intervalos que estuvo encendido durante el ï¿½ltimo mes. 
 		//Modificar su nombre (o cualquier otro atributo editable) y grabarlo. 
 		//Recuperarlo y evaluar que el nombre coincida con el esperado.
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
@@ -57,7 +57,7 @@ public class TestCasoDePruebasMinimos {
 		DispositivoInteligente dispositivo2 = fabricaDeDispositivos.lamparaAlogena40w();
 		
 		dbhelper.cargarEstadosFromJson(PATH_JSON_ESTADOS);
-		Cliente unCliente = new Cliente("jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
+		Cliente unCliente = new Cliente("jey_jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
 		unCliente.agregarDispositivo(dispositivo);
 		unCliente.agregarDispositivo(dispositivo2);
 		dbhelper.persistirCliente(unCliente);
