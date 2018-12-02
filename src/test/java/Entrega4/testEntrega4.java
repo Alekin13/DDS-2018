@@ -108,6 +108,8 @@ public class testEntrega4 {
 	d1B.setValorInherente(40);
 	d1B.setSensor(sensor);
 	dbhelper.modificar(d1B);
+	
+	dbhelper.cargarDispositivoMaestros();
 	}
 	
 	@Test

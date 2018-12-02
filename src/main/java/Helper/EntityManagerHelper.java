@@ -20,6 +20,7 @@ import Usuario.Administrador;
 import Usuario.Categoria;
 import Usuario.Cliente;
 import Estado.Estado;
+import Repositorio.RepositorioDispositivo;
 
 
 public class EntityManagerHelper {
@@ -356,6 +357,14 @@ public void cargarAdministradoresFromJson(String path) throws ParseException{
         transaction.commit();
         entityManager.close();
 
+	}
+
+	public void cargarDispositivoMaestros(){
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaction = entityManager.getTransaction();
+		RepositorioDispositivo repo = new RepositorioDispositivo(entityManager);
+		repo.agregarDispositivosMaestro(repo.listarMaestros());
+		
 	}
 
 }

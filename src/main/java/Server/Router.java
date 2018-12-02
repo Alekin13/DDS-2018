@@ -8,9 +8,11 @@ import javax.persistence.Persistence;
 
 import Controlador.ControladorAdministrador;
 import Controlador.ControladorCliente;
+import Controlador.ControladorDispositivo;
 import Controlador.ControladorHome;
 import Controlador.ControladorLogin;
 import Controlador.ControladorReportes;
+import Repositorio.RepositorioDispositivo;
 import Repositorio.RepositorioTransformadores;
 import Repositorio.RepositorioUsuarios;
 import Spark.BooleanHelper;
@@ -32,10 +34,12 @@ public class Router {
 
 		RepositorioUsuarios repositorioUsuarios = new RepositorioUsuarios(manager);
 		RepositorioTransformadores repositorioTransformadores = new RepositorioTransformadores(manager);
+		RepositorioDispositivo repositorioDispositivos = new RepositorioDispositivo(manager);
 		
 		ControladorHome homeController = new ControladorHome(repositorioTransformadores);
 		ControladorLogin loginController = new ControladorLogin(repositorioUsuarios);
 		ControladorAdministrador administradorController = new ControladorAdministrador(repositorioUsuarios);
+		ControladorDispositivo dispositivoController = new ControladorDispositivo(repositorioDispositivos);
 		ControladorReportes reportesController = new ControladorReportes(repositorioUsuarios, repositorioTransformadores);
 		
 		ControladorCliente clienteController = new ControladorCliente(repositorioUsuarios);
@@ -55,7 +59,7 @@ public class Router {
 		//Spark.post("/administrador/reportes/consumo-tipo-dispositivo-periodo", reportesController::procesarConsumoTipoDispositivoPeriodo, engine);
 		Spark.get("/administrador/reportes/consumo-transformador-periodo", reportesController::formConsumoTransformadorPeriodo, engine);
 		Spark.post("/administrador/reportes/consumo-transformador-periodo", reportesController::procesarConsumoTransformadorPeriodo, engine);
-		//Spark.get("/administrador/dispositivos", dispositivoController::listarDispositivosMaestros, engine);
+		Spark.get("/administrador/dispositivos", dispositivoController::listarDispositivosMaestros, engine);
 		//Spark.get("/administrador/dispositivos/nuevo", dispositivoController::nuevoDispositivoMaestro, engine);
 		//Spark.post("/administrador/dispositivos", dispositivoController::crearDispositivoMaestro);
 		Spark.get("/cliente/dashboard", clienteController::dashboard, engine);

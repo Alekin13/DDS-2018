@@ -2,6 +2,7 @@ package Usuario;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,7 @@ import javax.persistence.Transient;
 
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstandar;
+import Dispositivo.DispositivoInteligente;
 import Zona.Transformador;
 
 @Entity
@@ -228,6 +230,15 @@ public class Cliente extends Usuario {
 
 	public void removerDispositivo(Dispositivo dispositivo) {
 		this.dispositivos.remove(dispositivo);
+	}
+
+	public List<Dispositivo> getDispositivosInteligentes() {
+		
+		List<Dispositivo> di = new ArrayList<>();
+		
+		di = this.dispositivos.stream().filter(d -> d.getTipoDispositivo().equals(new String("I"))).collect(Collectors.toList());
+		return di;
+
 	}
 
 }
