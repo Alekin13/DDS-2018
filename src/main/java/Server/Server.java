@@ -7,6 +7,7 @@ import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
 import Dispositivo.DispositivoEstandar;
 import Dispositivo.DispositivoInteligente;
+import Dispositivo.DispositivoMaestro;
 import Helper.EntityManagerHelper;
 import Simplex.SimplexJob;
 import Usuario.Cliente;
@@ -277,50 +278,22 @@ public class Server {
 			maxhs = req.queryParams("UsoMensualMax");			
 			double maxhsD;
 			maxhsD = Double.parseDouble(maxhs);			
-			
-			String tipoDisp;
-			tipoDisp = req.queryParams("tipo").trim();			
-			
-			if(tipoDisp.equals(new String("I"))) {
-				
-				Dispositivo dispositivo = new DispositivoInteligente();
+						
+				DispositivoMaestro dispositivo = new DispositivoMaestro();
 			
 		        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
 		        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
-		        dispositivo.setTipoDispositivo("I");
+		        dispositivo.setTipoDispositivo(req.queryParams("tipo").trim());
 		        dispositivo.setBajoConsumo(req.queryParams("lowC"));
 		        dispositivo.setConsumoKwH(ConsKWhD);
 		        dispositivo.setUsoMensualMinHs(minhsD);
 		        dispositivo.setUsoMensualMaxHs(maxhsD);
-		        dispositivo.setEstado("A");		
-				
+					
                 EntityManagerHelper dbhelper = new EntityManagerHelper();
 				dbhelper.agregar(dispositivo);
 				
 				res.redirect("/Inteligente");
-				
-			}
-			
-			if(tipoDisp.equals(new String("E"))) {
-				
-				Dispositivo dispositivo = new DispositivoEstandar();
-
-		        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
-		        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
-		        dispositivo.setTipoDispositivo("E");
-		        dispositivo.setBajoConsumo(req.queryParams("lowC"));
-		        dispositivo.setConsumoKwH(ConsKWhD);
-		        dispositivo.setUsoMensualMinHs(minhsD);
-		        dispositivo.setUsoMensualMaxHs(maxhsD);
-		        dispositivo.setEstado("A");					
-				
-				EntityManagerHelper dbhelper = new EntityManagerHelper();
-				dbhelper.agregar(dispositivo);
-				
-				res.redirect("/Estandar");
-				
-			}
-			return null;
+				return null;
 			},engine);	
 		
 ////////ADMIN: CERRAR SESION USUARIO //////////
