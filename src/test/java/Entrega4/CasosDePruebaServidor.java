@@ -1,20 +1,14 @@
 package Entrega4;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-import Server.Server;
+import Server.Server2000;
 
 public class CasosDePruebaServidor {
 
 	@Test
 	public void test() {
-		Server srv = new Server();
-		
-		
-		
-		//srv.loginUsuario();
+		@SuppressWarnings("unused")
+		Server2000 srv = new Server2000();
 	}
 
 }
