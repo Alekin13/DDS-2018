@@ -42,7 +42,7 @@ public class Server {
 			
 			// Need to preserve user when logged in  
 			if (accesoBDD.controlLogin(nombreUsuario, password)) {
-				Usuario incomingUser = accesoBDD.gettingUserFromDB(nombreUsuario);
+				Usuario incomingUser = accesoBDD.gettingUserFromDB();
 				return new ModelAndView(incomingUser, "Home.html");
 			} else { 
 				Spark.halt(401,"Didnt recognised user");
@@ -114,7 +114,7 @@ public class Server {
 		
 		//by Gonzalo
 		Spark.post("/AltaDispositivos", (req,res) -> {
-
+			Cliente incomingUser = (Cliente) accesoBDD.gettingUserFromDB();
 			//todo esto para obtener double
 			String ConsKWh;
 			ConsKWh = req.queryParams("ConsumoKWh");
@@ -136,7 +136,118 @@ public class Server {
 			String tipoDisp;
 			tipoDisp = req.queryParams("tipo").trim();			
 			
-			if(tipoDisp == "I") {
+			if(tipoDisp.equals(new String("I"))) {
+				
+				Dispositivo dispositivo = new DispositivoInteligente();
+				
+		        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
+		        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
+		        dispositivo.setTipoDispositivo("I");
+		        dispositivo.setBajoConsumo(req.queryParams("lowC"));
+		        dispositivo.setConsumoKwH(ConsKWhD);
+		        dispositivo.setUsoMensualMinHs(minhsD);
+		        dispositivo.setUsoMensualMaxHs(maxhsD);
+		        dispositivo.setEstado("A");		
+
+		        incomingUser.agregarDispositivo(dispositivo);
+		        
+				EntityManagerHelper dbhelper = new EntityManagerHelper();
+				dbhelper.modificar(incomingUser);
+
+				res.redirect("/Inteligente");
+
+				
+			}
+			
+			//else { 
+			if(tipoDisp.equals(new String("E"))) {
+				
+				Dispositivo dispositivo = new DispositivoEstandar();
+
+		        dispositivo.setEquipoConcreto(req.queryParams("EquipoConcreto"));
+		        dispositivo.setNombreDispositivo(req.queryParams("NombreDispositivo"));
+		        dispositivo.setTipoDispositivo("E");
+		        dispositivo.setBajoConsumo(req.queryParams("lowC"));
+		        dispositivo.setConsumoKwH(ConsKWhD);
+		        dispositivo.setUsoMensualMinHs(minhsD);
+		        dispositivo.setUsoMensualMaxHs(maxhsD);
+		        dispositivo.setEstado("A");					
+	
+		        incomingUser.agregarDispositivo(dispositivo);
+		        
+				EntityManagerHelper dbhelper = new EntityManagerHelper();
+				dbhelper.agregar(dispositivo);
+		        
+				res.redirect("/Estandar");				
+			}
+
+			return null;
+			}, engine);			
+		
+		//by Gonzalo
+		Spark.get("/Inteligente", (req, res) -> "Alta Dispositivo Inteligente exitosa");
+		
+		//by Gonzalo
+		Spark.get("/Estandar", (req, res) -> "Alta Dispositivo Estandar exitosa");	
+		
+		Spark.post("/LoginAdmin", (req,res) -> {
+			String nombreUsuario = req.queryParams("nombre");
+			String password = req.queryParams("password");
+			
+			// Need to preserve user when logged in  
+			if (accesoBDD.controlLoginAdmin(nombreUsuario, password)) {
+				Usuario incomingUser = accesoBDD.gettingAdminFromDB();
+				return new ModelAndView(incomingUser, "HomeAdmin.html");
+			} else { 
+				Spark.halt(401,"Didnt recognised user");
+				return null; }
+		}, engine);
+		
+		
+		Spark.get("/Admin", (req,res) -> {
+			return new ModelAndView(null, "LoginAdmin.html");
+		},engine);
+		
+		Spark.post("/LoginAdmin", (req,res) -> {
+			String nombreUsuario = req.queryParams("nombre");
+			String password = req.queryParams("password");
+			
+			// Need to preserve user when logged in  
+			if (accesoBDD.controlLoginAdmin(nombreUsuario, password)) {
+				Usuario incomingUser = accesoBDD.gettingAdminFromDB();
+				return new ModelAndView(incomingUser,"HomeAdmin.html");
+			} else { 
+				Spark.halt(401,"Didnt recognised user");
+				return null; }
+		}, engine);
+		
+		
+		Spark.get("/CrearDispositivo", (req,res) -> {
+
+			return new ModelAndView(null, "CrearDispositivo.html");
+			}, engine);
+		
+		Spark.post("/CrearDispositivo", (req,res) -> {
+
+			String ConsKWh;
+			ConsKWh = req.queryParams("ConsumoKWh");
+			double ConsKWhD;
+			ConsKWhD = Double.parseDouble(ConsKWh);
+			
+			String minhs;
+			minhs = req.queryParams("UsoMensualMin");			
+			double minhsD;
+			minhsD = Double.parseDouble(minhs);
+			
+			String maxhs;
+			maxhs = req.queryParams("UsoMensualMax");			
+			double maxhsD;
+			maxhsD = Double.parseDouble(maxhs);			
+			
+			String tipoDisp;
+			tipoDisp = req.queryParams("tipo").trim();			
+			
+			if(tipoDisp.equals(new String("I"))) {
 				
 				Dispositivo dispositivo = new DispositivoInteligente();
 			
@@ -149,14 +260,14 @@ public class Server {
 		        dispositivo.setUsoMensualMaxHs(maxhsD);
 		        dispositivo.setEstado("A");		
 				
-				res.redirect("/Inteligente");
-				EntityManagerHelper dbhelper = new EntityManagerHelper();
+                EntityManagerHelper dbhelper = new EntityManagerHelper();
 				dbhelper.agregar(dispositivo);
+				
+				res.redirect("/Inteligente");
 				
 			}
 			
-			//else { 
-			if(tipoDisp == "E") {
+			if(tipoDisp.equals(new String("E"))) {
 				
 				Dispositivo dispositivo = new DispositivoEstandar();
 
@@ -169,40 +280,15 @@ public class Server {
 		        dispositivo.setUsoMensualMaxHs(maxhsD);
 		        dispositivo.setEstado("A");					
 				
-				res.redirect("/Estandar");
-				
 				EntityManagerHelper dbhelper = new EntityManagerHelper();
 				dbhelper.agregar(dispositivo);
 				
+				res.redirect("/Estandar");
+				
 			}
-
 			return null;
-			}, engine);			
-		
-		//by Gonzalo
-		Spark.get("/Inteligente", (req, res) -> "Alta Dispositivo Inteligente");
-		
-		//by Gonzalo
-		Spark.get("/Estandar", (req, res) -> "Alta Dispositivo Estandar");	
-		
-		Spark.post("/LoginAdmin", (req,res) -> {
-			String nombreUsuario = req.queryParams("nombre");
-			String password = req.queryParams("password");
+			},engine);			
+
 			
-			// Need to preserve user when logged in  
-			if (accesoBDD.controlLoginAdmin(nombreUsuario, password)) {
-				Usuario incomingUser = accesoBDD.gettingAdminFromDB(nombreUsuario);
-				return new ModelAndView(incomingUser, "HomeAdmin.html");
-			} else { 
-				Spark.halt(401,"Didnt recognised user");
-				return null; }
-		}, engine);
-		
-		Spark.get("/Admin", (req,res) -> {
-			return new ModelAndView(null, "LoginAdmin.html");
-		},engine);	
-		
-
-}
-
+	}
 }

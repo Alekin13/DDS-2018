@@ -11,6 +11,7 @@ public class accesoServerBDD {
 	// Session incoming user
 	Cliente sessionUser = new Cliente();
 	Administrador adminLogueado = new Administrador();
+	EntityManagerHelper dbhelper = new EntityManagerHelper();
 	
 	public Cliente getSessionUser() {
 		return sessionUser;
@@ -23,7 +24,7 @@ public class accesoServerBDD {
 	public Boolean controlLogin(String nombreUsuario, String password) {
 		
 		
-		EntityManagerHelper dbhelper = new EntityManagerHelper();
+		//EntityManagerHelper dbhelper = new EntityManagerHelper();
 		Cliente unCliente = new Cliente();
 		unCliente.setUsuario(nombreUsuario);
 		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",unCliente.getUsuario()));
@@ -47,7 +48,7 @@ public class accesoServerBDD {
 	public Boolean controlLoginAdmin(String nombreUsuario, String password) {
 		
 		
-		EntityManagerHelper dbhelper = new EntityManagerHelper();
+		//EntityManagerHelper dbhelper = new EntityManagerHelper();
 		Administrador unAdmin = new Administrador();
 		unAdmin.setUsuario(nombreUsuario);
 		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",unAdmin.getUsuario()));
@@ -67,26 +68,14 @@ public class accesoServerBDD {
 		
 	}
 	
-	public Cliente gettingUserFromDB(String nombreUsuario) {
-		
-		
-		EntityManagerHelper dbhelper = new EntityManagerHelper();
-		Cliente unCliente = new Cliente();
-		unCliente.setUsuario(nombreUsuario);
-		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",unCliente.getUsuario()));
-		return (Cliente) user;
+	public Cliente gettingUserFromDB() {
+
+		return sessionUser;
 		
 		
 	}
 	
-	public Administrador gettingAdminFromDB(String nombreUsuario) {
-		
-		
-//		EntityManagerHelper dbhelper = new EntityManagerHelper();
-//		Administrador admin = new Administrador();
-//		admin.setUsuario(nombreUsuario);
-//		Usuario user = dbhelper.buscar(Usuario.class, new ImmutablePair<>("usuario",admin.getUsuario()));
-//		return (Cliente) user;
+	public Administrador gettingAdminFromDB() {
 		
 		return adminLogueado;
 		
