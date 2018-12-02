@@ -1,11 +1,5 @@
-body {-title {-title {
-  margin: -28px -25px 25px;
-  padding: 15px 25px;
-  line-
-  margin: -28px -25px 25px;
-  padding: 15px 25px;
-  line-
-  background: #145A32;
+body {
+  background: #2d343d;
 }
 
 .login {
@@ -27,7 +21,6 @@ h1.login-title {
   background: #f7f7f7;
  
 }
-
 
 .login-input {
   width: 285px;
@@ -56,12 +49,3 @@ h1.login-title {
   cursor: pointer; 
   outline:0;
 }
-
-.boton {
-  padding: 10px;
-  border: 0;
-  background: red;
-  font-size: 1.2em;
-  color: #FFF;
-}
-

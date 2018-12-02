@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
+<head>
+<title>Consumo Por Período</title>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.7.2.custom.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+<script type="text/javascript">
+jQuery(function($){
+	$.datepicker.regional['es'] = {
+		closeText: 'Cerrar',
+		prevText: '&#x3c;Ant',
+		nextText: 'Sig&#x3e;',
+		currentText: 'Hoy',
+		monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+		'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+		monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+		'Jul','Ago','Sep','Oct','Nov','Dic'],
+		dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+		dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+		dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+		weekHeader: 'Sm',
+		dateFormat: 'dd/mm/yy',
+		firstDay: 1,
+		isRTL: false,
+		showMonthAfterYear: false,
+		yearSuffix: ''};
+	$.datepicker.setDefaults($.datepicker.regional['es']);
+});    
+ 
+$(document).ready(function() {
+   $("#datepicker").datepicker();
+ });
+ 
+$(document).ready(function() {
+	   $("#datepicker2").datepicker();
+	 });
+</script>
+</head>
+
+<body>
+<h1 style="color:white;">Seleccion del período de interés</h1>
+<form autocomplete="off">
+  <label style="color:white;"> Seleccionar Fecha de Inicio:</label>
+  <input type="text" name="datepicker" id="datepicker" size="12" />
+
+  <label style="color:white;"> Seleccionar Fecha de Fin:</label>
+  <input type="text" name="datepicker2" id="datepicker2" size="12" />
+
+</form>
+  
+  <div align="center">
+  	<a href="/ReporteConsumoTransformador"> <input type="button" value="Reporte consumo por transformador" autofocus> </a>
+  	<a href="/ReporteConsumoHogar"> <input type="button" value="Reporte consumo por hogar" autofocus> </a>  
+  </div>

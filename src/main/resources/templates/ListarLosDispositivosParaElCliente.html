@@ -15,14 +15,21 @@
 <ul>
 {{#each dispositivos}}
 	<li>
+		<div>
 		<p style="color:white;"> Equipo concreto: {{ equipoConcreto }} </p>
-		<div class=hr></div>
+
 		<p style="color:white;"> Nombre del dispositivo: {{ nombreDispositivo }} </p>
 		
 		<p style="color:white;"> Tipo del dispositivo: {{ tipoDispositivo }} </p>
 		
-		<p style="color:white;"> Tipo del dispositivo: {{ bajoConsumo }} </p>
+		<p style="color:white;"> Bajo Consumo: {{ bajoConsumo }} </p>
 
+		<label name=id > ID Dispositivo: {{ id }} </label>
+		<button href="/MostrarConsumo" name=id class="submit" type="submit">Consumo del último mes</button>
+
+		<br></br>
+
+		</div>
 		
 	</li>	
 {{/each}}

@@ -9,6 +9,7 @@ import Dispositivo.DispositivoEstandar;
 import Dispositivo.DispositivoInteligente;
 import Dispositivo.DispositivoMaestro;
 import Helper.EntityManagerHelper;
+import Reporte.Reporte;
 import Simplex.SimplexJob;
 import Usuario.Cliente;
 import Usuario.Usuario;
@@ -26,6 +27,7 @@ public class Server {
 		
 		// useful initializations
 		accesoServerBDD accesoBDD = new accesoServerBDD();
+		Reporte generarReportes = new Reporte();
 		
 		// Testing connection
 		Spark.get("/hello", (req, res) -> "Hello World");
@@ -62,6 +64,14 @@ public class Server {
 		Spark.get("/MostrarDispositivosDelUsuario", (req,res) -> {
 			Usuario incomingUser = accesoBDD.gettingUserFromDB();
 			return new ModelAndView(incomingUser, "ListarLosDispositivosParaElCliente.html");
+			}, engine);
+		
+		
+		Spark.get("/MostrarConsumo", (req,res) -> {
+			System.out.println(req.queryParams());
+			String id = req.queryParams("id").toString();
+			
+			return null;
 			}, engine);
 
 		
@@ -255,9 +265,8 @@ public class Server {
 //////// ADMIN: CREAR DISPOSITIVO //////////
 		
 		Spark.get("/CrearDispositivo", (req,res) -> {
-
 			return new ModelAndView(null, "CrearDispositivo.html");
-			}, engine);
+		}, engine);
 
 		
 //////// ADMIN: CREAR DISPOSITIVO //////////
@@ -294,7 +303,34 @@ public class Server {
 				
 				res.redirect("/Inteligente");
 				return null;
-			},engine);	
+		},engine);	
+		
+////////ADMIN: GENERAR REPORTES //////////
+		
+		Spark.get("/GenerarReportes", (req,res) -> {
+			return new ModelAndView(null, "SeleccionPeriodoYReporte.html");
+		}, engine);
+		
+		
+////////ADMIN: GENERAR REPORTES - Consumo transformadores//////////
+		
+		Spark.post("/ReporteConsumoTransformador", (req,res) -> {
+			//generarReportes
+			
+			
+			
+			return new ModelAndView(null, "SeleccionPeriodoYReporte.html");
+		}, engine);
+		
+		
+////////ADMIN: GENERAR REPORTES - Consumo hogares//////////
+		
+		Spark.post("/ReporteConsumoHogar", (req,res) -> {
+			
+			
+			
+			return new ModelAndView(null, "SeleccionPeriodoYReporte.html");
+		}, engine);
 		
 ////////ADMIN: CERRAR SESION USUARIO //////////
 		
@@ -304,7 +340,7 @@ public class Server {
 			res.redirect("/PaginaSGE");
 			
 			return null;
-			}, engine);
+		}, engine);
 		
 ////////ADMIN: CERRAR SESION ADMIN //////////
 		
@@ -314,7 +350,7 @@ public class Server {
 			res.redirect("/PaginaSGE");
 			
 			return null;
-			}, engine);
+		}, engine);
 
 			
 	}
