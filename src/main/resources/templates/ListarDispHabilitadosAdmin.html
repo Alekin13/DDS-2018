@@ -4,41 +4,50 @@
 <link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
 
 <meta charset="UTF-8">
-<title>Ejecucion Simplex</title>
+<title>Dispositivos permitidos en SGE</title>
 </head>
 <body>
 
-<h1 style="color:white;">Usuario: {{usuario}}</h1>
-
-<h2 style="color:white;">Los dispositivos del hogar son: </h2>
+<h2 style="color:white;">Tabla dispositivos permitidos: </h2>
 
 <table style="color:white;">
 
   <tr>
-    
     <th>Nombre del dispositivo</th>
-
-	<th>Equipo concreto</th>
+    
+    <th>Equipo concreto</th>
 
     <th>Tipo del dispositivo</th>
     
     <th>Bajo Consumo</th>
         
+    <th>Consumo</th>
+            
+    <th>Uso mensual mínimo (hs)</th>
+    
+    <th>Uso mensual máximo (hs)</th>
   </tr>
   
-  {{#each dispositivos}}
+  {{#each this}}
 	<tr>
-
+	
 	    <td> {{ nombreDispositivo }}</td>
-	    
-	    <td> {{ equipoConcreto }}</td>
+
+		<td> {{ equipoConcreto }}</td>
 	
 	    <td> {{ tipoDispositivo }}</td>
 	    
 	    <td> {{ bajoConsumo }} </td>
 
+		<td> {{ consumoKwH }} </td>
+		
+		<td> {{ usoMensualMinHs }} </td>
+		
+		<td> {{ usoMensualMaxHs }} </td>
   </tr>
   {{/each}}
  </table>
+
+<ul>
 </body>
 </html>

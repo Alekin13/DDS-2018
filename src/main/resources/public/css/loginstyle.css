@@ -49,3 +49,15 @@ h1.login-title {
   cursor: pointer; 
   outline:0;
 }
+
+table {
+   width: 100%;
+   border: 1px solid #000;
+}
+th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+   border-spacing: 0;
+}

@@ -2,6 +2,8 @@ package Server;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
 import org.apache.commons.math3.optim.PointValuePair;
 import Dispositivo.Dispositivo;
 import Dispositivo.DispositivoEstado;
@@ -331,6 +333,16 @@ public class Server {
 			
 			return new ModelAndView(null, "SeleccionPeriodoYReporte.html");
 		}, engine);
+		
+		
+////////ADMIN: GENERAR REPORTES - Consumo hogares//////////
+		
+		Spark.get("/ListarDispositivosPermitidos", (req,res) -> {
+			List<DispositivoMaestro> dispHabilitados = accesoBDD.obtenerDispHabilitados();
+			
+			return new ModelAndView(dispHabilitados, "ListarDispHabilitadosAdmin.html");
+		}, engine);		
+		
 		
 ////////ADMIN: CERRAR SESION USUARIO //////////
 		

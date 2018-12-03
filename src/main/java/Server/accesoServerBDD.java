@@ -1,10 +1,15 @@
 package Server;
 
+import java.util.List;
+
 import org.apache.commons.lang3.tuple.ImmutablePair;
+
+import Dispositivo.DispositivoMaestro;
 import Helper.EntityManagerHelper;
 import Usuario.Administrador;
 import Usuario.Cliente;
 import Usuario.Usuario;
+import Zona.Zona;
 import spark.Spark;
 
 public class accesoServerBDD {
@@ -59,8 +64,10 @@ public class accesoServerBDD {
 		if ( user.getPassword().equals(password)) {
 			return true;			
 		} else return false;
-		
-		
+	}
+	
+	public List<DispositivoMaestro> obtenerDispHabilitados(){
+		return dbhelper.buscarTodos(DispositivoMaestro.class);		
 	}
 	
 	public Cliente gettingUserFromDB() {
