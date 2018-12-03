@@ -67,11 +67,37 @@ public class Server {
 			Usuario incomingUser = accesoBDD.gettingUserFromDB();
 			return new ModelAndView(incomingUser, "ListarLosDispositivosParaElCliente.html");
 			}, engine);
+
 		
-		
-		Spark.get("/MostrarConsumo", (req,res) -> {
-			System.out.println(req.queryParams());
-			String id = req.queryParams("id").toString();
+////////USUARIO: Consulta consumo mes pasado por dispositivo //////////
+		Spark.get("/MostrarConsumoMesPasado", (req,res) -> {
+			String id = req.queryParams("id").toString(); 
+			int idToCompare = Integer.parseInt(id);
+			
+			Date fechaActual = new Date();
+			Date fechaEnmesPasado = new Date();
+			
+			accesoBDD.sumarRestarMeses(fechaEnmesPasado, -1);
+
+			Cliente incomingUser = accesoBDD.getSessionUser();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			 
+			double consumoTotal = 0.0;
+			
+			for (Dispositivo dispositivo : incomingUser.getDispositivos()) {
+				for (DispositivoEstado dEstado : dispositivo.getEstados()) {
+					Date cambioEstadoDispositivo = 
+							sdf.parse(dEstado.getFechaDeCambioDeEstado());
+					 
+					if ( dispositivo.getId() == idToCompare &&
+						 cambioEstadoDispositivo.compareTo(fechaEnmesPasado) > 0 &&
+						 cambioEstadoDispositivo.compareTo(fechaActual) < 0 ) {
+						 
+						consumoTotal = consumoTotal + dEstado.getConsumoEstadoPasado();
+					}
+				}				
+				
+			}
 			
 			return null;
 			}, engine);
@@ -111,7 +137,7 @@ public class Server {
 							sdf.parse(dEstado.getFechaDeCambioDeEstado());
 					 
 					if ( cambioEstadoDispositivo.compareTo(fechaInicio_ld) > 0 &&
-						 cambioEstadoDispositivo.compareTo(fechaInicio_ld) < 0 ) {
+						 cambioEstadoDispositivo.compareTo(fechaFin_ld) < 0 ) {
 						 
 						consumoTotal = consumoTotal + dEstado.getConsumoEstadoPasado();
 					}

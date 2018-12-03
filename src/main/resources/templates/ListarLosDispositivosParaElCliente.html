@@ -23,6 +23,9 @@
     <th>Tipo del dispositivo</th>
     
     <th>Bajo Consumo</th>
+    
+    <th>Consumo mes pasado</th>  
+   
         
   </tr>
   
@@ -36,7 +39,28 @@
 	    <td> {{ tipoDispositivo }}</td>
 	    
 	    <td> {{ bajoConsumo }} </td>
+	    
+		<div id="BotonConsultar" >
+	    <th><input name="BotonConsultar" type="submit"/> </th>
+	    </div>
+	    
+	    <script>
+	    $(document).ready(function(){ 
+	    	$('#BotonConsultar').click(function() { 
 
+	    	var id = {{id}}; 
+
+	    	$.ajax({ 
+	    	type: "GET", 
+	    	url: '/MostrarConsumoMesPasado?id='+id, 
+	    	success: function(data) { 
+	    	$('#resultados').html(data); 
+	    	$('#resultados div').slideDown(1000); 
+	    	} 
+	    	}); 
+	    	}); 
+	    </script>
+	    
   </tr>
   {{/each}}
  </table>

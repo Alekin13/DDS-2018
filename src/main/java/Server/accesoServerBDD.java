@@ -1,5 +1,7 @@
 package Server;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -64,6 +66,13 @@ public class accesoServerBDD {
 		if ( user.getPassword().equals(password)) {
 			return true;			
 		} else return false;
+	}
+	
+	public Date sumarRestarMeses(Date fecha, int cantmeses) {
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTime(fecha);
+		calendario.add(Calendar.MONTH,cantmeses);
+		return calendario.getTime();
 	}
 	
 	public List<DispositivoMaestro> obtenerDispHabilitados(){
