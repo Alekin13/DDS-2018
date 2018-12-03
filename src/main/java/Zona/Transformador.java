@@ -23,7 +23,7 @@ public class Transformador {
 	private double longitud;
 	@Column(name="consumo")
 	private double consumo;
-	@Column(name="idZona")
+	@Column(name="idZona", nullable=true)
 	private int idZona;	
 	
 	public int getId() {

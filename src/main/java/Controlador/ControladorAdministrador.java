@@ -24,14 +24,14 @@ public class ControladorAdministrador {
 		return new ModelAndView(null, "administrador/dashboard.hbs");
 	}
 
-	public ModelAndView listarHogaresYConsumos(Request request, Response response) {
-		Map<String, List<Cliente>> model = new HashMap<>();
-		List<Cliente> clientes = repositorioUsuarios.listarClientes();
+//	public ModelAndView listarHogaresYConsumos(Request request, Response response) {
+//		Map<String, List<Cliente>> model = new HashMap<>();
+//		List<Cliente> clientes = repositorioUsuarios.listarClientes();
 
-		model.put("clientes", clientes);
+//		model.put("clientes", clientes);
 
-		return new ModelAndView(model, "administrador/hogares_y_consumos.hbs");
-	}
+//		return new ModelAndView(model, "administrador/hogares_y_consumos.hbs");
+//	}
 
 //	public ModelAndView verConsumos(Request request, Response response) {
 //		return new ModelAndView(model, "administrador/ver_consumos.hbs");

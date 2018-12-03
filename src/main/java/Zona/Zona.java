@@ -20,7 +20,7 @@ public class Zona {
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private Long id;
+	private int id;
 	@Column(name="nombre")
 	private String nombre;
 	@Column(name="radio")
@@ -33,17 +33,17 @@ public class Zona {
 	@JoinColumn(name="idZona")
 	private List<Transformador> transformadores = new ArrayList<>();
 	@OneToMany
-	@JoinColumn(name="idZona")
+	@JoinColumn(name="idZona", nullable=true)
 	private List<Cliente> clientes = new ArrayList<>();;
+
+	public Zona() {
+	}
 
 	public Zona(String nombre, double radio, double latitud, double longitud){
 		this.nombre = nombre;
 		this.radio = radio;
 		this.latitud = latitud;
 		this.longitud = longitud;
-	}
-
-	public Zona() {
 	}
 
 	public String getNombre() {
@@ -87,24 +87,11 @@ public class Zona {
 	}
 
 	public List<Cliente> getClientes() {
-		return getClientesDeLaZona(clientes);
+		return this.clientes;
 	}
 
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
-	}
-
-	public void agregarTransformador (Transformador transformador) {
-		this.transformadores.add(transformador);
-	}
-	
-	public double getConsumoTotalDeLaZona() {
-		double consumoTotalDeLaZona = 0;
-		
-		for (Transformador transformador : this.transformadores) {
-			consumoTotalDeLaZona += transformador.getConsumo();
-		}
-		return consumoTotalDeLaZona;
 	}
 
 	private List<Cliente> getClientesDeLaZona(List<Cliente> clientes) {
@@ -116,6 +103,7 @@ public class Zona {
 				System.out.println ("El Cliente " + unCliente.getApellido() + " no pertenece a la Zona");
 			}
 		}
+		this.setClientes(clientes);
 		return clientes;
 	}
 
@@ -128,6 +116,21 @@ public class Zona {
 			
 		return DistanciaCliente;
 
+	}
+
+	public void agregarTransformador(Transformador transformador) {
+		double TransformadorRadio = this.calcularDistanciaTransformador(transformador);
+		double ZonaRadio = this.radio;
+
+		if (TransformadorRadio < ZonaRadio){
+			this.transformadores.add(transformador);
+			transformador.setIdZona(this.id);
+		}
+		
+	}
+	
+	public void agregarCliente(Cliente cliente) {
+		this.clientes.add(cliente);
 	}
 	
 	public double calcularDistanciaTransformador(Transformador unTransformador){
@@ -156,6 +159,18 @@ public class Zona {
 	private void conectarCercano(Cliente cliente, Transformador idTransformador) {
 		cliente.setTransformador(idTransformador);
 		
+		if(idTransformador.getIdZona() == this.id){
+			this.agregarCliente(cliente);
+		}
+	}	
+	
+	public double getConsumoTotalDeLaZona() {
+		double consumoTotalDeLaZona = 0;
+		
+		for (Transformador transformador : this.transformadores) {
+			consumoTotalDeLaZona += transformador.getConsumo();
+		}
+		return consumoTotalDeLaZona;
 	}
 
 }

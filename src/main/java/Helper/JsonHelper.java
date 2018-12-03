@@ -191,7 +191,7 @@ public class JsonHelper {
 	        JsonObject gsonObj = obj.getAsJsonObject();
 	
 	        Transformador transformador = new Transformador();
-	        transformador.setId(gsonObj.get("id").getAsInt());
+	       // transformador.setId(gsonObj.get("id").getAsInt());
 	        transformador.setIdZona(gsonObj.get("idZona").getAsInt());
 	        transformador.setLatitud(gsonObj.get("latitud").getAsDouble());
 	        transformador.setLongitud(gsonObj.get("longitud").getAsDouble());

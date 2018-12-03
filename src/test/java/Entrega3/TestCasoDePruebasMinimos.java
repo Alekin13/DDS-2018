@@ -95,6 +95,11 @@ public class TestCasoDePruebasMinimos {
 		report.consumoHogarxPeriodo(unCliente, LocalDateTime.now().minusMinutes(10), LocalDateTime.now());
 	}
 	
+	public void test3() throws ParseException{
+		EntityManagerHelper dbhelper = new EntityManagerHelper();
+		dbhelper.actualizarZonasTransformadoresClientes();
+	}
+	
 	@Test
 	public void test() throws ParseException{
 		

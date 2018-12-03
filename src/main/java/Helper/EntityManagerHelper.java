@@ -19,6 +19,8 @@ import Dispositivo.DispositivoEstado;
 import Usuario.Administrador;
 import Usuario.Categoria;
 import Usuario.Cliente;
+import Zona.Transformador;
+import Zona.Zona;
 import Estado.Estado;
 import Repositorio.RepositorioDispositivo;
 
@@ -367,4 +369,88 @@ public void cargarAdministradoresFromJson(String path) throws ParseException{
 		
 	}
 
+	public void cargarZonasFromJson(String path) {
+		
+		List<Zona> zonas = new ArrayList<Zona>();
+    	
+		try {
+			zonas = JsonHelper.extraerZonasJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de Categorias");
+			e.printStackTrace();
+		}
+    	
+		for (Zona zona : zonas) {
+			persistirZona(zona);
+		}
+		
+		
+	}
+
+	private void persistirZona(Zona zona) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaccion = entityManager.getTransaction();
+		
+		transaccion.begin();
+		entityManager.persist(zona);
+		transaccion.commit();
+		entityManager.close();
+		
+	}
+
+	public void cargarTransformadoresJson(String path) {
+		List<Transformador> trans = new ArrayList<Transformador>();
+    	
+		try {
+			trans = JsonHelper.extraerTransformadorJson(path);
+		} catch (IOException e) {
+			System.out.println("Error en la carga de Transformador");
+			e.printStackTrace();
+		}
+    	
+		for (Transformador t : trans) {
+			persistirTransformador(t);
+		}
+		
+	}
+
+	private void persistirTransformador(Transformador t) {
+		EntityManager entityManager = PerThreadEntityManagers.getEntityManager();
+		EntityTransaction transaccion = entityManager.getTransaction();
+		
+		transaccion.begin();
+		entityManager.persist(t);
+		transaccion.commit();
+		entityManager.close();
+		
+		
+	}
+
+	public void actualizarZonasTransformadoresClientes(){
+		
+		List<Zona> zonas = this.buscarTodos(Zona.class);
+		List<Cliente> clientes = this.buscarTodos(Cliente.class);
+		List<Transformador> transformadores = this.buscarTodos(Transformador.class);
+		
+		for(Transformador t : transformadores){
+			for(Zona z : zonas){
+				z.agregarTransformador(t);
+			}
+			
+		}
+		
+		for(Zona z : zonas){
+			for(Cliente c: clientes){
+				z.obtenerTransformadorMasCercano(c);
+			}
+		}
+		
+		for(Cliente c : clientes){
+			this.modificar(c);
+		}
+		
+		for(Zona z : zonas){
+			this.modificar(z);
+		}
+	}
 }

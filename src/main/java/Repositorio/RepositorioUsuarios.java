@@ -53,8 +53,8 @@ public class RepositorioUsuarios{
 		return cliente;
 	}
 	
-	public List<Cliente> listarClientes() {
-		List<Cliente> lista = entityManager.createQuery("SELECT c FROM Cliente c", Cliente.class).getResultList();
+	public List<Usuario> listarClientes() {
+		List<Usuario> lista = entityManager.createQuery("SELECT c FROM Usuario c", Usuario.class).getResultList();
 		return lista;
 	}
 
