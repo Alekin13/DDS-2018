@@ -1,6 +1,8 @@
 package Dispositivo;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -65,7 +67,11 @@ public class DispositivoEstado {
 		return fechaDeCambioDeEstado;
 	}
 	public void setHoraDeCambioDeEstado(LocalDateTime horaDeCambioDeEstado) {
-		this.fechaDeCambioDeEstado = horaDeCambioDeEstado.toString();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		LocalDateTime dateTime = LocalDateTime.of(horaDeCambioDeEstado.getYear(), horaDeCambioDeEstado.getMonth(), horaDeCambioDeEstado.getDayOfMonth(), horaDeCambioDeEstado.getHour(), horaDeCambioDeEstado.getMinute());
+		String fecAltaDate = dateTime.format(formatter);
+		
+		this.fechaDeCambioDeEstado = fecAltaDate;
 	}
 	public double getConsumoEstadoPasado() {
 		return consumoEstadoPasado;
