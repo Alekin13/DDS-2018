@@ -14,6 +14,7 @@ import Dispositivo.DispositivoInteligente;
 import Helper.EntityManagerHelper;
 import Reporte.Reporte;
 import Usuario.Cliente;
+import Zona.Transformador;
 
 public class TestCasoDePruebasMinimos {
 	
@@ -98,13 +99,35 @@ public class TestCasoDePruebasMinimos {
 	public void test3() throws ParseException{
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
 		dbhelper.actualizarZonasTransformadoresClientes();
+		
+	}
+	
+	public void test4() throws ParseException{
+		
+		EntityManagerHelper dbhelper = new EntityManagerHelper();
+		dbhelper.actualizarZonasTransformadoresClientes();
+		
+		List<Transformador> transformadores = dbhelper.buscarTodos(Transformador.class);
+		
+		Reporte report = new Reporte();
+		report.consumoTransformadorxPeriodo(transformadores.get(0), LocalDateTime.now().minusDays(100), LocalDateTime.now());
+		
+	}
+	
+	public void test5() throws ParseException{
+		
+		EntityManagerHelper dbhelper = new EntityManagerHelper();
+		dbhelper.actualizarZonasTransformadoresClientes();
+		
+		Cliente unCliente = new Cliente("jey_jey", "123456", "Jael", "Duran", "Av. Rivadavia 6000", LocalDateTime.now(), "DNI", 98745632, 45459595, "R1");
+		unCliente.setId(5);
+		
+		Reporte report = new Reporte();
+		report.consumoHogarxPeriodo(unCliente, LocalDateTime.now().minusMinutes(10), LocalDateTime.now());
 	}
 	
 	@Test
 	public void test() throws ParseException{
-		
-		
-		this.casoPrueba2();
-		
+		this.test5();
 	}
 }
