@@ -79,6 +79,10 @@ public class accesoServerBDD {
 		return dbhelper.buscarTodos(DispositivoMaestro.class);		
 	}
 	
+	public List<Usuario> obtenerTodosLosUsuarios(){
+		return dbhelper.buscarTodos(Usuario.class);		
+	}
+	
 	public Cliente gettingUserFromDB() {
 		return sessionUser;
 	}

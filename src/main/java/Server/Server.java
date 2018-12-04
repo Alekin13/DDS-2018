@@ -1,6 +1,8 @@
 package Server;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import Dispositivo.DispositivoInteligente;
 import Dispositivo.DispositivoMaestro;
 import Helper.EntityManagerHelper;
 import Reporte.Reporte;
+import Repositorio.RepositorioUsuarios;
 import Simplex.SimplexJob;
 import Usuario.Cliente;
 import Usuario.Usuario;
@@ -30,6 +33,7 @@ public class Server {
 		// useful initializations
 		accesoServerBDD accesoBDD = new accesoServerBDD();
 		Reporte generarReportes = new Reporte();
+		RepositorioUsuarios datosUsuarios = new RepositorioUsuarios();
 		
 		// Testing connection
 		Spark.get("/hello", (req, res) -> "Hello World");
@@ -333,6 +337,16 @@ public class Server {
 				return null;
 		},engine);	
 		
+		
+////////ADMIN: Listar hogares y consumo //////////
+		
+		Spark.get("/ListarHogaresyConsumo", (req,res) -> {
+			List<Cliente> lista = accesoBDD.obtenerTodosLosClientes();
+			
+			return new ModelAndView(lista, "HogaresyConsumo.html");
+
+		}, engine);
+		
 ////////ADMIN: GENERAR REPORTES //////////
 		
 		Spark.get("/GenerarReportes", (req,res) -> {
@@ -342,22 +356,46 @@ public class Server {
 		
 ////////ADMIN: GENERAR REPORTES - Consumo transformadores//////////
 		
-		Spark.post("/ReporteConsumoTransformador", (req,res) -> {
-			//generarReportes
+		Spark.get("/ReporteConsumoTransformador", (req,res) -> {
+			Usuario incomingUser = accesoBDD.gettingAdminFromDB();
+			Cliente cliente = (Cliente) incomingUser;
 			
+			Date fechaActual = new Date();
+			Date fechaEnmesPasado = new Date();
 			
+			accesoBDD.sumarRestarMeses(fechaEnmesPasado, -1);
 			
-			return new ModelAndView(null, "SeleccionPeriodoYReporte.html");
+			LocalDateTime fechaActual_ldt = LocalDateTime.ofInstant(fechaActual.toInstant(), ZoneId.systemDefault());
+			LocalDateTime fechaEnMesPasado_ldt = LocalDateTime.ofInstant(fechaEnmesPasado.toInstant(), ZoneId.systemDefault());
+			
+			double consumo = generarReportes.consumoTransformadorxPeriodo( cliente.getTransformador(),
+																		   fechaActual_ldt,
+																		   fechaEnMesPasado_ldt);
+					
+			
+			return new ModelAndView(consumo, "SeleccionPeriodoYReporte.html");
+
 		}, engine);
 		
 		
 ////////ADMIN: GENERAR REPORTES - Consumo hogares//////////
 		
-		Spark.post("/ReporteConsumoHogar", (req,res) -> {
+		Spark.get("/ReporteConsumoHogar", (req,res) -> {
+			Usuario incomingUser = accesoBDD.gettingAdminFromDB();
 			
+			Date fechaActual = new Date();
+			Date fechaEnmesPasado = new Date();
 			
+			accesoBDD.sumarRestarMeses(fechaEnmesPasado, -1);
 			
-			return new ModelAndView(null, "SeleccionPeriodoYReporte.html");
+			LocalDateTime fechaActual_ldt = LocalDateTime.ofInstant(fechaActual.toInstant(), ZoneId.systemDefault());
+			LocalDateTime fechaEnMesPasado_ldt = LocalDateTime.ofInstant(fechaEnmesPasado.toInstant(), ZoneId.systemDefault());
+			
+			double consumo = generarReportes.consumoHogarxPeriodo( (Cliente) incomingUser,
+																   fechaActual_ldt,
+																   fechaEnMesPasado_ldt);
+					
+			return new ModelAndView(consumo, "SeleccionPeriodoYReporte.html");
 		}, engine);
 		
 		

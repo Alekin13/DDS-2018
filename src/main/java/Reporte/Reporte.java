@@ -10,7 +10,7 @@ import Zona.Transformador;
 
 public class Reporte {
 
-	public void consumoHogarxPeriodo(Cliente hogar, LocalDateTime fDesde, LocalDateTime fHasta) {
+	public double consumoHogarxPeriodo(Cliente hogar, LocalDateTime fDesde, LocalDateTime fHasta) {
 		
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
 		double consumo = 0;
@@ -22,11 +22,12 @@ public class Reporte {
 			consumo += e.getConsumoEstadoPasado();
 		}
 		
-		System.out.println("Hogar: " + hogar.getApellido() + " " + hogar.getNombre() + " Consumio: " + consumo);
+		return consumo;
+		//System.out.println("Hogar: " + hogar.getApellido() + " " + hogar.getNombre() + " Consumio: " + consumo);
 		
 	}
 	
-	public void consumoTransformadorxPeriodo(Transformador trans, LocalDateTime fDesde, LocalDateTime fHasta) {
+	public double consumoTransformadorxPeriodo(Transformador trans, LocalDateTime fDesde, LocalDateTime fHasta) {
 		
 		EntityManagerHelper dbhelper = new EntityManagerHelper();
 		double consumo = 0;
@@ -40,7 +41,10 @@ public class Reporte {
 		
 		trans.setConsumo(trans.getConsumo()+consumo);
 		dbhelper.modificar(trans);
-		System.out.println("Transformador: " + trans.getId() + " Consumio: " + consumo);
+		
+		return consumo;
+		
+		//System.out.println("Transformador: " + trans.getId() + " Consumio: " + consumo);
 		
 	}
 }

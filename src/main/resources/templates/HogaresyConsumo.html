@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
+
+<meta charset="UTF-8">
+<title>Hogares y Consumo</title>
+</head>
+<body>
+
+<h2 style="color:white;">Clientes/hogares y consumo: </h2>
+
+<table style="color:white;">
+
+  <tr>
+    <th>Numero de Documento</th>
+    
+    <th>Consumo</th>
+
+            
+  </tr>
+  
+  {{#each this}}
+	<tr>
+	
+	    <td> {{ numeroDocumento }} </td>
+
+		<td> {{ consumo }} </td>
+  </tr>
+  {{/each}}
+ </table>
+
+<ul>
+</body>
+</html>
