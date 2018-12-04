@@ -340,12 +340,12 @@ public class Server {
 		
 ////////ADMIN: Listar hogares y consumo //////////
 		
-		Spark.get("/ListarHogaresyConsumo", (req,res) -> {
-			List<Cliente> lista = accesoBDD.obtenerTodosLosClientes();
-			
-			return new ModelAndView(lista, "HogaresyConsumo.html");
-
-		}, engine);
+			Spark.get("/ListarHogaresyConsumo", (req,res) -> {
+				List<Usuario> lista = accesoBDD.obtenerTodosLosUsuarios();
+				
+				return new ModelAndView(lista, "HogaresyConsumo.html");
+	
+			}, engine);
 		
 ////////ADMIN: GENERAR REPORTES //////////
 		
