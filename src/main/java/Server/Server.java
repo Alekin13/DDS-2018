@@ -4,7 +4,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.math3.optim.PointValuePair;
 import Dispositivo.Dispositivo;
@@ -18,6 +20,7 @@ import Repositorio.RepositorioUsuarios;
 import Simplex.SimplexJob;
 import Usuario.Cliente;
 import Usuario.Usuario;
+import Zona.Transformador;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import spark.ModelAndView;
 import spark.Spark;
@@ -44,8 +47,21 @@ public class Server {
 //////// Pagina principal, con acceso para el usuario y opcon de administrador //////////
 		
 		Spark.get("/PaginaSGE", (req,res) -> {
+			
+		      //  String users = "";
+		        
+		    //    List<Transformador> trans = accesoBDD.obtenerTransformadores();
+		        
+		  //      for(Transformador t: trans){
+		//        	users.concat("{ lat: " + t.getLatitud() + ", lng: " + t.getLongitud() + "},");
+	//	        }
+//		        users = "[" + users + "{lat: -34.659438, lng: -58.4704135} ]";
+		        
+
+		        			
 			return new ModelAndView(null, "Login.html");
 		},engine);	
+		
 		
 		
 //////// LOGIN de USUARIO //////////
@@ -172,6 +188,7 @@ public class Server {
 			return new ModelAndView(incomingUser, "ReglasActivas.html" );
 		},engine);
 
+		
 		
 ////////USUARIO: ALTA DISPOSITIVO //////////	
 		

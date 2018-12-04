@@ -11,6 +11,7 @@ import Helper.EntityManagerHelper;
 import Usuario.Administrador;
 import Usuario.Cliente;
 import Usuario.Usuario;
+import Zona.Transformador;
 import Zona.Zona;
 import spark.Spark;
 
@@ -98,4 +99,9 @@ public class accesoServerBDD {
 	public void CerrarSesionAmin() {
 		this.adminLogueado = null;
 	}
+	
+	public List<Transformador> obtenerTransformadores(){
+		return dbhelper.buscarTodos(Transformador.class);		
+	}
+	
 }
