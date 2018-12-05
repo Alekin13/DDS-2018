@@ -102,10 +102,21 @@ public class Server {
 				}				
 				
 			}
-			
-			return null;
+			return new ModelAndView(consumoTotal, "ListarLosDispositivosParaElClienteResultado.html");
 			}, engine);
 
+		
+		/*prueba id*/
+		
+		// Testing connection
+//		Spark.get("/MostrarConsumoMesPasado", (req,res) -> {
+//			String id = req.queryParams("id").toString();
+//			System.out.println(id);
+//			return null;
+//		}, engine);
+		
+		
+		
 		
 //////// USUARIO: EJECUCION DEL SIMPLEX //////////
 		
