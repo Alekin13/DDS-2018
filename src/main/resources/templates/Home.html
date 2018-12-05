@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
+
+<meta charset="UTF-8">
+<title>SGE PLATFORM: HOME</title>
+</head>
+
+<body>
+	<form>
+		<div align="center">
+		
+		<div align="right"> 
+        	<a href="/CerrarSesionUsuario"> <input type="button" value="Cerrar Sesión" autofocus> </a>
+        </div>
+        
+		<hr/>
+		<h1 style="color:white;"> Bienvenido a SGE</h1>
+		<h1 style="color:white;"> Sistema de Gestión de energía</h1>
+		<hr/>
+		
+		<h2 style="color:white;">Usuario: {{usuario}}</h2>
+		
+		<a href="/MostrarDispositivosDelUsuario"> <input type="button" value="Listar dispositivos" autofocus> </a>
+
+		<br><br/>
+		
+		<a href="/EjecutarSimplex"> <input type="button" value="Ejecutar Simplex" autofocus> </a>
+
+		<br><br/>
+		
+		<a href="/ConsumoPorPeriodo"> <input type="button" value="Consumo por período" autofocus> </a>
+		
+		<br><br/>
+		
+		<a href="/EstadoPorDispositivo"> <input type="button" value="Estado por dispositivo" autofocus> </a>
+
+		<br><br/>
+
+        <a href="/ReglasActivas"> <input type="button" value="Reglas Activas" autofocus> </a>
+
+		<br><br/>
+
+        <a href="/AltaDispositivos"> <input type="button" value="Alta Dispositivo" autofocus> </a>
+		
+		<br><br/>
+		</div>
+	</form>
+	
+ </body>
+
+</html>

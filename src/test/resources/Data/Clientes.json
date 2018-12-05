@@ -1,0 +1,28 @@
+{"clientes":
+	[	
+	{
+		"usuario": "Alekin",
+		"password": "123456",
+		"nombre": "Alejandro",
+		"apellido": "Mattioli",
+		"domicilio": "Av. Rivadavia 5000",
+		"tipoDoc": "DNI",
+		"nroDoc": 38993333,
+		"telefono": 1551515555,
+		"categoria":"R1"
+	},
+	
+	{
+		"usuario": "Pollo",
+		"password": "123456",
+		"nombre": "Camila",
+		"apellido": "Serra",
+		"domicilio": "Olleros 1500",
+		"fechaAlta": "22/04/2018",
+		"tipoDoc": "DNI",
+		"nroDoc": 38993332,
+		"telefono": 1545352313,
+		"categoria":"R1"		
+	}
+]
+}

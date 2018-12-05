@@ -1,0 +1,16 @@
+div{
+	border:1px solid #93afa2;
+	margin:auto;
+	width:750px;
+}
+
+h1{
+color:green;
+}
+
+.device_form ul{
+list-style:none;
+width:750px;
+margin:0;
+padding:0;
+}

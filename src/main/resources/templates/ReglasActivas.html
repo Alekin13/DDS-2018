@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
+<meta charset="UTF-8">
+<title>Ejecucion Simplex</title>
+</head>
+<body>
+
+<h1>Usuario: {{usuario}}</h1>
+
+<h2>Reglas activas por dispositivo</h2>
+
+<ul>
+{{#each dispositivos}}
+	<li>
+		<p> Dispositivo: {{nombreDispositivo}} </p>
+		{{#each sensor}}
+			<li>
+				{{#each reglas}}
+	            <p> Condicion Regla: {{ reglas.condicion }}, Accion Regla: {{ reglas.accion }}</p>
+				{{/each}}
+			</li>
+		{{/each}}
+		</li>
+	{{/each}}
+	</li>	
+{{/each}}
+</ul>
+
+
+</body>
+</html>

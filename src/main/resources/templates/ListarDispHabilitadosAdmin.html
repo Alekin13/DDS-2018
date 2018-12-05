@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="css/loginstyle.css" rel="stylesheet" type="text/css" >  
+
+<meta charset="UTF-8">
+<title>Dispositivos permitidos en SGE</title>
+</head>
+<body>
+
+<h2 style="color:white;">Tabla dispositivos permitidos: </h2>
+
+<table style="color:white;">
+
+  <tr>
+    <th>Nombre del dispositivo</th>
+    
+    <th>Equipo concreto</th>
+
+    <th>Tipo del dispositivo</th>
+    
+    <th>Bajo Consumo</th>
+        
+    <th>Consumo</th>
+            
+    <th>Uso mensual mínimo (hs)</th>
+    
+    <th>Uso mensual máximo (hs)</th>
+  </tr>
+  
+  {{#each this}}
+	<tr>
+	
+	    <td> {{ nombreDispositivo }}</td>
+
+		<td> {{ equipoConcreto }}</td>
+	
+	    <td> {{ tipoDispositivo }}</td>
+	    
+	    <td> {{ bajoConsumo }} </td>
+
+		<td> {{ consumoKwH }} </td>
+		
+		<td> {{ usoMensualMinHs }} </td>
+		
+		<td> {{ usoMensualMaxHs }} </td>
+  </tr>
+  {{/each}}
+ </table>
+
+<ul>
+</body>
+</html>
